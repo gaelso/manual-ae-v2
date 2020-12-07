@@ -151,33 +151,25 @@ is symmetrical around $\mu$ and passes through a minimum for $D^{*2}H^*=\mu$. As
 
 Let us now examine the case where we are looking to optimize the sampling plan in relation to the value of $D^{*2}H^*$. Equation \@ref(eq:E1) shows that precision deviation $E$ is smallest when $\overline{D^2H}_e=D^{*2}H^*$. It is therefore advantageous to select sample trees in such a manner that their empirical mean $D^2H$ value is $D^{*2}H^*$. In practice, as the empirical mean of the sample's $D^2H$ values will never be exactly $D^{*2}H^*$, it is advantageous to maximize the denominator $\sum_i(D_i^2H_i-\overline{D^2H}_e)^2$, i.e. to maximize the empirical variance of the sample's $D^2H$ values. Ultimately, the sampling plan that maximizes the precision of the volume prediction of trees with $D^2H$ values of $D^{*2}H^*$ consists in selecting $n/2$ trees with $D^2H$ values of $D^{*2}H^*-\Delta$ and $n/2$ trees with $D^2H$ values of $D^{*2}H^*+\Delta$, with $\Delta$ being as large as possible (Figure \@ref(fig:plan)).
 
-\begin{figure}[htb]
-\begin{center}
-\setlength{\unitlength}{1cm}%
-\begin{picture}(14,4.5)(0,-1)
-\put(0,0){\includegraphics[height=1cm]{arbrex8}}
-\put(4,0){\includegraphics[height=2cm]{arbre}}
-\put(8,0){\includegraphics[height=3cm]{arbrex8}}
-\put(0,-0.2){\vector(1,0){12}}\put(12.2,-0.25){Size ($D^2H$)}
-\put(4.2,-0.6){$D^2H$}\put(-0.2,1.2){$n/2$ trees}
-\put(9.3,3.2){$n/2$ trees}\put(4,2.2){Volume ?}
-\multiput(0.3,-0.7)(4.4,0){2}{$\underbrace{\hspace{4.3cm}}_{\displaystyle\Delta}$}
-\end{picture}
-\end{center}
-\caption[Sampling plan optimizing volume prediction precision for a particular tree]{Sampling plan optimizing volume prediction precision for a particular tree. The size deviation $\Delta$ must be as large as possible.\label{plan}}
-\end{figure}
+```{r plan, fig.align='center', out.width='100%', fig.scap="Sampling plan optimizing volume prediction precision for a particular tree", fig.cap="(ref:plan)"}
 
-This sampling plan means that we can ignore the term dependent upon $D^{*2}H^*$ in (\ref{E1}), thus simplifying the relationship to:
+plan
+
+```
+
+
+This sampling plan means that we can ignore the term dependent upon $D^{*2}H^*$ in Equation \@ref(eq:E1), thus simplifying the relationship to:
+
 \[
 (1+E)^2-1\approx\frac{1}{n}
 \]
+
 For $E=5\ \%$, this gives us $n=10$ trees. Optimizing the sampling plan has therefore "saved" us measuring 88 trees compared to the plan that consisted in selecting trees at random. However, the optimized plan is restricted to estimating the volume of a $D^{*2}H^*$sized tree. It is not optimized for estimating the volume of other sized trees. This reasoning therefore clearly has its limitations as volume tables are not generally (or even never) constructed to predict the volume of only one size of tree.
 
 Even more seriously, the optimized sampling plan is also reliant upon the super-population model and may yield erroneous estimations if it does not correspond to reality. This is illustrated in Figure \@ref(fig:bad). The optimized sampling plan for a given $D^{*2}H^*$ size leads to the selection of extreme points (in black in Figure \@ref(fig:bad)) for the sample. This situation is critical for a linear regression as two groups of points far removed one from the other will give an elevated $R^2$ value without us really knowing what is happening between the two. If the linear relation assumed by the super-population model is correct (Figure \@ref(fig:bad) left), then there is no problem: the volume predicted by the tables (shown by a star) will indeed be close to the actual value (gray point). By contrast, if the super-population model is wrong, the predicted volume will be wrong: this is illustrated in Figure \@ref(fig:bad) on the right (where the sample points, in black, are exactly the same as those in Figure \@ref(fig:bad) on the left), where the size-volume relationship is in fact parabolic, not linear. In practice, the shape of the size-volume relationship (and therefore the volume tables) is not known in advance, and it is therefore best to sample trees across the entire size variation interval so as to visualize the nature of the size-volume relationship.
 
-\begin{figure}[htb]
-\begin{center}
-\includegraphics{badplan}
-\end{center}
-\caption[Volume prediction based on a linear regression constructed using extreme points when the size-volume relationship is indeed linear and when it is not]{Volume prediction based on a linear regression constructed using extreme points (in black) when the size-volume relationship is indeed linear (left) and when it is not (right). The black points are the same in both cases. The star indicates the volume predicted by the linear regression constructed using the black points while the gray points indicate the real volume corresponding to $D^{*2}H^*$.\label{bad}}
-\end{figure}
+```{r badplan, fig.scap="Volume prediction based on a linear regression constructed using extreme points when the size-volume relationship is indeed linear and when it is not", fig.cap="(ref:badplan)"}
+
+knitr::include_graphics(paste0(fig_path, "/badplan.pdf"))
+
+```

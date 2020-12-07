@@ -21,7 +21,7 @@ August 2012
 
 ```{r signcaill, fig.align='left', fig.pos='H', out.width='15%'}
 
-knitr::include_graphics(path = "images/signature/signcaill.png")
+knitr::include_graphics(path = "source/signature/signcaill.png")
 
 ```
 

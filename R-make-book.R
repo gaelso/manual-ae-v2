@@ -37,3 +37,7 @@ bookdown::render_book(
   output_format = "bookdown::gitbook",
   output_dir = paste0("Manual-AE/Manual-AE-gitbook-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"))
 )
+
+## Clean temp files
+## !!!!!!!!!!!!!!!!!!!!!  TBD !!!!!!!!!!!!!!!!!!!!
+
