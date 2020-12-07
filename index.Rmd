@@ -1,0 +1,147 @@
+---
+title: "Manual for building tree volume and biomass allometric equations"
+subtitle: "From field measurement to prediction"
+#author: ""
+date: "August 2012"
+documentclass: book
+fontsize: 11pt
+classoption: a4paper
+geometry: "left=1.25in,right=1in,top=1.2in,bottom=1.2in"
+link-citations: yes
+#mainfont: Arial
+bibliography: [bib-jourabbr.bib, bib-trouves.bib, bib-recherch.bib, bib-rstudio.bib, bib-packages.bib]
+site: bookdown::bookdown_site
+biblio-style: bib-faouk.bst
+urlcolor: blue
+citecolor: RoyalBlue 
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+book_format <- knitr::opts_knit$get('rmarkdown.pandoc.to')
+
+if (book_format %in% c("html", "latex")) {
+  library(kableExtra)
+  knitr::opts_chunk$set(fig.pos='H', fig.align='center', out.width='80%')
+}
+
+# automatically create a bib database for R packages
+knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown', 'Hmisc'), 'bib-packages.bib')
+
+
+```
+
+
+<!-- ADD COVER PAGE TO HTML OUTPUT -->
+
+<!-- `r if (book_format == "html") ' -->
+# Cover page {-}
+<!-- '` -->
+
+\  
+
+```{r main_page, eval=knitr::is_html_output(), out.width='75%', fig.asp=0.5, fig.align='center', fig.pos = 'H'}
+
+knitr::include_graphics(path = "images/cover_web/vitruvian_EN_WEB_GS_front.png")
+
+```
+
+\  
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!-- HIDE THIS SECTION FOR PDF (see tex_before_body.tex) -->
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+```{r results='asis', echo=FALSE}
+if (knitr::is_latex_output()) {cat("<!---")}
+```
+
+**Manual for building tree volume and biomass allometric equations**
+**from field measurement to prediction**
+
+Nicolas Picard  
+*Département Environnements et Sociétés*  
+*Centre de Coopération Internationale en Recherche Agronomique pour le Développement*  
+
+Laurent Saint-André  
+*UMR Eco\&Sols*  
+*Centre de Coopération Internationale en Recherche Agronomique pour le Développement* \&  
+*UR1138 BEF*  
+*Institut National de la Recherche Agronomique*
+
+Matieu Henry  
+*Forestry Department*  
+*Food and Agriculture Organization of the United Nations*
+
+August 2012
+
+\  
+
+The designations employed and the presentation of material in this information product do not imply the expression of any opinion whatsoever on the part of the Food and Agriculture Organization of the United Nations (FAO) or the *Centre de Coopération Internationale en Recherche Agronomique pour le Développement* (CIRAD) concerning the legal status or the stage of development of any country, territory, city or area, or of its authorities, or concerning the delimitation of its frontiers or boundaries. The mention of specific companies or products of manufacturers, whether or not these have been patented, does not imply that these have been endorsed or recommended by FAO or CIRAD in preference to others of a similar nature that are not mentioned.
+
+The views expressed herein are those of the author(s) and do not necessarily represent those of FAO or CIRAD.
+
+**E-ISBN 978-92-5-107347-6**
+
+All rights reserved. FAO and CIRAD encourage reproduction and dissemination of material in this information product. Non-commercial uses will be authorized free of charge, upon request. Reproduction for resale or other commercial purposes, including educational purposes, may incur fees. Applications for permission to reproduce or disseminate FAO and CIRAD copyright materials, and all other queries concerning rights and licences, should be addressed by e-mail to copyright@fao.org or Chief, Publishing Policy and Support Branch, Office of Knowledge Exchange, Research and Extension, FAO, Viale delle Terme di Caracalla, 00153 Rome (Italy).
+
+Food and Agriculture Organization of the United Nations (FA0)  
+Viale delle Terme di Caracalla  
+00153 Rome, Italy  
+
+Centre de Coopération Internationale en Recherche Agronomique pour le Développement (CIRAD)  
+Campus international de Baillarguet  
+34 398 Montpellier Cedex, France
+
+\ 
+
+---
+
+**Note:**  
+The book was originally developed in TeX in 2012 and shared as a pdf and printed copies. It has been converted to gitbook and pdf book in 2020 with Rstudio [@Rstudio] and the excellent bookdown R package [@R-bookdown].
+
+The code is available on GitHub at: XXX. 
+
+**ADD LICENSE LOGO**
+
+The online version of this book is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License** (TO BE DECIDED). 
+
+**List of changes:**
+- photo considered as figures. placing several photos next to each other using knitr::include_graphics(c("img1", "img2")) and magick package for borders
+- differential noted "$d$" instead of d (no \\d operator in Rmarkdown)
+- \\emph converted to \\textit (no class emph in Rrmarkdown)
+- few typos correction from auto-corrections
+
+---
+
+\  
+
+Photo credit: 
+Stephen Adu-Bredu (photo \@ref(fig:gha)), 
+Rémi D'Annunzio (photo \@ref(fig:congo), figure \@ref(fig:post)), 
+Astrid Genet (photos \@ref(fig:mats), \@ref(fig:cad)), 
+Matieu Henry (photos \@ref(fig:mlab), \@ref(fig:ghan)), 
+Christophe Jourdan (photos \@ref(fig:evor), \@ref(fig:air), figure \@ref(fig:vanu)), 
+Bruno Locatelli (photo \@ref(fig:mix)), 
+Claude Nys (photo \@ref(fig:chen), figure \@ref(fig:post)),
+Régis Peltier (photo \@ref(fig:ka)), 
+Jean-François Picard (photo \@ref(fig:tsp), figure \@ref(fig:post)), 
+Michaël Rivoire (photos \@ref(fig:arriv), \@ref(fig:gha), \@ref(fig:cad), figure \@ref(fig:post)), 
+Laurent Saint-André (photos \@ref(fig:eucal), \@ref(fig:arriv), \@ref(fig:congo),
+\@ref(fig:thai), \@ref(fig:mlab), \@ref(fig:evor), figure \@ref(fig:post)).
+
+Recommended citation: Picard N., Saint-André L., Henry M. 2012. Manual for building tree volume and biomass allometric equations: from field measurement to prediction. Food and Agricultural Organization of the United Nations, Rome, and *Centre de Coopération Internationale en Recherche Agronomique pour le Développement*, Montpellier, 215 pp.
+
+&copy; CIRAD et FAO, 2012
+
+
+```{r results='asis', echo=FALSE}
+if (knitr::is_latex_output()) {cat("-->")}
+```
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!--               END SECTION HIDING FOR PDF            -->
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+

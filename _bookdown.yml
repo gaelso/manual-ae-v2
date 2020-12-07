@@ -1,0 +1,4 @@
+book_filename: "Manual-AE"
+delete_merged_file: true
+#rmd_subdir: ["Rmd"]
+output_dir: "Book"
