@@ -1,0 +1,11 @@
+
+# Preamble {-}
+
+This guide is intended for students, researchers and engineers who wish to acquire the methodology necessary to construct tree volume, biomass or nutrient content tables. The various models used for this purposes have been grouped together here as they all call upon the same principle: they estimate a variable that is difficult to measure in trees (e.g. volume) using simpler characteristics such as tree diameter 
+at breast height ($1.30$ m), or tree height or age.
+
+This guide is based on a large number of reference papers, and although it does not claim to present all the possible cases, it does describe techniques that can be used to construct the equations required. The references given in the text are specified when possible as author, year and page such that the reader can easily pursue threads of particular interest. A concrete example (dubbed the "red line") guides the reader and helps acquire knowledge through practical application.
+
+
+This guide does not require a great many prerequisites. The red lines use Microsoft Excel to prepare files and R [@R-base] for model fitting. The R command lines used are given in each red line.
+

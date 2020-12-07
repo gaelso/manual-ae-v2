@@ -1,0 +1,27 @@
+
+# Foreword {-}
+
+In the United Nations Framework Convention on Climate Change, the potential benefits for non-Annex I parties will be based on results that must be measured, reported and verified. The precision of these results therefore has a major impact on potential financial compensation, and the capacity to measure forest carbon stocks is thus of increasing importance for countries who plan to contribute to mitigating climate change through their forest activities. The measurement of these stocks currently calls on techniques that are applied at different scales ranging from field inventories on a local scale to airborne lasers or radar, and ultimately to satellite remote sensing on a national or subregional scale. Indirect measurements of forest carbon stocks, as derived from satellite, Lidar or radar data, are based on calibrated relationships with field measurements. The same applies to inventories. Therefore, and ultimately, any forest carbon stock measurement at some point needs trees to be weighed in the field. This constitutes the keystone on which rests the entire edifice of forest carbon stock estimations, whatever the scale considered.
+
+\  
+
+Also, the allometric equations used to predict the biomass of a tree from easier-to-measure dendrometric characteristics such as tree diameter or height, are key factors in estimating the contribution made by forest ecosystems to the carbon cycle. This manual covers all the steps in the construction of these equations, starting with the measurement of tree biomass in the field. It should therefore prove particularly useful in countries that are not yet in possession of measurements and equations that match their forests.
+
+\  
+
+This *Manual for building tree volume and biomass allometric equations* therefore takes the form of a guide intended for all students, technicians or researchers working to assess forest resources such as volume, biomass and carbon stocks for commercial, bioenergy or climate change mitigation purposes. The methods described herein apply to most forests and ecological areas, but special emphasis has been placed on tropical forest that, more than the others, today require efforts from the international community to measure carbon stocks. The manual includes a red line to guide the reader. This describes concrete cases illustrating the different questions that arise when constructing allometric equations, taking samples, making field measurements, entering data, graphically exploring the data, fitting models and using them for predictions. The data employed in these illustrations are derived from three sites which are very different in terms of forest structure and resources available. The practical advice included in these illustrations should allow readers to tackle most of the problems customarily encountered. This manual may also interest forest biometricians to the extent that it contains not only exhaustive reminders on the mathematical theory of regressions and recent developments therein, but also a great deal of advice on selecting and handling linear regression models.
+
+215 pages. Numerous illustrations. Bibliography comprising XXX publications
+
+\  
+
+Francis Cailliez
+
+August 2012
+
+```{r signcaill, fig.align='left', fig.pos='H', out.width='15%'}
+
+knitr::include_graphics(path = "images/signature/signcaill.png")
+
+```
+

@@ -1,0 +1,12 @@
+
+<!-- Corss references to have superscripts / underscript in tables and captions -->
+<!-- also used to avoid having long captions in R chunk headers                 -->
+
+(ref:eucal) Eucalyptus plantation in the Republic of the Congo. Top is the Kissoko area, an illustration of savannah-plantation mosaics. Bottom is the Kondi area in operation, an illustration of the main destinations for eucalyptus wood (logs for paper pulp and charcoal production for the city of Pointe-Noire (photos: L. Saint-André).
+
+(ref:mix) Heterogeneous stands. On the left, multispecific stands on Mont Saint-Anne in Quebec; on the right, multispecific, uneven-aged stands in Costa-Rica (photo: B. Locatelli).
+
+
+(ref:plan-d2h) D^2^H
+
+(ref:plan-delta) $\Delta$
