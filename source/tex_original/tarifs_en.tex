@@ -1,0 +1,316 @@
+\documentclass[a4paper,11pt]{book}
+\def\flagcouleur{}%% à désactiver pour compiler en noir et blanc
+\def\flagpdf{}%% à désactiver pour compiler en DVI
+\def\flaglowres{}%% à désactiver pour utiliser les photos à haute résolution (pdf seulement)=> activer pour la web version (inclus la cover page), desactiver pour la print version.
+\input{layout2_en}
+\includeonly{
+corps_base_en_doneGS_ok_2,
+corps_samp_en_doneLB_ok_2,
+corps_terrain_en_doneGS_ok_2,
+corps_data_en_doneLB_ok_2,
+corps_explo_en_doneLB_ok_2,
+corps_fit_en_doneMHGS_ok_2,
+corps_pred_en_doneLB_ok_2,
+corps_conclu_en_doneLB_ok_2}
+%\includeonly{corps_pred}
+
+\begin{document}
+%% page de titre
+\ifx\flaglowres\undefined{} %
+        \else{
+\includepdf[pages=1]{Cover/vitruvian_EN_WEB_GS.pdf}
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
+\setcounter{page}{1}}\fi
+
+\thispagestyle{empty}\mbox{}\vskip3cm%
+\begin{center}
+{\LARGE\bf Manual for building tree volume \\ and biomass allometric equations}
+\par{\large\bf from field measurement to prediction}
+\par\vskip3cm{\large Nicolas Picard}\\\textit{Département Environnements et Sociétés\\
+Centre de Coopération Internationale en Recherche Agronomique\\
+pour le Développement}
+\par\medskip{\large Laurent Saint-André}\\\textit{UMR Eco\&Sols\\
+Centre de Coopération Internationale en Recherche Agronomique\\
+pour le Développement\\\&\\ UR1138 BEF\\ Institut National de la
+Recherche Agronomique}
+\par\medskip{\large Matieu Henry}\\\textit{Forestry Department\\
+Food and Agriculture Organization of the United Nations}
+
+\vskip3cm August 2012
+\end{center}
+
+%% page du disclaimer et du copyright
+
+\pagebreak\thispagestyle{empty}\mbox{}\vfill
+
+\noindent{\small The designations employed and the presentation of material in this information product do not imply the expression of any opinion whatsoever on the part of the Food and Agriculture Organization of the United Nations (FAO) or the \textit{Centre de Coopération Internationale en Recherche Agronomique pour le Développement} (CIRAD) concerning the legal status or the stage of development of any country, territory, city or area, or of its authorities, or concerning the delimitation of its frontiers or boundaries. The mention of specific companies or products of manufacturers, whether or not these have been patented, does not imply that these have been endorsed or recommended by FAO or CIRAD in preference to others of a similar nature that are not mentioned.
+
+\medskip\noindent The views expressed herein are those of the author(s) and do not necessarily represent those of FAO or CIRAD.
+
+\bigskip\noindent E-ISBN 978-92-5-107347-6
+
+\medskip\noindent All rights reserved. FAO and CIRAD encourage reproduction and dissemination of material in this information product. Non-commercial uses will be authorized free of charge, upon request. Reproduction for resale or other commercial purposes, including educational purposes, may incur fees. Applications for permission to reproduce or disseminate FAO and CIRAD copyright materials, and all other queries concerning rights and licences, should be addressed by e-mail to copyright@fao.org or Chief, Publishing Policy and Support Branch, Office of Knowledge Exchange, Research and Extension, FAO, Viale delle Terme di Caracalla, 00153 Rome (Italy).
+
+\bigskip\noindent Food and Agriculture Organization of the United Nations (FA0)
+\\ Viale delle Terme di Caracalla
+\\ 00153 Rome, Italie
+
+\bigskip\noindent \textit{Centre de Coopération Internationale en Recherche
+Agronomique pour le Développement} (CIRAD)
+\\ Campus international de Baillarguet
+\\ 34\,398 Montpellier Cedex, France
+
+\bigskip\noindent Photo credit: Stephen Adu-Bredu (photo
+\ref{gha}), Rémi D'Annunzio (photo \ref{congo}, figure
+\ref{post}), Astrid Genet (photos \ref{mats}, \ref{cad}), Matieu
+Henry (photos \ref{mlab}, \ref{ghan}), Christophe Jourdan (photos
+\ref{evor}, \ref{air}, figure \ref{vanu}), Bruno Locatelli (photo
+\ref{mix}), Claude Nys (photo \ref{chen}, figure \ref{post}),
+Régis Peltier (photo \ref{ka}), Jean-François Picard (photo
+\ref{tsp}, figure \ref{post}), Michaël Rivoire (photos
+\ref{arriv}, \ref{gha}, \ref{cad}, figure \ref{post}), Laurent
+Saint-André (photos \ref{eucal}, \ref{arriv}, \ref{congo},
+\ref{thai}, \ref{mlab}, \ref{evor}, figure \ref{post}).
+
+\bigskip\noindent Recommended citation: Picard N., Saint-André L., Henry M. 2012. Manual for building tree volume and biomass allometric equations: from field measurement to prediction. Food and Agricultural Organization of the United Nations, Rome, and \textit{Centre de Coopération Internationale en Recherche Agronomique pour le Développement}, Montpellier, \pageref{LastPage}~pp.}
+
+\bigskip\noindent\copyright\ CIRAD et FAO, 2012
+
+\tableofcontents
+
+\listoffigures
+
+\listof{photo}{List of Photos}
+
+\listoftables
+
+\listoffilrouge
+
+\chapterannex{Foreword}
+
+In the United Nations Framework Convention on Climate Change, the potential benefits for non-Annex I parties will be based on results that must be measured, reported and verified. The precision of these results therefore has a major impact on potential financial compensation, and the capacity to measure forest carbon stocks is thus of increasing importance for countries who plan to contribute to mitigating climate change through their forest activities. The measurement of these stocks currently calls on techniques that are applied at different scales ranging from field inventories on a local scale to airborne lasers or radar, and ultimately to satellite remote sensing on a national or subregional scale. Indirect measurements of forest carbon stocks, as derived from satellite, Lidar or radar data, are based on calibrated relationships with field measurements. The same applies to inventories. Therefore, and ultimately, any forest carbon stock measurement at some point needs trees to be weighed in the field. This constitutes the keystone on which rests the entire edifice of forest carbon stock estimations, whatever the scale considered.
+
+\vskip0.75cm Also, the allometric equations used to predict the biomass of a tree from easier-to-measure dendrometric characteristics such as tree diameter or height, are key factors in estimating the contribution made by forest ecosystems to the carbon cycle. This manual covers all the steps in the construction of these equations, starting with the measurement of tree biomass in the field. It should therefore prove particularly useful in countries that are not yet in possession of measurements and equations that match their forests.
+
+\vskip0.75cm This \textit{Manual for building tree volume and biomass allometric equations} therefore takes the form of a guide intended for all students, technicians or researchers working to assess forest resources such as volume, biomass and carbon stocks for commercial, bioenergy or climate change mitigation purposes. The methods described herein apply to most forests and ecological areas, but special emphasis has been placed on tropical forest that, more than the others, today require efforts from the international community to measure carbon stocks. The manual includes a red line to guide the reader. This describes concrete cases illustrating the different questions that arise when constructing allometric equations, taking samples, making field measurements, entering data, graphically exploring the data, fitting models and using them for predictions. The data employed in these illustrations are derived from three sites which are very different in terms of forest structure and resources available. The practical advice included in these illustrations should allow readers to tackle most of the problems customarily encountered. This manual may also interest forest biometricians to the extent that it contains not only exhaustive reminders on the mathematical theory of regressions and recent developments therein, but also a great deal of advice on selecting and handling linear regression models.\nopagebreak
+
+\bigskip\noindent\pageref{LastPage} pages. Numerous illustrations. Bibliography comprising \numberofrefs publications\nopagebreak
+
+\vskip1cm\noindent Francis Cailliez
+
+\bigskip\noindent August 2012
+
+\begin{figure}[!h]
+\includegraphics{signcaill}
+\end{figure}
+
+\chapter*{Acknowledgements}
+
+The authors wish to thank the Food and Agriculture Organization of the United Nations and the UN-REDD programme for funding the publication and translation of this guide.
+
+The authors also wish to thank all those cited below for their contributions to the field campaigns and the data used for the red lines, and for enriching with their personal experience the contents of this guide and accepting to proof-read and translate this guide: Dr. Stephen Adu-Bredu, Angela Amo-Bediako, Dr. Winston Asante, Dr. Aurélien Besnard, Fabrice Bonne, Noëlle Bouxiero, Emmanuel Cornu, Dr. Rémi D'Annunzio, Dr. Christine Deleuze, Serge Didier, Justice Eshun, Charline Freyburger, Dominique Gelhaye, Dr. Astrid Genet, Dickson Gilmour, Hugues Yvan Gomat, Dr. Christophe Jourdan, Dr. Jean-Paul Laclau, Dr. Arnaud Legout, Lawrence and Susy Lewis, Dr. Fleur Longuetaud, Dr. Raphaël Manlay, Jean-Claude Mazoumbou, Adeline Motz, Dr. Alfred Ngomanda, Dr. Yann Nouvellon, Dr. Claude Nys, Charles Owusu-Ansah, Thierry Paul, Régis Peltier, Dr. Jacques Ranger, Michaël Rivoire, Gaël Sola, Luca Birigazzi, Dr. Olivier Roupsard, Dr. Armel Thongo M'bou and Prof. Riccardo Valentini.
+
+The authors are also grateful to all those who despite short timelines provided their comments and suggestions for corrections, and their encouragements. This guide benifited greatly from their precious contribution, but the responsibility for its contents is incumbent solely upon its authors.
+
+The methods presented in this guide were developed during measurement campaigns funded by the following projects: ATP Carbone (CIRAD), MODELFOR (ONF), BIOMASSE OPE (ANDRA), SOERE F-ORE-T (GIP ECOFOR), EMERGE (ANR), WAFT (EU), ULCOS (EU), CarboAfrica (EU, contract No. INCO-CT-2004-003729).
+
+\chapterannex{Preamble}
+%% Manuel de stats: jayaraman00
+%% Points à aborder:
+%% - échantillonnage de l'arbre (cf. parresol paragraphe 1.2) -> terrain ?
+%% - cas particulier des contreforts et arbres creux (nogueira06)
+%% - reprendre l'article de parresol99 en le citant partout où c'est utile (cf. la biblio de cet article !)
+
+This guide is intended for students, researchers and engineers who wish to acquire the methodology necessary to construct tree volume, biomass or nutrient content tables. The various models used for this purposes have been grouped together here as they all call upon the same principle: they estimate a variable that is difficult to measure in trees (e.g. volume) using simpler characteristics such as tree diameter 
+at breast height ($1.30$ m), or tree height or age.
+
+This guide is based on a large number of reference papers, and although it does not claim to present all the possible cases, it does describe techniques that can be used to construct the equations required. The references given in the text are specified when possible as author, year and page such that the reader can easily pursue threads of particular interest. A concrete example (dubbed the ``red line'') guides the reader and helps acquire knowledge through practical application.
+
+
+This guide does not require a great many prerequisites. The red lines use Microsoft Excel to prepare files and R \citep{R05} for model fitting. The R command lines used are given in each red line.
+
+\include{corps_base_en_doneGS_ok_2}
+%% Autres théories biologiques: cf. paragraphe dans parresol99 (p.575) et ailleurs
+
+\include{corps_samp_en_doneLB_ok_2}
+
+\include{corps_terrain_en_doneGS_ok_2}
+%% Renforcer les références biblio: il y a énormément de références
+%% qui expliquent le protocole de mesure de la biomasse des arbres,
+%% donc il ne faut pas laisser croire qu'on a tout imaginé.
+
+\include{corps_data_en_doneLB_ok_2}
+
+\include{corps_explo_en_doneLB_ok_2}
+
+\include{corps_fit_en_doneMHGS_ok_2}
+%% ajouter fil rouge avec indice de Furnival (sélection de modèles)
+%% ajouter fil rouge avec ajustement de tous les compartiments simultanément
+%% ajouter le modèle mixte avec variations intra-tiges: wutzler08, robinson11
+
+\include{corps_pred_en_doneLB_ok_2}
+
+\include{corps_conclu_en_doneLB_ok_2}
+
+%style biblio français
+%\bibliographystyle{faofr}
+%\bibliography{jourfull,trouves,recherch}
+
+%style biblio UK
+\bibliographystyle{faouk}
+\bibliography{jourabbr,trouves,recherch}
+
+\appendix
+%\renewcommand{\chaptername}{Annexe}\chapter*{Annexes}
+
+\chapterannex{Glossary}
+
+This glossary provides definitions for certain terms used in this guide that are either unusual or used to convey a meaning other than their usual meaning.
+
+\gloss{Additivity}{Property of a system of allometric equations fitted to different compartments of a tree and to a tree in its entirety such that the sum of the predictions for each of the compartments indeed corresponds to the prediction for the entire tree.}
+
+\gloss{Aliquot}{Part extracted from a tree compartment, the measurement of which can be used to measure the compartment by a rule of three.}
+
+\gloss{Allometry}{Statistical relation on a population scale between two size characteristics of the individuals in this population. This relation in most cases has a power form. Example: there is allometry in vertebrates between adult body mass and brain size.}
+
+\gloss{Biomass}{Mass of living or dead organic matter in an organism, expressed as mass of dry matter. For a tree, this is expressed in kg. By extension, the biomass of an area is the sum of the biomasses of the organisms found in the area. This is measured in kg per unit area.}
+
+\gloss{White noise}{In probabilities, a random process generating random variables that are all independent one of the other.}
+
+\gloss{Compartment}{Part of a tree, generally determined such that the organs within a compartment have similar densities (ratio of dry biomass to fresh volume) (leaves, trunk, large branches, etc. are compartments).}
+
+\gloss{Covariance}{Quantity that measures the simultaneous variation of two random variables, i.e. the covariance becomes increasingly positive for each pair of values that differ from their mean in this same direction, and increasingly negative for each pair of values that differ from their mean in opposite directions. The covariance of a random variable and of this same random variable gives the variance.}
+
+\gloss{Doublet}{Collection of two numerical values.}
+
+\gloss{Fractal}{Object whose structure does not change with scale changes.}
+
+\gloss{Hart-Becking index}{In forest sciences, an index established by \citet{hart28} and \citet{becking53} that measures the storage of a stand based on the average distance between trees and the dominant height in the stand. This index is calculated as a ratio between the average distance between trees over dominant height, multiplied by 100.}
+
+\gloss{Heteroscedasticity}{The opposite of homoscedasticity, i.e. when the variance of the residual error of a model is not constant (and typically varies with one of the model's effect variables).}
+
+\gloss{Homoscedasticity}{Property by which the variance of the residual error of a model is constant. Homoscedasticity is one of the conditions required for fitting a linear model.}
+
+\gloss{Eichhorn's rule}{In forest sciences, an empirical rule laid down by \citet{eichhorn04} which stipules: the specific volume of an even-aged, single-species, closed-cover stand depends only on its dominant height. This is Eichhorn's second rule; Eichhorn's first rule stipules: the dominant height of an even-aged, single-species, closed-cover stand depends only on age, species and station conditions.}
+
+\gloss{Pressler's rule}{In forest sciences, an empirical rule laid down by \citet{pressler64} which stipules: the basal area increment is constant from the stump up to the base of the functional part of the crown.}
+
+\gloss{Nutrient content}{Quantity of mineral elements in the biomass.}
+
+\gloss{Dirac's function}{Distribution (in the statistical sense of the term) concentrated on a value $x_0$ of a continuous random variable (i.e. the probability of the random variable being $<x$ is 0 for $x<x_0$ and 1 for $x>x_0$).}
+
+\gloss{Monte Carlo}{Said of a method that aims to calculate a numerical value by simulating a random process.}
+
+\gloss{Social position}{For a tree, the position of its crown in the canopy, which determines its hierarchy with respect to competitors for light (we also speak of social status). The distinction is often made between dominant, co-dominant and dominated trees.}
+
+\gloss{Reinecke Density Index (RDI)}{In forest sciences, an index established by \citet{reinecke33} that measures the storage of a stand based on the number of stems per hectare (= stand density) and tree mean basal area (= mean quadratic diameter). This index is calculated as a ratio between stand density and maximal density such as determined from the mean quadratic diameter by the self-thinning line.}
+
+\gloss{Ordinal variable}{Variable that takes discrete values such that the different modalities of these discrete values may be ordered. For example, the month of the year is an ordinal value (months may be arranged in chronological order).}
+
+\gloss{Variance}{Quantity that measures the dispersion of a random variable around its mean value. It is calculated as the mean of the sum of squares.}
+
+\chapterannex{Lexicon of mathematical symbols}
+
+\section*{Latin symbols}
+
+\begin{itemize}
+\item[$a$] estimated value of a coefficient in a predictive model
+\item[$A$] area of a sampling plot
+\item[$\mathcal{A}$] area of a stand
+\item[$b$] estimated value of a coefficient in a predictive model
+\item[$B$] biomass of an aliquot, a compartment (trunk, branches, leaves\ldots), of a tree or stand
+\item[$\mathrm{CV}_X$] coefficient of variation of a variable $X$
+\item[$c$] exponent of a power expression
+\item[$C$] definition 1: circumference of a tree; definition 2: cost of sampling; definition 3: model validation criterion
+\item[$D$] diameter of a tree at breast height (dbh)
+\item[$D_0$] dbh of the dominant tree in a stand
+\item[$E$] precision of the estimation of a variable
+\item[$f$] a function linking a response variable to one or more effect variables
+\item[$F$] Furnival's index
+\item[$g$] a function
+\item[$G$] basal area of a tree or a stand
+\item[$h$] a height between zero (the ground) and the height $H$ of the tree
+\item[$H$] height of a tree
+\item[$H_0$] height of the dominant tree in the stand
+\item[$\matx{I}_n$] Fisher's information matrix for a sample of size $n$
+\item[$k$] multiplier of a power expression
+\item[$K$] number of subsets in a cross validation
+\item[$\ell$] likelihood of a sample
+\item[$\mathcal{L}$] log-likelihood of a sample
+\item[$L$] length of a log
+\item[$M$] definition 1: number of biomass compartments in a tree; definition 2:
+number of competitor models for predicting the same response variable
+\item[$n$] sample size
+\item[$N$] definition 1: total number of sampling units (tree or plot) in a stand; definition 2: stand density (number of stems per hectare)
+\item[$\mathcal{N}$] the normal distribution (also called a Gaussian or Laplace-Gauss distribution)
+\item[$p$] number of effect variables in a model (not including the y-intercept)
+\item[$P$] stem profile (plot giving the area of a cross-cut through the trunk at different heights)
+\item[$q$] definition 1: number of estimated parameters in a model; definition 2: quantile of the standard normal distribution
+\item[$Q$] number of Monte Carlo iterations
+\item[$R$] definition 1: a model's determination coefficient; definition 2 (in the model selection theory): a risk; definition 3: radius of a log
+\item[$S$] number of strata in a stratification
+\item[$S_X$] empirical standard deviation of a variable $X$
+\item[$\mathcal{S}_n$] dataset containing $n$ observations
+\item[$t_{n}$] quantile of a Student's distribution with $n$ degrees of freedom
+\item[$T$] age of a plantation
+\item[$V$] volume of a log, tree or stand
+\item[$w$] definition 1: weight of an observation in a weighted regression; definition 2: weight of a model in a mixture of models
+\item[$X$] a variable (generally the effect variable of a model)
+\item[$\vect{x}$] a vector of effect variables
+\item[$\matx{X}$] design matrix for a linear model
+\item[$Y$] a variable (generally the response variable of a model)
+\item[$\vect{Y}$] response vector of a multivariate model
+\item[$z$] a latent variable for the EM algorithm
+\item[$Z$] a variable (generally a covariable defining the stratification of a dataset)
+\end{itemize}
+
+\section*{Greek symbols}
+
+\begin{itemize}
+\item[$\alpha$] definition 1: (unknown) ``true'' value of a coefficient in a predictive model; definition 2: confidence threshold for a confidence interval (generally 5\,\%)
+\item[$\beta$] (unknown) ``true'' value of a coefficient in a predictive model
+\item[$\gamma$] loss function (in the model selection theory)
+\item[$\delta$] Dirac's function
+\item[$\Delta$] a difference in value for a given variable
+\item[$\varepsilon$] residual error of a predictive model
+\item[$\boldsymbol{\varepsilon}$] vector of the residual errors of a multivariate model
+\item[$\zeta$] residual covariance between two compartments
+\item[$\eta$] volumetric shrinkage coefficient
+\item[$\theta$] a set of model parameters
+\item[$\boldsymbol{\theta}$] a vector of parameters in a multivariate model
+\item[$\vartheta$] a set of parameters
+\item[$\mu$] expectation of a random variable = (unknown) ``true'' mean of a variable to be estimated
+\item[$\xi$] Box-Cox transformation parameter
+\item[$\rho$] wood density
+\item[$\sigma$] standard deviation of the residual error of a predictive model
+\item[$\boldsymbol{\Sigma}$] variance-covariance matrix of a multinormal distribution
+\item[$\tau$] (unknown) ``true'' standard deviation of a variable to be estimated 
+\item[$\phi$] probability density of a normal distribution
+\item[$\psi$] function defining a variable transformation
+\item[$\chi$] water content
+\item[$\chi_0$] fiber saturation point
+\item[$\omega$] a proportion (for example, the proportion of fresh biomass in a log)
+\end{itemize}
+
+\section*{Non-alphabetical symbols}
+
+\begin{itemize}
+\item[$\varnothing$] diameter of a tree, a log, a branch or a root
+\end{itemize}
+\label{LastPage}
+
+\ifx\flaglowres\undefined{} %
+        \else{
+\cleardoublepage
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
+\includepdf[pages=2]{Cover/vitruvian_EN_WEB_GS.pdf}
+\addtocounter{page}{-3}
+}\fi
+
+\end{document}
