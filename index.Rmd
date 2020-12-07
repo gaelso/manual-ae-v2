@@ -44,7 +44,7 @@ knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown', 'Hmisc'), 'bib
 
 ```{r main_page, eval=knitr::is_html_output(), out.width='75%', fig.asp=0.5, fig.align='center', fig.pos = 'H'}
 
-knitr::include_graphics(path = "images/cover_web/vitruvian_EN_WEB_GS_front.png")
+knitr::include_graphics(path = "source/cover_web/vitruvian_EN_WEB_GS_front.png")
 
 ```
 

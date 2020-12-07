@@ -40,4 +40,6 @@ bookdown::render_book(
 
 ## Clean temp files
 ## !!!!!!!!!!!!!!!!!!!!!  TBD !!!!!!!!!!!!!!!!!!!!
+file.remove(list.files(pattern = "Manual-AE-"))
+
 

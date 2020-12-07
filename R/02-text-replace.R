@@ -172,14 +172,14 @@ conv_tex <- function(.file){
 # write_file(tex_conv, file = "tex_conv/corps_base.rmd")
 
 ## Programmatically read all tex files and convert to rmd
-tex_files <- list.files(path = "tex_original", pattern = "ok_2.tex", full.names = T)
-tex_names <- list.files(path = "tex_original", pattern = "ok_2.tex") %>% str_remove("_done.*")
+tex_files <- list.files(path = "source/tex_original", pattern = "ok_2.tex", full.names = T)
+tex_names <- list.files(path = "source/tex_original", pattern = "ok_2.tex") %>% str_remove("_done.*")
 
 tex_list <- map(tex_files, read_file)
 names(tex_list) <- tex_names
 str(tex_list)
 
-dir.create("tex_conv", showWarnings = FALSE)
+dir.create("source/tex_conv", showWarnings = FALSE)
 
 for (i in seq_along(tex_list)){
   
@@ -199,9 +199,7 @@ for (i in seq_along(tex_list)){
   tex_conv <- str_replace_all(tex_conv, pattern = "\`\`", replacement = "\"")
   tex_conv <- str_replace_all(tex_conv, pattern = "\'\'", replacement = "\"")
   
-  write_file(tex_conv, file = paste0("tex_conv/", tex_names[i], ".rmd"))
+  write_file(tex_conv, file = paste0("source/tex_conv/", tex_names[i], ".rmd"))
   
 }
-
-tt <- conv_tex(.file)
 
