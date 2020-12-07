@@ -153,7 +153,28 @@ Let us now examine the case where we are looking to optimize the sampling plan i
 
 ```{r plan, fig.align='center', out.width='100%', fig.scap="Sampling plan optimizing volume prediction precision for a particular tree", fig.cap="(ref:plan)"}
 
-plan
+plan %>%
+  image_draw()
+## Image top text
+text(170, 380, bquote(italic("n") ~ "/2 trees"), family = "mono", cex = 2)
+text(450, 330, "Volume?"                       , family = "mono", cex = 2)
+text(890, 180, bquote(italic("n") ~ "/2 trees"), family = "mono", cex = 2)
+## Bottom arrow
+rect(xleft = 100, xright = 1040, ybottom = 519, ytop = 520)
+text(1035, 521, ">", cex = 3)
+## Bottom text
+# text(1870, 420, bquote(italic("Size " ~ D^2*H)), family = "serif", cex = 3)
+# text(970, 440, "(ref:plan-d2h)", family = "monospace", cex = 1.5)
+# text(620, 480, "(ref:delta)", family = "monospace", cex = 1.5 )
+# text(1400, 480, "(ref:delta)", family = "monospace", cex = 1.5 )
+# ## Bottom left bracket
+# rect(xleft = 300, xright = 960, ybottom = 464, ytop = 465)
+# rect(xleft = 300, xright = 301, ybottom = 465, ytop = 450)
+# rect(xleft = 959, xright = 960, ybottom = 465, ytop = 450)
+# ## Bottom right bracket
+# rect(xleft = 980, xright = 1750, ybottom = 464, ytop = 465)
+# rect(xleft = 980, xright = 981, ybottom = 465, ytop = 450)
+# rect(xleft = 1749, xright = 1750, ybottom = 465, ytop = 450)
 
 ```
 
