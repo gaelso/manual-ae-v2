@@ -38,20 +38,20 @@ mix
 arbre   <- magick::image_read(paste0(fig_path, "/arbre.png")) 
 arbrex8 <- magick::image_read(paste0(fig_path, "/arbrex8.png"))
 
-arbre_compo <- image_blank(width = 1200, height = 600, color = 'white') %>%
+arbre_compo <- image_blank(width = 1200, height = 500, color = 'white') %>%
   image_composite(
     composite_image = image_scale(arbrex8, paste0("x", img_size$height/6)), 
     gravity = "southwest", 
-    offset = "+100+200") %>%
+    offset = "+100+100") %>%
   image_composite(
     composite_image = image_scale(arbre, paste0("x", img_size$height/4)),
     gravity = "southwest", 
-    offset = "+400+200"
+    offset = "+400+100"
   ) %>%
   image_composite(
     composite_image = image_scale(arbrex8, paste0("x", img_size$height/2)),
     gravity = "southwest", 
-    offset = "+650+200"
+    offset = "+650+100"
   )
 arbre_compo
 
@@ -67,19 +67,19 @@ text(1035, 421, ">", cex = 3)
 ## Bottom text
 text(1120, 415, bquote("Size" ~ (italic(D^2*H))), family = "palatino", cex = 2)
 text(450, 440, bquote(italic(D^2*H)), family = "palatino", cex = 2)
-text(300, 500, bquote(Delta), family = "palatino", cex = 2)
-text(600, 500, bquote(Delta), family = "palatino", cex = 2)
+text(300, 480, bquote(Delta), family = "palatino", cex = 2)
+text(600, 480, bquote(Delta), family = "palatino", cex = 2)
 ## Bottom left bracket
-rect(xleft = 170, xright = 430, ybottom = 479, ytop = 480)
-rect(xleft = 170, xright = 171, ybottom = 480, ytop = 470)
-rect(xleft = 429, xright = 430, ybottom = 480, ytop = 470)
+rect(xleft = 170, xright = 430, ybottom = 469, ytop = 470)
+rect(xleft = 170, xright = 171, ybottom = 470, ytop = 460)
+rect(xleft = 429, xright = 430, ybottom = 470, ytop = 460)
 ## Bottom right bracket
-rect(xleft = 470, xright = 730, ybottom = 479, ytop = 480)
-rect(xleft = 470, xright = 471, ybottom = 480, ytop = 470)
-rect(xleft = 729, xright = 730, ybottom = 480, ytop = 470)
+rect(xleft = 470, xright = 730, ybottom = 469, ytop = 470)
+rect(xleft = 470, xright = 471, ybottom = 470, ytop = 460)
+rect(xleft = 729, xright = 730, ybottom = 470, ytop = 460)
 
 dev.off()
-image_write(plan, path = paste0(fig_path, "/plan.png"))
+#image_write(plan, path = paste0(fig_path, "/plan.png")) ## Not needed on Windows
 
 
 
