@@ -28,12 +28,12 @@ where $a$ is the y-intercept of the line and $b$ its slope, and
 (*iii*) that the residuals are of constant variance:
 $\mathrm{Var}(\varepsilon)=\sigma^2$. For example, the model
 \begin{equation}
-\ln(B)=a+b\ln(D)+\varepsilon\label{pow}
+\ln(B)=a+b\ln(D)+\varepsilon(\#eq:pow)
 \end{equation}
 is a typical simple linear regression, with response variable $Y=\ln(B)$ and effect variable $X=\ln(D)$. It corresponds to a power model for biomass: $B=\exp(a)D^b$. This model is often used to fit a single-entry biomass model. Another example is the double-entry biomass model:
 
 \begin{equation}
-\ln(B)=a+b\ln(D^2H)+\varepsilon\label{powH}
+\ln(B)=a+b\ln(D^2H)+\varepsilon(\#eq:powH)
 \end{equation}
 The hypothesis whereby the residuals are of constant variance is added to the two independence and normal distribution hypotheses (we also speak of homoscedasticity). These three hypotheses may be summarized by writing:
 \[
@@ -187,7 +187,7 @@ The result is shown in  Figure \@ref(fig:fBvD2Hres). Even though the plot of the
 Multiple regression is the extension of simple linear regression to the case where there are several effect variables, and is written:
 
 \begin{equation}
-Y=a_0+a_1X_1+a_2X_2+\ldots+a_pX_p+\varepsilon\label{regmul}
+Y=a_0+a_1X_1+a_2X_2+\ldots+a_pX_p+\varepsilon(\#eq:regmul)
 \end{equation}
 where $Y$ is the response variable, $X_1$, \ldots, $X_p$ the $p$ effect variables, $a_0$, \ldots, $a_p$ the coefficients to be estimated, and $\varepsilon$ the residual error. Counting the y-intercept $a_0$, there are $p+1$ coefficients to be estimated. Like for simple linear regression, the variance of the residuals is assumed to be constant and equal to $\sigma^2$:
 \[
@@ -369,11 +369,11 @@ shows nothing in particular (Figure \@ref(fig:flnDHres)).
 
 Let us now suppose that we want to fit directly a polynomial model of biomass $B$ against $D$. For example, for a second-order polynomial:
 \begin{equation}
-B=a_0+a_1D+a_2D^2+\varepsilon\label{pol}
+B=a_0+a_1D+a_2D^2+\varepsilon(\#eq:pol)
 \end{equation}
 As mentioned earlier, the variability of the biomass nearly always (if not always\ldots) increases with tree dbh $D$. In other words, the variance of $\varepsilon$ increases with $D$, in contradiction with the homoscedasticity hypothesis required by multiple regression. Therefore, model (\ref{pol}) cannot be fitted by multiple regression. Log transformation stabilizes the residual variance (we will return to this in section \ref{trans}). If we take $\ln(B)$ as the response variable, the model becomes:
 \begin{equation}
-\ln(B)=\ln(a_0+a_1D+a_2D^2)+\varepsilon\label{logpol}
+\ln(B)=\ln(a_0+a_1D+a_2D^2)+\varepsilon(\#eq:logpol)
 \end{equation}
 It is reasonable to assume that the variance of the residuals in such a model is constant. But unfortunately, this is no longer a linear model as the dependency of the response variables on the coefficients $a_0$, $a_1$ and $a_2$ is not linear. Therefore, model (\ref{logpol}) cannot be fitted by a linear model. We will see later (\S\ \ref{nlm}) how to fit this non-linear model.
 
@@ -589,11 +589,11 @@ gives a plot of the weighted residuals against the fitted values.
 An alternative to the weighted regression is to use explicitly a model for the variance of the residuals. As previously, it is realistic to assume that there is an effect variable (without loss of generality, the first) such that the residual standard deviation is a power function of this variable:
 
 \begin{equation}
-\mathrm{Var}(\varepsilon)=(kX_1^c)^2\label{modvar}
+\mathrm{Var}(\varepsilon)=(kX_1^c)^2(\#eq:modvar)
 \end{equation}
 where $k>0$ and $c\geq0$. The model is therefore written:
 \begin{equation}
-Y=a_0+a_1X_1+a_2X_2+\ldots+a_pX_p+\varepsilon\label{modmoy}
+Y=a_0+a_1X_1+a_2X_2+\ldots+a_pX_p+\varepsilon(\#eq:modmoy)
 \end{equation}
 where:
 \[
@@ -679,7 +679,7 @@ The fitted model is therefore: $B=-\decimal{3}{319456}\times10^{-3}D+\decimal{1}
 
 Let us reconsider the example of the biomass model with a single entry (here dbh) of the power type:
 \begin{equation}
-B=aD^b\label{p}
+B=aD^b(\#eq:p)
 \end{equation}
 We have already seen that this is a non-linear model as $B$ is non linearly dependent upon coefficients $a$ and $b$. But this model can be rendered linear by log transformation. Relation (\ref{p}) is equivalent to: $\ln(B)=\ln(a)+b\ln(D)$, which can be considered to be a linear regression of response variable $Y=\ln(B)$ against effect variable $X=\ln(D)$. We can therefore estimate coefficients $a$ and $b$ (or rather $\ln(a)$ and $b$) in power model (\ref{p}) by linear regression on log-transformed data. What about the residual error? If the linear regression on log-transformed data is appropriate, this means that $\varepsilon=\ln(B)-\ln(a)-b\ln(D)$ follows a centered normal distribution of constant standard deviation $\sigma$. If we return to the starting data and use exponential transformation (which is the inverse transformation to log transformation), the residual error here is a factor:
 \[
@@ -709,7 +709,7 @@ Y=aX_1^{b_1}X_2^{b_2}\times\ldots\times X_p^{b_p}\times\varepsilon
 \]
 the log transformation consists in replacing the variable $Y$ by its log: $Y'=\ln(Y)$, and each of the effect variables by their log: $X_j'=\ln(X_j)$. The resulting model corresponds to:
 \begin{equation}
-Y'=a'+b_1X_1'+b_2X_2'+\ldots+b_pX_p'+\varepsilon'\label{rm2}
+Y'=a'+b_1X_1'+b_2X_2'+\ldots+b_pX_p'+\varepsilon'(\#eq:rm2)
 \end{equation}
 where $\varepsilon'=\ln(\varepsilon)$. The inverse transformation is the exponential for all the effect and response variables. In terms of residual error, the log transformation is appropriate if $\varepsilon'$ follows a normal distribution, therefore if the error $\varepsilon$ is positive and multiplicative. It should be noted that log transformation poses a problem for variables that may take a zero value. In this case, the transformation $X'=\ln(X+1)$
 is used rather than $X'=\ln(X)$ (or more generally,
@@ -725,7 +725,7 @@ may be fitted by linear regression after log transformation of the data.
 Given an exponential model:
 
 \begin{equation}
-Y=a\exp(b_1X_1+b_2X_2+\ldots+b_pX_p)\times\varepsilon\label{expo}
+Y=a\exp(b_1X_1+b_2X_2+\ldots+b_pX_p)\times\varepsilon(\#eq:expo)
 \end{equation}
 the appropriate transformation consists in replacing variable $Y$
 by its log: $Y'=\ln(Y)$, and not transforming the effect variables: $X_j'=X_j$. 
@@ -755,11 +755,11 @@ The Box-Cox transformation can be used to convert the question of choosing a var
 
 The usual variable transformations change the form of the relation between the response variable and the effect variable. When the cluster of points $(X_i,\ Y_i)$ formed by plotting the response variable against the effect variable is a straight line with heteroscedasticity, as shown in  Figure \@ref(fig:linh), then variable transformation needs to be employed to stabilize the variance of $Y$, though without affecting the linear nature of the relation between $X$ and $Y$. The particular case illustrated by \ref{linh} occurs fairly often when an allometric equation is fitted between two values that vary in a proportional manner [see for example @ngomanda12]. The linear nature of the relation between X and Y means that the model has the form:
 \begin{equation}
-Y=a+bX+\varepsilon\label{rl2}
+Y=a+bX+\varepsilon(\#eq:rl2)
 \end{equation}
 but the heteroscedasticity indicates that the variance of$\varepsilon$ is not constant, and this prevents any fitting of a linear regression. A variable transformation in this case consists in replacing $Y$ by $Y'=Y/X$ and $X$ by $X'=1/X$. By dividing each member of (\ref{rl2}) by $X$, the post-variable transformation model becomes:
 \begin{equation}
-Y'=aX'+b+\varepsilon'\label{rl3}
+Y'=aX'+b+\varepsilon'(\#eq:rl3)
 \end{equation}
 where $\varepsilon'=\varepsilon/X$. The transformed model still corresponds to a linear relation, except that the y-intercept $a$ of the relation between $X$ and $Y$ has become the slope of the relation between $X'$ and $Y'$, and reciprocally, the slope $b$ of the relation between $X$ and $Y$ has become the y-intercept of the relation between $X'$ and $Y'$. Model (\ref{rl3}) may be fitted by simple linear regression if the variance of $\varepsilon'$ is constant. As 
 $\mathrm{Var}(\varepsilon')=\sigma^2$ means
@@ -921,7 +921,7 @@ In the particular case where the residuals have a constant variance (i.e. $c=0$)
 
 \begin{equation}
 \frac{\partial\mathrm{SSE}}{\partial\theta}(\hat{\theta})=0
-\label{der}
+(\#eq:der)
 \end{equation}
 with the constraint $(\partial^2\mathrm{SSE}/\partial\theta^2)>0$ to ensure that this is indeed a minimum, not a maximum. In the previous case of the linear model, resolving (\ref{der}) yielded an explicit expression for the estimator $\hat{\theta}$. This is not the case for the general case of the non-linear model: there is no explicit expression for $\hat{\theta}$. The sum of squares must therefore be minimized using a numerical algorithm. We will examine this point in depth in section \ref{algo}.
 
@@ -1207,7 +1207,7 @@ If we now return to the issue at hand, this means (*i*) fitting a non-linear mod
 
 When mean model $f$ can be transformed into a linear relation between the response variable $Y$ and the effect variables $X_1$, \ldots, $X_p$, a start value for the coefficients may be obtained by fitting a linear regression on the transformed variables without considering the possible heteroscedasticity of the residuals. Let us for example consider a power type biomass table:
 \begin{equation}
-B=aD^{b_1}H^{b_2}\rho^{b_3}+\varepsilon\label{powea}
+B=aD^{b_1}H^{b_2}\rho^{b_3}+\varepsilon(\#eq:powea)
 \end{equation}
 where
 \[
@@ -1215,7 +1215,7 @@ where
 \]
 The power model for the expectation of $B$ can be rendered linear by log-transforming the variables: $\ln(B)=a'+b_1\ln(D)+b_2\ln(H)+b_3\ln(\rho)$. But this transformation is incompatible with the additivity of the errors in the model (\ref{powea}). In other words, the multiple regression of the response variable $\ln(B)$ against the effect variables $\ln(D)$, $\ln(H)$ and $\ln(\rho)$:
 \begin{equation}
-\ln(B)=a'+b_1\ln(D)+b_2\ln(H)+b_3\ln(\rho)+\varepsilon'\label{poweb}
+\ln(B)=a'+b_1\ln(D)+b_2\ln(H)+b_3\ln(\rho)+\varepsilon'(\#eq:poweb)
 \end{equation}
 where $\varepsilon'\sim\mathcal{N}(0,\ \sigma)$, is not a model equivalent to (\ref{powea}), even when the residuals $\varepsilon'$ of this model have a constant variance. Even though models (\ref{powea}) and (\ref{poweb}) are not mathematically equivalent, the coefficients of (\ref{poweb}) --- estimated by multiple regression --- may serve as start values for the numerical algorithm that estimates the coefficients of (\ref{powea}). If we write as $x^{(0)}$ the start value of parameter $x$ for the numerical optimization algorithm, we thus obtain:
 \[
@@ -1303,14 +1303,14 @@ The simplest case is where the two models to be compared are nested. A model is 
 Let $p$ be the number of effect variables in the complete model and $p'<p$ be the number of effect variables in the nested model. Without loss of generality, we can write the complete model as:
 \begin{equation}
 Y=f(X_1,\ \ldots,\ X_{p'},\ X_{p'+1},\ \ldots,\ X_p;
-\theta_0,\ \theta_1)+\varepsilon\label{embnl}
+\theta_0,\ \theta_1)+\varepsilon(\#eq:embnl)
 \end{equation}
 where ($\theta_0$, $\theta_1$) is the vector of the coefficients associated with the complete model and $\theta_0$ is the vector of the coefficients associated with the nested model, which may be obtained by setting 
 $\theta_1=\mathbf{0}$. In the particular case of the linear model, the complete model is obtained as the sum of the nested model and additional terms:
 \begin{equation}
 \underbrace{\underbrace{Y=a_0+a_1X_1+\ldots+a_{p'}X_{p'}}_{\mbox{\scriptsize
 nested model}}+a_{p'+1}X_{p'+1}+\ldots+a_pX_p}_{\mbox{
-\scriptsize complete model}}+\varepsilon\label{emblm}
+\scriptsize complete model}}+\varepsilon(\#eq:emblm)
 \end{equation}
 where $\theta_0=(a_0,\ \ldots,\ a_{p'})$ and
 $\theta_1=(a_{p'+1},\ \ldots,\ a_p)$.
@@ -1513,12 +1513,12 @@ F_{\ln}=\hat{\sigma}\sqrt[n]{\textstyle\prod_{i=1}^nB_i}
 For linear regressions where the residual variance is assumed to be proportional to a power of an effect variable $X_1$, a trick can nevertheless be used to define Furnival's index. The linear regression:
 
 \begin{equation}
-Y=a_0+a_1X_1+a_2X_2+\ldots+a_pX_p+\varepsilon\label{F1}
+Y=a_0+a_1X_1+a_2X_2+\ldots+a_pX_p+\varepsilon(\#eq:F1)
 \end{equation}
 where $\mbox{Var}(\varepsilon)=(kX_1^c)^2$; is strictly identical to the linear regression (see p.\pageref{apart}):
 \begin{equation}
 Y'=a_0X_1^{-c}+a_1X_1^{1-c}+a_2X_2X_1^{-c}+\ldots+
-a_pX_pX_1^{-c}+\varepsilon'\label{F2}
+a_pX_pX_1^{-c}+\varepsilon'(\#eq:F2)
 \end{equation}
 where $Y'=YX_1^{-c}$, $\varepsilon'=\varepsilon X_1^{-c}$ and
 $\mbox{Var}(\varepsilon')=k^2$. As model (\ref{F2}) has constant residual variance, its Furnival's index is defined.
@@ -1612,7 +1612,7 @@ where
 where ($Y_s$, $X_{1s}$, \ldots, $X_{ps}$) designates an observation relative to stratum $s$, for $s=1$, \ldots, $S$. There are now $S\times(p+1)$ coefficients to be estimated. An alternative strategy consists in analyzing the dataset as a whole, by fitting a model such as:
 \begin{equation}
 Y_s=a_{0s}+a_{1s}X_{1s}+a_{2s}X_{2s}+\ldots+a_{ps}X_{ps}+\varepsilon
-\label{ancov}
+(\#eq:ancov)
 \end{equation}
 where
 \[
@@ -1654,7 +1654,7 @@ The first line in the table tests for a species effect, i.e. whether the y-inter
 This leads us to fit the following model:
 
 \begin{equation}
-\ln(B_s)=a_s+b\ln(D_s^2H_s)+\varepsilon\label{mspe}
+\ln(B_s)=a_s+b\ln(D_s^2H_s)+\varepsilon(\#eq:mspe)
 \end{equation}
 which considers that slope $b$ is the same for all species. The relevant command is:
 \R{m <- lm(log(Btot)$\sim$species+I(log(dbh\^{}2*heig)),data=dat[dat\$Btot>0,])%
@@ -1758,7 +1758,7 @@ if we decide to use wood density $\rho$ to represent the specific effect.
 \begin{filrouge}{Specific wood density-dependent biomass model}{fdens}%
 In red line \ref{fmspe}, species-related information was taken into account in the model $\ln(B)=a+b\ln(D^2H)$ through a qualitative covariable. We can now capture this information through specific wood density $\rho$. The fitted model is therefore:
 \begin{equation}
-\ln(B)=a_0+a_1\ln(D^2H)+a_2\ln(\rho)+\varepsilon\label{dens}
+\ln(B)=a_0+a_1\ln(D^2H)+a_2\ln(\rho)+\varepsilon(\#eq:dens)
 \end{equation}
 where
 \[
@@ -1862,7 +1862,7 @@ Let $Y_m$ be the response variable of the $m$th compartment
 
 The expression of an $M$-variate model differs from the $M$ univariate models corresponding to the different compartments only by the structure of the residual error; the structure of the mean model does not change. Let us consider the general case of a non-linear model. If the $M$ univariate models are:
 \begin{equation}
-Y_m=f_m(X_1,\ \ldots,\ X_p;\theta_m)+\varepsilon_m\label{uvar}
+Y_m=f_m(X_1,\ \ldots,\ X_p;\theta_m)+\varepsilon_m(\#eq:uvar)
 \end{equation}
 for $m=1$, \ldots, $M$, then the multivariate model is written:
 \[
@@ -1880,7 +1880,7 @@ f_m(X_1,\ \ldots,\ X_p;\theta_m)
 \\\vdots\\
 f_M(X_1,\ \ldots,\ X_p;\theta_M)
 \end{array}
-\right]\label{mvar}
+\right](\#eq:mvar)
 \end{equation}
 The residual vector $\boldsymbol{\varepsilon}$ now follows a centered multinormal distribution, with a variance-covariance matrix of:
 \[

@@ -135,7 +135,7 @@ Figure \@ref(fig:mop) shows the operating procedure to be adopted for measuring 
 For each log $i$, measure the circumference at the two extremities: circumference $C_{1i}$ at the small end is the circumference of the disk taken at the small end and circumference $C_{2i}$ at the large end is the circumference of the disk taken at the large end. This can be employed to calculate the volume of the fresh log using the truncated cone volume formula (or Newton's formula):
 \begin{equation}
 V_{\text{fresh},i}=L_i\times\frac{\pi}{3}\times(R_{1i}^2+R_{1i}R_{2i}
-+R_{2i}^2)\label{cone}
++R_{2i}^2)(\#eq:cone)
 \end{equation}
 where $L_i$ is the length of log $i$, and $R_{1i}=C_{1i}/(2\pi)$
 et $R_{2i}=C_{2i}/(2\pi)$ are the radii of log $i$ at its two extremities. This volume may be measured with bark (circumferences being measured in the field) or without bark (circumferences being measured on the disks after debarking in the laboratory). Fresh volume with bark is widely employed when selling timber whereas the second measurement is used to check data consistency for it is used to calculate wood density in the tree.
@@ -151,7 +151,7 @@ Also, for each sample taken of log $i$ we calculate:
 where $B^{\text{aliquot}}_{\text{fresh wood},i}$ is the fresh biomass of the wood (without the bark) in the sample of log $i$, and $B^{\text{aliquot}}_{\text{fresh bark},i}$ is the fresh biomass of the bark in the sample of log $i$;
 \item the moisture content of the wood (without the bark):
 \begin{equation}
-\chi_{\text{wood},i}=\frac{B^{\text{aliquot}}_{\text{dry wood},i}}{B^{\text{aliquot}}_{\text{fresh wood},i}}\label{qbois}
+\chi_{\text{wood},i}=\frac{B^{\text{aliquot}}_{\text{dry wood},i}}{B^{\text{aliquot}}_{\text{fresh wood},i}}(\#eq:qbois)
 \end{equation}
 where $B^{\text{aliquot}}_{\text{dry wood},i}$ is the oven-dried biomass of the wood (without the bark) in the sample of log $i$;
 \item the proportion of fresh biomass in the bark:
@@ -313,13 +313,13 @@ B_{\text{untrimmed dry}}=B_{\text{untrimmed dry branch}}
 \]
 Each section $i$ of the trunk and the large branches may be considered to be a cylinder of volume (Smalian's formula):
 \begin{equation}
-V_i=\frac{\pi}{8}\ L_i\ (D_{1i}^2+D_{2i}^2)\label{cyl}
+V_i=\frac{\pi}{8}\ L_i\ (D_{1i}^2+D_{2i}^2)(\#eq:cyl)
 \end{equation}
 where $V_i$ is the volume of the section $i$, $L_i$ its lenght, and $D_{1i}$ and $D_{2i}$ are the diameters of the two extremities of section $i$. The truncated cone volume formula (see equation \ref{cone}) can also be used instead of the cylinder formula (\ref{cyl}), but the difference between the results will be slight as the tapering over one meter is not very pronounced in trees.
 
 The dry biomass of the large branches and trunk is the product of mean wood density and total volume of the large branches and trunk:
 \begin{equation}
-B_{\text{dry section}}=\bar{\rho}\times\sum_iV_i\label{Btr}
+B_{\text{dry section}}=\bar{\rho}\times\sum_iV_i(\#eq:Btr)
 \end{equation}
 where the sum corresponds to all the sections in the large branches and the trunk (Figure \@ref(fig:emond)B), and where mean wood density is calculated by:
 \[

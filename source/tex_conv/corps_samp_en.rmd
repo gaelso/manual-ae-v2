@@ -48,14 +48,14 @@ Ultimately, the sampling used to construct volume/biomass tables is generally ba
 
 Let us begin with a simple example that clearly illustrates the notions developed above. Let us assume that the trees in a given stand are described by their dbh $D$, their height $H$ and their volume $V$. We use volume tables that predict volume $V$ from the variable $D^2H$. The super-population model we adopt to describe the stand assumes that the relation between $V$ and $D^2H$ is linear, with white noise $\varepsilon$ of variance $\sigma^2$:
 \begin{equation}
-V=\alpha+\beta\ D^2H+\varepsilon\label{MLex}
+V=\alpha+\beta\ D^2H+\varepsilon(\#eq:MLex)
 \end{equation}
 where $\varepsilon$ follows a normal distribution of zero expectation and standard deviation $\sigma$. Let us also assume that the quantity $D^2H$ follows a normal distribution with a mean of $\mu$ and a standard deviation of $\tau$. White noise $\varepsilon$ incorporates all the factors that cause two trees of the same dbh and the same height not to have necessarily the same volume. Parameters
 $\alpha$ and $\beta$ are unknown. To estimate them, we will measure 
 $n$ trees; and will thus obtain a sample of $n$ doublets
 $(D_1^2H_1,\ V_1)$, \ldots, $(D_n^2H_n,\ V_n)$, then construct the following linear regression:
 \begin{equation}
-V_i=a+b\ D_i^2H_i+\varepsilon_i\label{reg}
+V_i=a+b\ D_i^2H_i+\varepsilon_i(\#eq:reg)
 \end{equation}
 In sampling theory jargon, the entry variables for the volume/biomass tables (diameter, height\ldots) are called *auxiliary* variables. It is important to distinguish these tree-related variables from those such as age which are stand-related. These latter variables are considered as parameters \citep[p.106]{parde88}. Also, the sampling *unit* is the tree. Let us now see how to draw up a sampling plan on the basis of the goal set.
 
@@ -87,7 +87,7 @@ such that:
 \begin{equation}
 1+E\approx\sqrt{1+\frac{1}{n}+
 \frac{(D^{*2}H^*-\overline{D^2H}_e)^2}{\sum_{i=1}^n(D_i^2H_i
--\overline{D^2H}_e)^2}}\label{E1}
+-\overline{D^2H}_e)^2}}(\#eq:E1)
 \end{equation}
 
 #### Random sampling
@@ -146,7 +146,7 @@ tot}}=N\bar{V}$, where $\bar{V}=a+b\overline{D^2H}$ is the mean volume of the tr
 $\bar{V}_e=a+b\overline{D^2H}_e$, where
 $\bar{V}_e=(\sum_{i=1}^nV_i)/n$ is the mean volume of the trees in the sample and $\overline{D^2H}_e=(\sum_{i=1}^nD_i^2H_i)/n$ is the mean size of the trees in the sample. By subtracting, we arrive at the following result:
 \begin{equation}
-\bar{V}=\bar{V}_e+b(\overline{D^2H}-\overline{D^2H}_e)\label{est}
+\bar{V}=\bar{V}_e+b(\overline{D^2H}-\overline{D^2H}_e)(\#eq:est)
 \end{equation}
 In this equation it is important to note that $\bar{V}$ and
 $\overline{D^2H}$ are mean values for the entire stand while, $\bar{V}_e$ and $\overline{D^2H}_e$ are mean values for the sample. In addition $\overline{D^2H}$, $\overline{D^2H}_e$
@@ -159,7 +159,7 @@ The semi-amplitude of the confidence interval at $\alpha$ (typically 5\ \%) of $
 \begin{equation}
 t_{n-2}\;\hat{\sigma}\ \sqrt{\frac{1}{n}-\frac{1}{N}+
 \frac{(\overline{D^2H}-\overline{D^2H}_e)^2}{\sum_{i=1}^n(D_i^2H_i
--\overline{D^2H}_e)^2}}\label{icpop}
+-\overline{D^2H}_e)^2}}(\#eq:icpop)
 \end{equation}
 It can be seen that the minimum of this amplitude is zero, that is reached when entire stand is included in the sample ($n=N$, that means that $\overline{D^2H}=\overline{D^2H}_e$).
 As before, the optimal sampling plan is such that 
@@ -175,7 +175,7 @@ Finally, the properties of the regression estimator (\ref{est}) are well known i
 \widehat{\mbox{Var}}(\bar{V})=\frac{1-n/N}{n(n-2)}\left\{
 \sum_{i=1}^n(V_i-\bar{V}_e)^2-\frac{\left[\sum_{i=1}^n
 (V_i-\bar{V}_e)(D_i^2H_i-\overline{D^2H}_e)\right]^2}{\sum_{i=1}^n
-(D_i^2H_i-\overline{D^2H}_e)^2}\right\}\label{VV}
+(D_i^2H_i-\overline{D^2H}_e)^2}\right\}(\#eq:VV)
 \end{equation}
 and the semi-amplitude confidence interval at $\alpha$ (typiquement 5\ \%) of $\bar{V}$ is approximately (\citealp[p.80]{thompson92}; \citealp[p.185]{shiver96}):
 \[
@@ -334,7 +334,7 @@ By definition, the precision of the estimation $E$ at the threshold $\alpha$
 is the ratio of the semi-amplitude of the confidence interval at the threshold $\alpha$ to the mean biomass:
 \begin{equation}
 E=t_{n-1}\frac{S_B}{\bar{B}\sqrt{n-1}}=t_{n-1}\frac{\mathrm{CV}_B}{\sqrt{n-1}}
-\label{E}
+(\#eq:E)
 \end{equation}
 where $\mathrm{CV}_B=S_B/\bar{B}$ is the biomass coefficient of variation. By rounding $t_{n-1}$ to 2, the sample size $n$ required to reach a given estimation precision $E$ is therefore:
 \[

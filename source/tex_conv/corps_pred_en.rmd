@@ -88,13 +88,13 @@ In the case of a simple linear regression, it can be shown \citep[p.373--374]{sa
 \begin{equation}
 \hat{a}+\hat{b}X\pm
 t_{n-2}\ \hat{\sigma}\sqrt{\frac{1}{n}+\frac{(X-\bar{X})^2}{nS_X^2}}
-\label{icpeup}
+(\#eq:icpeup)
 \end{equation}
 while the confidence interval at a significance level of $\alpha$ for predicting a tree selected at random (\ref{Yind}) is:
 \begin{equation}
 \hat{a}+\hat{b}X\pm
 t_{n-2}\ \hat{\sigma}\sqrt{1+\frac{1}{n}+\frac{(X-\bar{X})^2}{nS_X^2}}
-\label{icind}
+(\#eq:icind)
 \end{equation}
 where $t_{n-2}$ is the quantile $1-\alpha/2$ of a Student's distribution with
 $n-2$ degrees of freedom, $\bar{X}=(\sum_{i=1}^nX_i)/n$ is the mean of the observed values of $X$ in the dataset that served to fit the model, and
@@ -155,13 +155,13 @@ and the confidence interval (with a significance level of $\alpha$) of this pred
 \begin{equation}
 \tr{\vect{x}}\ \hat{\vect{a}}\pm t_{n-p-1}\ \hat{\sigma}
 \sqrt{\tr{\vect{x}}(\tr{\matx{X}}\matx{X})^{-1}\vect{x}}
-\label{iclm0}
+(\#eq:iclm0)
 \end{equation}
 \item for the prediction of a tree selected at random:
 \begin{equation}
 \tr{\vect{x}}\ \hat{\vect{a}}\pm t_{n-p-1}\ \hat{\sigma}
 \sqrt{1+\tr{\vect{x}}(\tr{\matx{X}}\matx{X})^{-1}\vect{x}}
-\label{iclm1}
+(\#eq:iclm1)
 \end{equation}
 \end{itemize}
 where $\matx{X}$ is is the design matrix constructed using the data that served to fit the multiple regression. In order to calculate the confidence interval of the predictions, we need to be in possession of --- if not the original data that served to fit the model --- at least the matrix $(\tr{\matx{X}}\matx{X})^{-1}$. It should be noted that the variance of the prediction in the case (\ref{iclm1})
@@ -207,14 +207,14 @@ unlike the case of the linear model, there is no exact explicit expression for t
 \begin{equation}
 f(X_1,\ \ldots,\ X_p;\hat{\theta})\pm t_{n-q}
 \sqrt{\tr{[\mathrm{d}_{\theta}f(\hat{\theta})]}\;\hat{\boldsymbol{\Sigma}}_{\hat{\theta}}\;
-[\mathrm{d}_{\theta}f(\hat{\theta})]}\label{icnl0}
+[\mathrm{d}_{\theta}f(\hat{\theta})]}(\#eq:icnl0)
 \end{equation}
 \item a confidence interval for the prediction of a tree selected at random:
 \begin{equation}
 f(X_1,\ \ldots,\ X_p;\hat{\theta})\pm t_{n-q}
 \sqrt{\hat{k}^2X_1^{2\hat{c}}+
 \tr{[\mathrm{d}_{\theta}f(\hat{\theta})]}\;\hat{\boldsymbol{\Sigma}}_{\hat{\theta}}\;
-[\mathrm{d}_{\theta}f(\hat{\theta})]}\label{icnl1}
+[\mathrm{d}_{\theta}f(\hat{\theta})]}(\#eq:icnl1)
 \end{equation}
 \end{itemize}
 where $q$ is the number of coefficients in the model (i.e. the length of vector $\theta$),
@@ -270,12 +270,12 @@ may be determined:
 \item in the case of a linear regression:
 \begin{equation}
 (a_0+a_1X_1+\ldots+a_pX_p)\pm q_{1-\alpha/2}\ \hat{\sigma}
-\label{iclm2}
+(\#eq:iclm2)
 \end{equation}
 \item in the case of a non-linear model:
 \begin{equation}
 f(X_1,\ \ldots,\ X_p;\theta)\pm
-q_{1-\alpha/2}\ \hat{k}X_1^{\hat{c}} \label{icnl2}
+q_{1-\alpha/2}\ \hat{k}X_1^{\hat{c}} (\#eq:icnl2)
 \end{equation}
 \end{itemize}
 where $q_{1-\alpha/2}$ is the quantile $1-\alpha/2$ of the standard normal distribution. This confidence interval is a direct retranscription of the relation 
@@ -296,14 +296,14 @@ If an estimation $\hat{\boldsymbol{\Sigma}}$ is given of the variance-covariance
 \begin{equation}
 (\hat{a}_0+\hat{a}_1X_1+\ldots+\hat{a}_pX_p)\pm
 q_{1-\alpha/2}\sqrt{\tr{\vect{x}}\hat{\boldsymbol{\Sigma}}\vect{x}}
-\label{iclm3}
+(\#eq:iclm3)
 \end{equation}
 where $\vect{x}$ is the vector $\tr{[X_1,\ \ldots,\ X_p]}$,
 \item for a non-linear model:
 \begin{equation}
 f(X_1,\ \ldots,\ X_p;\hat{\theta})\pm q_{1-\alpha/2}
 \sqrt{\tr{[\mathrm{d}_{\theta}f(\hat{\theta})]}\;\hat{\boldsymbol{\Sigma}}\;
-[\mathrm{d}_{\theta}f(\hat{\theta})]}\label{icnl3}
+[\mathrm{d}_{\theta}f(\hat{\theta})]}(\#eq:icnl3)
 \end{equation}
 \end{itemize}
 These confidence intervals consider that all the prediction's variability stems from the estimation of the model's coefficients. Also, these confidence intervals are a direct retranscription of the fact that the model's coefficients follow a multinormal distribution whose mean is their true value and that has a variance-covariance matrix $\hat{\boldsymbol{\Sigma}}$ for in the linear case, if $\hat{\vect{a}}=\tr{[\hat{a}_1,\ \ldots,\ \hat{a}_p]}$ follows a multinormal distribution of mean $\tr{[a_1,\ \ldots,\ a_p]}$ and variance-covariance matrix $\hat{\boldsymbol{\Sigma}}$, then the linear combination $\tr{\vect{x}}\ \hat{\vect{a}}$ follows a normal distribution of mean $\tr{\vect{x}}\ \vect{a}$ and variance $\tr{\vect{x}}\hat{\boldsymbol{\Sigma}}\vect{x}$
@@ -417,7 +417,7 @@ We saw in section \ref{trans} how a variable transformation can render linear a 
 Let us first consider the case of the log transformation of volume or biomass values, which is by far the most common case for volume and biomass models. Let us assume that a log transformation has been applied to biomass $B$
 to fit a linear model using effect variables $X_1$, \ldots, $X_p$:
 \begin{equation}
-Y=\ln(B)=a_0+a_1X_1+\ldots+a_pX_p+\varepsilon\label{pre}
+Y=\ln(B)=a_0+a_1X_1+\ldots+a_pX_p+\varepsilon(\#eq:pre)
 \end{equation}
 where
 \[
@@ -434,7 +434,7 @@ $B=\exp(a_0+a_1X_1+\ldots+a_pX_p)$, the inverse transformation of the residual e
 $\exp(a_0+a_1X_1+\ldots+a_pX_p)$ by an correction factor 
 [@parresol99]:
 \begin{equation}
-\mathrm{CF}=\exp\Big(\frac{\hat{\sigma}^2}{2}\Big)\label{CF}
+\mathrm{CF}=\exp\Big(\frac{\hat{\sigma}^2}{2}\Big)(\#eq:CF)
 \end{equation}
 We must however take care as the biomass models reported in the literature, and fitted after log transformation of the biomass, sometimes include this factor and sometimes do not.
 
@@ -467,7 +467,7 @@ $\psi(B)$ follows a normal distribution of mean
 $a_0+a_1X_1+\ldots+a_pX_p$ and standard deviation $\sigma$,
 $B=\psi^{-1}[\psi(B)]$ has an expectation of \citep[p.26]{saporta90}:
 \begin{equation}
-\mathrm{E}(B)=\int\psi^{-1}(x)\;\phi(x)\;\mathrm{d}x\label{EB}
+\mathrm{E}(B)=\int\psi^{-1}(x)\;\phi(x)\;\mathrm{d}x(\#eq:EB)
 \end{equation}
 where $\phi$ is the probability density of the normal distribution of mean $a_0+a_1X_1+\ldots+a_pX_p$ and standard deviation $\sigma$. This expectation is generally different from 
 $\psi^{-1}(a_0+a_1X_1+\ldots +a_pX_p)$: the variable transformation induces prediction bias when we return to the starting variable by inverse transformation. The drawback of formula 

@@ -79,7 +79,7 @@ Assume that, once the effect variables have been aggregated, we are still left w
 relations between $Y$ and each of the $p$ effect variables. As these take the form of relations between two variables, the graphical methods presented hereafter are perfectly suitable. However, this approach often yields little information as the relation between $Y$ and $p$ variables does not boil down to the 
 $p$ relations between $Y$ and each of the $p$ variables separately. A simple example can clearly illustrate this: let us suppose that variable $Y$ is (to within the errors) the sum of two effect variables:
 \begin{equation}
-Y=X_1+X_2+\varepsilon\label{truem}
+Y=X_1+X_2+\varepsilon(\#eq:truem)
 \end{equation}
 where $\varepsilon$ is a zero expectation error, and variables $X_1$ and $X_2$ are related such that $X_1$ varies between 0 and $-X_{\max}$ and, for a given $X_1$, $X_2$ varies between $\max(0,-X1)$ and $\min(X_{\max},1-X_1)$. Figure \@ref(fig:badex)
 shows the two plots of $Y$ against each of the effect variables $X_1$ and $X_2$ using simulated data for this model (with $X_{\max}=5$). The cluster of points does not appear to have any particular structure, and no model is therefore detected that generates $\mbox{E}(Y)=X_1+X_2$.
@@ -224,7 +224,7 @@ and this variables transformation:
 \begin{array}{l}
 X'=\ln X\\ Y'=\ln Y
 \end{array}
-\right.\label{lXlY}
+\right.(\#eq:lXlY)
 \end{equation}
 renders the relation linear. In the case of the exponential model, 
 $Y=a\exp(bX)$ yields $\ln Y=\ln a+bX$, and this variables transformation:
@@ -233,7 +233,7 @@ $Y=a\exp(bX)$ yields $\ln Y=\ln a+bX$, and this variables transformation:
 \begin{array}{l}
 X'=X\\ Y'=\ln Y
 \end{array}
-\right.\label{XlY}
+\right.(\#eq:XlY)
 \end{equation}
 renders the relation linear. By contrast, neither of these two transformation is able to render the polynomial relation linear. If we apply these transformations to the data presented in Figure \@ref(fig:wii1), we should be able to detect which of the scatter plots corresponds to which model. Figure \@ref(fig:wii2) shows the three scatter plots after transforming the variables as in (\ref{XlY}). The first scatter plot takes the form of a straight line while the two others are still curves. The scatter plot on the left of Figure \@ref(fig:wii1) therefore corresponds to the exponential model.
 
