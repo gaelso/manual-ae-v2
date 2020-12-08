@@ -12,7 +12,5 @@
 
 (ref:bad) Volume prediction based on a linear regression constructed using extreme points (in black) when the size-volume relationship is indeed linear (left) and when it is not (right). The black points are the same in both cases. The star indicates the volume predicted by the linear regression constructed using the black points while the gray points indicate the real volume corresponding to $D^{*2}H^*$.
 
-<!-- Figure annotations --> 
-(ref:plan-d2h) D^2^H
-
-(ref:plan-delta) $\Delta$
+<!-- Table captions --> 
+(ref:eff) Number of trees to be measured to establish a volume table for different surface areas over which the tables are to be used: recommendations by @parde88.

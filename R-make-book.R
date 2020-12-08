@@ -9,6 +9,8 @@
 ## Source R scripts
 source("R/00-libs.R")
 
+source("R/00-functions.R")
+
 source("R/01-photo-edit.R")
 
 source("R/02-text-replace.R")
