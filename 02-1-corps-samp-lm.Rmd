@@ -174,3 +174,58 @@ knitr::include_graphics(paste0(fig_path, "/badplan.pdf"))
 ```
 
 
+### Predicting the volume of a stand (#peup}
+
+Let us now assume that the goal is to predict the volume of an entire stand. Here, we must first assume that we measure dbh $D$ and height $H$ in *all* the trees in the stand. Let $N$ be the number of trees in the stand (including the $n$ trees in the sample). Modulo renumbering of the trees therefore gives us a measurement of tree volume $V$ for $i=1$, \ldots, $n$ and a measurement of tree size $D^2H$ for $i=1$, \ldots, $N$. The estimator for the total volume of the stand deduced from the volume tables is therefore:
+
+\[
+V_{\mbox{\scriptsize tot}}=\sum_{i=1}^N(a+bD_i^2H_i)
+\]
+
+which may also be written: $V_{\mbox{\scriptsize tot}}=N\bar{V}$, where $\bar{V}=a+b\overline{D^2H}$ is the mean volume of the trees in the stand, and $\overline{D^2H}=(\sum_{i=1}^ND_i^2H_i)/N$ is the mean dbh of the trees in the stand. To the extent that the volume tables are obtained by linear regression of ($V_1$, \ldots, $V_n$) against ($D_1^2H_1$, \ldots, $D_n^2H_n$), the numerical values of the coefficients $a$ and $b$ varify [p.363 @saporta90]:
+$\bar{V}_e=a+b\overline{D^2H}_e$, where
+$\bar{V}_e=(\sum_{i=1}^nV_i)/n$ is the mean volume of the trees in the sample and $\overline{D^2H}_e=(\sum_{i=1}^nD_i^2H_i)/n$ is the mean size of the trees in the sample. By subtracting, we arrive at the following result:
+
+\begin{equation}
+\bar{V}=\bar{V}_e+b(\overline{D^2H}-\overline{D^2H}_e)(\#eq:est)
+\end{equation}
+
+In this equation it is important to note that $\bar{V}$ and
+$\overline{D^2H}$ are mean values for the entire stand while, $\bar{V}_e$ and $\overline{D^2H}_e$ are mean values for the sample. In addition $\overline{D^2H}$, $\overline{D^2H}_e$ 
+and $\bar{V}_e$ are derived from actual measurement, while $\bar{V}$ is the quantity we are looking to estimate.
+
+If we look at equation (\@ref(eq:est)), we recognize it as being a type of estimator that is widely used in sampling theory: the *regression estimators*. The theoretical basis of regression estimators is described in detail in [chapter 7 @cochran77] and in [chapter 8 @thompson92]. A description of regression estimators used in forestry is given in @vries86 and in [chapter 6 @shiver96] (the first is more theoretical, the second more applied). The theory of regression estimators applies in the case of a linear relationship between the quantity to be predicted ($\bar{V}$ in the example above) and an auxiliary variable ($\overline{D^2H}$ in the example above). By contrast, this theory is less well developed in the case of non-linear relations or multiple regressions, even though such cases often arise in connection with volume tables.
+
+The semi-amplitude of the confidence interval at $\alpha$ (typically 5\ \%) of $\bar{V}$ is [p.199 @cochran77; p.83 @thompson92]:
+
+\begin{equation}
+t_{n-2}\;\hat{\sigma}\ \sqrt{\frac{1}{n}-\frac{1}{N}+
+\frac{(\overline{D^2H}-\overline{D^2H}_e)^2}{\sum_{i=1}^n(D_i^2H_i
+-\overline{D^2H}_e)^2}}(\#eq:icpop)
+\end{equation}
+
+It can be seen that the minimum of this amplitude is zero, that is reached when entire stand is included in the sample ($n=N$, that means that $\overline{D^2H}=\overline{D^2H}_e$).
+As before, the optimal sampling plan is such that 
+$\overline{D^2H}_e$ is the closest possible to
+$\overline{D^2H}$, with a maximal empirical variance of $D^2H$ in the sample.
+
+When deriving the regression estimator we assumed that size $D^2H$ is measured for *all* the trees in the stand in order to arrive at an estimation of total volume $V_{\mbox{\scriptsize tot}}$. In practice, a more realistic measurements protocol is as follows: the size of the trees in a sample of size $n'<N$ is measured; both size and volume are measured in a subsample of $n<n'$ of this sample. The volume vs dbh regression (i.e. the volume tables) is constructed using subsample values; this is then used to estimate the volume of the sample then, by extrapolation, that of the entire stand. This sampling strategy is called *double sampling*. Its theory is described in section 12.6, @cochran77 and, more pragmatically, in chapter 7 @shiver96. Its use for estimating stand biomass was developed by @cunia87c; @cunia87; @cunia87d.
+
+Finally, the properties of the regression estimator (\@ref(eq:est)) are well known in conventional sampling theory which does not require the hypothesis of a linear model (\@ref(eq:MLex)) but considers that the only source of variability is the sampling. In the case of a simple random sampling plan and a sufficiently large sample size $n$, the variance of $\bar{V}$ in conventional theory is approximately [p.195 @cochran77; p.181 @shiver96]:
+
+\begin{equation}
+\widehat{\mbox{Var}}(\bar{V})=\frac{1-n/N}{n(n-2)}\left\{
+\sum_{i=1}^n(V_i-\bar{V}_e)^2-\frac{\left[\sum_{i=1}^n
+(V_i-\bar{V}_e)(D_i^2H_i-\overline{D^2H}_e)\right]^2}{\sum_{i=1}^n
+(D_i^2H_i-\overline{D^2H}_e)^2}\right\}(\#eq:VV)
+\end{equation}
+
+and the semi-amplitude confidence interval at $\alpha$ (typiquement 5\ \%) of $\bar{V}$ is approximately [p.80 @thompson92; p.185 @shiver96]:
+
+\[
+t_{n-2}\;\sqrt{\widehat{\mbox{Var}}(\bar{V})}
+\]
+
+This last expression is considered as being more robust than expression (\@ref(eq:icpop)) when the super-population model (\@ref(eq:MLex)) strays from reality [p.84 @thompson92].
+
+In conclusion, this simple example shows both the advantages and limitations of sampling for the construction of volume tables: advantages because sampling theory provides us with the minimum number of trees that need to be measured to reach a given precision in our predictions, and thereby optimize the sampling plan; limitations because this reasoning assumes that the form of the volume tables (and that the underlying super-population model) is known in advance and that the tables will be used for a given application. Neither of these prerequisites is met in practice. Also, the calculations that are relatively simple in the case of the linear model we have just described rapidly become hopelessly complex for more realistic models.
