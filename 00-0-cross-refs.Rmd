@@ -14,3 +14,6 @@
 
 <!-- Table captions --> 
 (ref:eff) Number of trees to be measured to establish a volume table for different surface areas over which the tables are to be used: recommendations by @parde88.
+
+<!-- Table content -->
+(ref:eff-n) $n$
