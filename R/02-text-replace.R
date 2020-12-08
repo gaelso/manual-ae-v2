@@ -154,23 +154,6 @@ conv_tex <- function(.file){
     
 } ## END FUNCTION conv_tex()
 
-## Test with one tex file
-# tex <- read_file("Full_manuscript_EN/corps_base_en_doneGS_ok_2.tex")
-# 
-# conv_all <- conv_tex(tex)
-# 
-# tex_conv <- tex 
-# 
-# for (i in seq_along(conv_all$regex)) {
-#   
-#   tex_conv <- str_replace(tex_conv, pattern = conv_all$regex[i], replacement = conv_all$conv[i])
-#   
-# }
-# 
-# dir.create("tex_conv", showWarnings = FALSE)
-# write_file(tex_conv, file = "tex_conv/corps_base.tex")
-# write_file(tex_conv, file = "tex_conv/corps_base.rmd")
-
 ## Programmatically read all tex files and convert to rmd
 tex_files <- list.files(path = "source/tex_original", pattern = "ok_2.tex", full.names = T)
 tex_names <- list.files(path = "source/tex_original", pattern = "ok_2.tex") %>% str_remove("_done.*")
