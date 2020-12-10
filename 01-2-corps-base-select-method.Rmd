@@ -7,6 +7,7 @@ There is no single method for estimating biomass stocks, but a number of methods
 
 Therefore, biomass estimation methods on a landscape or greater scale rely on field measurements taken between the landscape and plot scales. Biomass estimations on this scale are based on forest inventory data: inventory of a sample of trees if the area is large, or otherwise a full inventory (particularly in permanent plots of a few hectares). On a smaller scale, individual biomass measurements may be taken by weighing trees and understorey vegetation.
 
+
 ### Estimating the biomass of a forest or a set of forests
 
 Estimations of forest biomass or nutrient content based on forest inventories require:
