@@ -12,8 +12,12 @@
 
 (ref:bad) Volume prediction based on a linear regression constructed using extreme points (in black) when the size-volume relationship is indeed linear (left) and when it is not (right). The black points are the same in both cases. The star indicates the volume predicted by the linear regression constructed using the black points while the gray points indicate the real volume corresponding to $D^{*2}H^*$.
 
+(ref:mel) Predicting volume from tree size in two strata (black and white points): top left: the two strata corresponding to the two variances of the residuals (higher variance for the white than the black points) but the relationship is the same; top right: both the variance and the relation are different in the two strata; bottom: the situation is the same as top right but the second stratum has been subsampled such that we are led to believe that we are dealing with the same relation in the two strata.
+
+
 <!-- Table captions --> 
 (ref:eff) Number of trees to be measured to establish a volume table for different surface areas over which the tables are to be used: recommendations by @parde88.
+
 
 <!-- Table content -->
 (ref:eff-n) $n$
