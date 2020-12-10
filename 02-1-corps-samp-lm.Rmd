@@ -4,8 +4,8 @@
 Sampling consists in predicting the characteristics of a set from one part (a sample) of this set. Typically, we want to estimate the volume of wood in a forest, but it is impossible to measure the volume of all the trees one by one. We therefore measure the volume of a sample of trees in the forest, then extrapolate to obtain an estimate for all the trees in the entire forest [p.252 @ctft89]. As volume is measured only in a sample of trees, the estimated total volume we obtain suffers from a *sampling error*^[The terms in italics are those used in sampling theory; a definition of these terms may be found, for example, in appendix 2 of @bellefontaine01.].
 Sampling in the strict sense consists in:
 
-- selecting appropriate trees for the measured set (we tend to speak of a *sampling plan*),
-- selecting a method used to calculate total volume from the measurements (we tend to speak of an *estimator*),
+1. selecting appropriate trees for the measured set (we tend to speak of a *sampling plan*),
+2. selecting a method used to calculate total volume from the measurements (we tend to speak of an *estimator*),
 
 in such a manner to minimize the sampling error.
 
@@ -182,7 +182,7 @@ Let us now assume that the goal is to predict the volume of an entire stand. Her
 V_{\mbox{\scriptsize tot}}=\sum_{i=1}^N(a+bD_i^2H_i)
 \]
 
-which may also be written: $V_{\mbox{\scriptsize tot}}=N\bar{V}$, where $\bar{V}=a+b\overline{D^2H}$ is the mean volume of the trees in the stand, and $\overline{D^2H}=(\sum_{i=1}^ND_i^2H_i)/N$ is the mean dbh of the trees in the stand. To the extent that the volume tables are obtained by linear regression of ($V_1$, \ldots, $V_n$) against ($D_1^2H_1$, \ldots, $D_n^2H_n$), the numerical values of the coefficients $a$ and $b$ varify [p.363 @saporta90]:
+which may also be written: $V_{\mbox{\scriptsize tot}}=N\bar{V}$, where $\bar{V}=a+b\overline{D^2H}$ is the mean volume of the trees in the stand, and $\overline{D^2H}=(\sum_{i=1}^ND_i^2H_i)/N$ is the mean dbh of the trees in the stand. To the extent that the volume tables are obtained by linear regression of ($V_1$, \ldots, $V_n$) against ($D_1^2H_1$, \ldots, $D_n^2H_n$), the numerical values of the coefficients $a$ and $b$ verify [p.363 @saporta90]:
 $\bar{V}_e=a+b\overline{D^2H}_e$, where
 $\bar{V}_e=(\sum_{i=1}^nV_i)/n$ is the mean volume of the trees in the sample and $\overline{D^2H}_e=(\sum_{i=1}^nD_i^2H_i)/n$ is the mean size of the trees in the sample. By subtracting, we arrive at the following result:
 
@@ -220,7 +220,7 @@ Finally, the properties of the regression estimator \@ref(eq:est) are well known
 (D_i^2H_i-\overline{D^2H}_e)^2}\right\}(\#eq:VV)
 \end{equation}
 
-and the semi-amplitude confidence interval at $\alpha$ (typiquement 5\ \%) of $\bar{V}$ is approximately [p.80 @thompson92; p.185 @shiver96]:
+and the semi-amplitude confidence interval at $\alpha$ (typically 5\ \%) of $\bar{V}$ is approximately [p.80 @thompson92; p.185 @shiver96]:
 
 \[
 t_{n-2}\;\sqrt{\widehat{\mbox{Var}}(\bar{V})}
