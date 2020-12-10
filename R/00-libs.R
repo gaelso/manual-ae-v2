@@ -1,5 +1,9 @@
 
 # Load libraries
 library(tidyverse)
-library(magick)
+
 library(DiagrammeR)
+
+library(magick)
+
+library(pdftools)

@@ -1,0 +1,29 @@
+
+
+# In the field {#ter}
+
+The field step is the most crucial as it may generate measurement errors that cannot be corrected. This phase must be governed by three key principles: (*i*) it is better to weigh everything in the field rather than calculate a volume and multiply it later by a density measurement (see chapter \@ref(biol) and variations in stem shape and wood density); (*ii*) if wood aliquots are taken, it is best to weigh the whole then the aliquot to follow moisture loss; finally (*iii*) as a biomass campaign requires a great deal of work and is very costly to undertake, other measurements may be taken at the same time to avoid a subsequent return to the field (e.g. stem profile, sampling for nutrient content).
+
+Selecting trees to be measured in the field (see chapter \@ref(samp)), whether as individuals or exhaustively over a given area, means that the trees must be marked with paint, measured for circumference if possible at breast height (by circling the trunk with paint at this point) and measured for height. This procedure is used to check that the tree selected indeed corresponds to the sampling plan chosen (case of a selection by individual) and provides for control measures once the tree has been felled. It is also very practical to take a photo of the individual selected and draw a schematic diagram of the tree on the field form. This makes it easier to interpret the data and check the results obtained. In general, trees that are too unusual (crown broken, stem knotty or sinuous) should not be selected unless these stems account for a significant proportion of the stand, or if the aim is to quantify an accident (e.g. crown breaking subsequent to frost). Likewise, trees located in an unrepresentative environment should be excluded (forest edge, clearing, degraded forest, etc.) as their architecture often differs from the other trees in the stand. Finally, field constraints (slope, access, stand non compliant with the stratum, etc.) may well call the original sampling into question.
+
+The general basis for measuring biomass, and even more nutrient content, is the rule of three between fresh biomass measured in the field, fresh biomass of the aliquot, and oven-dried biomass of the aliquot. As the different organs of a tree do not have the same moisture content or the same density, it is preferable to proceed by compartmentalization to take account of variations in tree density and moisture content (and nutrient concentrations when calculating nutrient content). The finer the stratification, the more precise the biomass estimation, but this requires a great deal more work. A compromise must therefore be found between measurement precision and work rate in the field. Conventionally, a tree is divided into the following compartments: the trunk, distinguishing the wood from the bark, and that should be sawed into logs to determine variations in density and moisture content in relation to section diameter; branches that are generally sampled by diameter class, distinguishing or not the wood from the bark; the smallest twigs, generally including buds; leaves; fruits; flowers; and finally roots by diameter class. An example of a such a compartmentalization is given in Figure \@ref(fig:compart) for beech.
+
+```{r compart, fig.cap="Example of tree compartmentalization for a biomass and nutrient content campaign on beech in France."}
+
+compart
+
+```
+\begin{figure}[htb]
+\begin{center}\setlength{\unitlength}{1cm}
+\begin{picture}(15,8)
+%\multiput(0,0)(15,0){2}{\line(0,1){8}}\multiput(0,0)(0,8){2}{\line(1,0){15}}
+\put(0,0){\includegraphics[height=8cm]{comparts}}%
+\put(5,6.5){\parbox{8cm}{\small\raggedright Leaves: total weight and sample taken for moisture content}}
+\put(4.75,4.3){\parbox{9cm}{\small\raggedright Branches (cross cuts $\varnothing\geq20$~cm; 20~cm $>\varnothing\geq7$~cm; 7~cm $>\varnothing\geq4$~cm; 4~cm $>\varnothing$): weighed and sample taken of cross cuts for moisture content}}
+\put(3.8,2.4){\parbox{10cm}{\small\raggedright Trunk (wood and bark): logs weighed and disks cut every 2~m for moisture content and wood/bark proportion}} 
+\put(6,0.8){\parbox{9cm}{\small\raggedright Roots (cross cuts $\varnothing\geq10$~mm; 10~mm $>\varnothing\geq2$~mm; 2~mm $>\varnothing$): weighed and sample taken by cross-cutting for moisture content}}
+\end{picture}
+\end{center}
+\caption{Example of tree compartmentalization for a biomass and nutrient content campaign on beech in France.\label{compart}}
+\end{figure}
+

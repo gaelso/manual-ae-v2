@@ -6,14 +6,19 @@
 ## This script sources R scripts and makes the report with bookdown::render_book()
 ## ++++++
 
+## User inputs
+img_size <- list(height = 600, width = 1200)
+
 ## Source R scripts
 source("R/00-libs.R")
 
 source("R/00-functions.R")
 
-source("R/01-photo-edit.R")
+source("R/prepa-photos.R")
 
-#source("R/02-text-replace.R")
+source("R/prepa-figs.R")
+
+#source("R/conv_tex_rmd.R")
 
 ## Make report
 
