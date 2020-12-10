@@ -25,7 +25,7 @@ kab_opt <- list(
   x = kab,
   caption = "(ref:eff)",
   caption.short = "Number of trees to be measured to establish a volume table for different surface areas over which the tables are to be used",
-  col.names = c("Area", "(ref:eff-n)"),
+  col.names = c("Area", "$n$"),
   booktabs = TRUE,
   escape = F
 )

@@ -18,6 +18,7 @@
 <!-- Table captions --> 
 (ref:eff) Number of trees to be measured to establish a volume table for different surface areas over which the tables are to be used: recommendations by @parde88.
 
+(ref:c03) Coefficient of variation in relation to plot size: data drawn from Table 5 by @chave03 for Barro Colorado Island, Panama.
 
-<!-- Table content -->
-(ref:eff-n) $n$
+
+

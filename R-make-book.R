@@ -13,7 +13,7 @@ source("R/00-functions.R")
 
 source("R/01-photo-edit.R")
 
-source("R/02-text-replace.R")
+#source("R/02-text-replace.R")
 
 ## Make report
 
@@ -42,7 +42,6 @@ bookdown::render_book(
 )
 
 ## Clean temp files
-## !!!!!!!!!!!!!!!!!!!!!  TBD !!!!!!!!!!!!!!!!!!!!
 file.remove(list.files(pattern = "Manual-AE-"))
-
+unlink(x = "_bookdown_files", recursive = T)
 
