@@ -6,4 +6,5 @@ library(DiagrammeR)
 
 library(magick)
 
-library(pdftools)
+#library(pdftools)
+# library(latex2exp)

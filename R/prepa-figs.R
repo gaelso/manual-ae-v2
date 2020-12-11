@@ -7,7 +7,7 @@ fig_path <- "source/figures"
 
 
 ###
-### figures chapter 2 ----------------------------------------------------------
+### Figures chapter 2 ----------------------------------------------------------
 
 ###
 ### plan
@@ -61,7 +61,7 @@ dev.off()
 
 
 ###
-### figures chapter 3 ----------------------------------------------------------
+### Figures chapter 3 ----------------------------------------------------------
 
 ###
 ### compart
@@ -70,25 +70,30 @@ dev.off()
 ## Convert pdf to png -- RUN ONE TIME ONLY
 compart <- magick::image_read_pdf(paste0(fig_path, "/comparts.pdf"))
 
-
 compart_all <- image_blank(width = 1200, height = 700, color = 'white') %>%
   image_composite(
     composite_image = image_scale(compart, paste0("x", img_size$height)), 
     gravity = "southwest", 
     offset = "+20+20") %>%
   image_draw()
-#text(400, 400, TeX("$\\varnothing$"), cex = 2, adj = c(0,NA), family = "serif")
-#text(400, 400, bquote("\U2300"), cex = 2, adj = c(0,NA), family = "serif")
-text(400, 400, bquote("\U00F8"), cex = 2, adj = c(0,NA), family = "serif")
-text(450, 400, bquote("\U2205"), cex = 2, adj = c(0,NA), family = "serif")
-text(500, 600, 
-     bquote("Roots (cross cut "), 
-     cex = 2, adj = c(0,NA), family = "serif")
-text(300, 480, "Trunk (wood and bark): logs weighed and disks cut every 2 m 
-for moisture content and wood/bark proportion", 
-cex = 2, adj = c(0,NA), family = "serif")
+text(400, 200, "Leaves: total weight and sample taken for
+moisture content", cex = 2.5, adj = c(0,NA), family = "serif")
+text(370, 320, bquote({"Branches (cross cuts \U2205" >= "20 cm; 20 cm > \U2205"} >= "7 cm;"),
+     cex = 2.5, adj = c(0,NA), family = "serif")
+text(370, 350, bquote("7 cm  > \U2205" >= "4 cm; 4 cm > \U2205): weighed and sample taken of"),
+     cex = 2.5, adj = c(0,NA), family = "serif")
+text(370, 380, bquote("cross cuts for moisture content"),
+     cex = 2.5, adj = c(0,NA), family = "serif")
+text(320, 470, "Trunk (wood and bark): logs weighed and disks cut every 2 m ",
+     cex = 2.5, adj = c(0,NA), family = "serif")
+text(320, 500, "for moisture content and wood/bark proportion", 
+     cex = 2.5, adj = c(0,NA), family = "serif")
+text(480, 570, bquote({"Roots (cross cuts \U2205" >= "10 mm; 10 mm > \U2205"} >= "2 mm;"),
+     cex = 2.5, adj = c(0,NA), family = "serif")
+text(480, 600, bquote("2 mm >" ~ "\U2205): weighed and sample taken by"),
+     cex = 2.5, adj = c(0,NA), family = "serif")
+text(480, 630, bquote("cross-cutting for moisture content"),
+     cex = 2.5, adj = c(0,NA), family = "serif")
 
-
-compart_all
-
+dev.off()
 
