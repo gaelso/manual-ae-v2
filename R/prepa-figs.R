@@ -97,3 +97,4 @@ text(480, 630, bquote("cross-cutting for moisture content"),
 
 dev.off()
 
+compart_test <- image_convert(compart, "pdf")
