@@ -64,7 +64,7 @@ dev.off()
 ###
 
 ## Convert pdf to png -- RUN ONE TIME ONLY
-compart <- magick::image_read_pdf(paste0(fig_path, "/comparts.pdf"), format = "pdf")
+compart <- magick::image_read_pdf(paste0(fig_path, "/comparts.pdf"))
 
 compart_all <- image_blank(width = 1200, height = 700, color = 'white') %>%
   image_composite(
@@ -93,4 +93,9 @@ text(480, 630, bquote("cross-cutting for moisture content"),
 
 dev.off()
 
-compart_test <- image_convert(compart_all, "pdf")
+###############################################################################
+###############################################################################
+
+## New approach to graphic devices
+grImport::PostScriptTrace(paste0(fig_path, "/eps/comparts.eps"), "comparts.xml")
+grImport::readPicture(paste0(fig_path, "/eps/comparts.eps"))
