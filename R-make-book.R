@@ -6,8 +6,10 @@
 ## This script sources R scripts and makes the report with bookdown::render_book()
 ## ++++++
 
-## User inputs
+## Figures settings 
 img_size <- list(height = 600, width = 1200)
+fig_path <- "source/figures"
+img_path <- "source/photo_lowres"
 
 ## Source R scripts
 source("R/00-libs.R")

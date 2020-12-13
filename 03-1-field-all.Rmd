@@ -20,3 +20,11 @@ compart_test
 
 ```
 
+
+```{r compart3, dev='tikz', cache=TRUE, out.width="100%", fig.cap="Example of tree compartmentalization for a biomass and nutrient content campaign on beech in France."}
+
+compart_test 
+text(-1, .2, cex = 3, col = 'blue',
+  '$\\phi(x)=\\frac{1}{\\sqrt{2\\pi}}e^{\\frac{-x^2}{2}}$')
+
+```

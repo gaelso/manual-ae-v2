@@ -1,17 +1,13 @@
 
 
 ###
-### Setup ----------------------------------------------------------------------
-
-fig_path <- "source/figures"
-
-
-###
 ### Figures chapter 2 ----------------------------------------------------------
 
 ###
 ### plan
 ###
+
+arbre   <- magick::image_read(paste0(fig_path, "/arbre.png")) 
 
 arbre   <- magick::image_read(paste0(fig_path, "/arbre.png")) 
 arbrex8 <- magick::image_read(paste0(fig_path, "/arbrex8.png"))
@@ -68,7 +64,7 @@ dev.off()
 ###
 
 ## Convert pdf to png -- RUN ONE TIME ONLY
-compart <- magick::image_read_pdf(paste0(fig_path, "/comparts.pdf"))
+compart <- magick::image_read_pdf(paste0(fig_path, "/comparts.pdf"), format = "pdf")
 
 compart_all <- image_blank(width = 1200, height = 700, color = 'white') %>%
   image_composite(
@@ -97,4 +93,4 @@ text(480, 630, bquote("cross-cutting for moisture content"),
 
 dev.off()
 
-compart_test <- image_convert(compart, "pdf")
+compart_test <- image_convert(compart_all, "pdf")

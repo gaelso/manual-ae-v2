@@ -1,10 +1,17 @@
 
-# Load libraries
-library(tidyverse)
+## List required libraries
+libs <- c(
+  "rmarkdown", "bookdown", "tinytex", "tidyverse", "magick", "DiagrammeR",
+  "tikzDevice", "grImport"
+)
 
-library(DiagrammeR)
+## Install missing libraries
+libs_install <- libs[!(libs %in% installed.packages())]
+libs_install
 
-library(magick)
+lapply(libs_install, install.packages)
 
-#library(pdftools)
-# library(latex2exp)
+rm(libs_install)
+
+## Load libraries
+lapply(libs, require, character.only = TRUE)
