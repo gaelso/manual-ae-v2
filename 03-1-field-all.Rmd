@@ -8,13 +8,7 @@ Selecting trees to be measured in the field (see chapter \@ref(samp)), whether a
 
 The general basis for measuring biomass, and even more nutrient content, is the rule of three between fresh biomass measured in the field, fresh biomass of the aliquot, and oven-dried biomass of the aliquot. As the different organs of a tree do not have the same moisture content or the same density, it is preferable to proceed by compartmentalization to take account of variations in tree density and moisture content (and nutrient concentrations when calculating nutrient content). The finer the stratification, the more precise the biomass estimation, but this requires a great deal more work. A compromise must therefore be found between measurement precision and work rate in the field. Conventionally, a tree is divided into the following compartments: the trunk, distinguishing the wood from the bark, and that should be sawed into logs to determine variations in density and moisture content in relation to section diameter; branches that are generally sampled by diameter class, distinguishing or not the wood from the bark; the smallest twigs, generally including buds; leaves; fruits; flowers; and finally roots by diameter class. An example of a such a compartmentalization is given in Figure \@ref(fig:compart) for beech.
 
-```{r compart, dev='pdf', out.width="100%", fig.cap="Example of tree compartmentalization for a biomass and nutrient content campaign on beech in France."}
-
-compart_all
-
-```
-
-```{r compart2, dev='pdf', out.width="100%", fig.cap="Example of tree compartmentalization for a biomass and nutrient content campaign on beech in France."}
+```{r compart2, out.width="100%", fig.cap="Example of tree compartmentalization for a biomass and nutrient content campaign on beech in France."}
 
 image_blank(width = 1200, height = 700, color = 'white') %>%
   image_composite(
@@ -46,8 +40,27 @@ invisible(dev.off())
 ```
 
 
-```{r compart3, dev='pdf', cache=TRUE, out.width="100%", fig.cap="Example of tree compartmentalization for a biomass and nutrient content campaign on beech in France."}
+```{r compart3, dev='tikz', fig.process = pdf2png, out.width="100%", fig.cap="Example of tree compartmentalization for a biomass and nutrient content campaign on beech in France."}
 
-grImport::grid.picture(comparts_vec)
+#invisible(plot.new())
+grid.arrange(grImport::pictureGrob(comparts_vec), ncol = 2)
+grid.text(label = "Leaves: total weight and sample taken for \\\\moisture content", 
+          x = 0.4, y = 0.75, just = 0
+          )
+# grid.text(label = 'Branches (cross cuts \\char"2205 $\\geq$ 20 cm; 20 cm > $\\geq$ 7 cm;' ,
+#           x = 0.3, y = 0.65, just = 0
+#           )
+# grid.text(label = "Branches (cross cuts \U2205 $\\geq$ 20 cm; 20 cm > \U2205 $\\geq$7 cm;",
+#           x = 0.3, y = 0.65, just = 0
+#           )
+# grid.text(label = bquote("7 cm  > \U2205" >= "4 cm; 4 cm > \U2205): weighed and sample taken of"),
+#           x = 0.3, y = 0.61, just = 0
+#           )
+# grid.text(label = "cross cuts for moisture content",
+#           x = 0.3, y = 0.56, just = 0
+#           )
+# grid.text(label = "Trunk (wood and bark): logs weighed and disks cut every 2 m \nfor moisture content and wood/bark proportion",
+#           x = 0.25, y = 0.4, just = 0
+#           )
 
 ```
