@@ -31,18 +31,9 @@ arbre_compo
 
 plan <- arbre_compo %>%
   image_draw()
-## Image top text
-text(170, 280, bquote(italic("n") ~ "/2 trees"), family = "palatino", cex = 2)
-text(450, 230, "Volume?"                       , family = "palatino", cex = 2)
-text(890, 80, bquote(italic("n") ~ "/2 trees"), family = "palatino", cex = 2)
 ## Bottom arrow
 rect(xleft = 100, xright = 1040, ybottom = 419, ytop = 420)
 text(1035, 421, ">", cex = 3)
-## Bottom text
-text(1120, 415, bquote("Size" ~ (italic(D^2*H))), family = "palatino", cex = 2)
-text(450, 440, bquote(italic(D^2*H)), family = "palatino", cex = 2)
-text(300, 480, bquote(Delta), family = "palatino", cex = 2)
-text(600, 480, bquote(Delta), family = "palatino", cex = 2)
 ## Bottom left bracket
 rect(xleft = 170, xright = 430, ybottom = 469, ytop = 470)
 rect(xleft = 170, xright = 171, ybottom = 470, ytop = 460)
@@ -51,6 +42,13 @@ rect(xleft = 429, xright = 430, ybottom = 470, ytop = 460)
 rect(xleft = 470, xright = 730, ybottom = 469, ytop = 470)
 rect(xleft = 470, xright = 471, ybottom = 470, ytop = 460)
 rect(xleft = 729, xright = 730, ybottom = 470, ytop = 460)
+
+
+# ## Bottom text
+# text(1120, 415, bquote("Size" ~ (italic(D^2*H))), family = "palatino", cex = 2)
+# text(450, 440, bquote(italic(D^2*H)), family = "palatino", cex = 2)
+# text(300, 480, bquote(Delta), family = "palatino", cex = 2)
+# text(600, 480, bquote(Delta), family = "palatino", cex = 2)
 
 dev.off()
 #image_write(plan, path = paste0(fig_path, "/plan.png")) ## Not needed on Windows

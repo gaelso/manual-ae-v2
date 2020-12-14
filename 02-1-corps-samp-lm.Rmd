@@ -151,9 +151,19 @@ is symmetrical around $\mu$ and passes through a minimum for $D^{*2}H^*=\mu$. As
 
 Let us now examine the case where we are looking to optimize the sampling plan in relation to the value of $D^{*2}H^*$. Equation \@ref(eq:E1) shows that precision deviation $E$ is smallest when $\overline{D^2H}_e=D^{*2}H^*$. It is therefore advantageous to select sample trees in such a manner that their empirical mean $D^2H$ value is $D^{*2}H^*$. In practice, as the empirical mean of the sample's $D^2H$ values will never be exactly $D^{*2}H^*$, it is advantageous to maximize the denominator $\sum_i(D_i^2H_i-\overline{D^2H}_e)^2$, i.e. to maximize the empirical variance of the sample's $D^2H$ values. Ultimately, the sampling plan that maximizes the precision of the volume prediction of trees with $D^2H$ values of $D^{*2}H^*$ consists in selecting $n/2$ trees with $D^2H$ values of $D^{*2}H^*-\Delta$ and $n/2$ trees with $D^2H$ values of $D^{*2}H^*+\Delta$, with $\Delta$ being as large as possible (Figure \@ref(fig:plan)).
 
-```{r plan, fig.align='center', out.width='100%', fig.scap="Sampling plan optimizing volume prediction precision for a particular tree", fig.cap="(ref:plan)"}
 
-plan
+```{r plan, dev='tikz', fig.align='center', out.width='100%', fig.scap="Sampling plan optimizing volume prediction precision for a particular tree", fig.cap="(ref:plan)"}
+
+#plot.new()
+grid.raster(plan)
+grid.text("$n/2$ trees", x = 0.16, y = 0.46)
+grid.text("Volume?"    , x = 0.38, y = 0.54)
+grid.text("$n/2$ trees", x = 0.72, y = 0.73)
+grid.text("Size $D^2H$", x = 0.95, y = 0.27)
+grid.text("$D^2H$"     , x = 0.38, y = 0.24)
+grid.text("$\\Delta$"  , x = 0.25, y = 0.18)
+grid.text("$\\Delta$"  , x = 0.5 , y = 0.18)
+
 
 ```
 
