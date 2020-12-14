@@ -41,11 +41,13 @@ text(480, 600, bquote("2 mm >" ~ "\U2205): weighed and sample taken by"),
 text(480, 630, bquote("cross-cutting for moisture content"),
      cex = 2.5, adj = c(0,NA), family = "serif")
 
+invisible(dev.off())
+
 ```
 
 
-```{r compart3, dev='tikz', cache=TRUE, out.width="100%", fig.cap="Example of tree compartmentalization for a biomass and nutrient content campaign on beech in France."}
+```{r compart3, dev='pdf', cache=TRUE, out.width="100%", fig.cap="Example of tree compartmentalization for a biomass and nutrient content campaign on beech in France."}
 
-
+grImport::grid.picture(comparts_vec)
 
 ```

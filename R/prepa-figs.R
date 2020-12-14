@@ -97,5 +97,17 @@ dev.off()
 ###############################################################################
 
 ## New approach to graphic devices
-grImport::PostScriptTrace(paste0(fig_path, "/eps/comparts.eps"), "comparts.xml")
-grImport::readPicture(paste0(fig_path, "/eps/comparts.eps"))
+## Install Ghostscript https://www.ghostscript.com/download/gsdnld.html and set path in Sys.setenv
+Sys.setenv(R_GSCMD = normalizePath("C:/Program Files/gs/gs9.53.3/bin/gswin64c.exe")) 
+
+
+#grImport::PostScriptTrace(paste0(fig_path, "/eps/arbre.eps"), paste0(fig_path, "/xml/comparts.eps.xml"))
+#comparts_vec <- grImport::readPicture(paste0(fig_path, "/xml/comparts.eps.xml"))
+
+grImport::PostScriptTrace(paste0(fig_path, "/comparts.pdf"), paste0(fig_path, "/xml/comparts.pdf.xml"))
+comparts_vec <- grImport::readPicture(paste0(fig_path, "/xml/comparts.pdf.xml"))
+
+grImport::grid.picture(comparts_vec)
+
+
+

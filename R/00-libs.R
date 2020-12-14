@@ -2,7 +2,7 @@
 ## List required libraries
 libs <- c(
   "rmarkdown", "bookdown", "tinytex", "tidyverse", "magick", "DiagrammeR",
-  "tikzDevice", "grImport"
+  "tikzDevice", "grImport", "grImport2", "grConvert"
 )
 
 ## Install missing libraries
