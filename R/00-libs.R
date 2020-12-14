@@ -8,7 +8,8 @@ libs <- c(
 ## Not use: "grImport2", "grConvert", "extrafont"
 
 ## Install the dev version of tikzDevice
-if ("tikzDevice" %in% libs & !("tikzDevice" %in% installed.packages())) devtools::install_github("yihui/tikzDevice")
+if ("tikzDevice" %in% libs & !("tikzDevice" %in% installed.packages())) 
+  devtools::install_github("yihui/tikzDevice")
 
 ## Install other missing libraries
 libs_install <- libs[!(libs %in% installed.packages())]
@@ -38,3 +39,8 @@ lapply(libs, require, character.only = TRUE)
 #     "\\usepackage{xunicode}" 
 #     )
 #   )
+
+
+options(
+  tikzLatexPackages = c(getOption( "tikzLatexPackages" ),"\\usepackage{amsmath,amssymb}")
+  )

@@ -8,59 +8,45 @@ Selecting trees to be measured in the field (see chapter \@ref(samp)), whether a
 
 The general basis for measuring biomass, and even more nutrient content, is the rule of three between fresh biomass measured in the field, fresh biomass of the aliquot, and oven-dried biomass of the aliquot. As the different organs of a tree do not have the same moisture content or the same density, it is preferable to proceed by compartmentalization to take account of variations in tree density and moisture content (and nutrient concentrations when calculating nutrient content). The finer the stratification, the more precise the biomass estimation, but this requires a great deal more work. A compromise must therefore be found between measurement precision and work rate in the field. Conventionally, a tree is divided into the following compartments: the trunk, distinguishing the wood from the bark, and that should be sawed into logs to determine variations in density and moisture content in relation to section diameter; branches that are generally sampled by diameter class, distinguishing or not the wood from the bark; the smallest twigs, generally including buds; leaves; fruits; flowers; and finally roots by diameter class. An example of a such a compartmentalization is given in Figure \@ref(fig:compart) for beech.
 
-```{r compart2, out.width="100%", fig.cap="Example of tree compartmentalization for a biomass and nutrient content campaign on beech in France."}
 
-image_blank(width = 1200, height = 700, color = 'white') %>%
-  image_composite(
-    composite_image = image_scale(compart, paste0("x", img_size$height)), 
-    gravity = "southwest", 
-    offset = "+20+20") %>%
-  image_draw()
-text(400, 200, "Leaves: total weight and sample taken for
-moisture content", cex = 2.5, adj = c(0,NA), family = "serif")
-text(370, 320, bquote({"Branches (cross cuts \U2205" >= "20 cm; 20 cm > \U2205"} >= "7 cm;"),
-     cex = 2.5, adj = c(0,NA), family = "serif")
-text(370, 350, bquote("7 cm  > \U2205" >= "4 cm; 4 cm > \U2205): weighed and sample taken of"),
-     cex = 2.5, adj = c(0,NA), family = "serif")
-text(370, 380, bquote("cross cuts for moisture content"),
-     cex = 2.5, adj = c(0,NA), family = "serif")
-text(320, 470, "Trunk (wood and bark): logs weighed and disks cut every 2 m ",
-     cex = 2.5, adj = c(0,NA), family = "serif")
-text(320, 500, "for moisture content and wood/bark proportion", 
-     cex = 2.5, adj = c(0,NA), family = "serif")
-text(480, 570, bquote({"Roots (cross cuts \U2205" >= "10 mm; 10 mm > \U2205"} >= "2 mm;"),
-     cex = 2.5, adj = c(0,NA), family = "serif")
-text(480, 600, bquote("2 mm >" ~ "\U2205): weighed and sample taken by"),
-     cex = 2.5, adj = c(0,NA), family = "serif")
-text(480, 630, bquote("cross-cutting for moisture content"),
-     cex = 2.5, adj = c(0,NA), family = "serif")
+```{r compart2, dev='tikz', cache=TRUE, fig.process = pdf2png, out.width="100%", fig.cap="Example of tree compartmentalization for a biomass and nutrient content campaign on beech in France."}
 
-invisible(dev.off())
-
-```
-
-
-```{r compart3, dev='tikz', fig.process = pdf2png, out.width="100%", fig.cap="Example of tree compartmentalization for a biomass and nutrient content campaign on beech in France."}
-
-#invisible(plot.new())
 grid.arrange(grImport::pictureGrob(comparts_vec), ncol = 2)
-grid.text(label = "Leaves: total weight and sample taken for \\\\moisture content", 
-          x = 0.4, y = 0.75, just = 0
+grid.text(label = "Leaves: total weight and sample taken for", 
+          x = 0.4, y = 0.8, just = 0
           )
-# grid.text(label = 'Branches (cross cuts \\char"2205 $\\geq$ 20 cm; 20 cm > $\\geq$ 7 cm;' ,
-#           x = 0.3, y = 0.65, just = 0
-#           )
-# grid.text(label = "Branches (cross cuts \U2205 $\\geq$ 20 cm; 20 cm > \U2205 $\\geq$7 cm;",
-#           x = 0.3, y = 0.65, just = 0
-#           )
-# grid.text(label = bquote("7 cm  > \U2205" >= "4 cm; 4 cm > \U2205): weighed and sample taken of"),
-#           x = 0.3, y = 0.61, just = 0
-#           )
-# grid.text(label = "cross cuts for moisture content",
-#           x = 0.3, y = 0.56, just = 0
-#           )
-# grid.text(label = "Trunk (wood and bark): logs weighed and disks cut every 2 m \nfor moisture content and wood/bark proportion",
-#           x = 0.25, y = 0.4, just = 0
-#           )
+grid.text(label = "moisture content", 
+          x = 0.4, y = 0.76, just = 0
+          )
+grid.text(label = 'Branches (cross cuts $\\varnothing\\geq$ 20 cm; 20 cm $>\\varnothing\\geq$ 7 cm;',
+          x = 0.37, y = 0.55, just = 0
+          )
+grid.text(label = bquote("7 cm  $>\\varnothing\\geq$ 4 cm; 4 cm $>\\varnothing$): weighed and sample taken of"),
+          x = 0.37, y = 0.51, just = 0
+          )
+grid.text(label = "cross cuts for moisture content",
+          x = 0.37, y = 0.47, just = 0
+          )
+grid.text(label = "Trunk (wood and bark): logs weighed and disks cut every 2 m",
+          x = 0.32, y = 0.35, just = 0
+          )
+grid.text(label = "for moisture content and wood/bark proportion",
+          x = 0.32, y = 0.31, just = 0
+          )
+grid.text(label = "Roots (cross cuts $\\varnothing\\geq$ 10 mm; 10 mm $>\\varnothing\\geq$ 2 mm;",
+          x = 0.38, y = 0.2, just = 0
+          )
+grid.text(label = "2 mm $>\\varnothing$): weighed and sample taken by",
+          x = 0.48, y = 0.16, just = 0
+          )
+grid.text(label = "cross-cutting for moisture content",
+          x = 0.48, y = 0.12, just = 0
+          )
 
 ```
+
+
+
+
+
+
