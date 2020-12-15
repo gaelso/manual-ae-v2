@@ -13,54 +13,41 @@ In conventional sampling theory, the volumes of $N$ trees in the stand are fixed
 
 The sampling method depends on the goal. Therefore, in principle, the question must first be asked as to the purpose of the volume or biomass tables we are seeking to construct. Are they to serve to predict the characteristics of a particular tree that has known entry variables? Are they to serve to predict the characteristics of an average tree from data on entry variables? Are they to serve to predict the total volume of the stand that yielded the trees used to construct the tables, or the total volume of another stand? In both these latter cases, are the tables' entry variables measured in all the trees of the stand, or again on a sample of trees? Etc. We can therefore construct a chain that runs from the studied stand to the variable we are looking to predict (Figure \@ref(fig:cha)).
 
-```{r cha, fig.align='center', out.width='100%', fig.cap="Chain running from the studied stand to the variables we are looking to predict."}
+```{r cha, out.width='100%', fig.cap="Chain running from the studied stand to the variables we are looking to predict."}
 
-grViz("
+
+grViz("digraph cha {
   
-  digraph cha {
-  
+  splines = false
   graph [layout = dot, rankdir = LR]
   
   ## Add node statements
   node [shape = plaintext]
-  'Stand \nstudied'
-  'Trees \nmeasured'
-  Model
-  'Volume of an \nindividual tree'
-  'Mean tree volume'
-  'Volume of the \nstudied stand'
-  'Volume of \nanother stand'
+  A[label = 'Stand \nstudied', fontsize = 40]
+  B[label = 'Trees \nmeasured', fontsize = 40]
+  C[label = Model,  fontsize = 40]
+  D1[label = 'Volume of an \nindividual tree', fontsize = 40]
+  D2[label = 'Mean tree volume', fontsize = 40]
+  D3[label = 'Volume of the \nstudied stand', fontsize = 40]
+  D4[label = 'Volume of \nanother stand', fontsize = 40]
   
   ## Add edge statements
-  'Stand \nstudied' -> 'Trees \nmeasured' [label = 'Sampling \nplan']
-  'Trees \nmeasured' -> Model [label = 'Model \nconstruction']
-  Model -> 'Volume of an \nindividual tree' [label = 'Prediction']
-  Model -> 'Mean tree volume'
-  Model -> 'Volume of the \nstudied stand'
-  Model -> 'Volume of \nanother stand' [label = 'Extrapolation', align='r']
+  A -> B [label = 'sampling', fontsize = 28]
+  A -> B [label = 'plan', fontsize = 28]
+  B -> C [label = 'model', fontsize = 28]
+  B -> C [label = 'construction', fontsize = 28]
+  C -> D1 [label = 'prediction', fontsize = 28]
+  C -> D2
+  C -> D3
+  C -> D4 [label = '', fontsize = 28]
+  C -> D4 [label = 'extrapolation', fontsize = 28]
   
-  }
-")
+  }",
+)
+
+"https://github.com/rich-iannone/DiagrammeR/issues/133"
 
 ```
-
-```{r test, fig.align='center', out.width='100%', fig.cap="another diagram test with mermaid."}
-
-mermaid('
-  
-  graph LR
-  
-  A("Stand \n; studied") -- "Sampling plan" --> B("Trees measured")
-  B -- "Model \nconstruction" --> C(Model)
-  C -- Prediction --> D("Volume of an \nindividual tree")
-  C --> E(Mean tree volume)
-  C --> F(Volume of the studied stand)
-  C -- Extrapolation --> G(Volume of another stand)
-  ')
-
-
-```
-
 
 By following this chain backward, it can be seen that the precision of the predicted variable depends on the precision of the tables' parameters, which itself depends on the sampling plan (number and selection of trees measured) and the variability within the studied stand [@cunia87c]. We can therefore set a target for the precision of our predictions which, by a retroactive effect for a given table and a given sampling type, determines the minimum number of trees to be measured. We can also apply an optimization procedure to determine, for a given target precision and a given table, the sampling method that minimizes measurement time or cost [@cunia87; @cunia87d]. In certain cases the cost of the measurements is the limiting factor. This in particular is the case for biomass measurements of root systems. Here in this case we are not looking so much to reach a given target precision in our prediction but to remain within reasonable cost limits. We can therefore, for a given measurement cost and a given type of table, determine the sampling plan that maximizes the precision of our predictions.
 
@@ -152,17 +139,17 @@ is symmetrical around $\mu$ and passes through a minimum for $D^{*2}H^*=\mu$. As
 Let us now examine the case where we are looking to optimize the sampling plan in relation to the value of $D^{*2}H^*$. Equation \@ref(eq:E1) shows that precision deviation $E$ is smallest when $\overline{D^2H}_e=D^{*2}H^*$. It is therefore advantageous to select sample trees in such a manner that their empirical mean $D^2H$ value is $D^{*2}H^*$. In practice, as the empirical mean of the sample's $D^2H$ values will never be exactly $D^{*2}H^*$, it is advantageous to maximize the denominator $\sum_i(D_i^2H_i-\overline{D^2H}_e)^2$, i.e. to maximize the empirical variance of the sample's $D^2H$ values. Ultimately, the sampling plan that maximizes the precision of the volume prediction of trees with $D^2H$ values of $D^{*2}H^*$ consists in selecting $n/2$ trees with $D^2H$ values of $D^{*2}H^*-\Delta$ and $n/2$ trees with $D^2H$ values of $D^{*2}H^*+\Delta$, with $\Delta$ being as large as possible (Figure \@ref(fig:plan)).
 
 
-```{r plan, dev='tikz', fig.align='center', out.width='100%', fig.scap="Sampling plan optimizing volume prediction precision for a particular tree", fig.cap="(ref:plan)"}
+```{r plan, dev='tikz', cache=TRUE, fig.process = pdf2png, fig.align='center', out.width='100%', fig.scap="Sampling plan optimizing volume prediction precision for a particular tree", fig.cap="(ref:plan)"}
 
-#plot.new()
+plot.new()
 grid.raster(plan)
-grid.text("$n/2$ trees", x = 0.16, y = 0.46)
-grid.text("Volume?"    , x = 0.38, y = 0.54)
-grid.text("$n/2$ trees", x = 0.72, y = 0.73)
-grid.text("Size $D^2H$", x = 0.95, y = 0.27)
-grid.text("$D^2H$"     , x = 0.38, y = 0.24)
-grid.text("$\\Delta$"  , x = 0.25, y = 0.18)
-grid.text("$\\Delta$"  , x = 0.5 , y = 0.18)
+grid.text("$n/2$ trees", x = 0.15, y = 0.47)
+grid.text("Volume?"    , x = 0.38, y = 0.53)
+grid.text("$n/2$ trees", x = 0.72, y = 0.72)
+grid.text("Size $D^2H$", x = 0.94, y = 0.3)
+grid.text("$D^2H$"     , x = 0.38, y = 0.27)
+grid.text("$\\Delta$"  , x = 0.25, y = 0.21)
+grid.text("$\\Delta$"  , x = 0.5 , y = 0.21)
 
 
 ```

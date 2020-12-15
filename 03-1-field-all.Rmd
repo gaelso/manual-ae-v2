@@ -13,39 +13,31 @@ The general basis for measuring biomass, and even more nutrient content, is the 
 
 grid.arrange(grImport::pictureGrob(comparts_vec), ncol = 2)
 grid.text(label = "Leaves: total weight and sample taken for", 
-          x = 0.4, y = 0.8, just = 0
-          )
+          x = 0.4, y = 0.8, just = 0)
 grid.text(label = "moisture content", 
-          x = 0.4, y = 0.76, just = 0
-          )
+          x = 0.4, y = 0.76, just = 0)
 grid.text(label = 'Branches (cross cuts $\\varnothing\\geq$ 20 cm; 20 cm $>\\varnothing\\geq$ 7 cm;',
-          x = 0.37, y = 0.55, just = 0
-          )
+          x = 0.37, y = 0.55, just = 0)
 grid.text(label = bquote("7 cm  $>\\varnothing\\geq$ 4 cm; 4 cm $>\\varnothing$): weighed and sample taken of"),
-          x = 0.37, y = 0.51, just = 0
-          )
+          x = 0.37, y = 0.51, just = 0)
 grid.text(label = "cross cuts for moisture content",
-          x = 0.37, y = 0.47, just = 0
-          )
+          x = 0.37, y = 0.47, just = 0)
 grid.text(label = "Trunk (wood and bark): logs weighed and disks cut every 2 m",
-          x = 0.32, y = 0.35, just = 0
-          )
+          x = 0.32, y = 0.35, just = 0)
 grid.text(label = "for moisture content and wood/bark proportion",
-          x = 0.32, y = 0.31, just = 0
-          )
+          x = 0.32, y = 0.31, just = 0)
 grid.text(label = "Roots (cross cuts $\\varnothing\\geq$ 10 mm; 10 mm $>\\varnothing\\geq$ 2 mm;",
-          x = 0.38, y = 0.2, just = 0
-          )
+          x = 0.38, y = 0.2, just = 0)
 grid.text(label = "2 mm $>\\varnothing$): weighed and sample taken by",
-          x = 0.48, y = 0.16, just = 0
-          )
+          x = 0.48, y = 0.16, just = 0)
 grid.text(label = "cross-cutting for moisture content",
-          x = 0.48, y = 0.12, just = 0
-          )
+          x = 0.48, y = 0.12, just = 0)
 
 ```
 
+Full advantage may be made of existing felling operations to sample the trees necessary to establish the table, particularly given that access and the taking of samples is often regulated in forests, and silviculture provides one of the only means to access the trees sought. However, this method may induce bias in tree selection as mainly commercial species are felled. Other species are felled only if they hinder the removal of a tree selected by the timber company, or if they are located on conveyance tracks or in storage areas. Also, trees felled for commercial purposes cannot necessarily be cross-cut into logs of a reasonable size to be weighed in the field. This depends on the capacity of the weighing machines available and log length. These constraints mean that individuals need to be carefully selected and two methods combined: (1) all the non-commercial sections of the tree must be weighed, particularly the branches; (2) the volume and wood density of the trunk must be determined.
 
+Therefore, in the field, there is no standard method as operators must adapt to each situation. But, here in this guide, we will nevertheless describe three typical cases that can be employed subsequently as the basis for conducting any type of field campaign. The first concerns regular forest (derived from regeneration or planted), the second dry forest and the third wet tropical forest. In the first case, all the compartments are weighed directly in the field. In the second, as the trees cannot be felled, the measurements made are semi-destructive. The third case concerns trees that are too large to be weighed in their entirety in the field. Measurements are therefore obtained in three phases: in the field, in the laboratory, then by computation. As the field measurements and computations are specific to each method, they are presented for each individual case. The laboratory procedures are generally the same in all cases.
 
 
 

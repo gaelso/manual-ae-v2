@@ -43,16 +43,7 @@ rect(xleft = 470, xright = 730, ybottom = 469, ytop = 470)
 rect(xleft = 470, xright = 471, ybottom = 470, ytop = 460)
 rect(xleft = 729, xright = 730, ybottom = 470, ytop = 460)
 
-
-# ## Bottom text
-# text(1120, 415, bquote("Size" ~ (italic(D^2*H))), family = "palatino", cex = 2)
-# text(450, 440, bquote(italic(D^2*H)), family = "palatino", cex = 2)
-# text(300, 480, bquote(Delta), family = "palatino", cex = 2)
-# text(600, 480, bquote(Delta), family = "palatino", cex = 2)
-
 dev.off()
-#image_write(plan, path = paste0(fig_path, "/plan.png")) ## Not needed on Windows
-
 
 ###
 ### Figures chapter 3 ----------------------------------------------------------
