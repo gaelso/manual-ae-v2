@@ -2,10 +2,11 @@
 ## List required libraries
 libs <- c(
   "rmarkdown", "bookdown", "tinytex", "tidyverse", "magick", "DiagrammeR",
-  "tikzDevice", "grImport", "gridExtra"
+  "tikzDevice", "grImport", "gridExtra", "DiagrammeRsvg", "rsvg", "extrafont", 
+  "htmltools"
 )
 
-## Not use: "grImport2", "grConvert", "extrafont"
+## Not use: "grImport2", "grConvert"
 
 ## Install the dev version of tikzDevice
 if ("tikzDevice" %in% libs & !("tikzDevice" %in% installed.packages())) 
@@ -22,25 +23,24 @@ rm(libs_install)
 ## Load libraries
 lapply(libs, require, character.only = TRUE)
 
-## Load fonts --- NOT WORKING
-# loadfonts(device = "win")
-# windowsFonts()
+## Load Windows fonts and add Computer modern if missing
 
-# options(
-#   tikzDefaultEngine = "xetex",
-#   tikzXelatexPackages = "\\usepackage{amsmath,amssymb}",
-#   tikzMetricPackages = c( "\\usepackage[utf8]{inputenc}", "\\usepackage[T1]{fontenc}", "\\usetikzlibrary{calc}", "\\usepackage{amsmath,amssymb}"),
-#   tikzUnicodeMetricPackages = c(
-#     "\\usepackage[utf8]{inputenc}", 
-#     "\\usepackage[T1]{fontenc}", 
-#     "\\usetikzlibrary{calc}", 
-#     "\\usepackage{amsmath,amssymb}", 
-#     "\\usepackage{fontspec}",
-#     "\\usepackage{xunicode}" 
-#     )
-#   )
+extrafont::font_import(paths = "C:\\Users\\Admin\\Downloads", recursive = T, pattern = "cmu*", prompt = FALSE)
+extrafont::loadfonts(device = "win", quiet = TRUE)
+
+if (!("CMU Serif"  %in% names(windowsFonts()))) {
+  download.file(
+    url = "https://www.fontsquirrel.com/fonts/download/computer-modern", 
+    destfile = paste0(fig_path, "/computer-modern.zip"), 
+    mode = "wb"
+    )
+  unzip(zipfile = paste0(fig_path, "/computer-modern.zip"), exdir = paste0(fig_path, "/computer-modern"))
+  extrafont::font_import(paths = fig_path, recursive = T, pattern = "cmu*", prompt = FALSE)
+  extrafont::loadfonts(device = "win")
+}
 
 
+## Add amssymb to tikzDevice for Diameter symbol (\varnothing)
 options(
   tikzLatexPackages = c(getOption( "tikzLatexPackages" ),"\\usepackage{amsmath,amssymb}")
   )

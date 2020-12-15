@@ -4,6 +4,50 @@
 ### Figures chapter 2 ----------------------------------------------------------
 
 ###
+### cha
+###
+
+cha <- grViz("digraph cha {
+  
+  splines = false
+  graph [layout = dot, rankdir = LR]
+  
+  ## Add node statements
+  node [shape = plaintext, fontname = 'CMU Serif']
+  A[label = 'Stand \nstudied']
+  B[label = 'Trees \nmeasured']
+  C[label = Model]
+  D1[label = 'Volume of an \nindividual tree']
+  D2[label = 'Mean tree volume']
+  D3[label = 'Volume of the \nstudied stand']
+  D4[label = 'Volume of \nanother stand']
+  
+  ## Add edge statements
+  edge [fontname = 'CMU Serif']
+  A -> B [label = 'sampling']
+  A -> B [label = 'plan']
+  B -> C [label = 'model']
+  B -> C [label = 'construction']
+  C -> D1 [label = 'prediction']
+  C -> D2
+  C -> D3
+  C -> D4 [label = '']
+  C -> D4 [label = 'extrapolation']
+  
+  }",
+)
+
+cha_svg <- cha %>%
+  export_svg() 
+
+cha_svg %>%
+  charToRaw %>% 
+  rsvg_pdf(paste0(fig_path, "/cha.pdf"))
+
+html_print(HTML(cha_svg))
+
+
+###
 ### plan
 ###
 
@@ -52,34 +96,35 @@ dev.off()
 ### compart
 ###
 
-compart   <- magick::image_read(paste0(fig_path, "/comparts.pdf")) 
-
-comparts_all <- image_blank(width = 1200, height = 700, color = 'white') %>%
-  image_composite(
-    composite_image = image_scale(compart, paste0("x", img_size$height)), 
-    gravity = "southwest", 
-    offset = "+20+20") %>%
-  image_draw()
-text(400, 200, "Leaves: total weight and sample taken for
-moisture content", cex = 2.5, adj = c(0,NA), family = "serif")
-text(370, 320, bquote({"Branches (cross cuts \U2205" >= "20 cm; 20 cm > \U2205"} >= "7 cm;"),
-     cex = 2.5, adj = c(0,NA), family = "serif")
-text(370, 350, bquote("7 cm  > \U2205" >= "4 cm; 4 cm > \U2205): weighed and sample taken of"),
-     cex = 2.5, adj = c(0,NA), family = "serif")
-text(370, 380, bquote("cross cuts for moisture content"),
-     cex = 2.5, adj = c(0,NA), family = "serif")
-text(320, 470, "Trunk (wood and bark): logs weighed and disks cut every 2 m ",
-     cex = 2.5, adj = c(0,NA), family = "serif")
-text(320, 500, "for moisture content and wood/bark proportion", 
-     cex = 2.5, adj = c(0,NA), family = "serif")
-text(480, 570, bquote({"Roots (cross cuts \U2205" >= "10 mm; 10 mm > \U2205"} >= "2 mm;"),
-     cex = 2.5, adj = c(0,NA), family = "serif")
-text(480, 600, bquote("2 mm >" ~ "\U2205): weighed and sample taken by"),
-     cex = 2.5, adj = c(0,NA), family = "serif")
-text(480, 630, bquote("cross-cutting for moisture content"),
-     cex = 2.5, adj = c(0,NA), family = "serif")
-
-dev.off()
+## Image based solution --- NOT USED VECTOR FAVORED 
+# compart   <- magick::image_read(paste0(fig_path, "/comparts.pdf")) 
+# 
+# comparts_all <- image_blank(width = 1200, height = 700, color = 'white') %>%
+#   image_composite(
+#     composite_image = image_scale(compart, paste0("x", img_size$height)), 
+#     gravity = "southwest", 
+#     offset = "+20+20") %>%
+#   image_draw()
+# text(400, 200, "Leaves: total weight and sample taken for
+# moisture content", cex = 2.5, adj = c(0,NA), family = "serif")
+# text(370, 320, bquote({"Branches (cross cuts \U2205" >= "20 cm; 20 cm > \U2205"} >= "7 cm;"),
+#      cex = 2.5, adj = c(0,NA), family = "serif")
+# text(370, 350, bquote("7 cm  > \U2205" >= "4 cm; 4 cm > \U2205): weighed and sample taken of"),
+#      cex = 2.5, adj = c(0,NA), family = "serif")
+# text(370, 380, bquote("cross cuts for moisture content"),
+#      cex = 2.5, adj = c(0,NA), family = "serif")
+# text(320, 470, "Trunk (wood and bark): logs weighed and disks cut every 2 m ",
+#      cex = 2.5, adj = c(0,NA), family = "serif")
+# text(320, 500, "for moisture content and wood/bark proportion", 
+#      cex = 2.5, adj = c(0,NA), family = "serif")
+# text(480, 570, bquote({"Roots (cross cuts \U2205" >= "10 mm; 10 mm > \U2205"} >= "2 mm;"),
+#      cex = 2.5, adj = c(0,NA), family = "serif")
+# text(480, 600, bquote("2 mm >" ~ "\U2205): weighed and sample taken by"),
+#      cex = 2.5, adj = c(0,NA), family = "serif")
+# text(480, 630, bquote("cross-cutting for moisture content"),
+#      cex = 2.5, adj = c(0,NA), family = "serif")
+# 
+# dev.off()
 
 
 ## For Vector images:

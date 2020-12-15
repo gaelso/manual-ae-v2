@@ -15,39 +15,10 @@ The sampling method depends on the goal. Therefore, in principle, the question m
 
 ```{r cha, out.width='100%', fig.cap="Chain running from the studied stand to the variables we are looking to predict."}
 
-
-grViz("digraph cha {
+knitr::include_graphics(paste0(fig_path, "/cha.pdf"))
   
-  splines = false
-  graph [layout = dot, rankdir = LR]
-  
-  ## Add node statements
-  node [shape = plaintext]
-  A[label = 'Stand \nstudied', fontsize = 40]
-  B[label = 'Trees \nmeasured', fontsize = 40]
-  C[label = Model,  fontsize = 40]
-  D1[label = 'Volume of an \nindividual tree', fontsize = 40]
-  D2[label = 'Mean tree volume', fontsize = 40]
-  D3[label = 'Volume of the \nstudied stand', fontsize = 40]
-  D4[label = 'Volume of \nanother stand', fontsize = 40]
-  
-  ## Add edge statements
-  A -> B [label = 'sampling', fontsize = 28]
-  A -> B [label = 'plan', fontsize = 28]
-  B -> C [label = 'model', fontsize = 28]
-  B -> C [label = 'construction', fontsize = 28]
-  C -> D1 [label = 'prediction', fontsize = 28]
-  C -> D2
-  C -> D3
-  C -> D4 [label = '', fontsize = 28]
-  C -> D4 [label = 'extrapolation', fontsize = 28]
-  
-  }",
-)
-
-"https://github.com/rich-iannone/DiagrammeR/issues/133"
-
 ```
+
 
 By following this chain backward, it can be seen that the precision of the predicted variable depends on the precision of the tables' parameters, which itself depends on the sampling plan (number and selection of trees measured) and the variability within the studied stand [@cunia87c]. We can therefore set a target for the precision of our predictions which, by a retroactive effect for a given table and a given sampling type, determines the minimum number of trees to be measured. We can also apply an optimization procedure to determine, for a given target precision and a given table, the sampling method that minimizes measurement time or cost [@cunia87; @cunia87d]. In certain cases the cost of the measurements is the limiting factor. This in particular is the case for biomass measurements of root systems. Here in this case we are not looking so much to reach a given target precision in our prediction but to remain within reasonable cost limits. We can therefore, for a given measurement cost and a given type of table, determine the sampling plan that maximizes the precision of our predictions.
 

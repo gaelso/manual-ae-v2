@@ -27,7 +27,7 @@ grid.text(label = "Trunk (wood and bark): logs weighed and disks cut every 2 m",
 grid.text(label = "for moisture content and wood/bark proportion",
           x = 0.32, y = 0.31, just = 0)
 grid.text(label = "Roots (cross cuts $\\varnothing\\geq$ 10 mm; 10 mm $>\\varnothing\\geq$ 2 mm;",
-          x = 0.38, y = 0.2, just = 0)
+          x = 0.48, y = 0.2, just = 0)
 grid.text(label = "2 mm $>\\varnothing$): weighed and sample taken by",
           x = 0.48, y = 0.16, just = 0)
 grid.text(label = "cross-cutting for moisture content",
@@ -40,5 +40,62 @@ Full advantage may be made of existing felling operations to sample the trees ne
 Therefore, in the field, there is no standard method as operators must adapt to each situation. But, here in this guide, we will nevertheless describe three typical cases that can be employed subsequently as the basis for conducting any type of field campaign. The first concerns regular forest (derived from regeneration or planted), the second dry forest and the third wet tropical forest. In the first case, all the compartments are weighed directly in the field. In the second, as the trees cannot be felled, the measurements made are semi-destructive. The third case concerns trees that are too large to be weighed in their entirety in the field. Measurements are therefore obtained in three phases: in the field, in the laboratory, then by computation. As the field measurements and computations are specific to each method, they are presented for each individual case. The laboratory procedures are generally the same in all cases.
 
 
+## Weighing all compartments directly in the field {#pese}
+
+The first case we will tackle is the most common and involves directly weighing all the compartments in the field. The operating procedure suggested is the fruit of several field campaigns conducted both in temperate and tropical climates. We will illustrate the case by examples taken from a variety of regular stands: plantations of eucalyptus in Congo [@saintandre05], rubber tree in Thailand, and high forests of beech and oak in France [@genet11]. An example of this methodology, with additional measurements on the tapering of large branches, and sampling for nutrient content, is given by @rivoire09.
 
 
+### In the field
+
+Logging is a complex business and must be smoothly organized such that all the various teams are always working, with no slack periods (see \@ref(fig:equip) for details on these teams). It must be prepared in advance by the logging manager who preselects the trees and marks them in the forest. This is followed by laboratory work to (*i*) prepare the necessary materials (see \@ref(fig:matos) for details), (*ii*) prepare data record forms (weights of the different compartments, connected measurements), (*iii*) prepare bags to receive the aliquots taken from the trees (see \@ref(fig:compart)), (*iv*) explain to the different operators how logging is organized so that all know what to do in the field. Figure \@ref(fig:post) illustrates an effective organization for a biomass campaign, with seven operations being undertaken at the same time.
+
+```{r post, out.width='100%', fig.scap="Organization of a biomass measurement site with 7 different operations", fig.cap="(ref:post)"}
+
+knitr::include_graphics(paste0(fig_path, "/postes.pdf"))
+
+```
+
+Given that limbing time is the longest, it may be useful to start with a large tree (photo \@ref(fig:arriv)). The site manager accompanies the loggers and places the sample bags at the base of the tree (operation 1). Bag size must be suitable for the size of the sample to be taken. The bags must systematically be labeled with information on compartment, tree and plot. After felling, the first team to intervene is that which measures stem profile (operation 2). Once this team has finished, it moves on to the second tree that the loggers have felled in the meantime while the limbing teams start work on the first tree (operation 3). A 12-tonne tree (about 90--100 cm in diameter) takes about half a day to process in this way. By the time limbing has been completed on the first tree, the loggers have had time to fell sufficient trees in advance to keep the profiles team busy for the rest of the day. The loggers can now return to the first tree for cross-cutting into logs, and to cut disks (operation 4). Once the cross-cutting and disk cutting has been completed on the first tree, the loggers can move on to the second tree that in the meantime has been limbed. The leaves, logs and branches from the first tree can now be weighed (operation 5) while the site manager takes samples of leaves and branches (operation 6). All the samples, including the disks, must be carried to the sample weighing area (operation 7). Once the stem profiling team has finished all the trees for the day, it can come to this area to complete the weighing operations.
+
+```{r arriv, out.width='100%', fig.scap="Measurement campaign in a high forest coppice in France", fig.cap="(ref:arriv)"}
+
+arriv
+
+```
+
+This chronological process is valid under temperate climatic conditions. In the tropics, it is impossible to wait for the end of the day before weighing the samples. The samples taken must therefore be weighed at the same time as the logs and brushwood. If the samples cannot be weighed *in situ*, they must be weighed in the laboratory, but in this case they must be shipped in a tightly sealed box to reduce evaporation of the water they contain. This should be considered as a last resort since weighing in the field is more reliable.
+
+
+#### Felling (operation 1)
+
+The logger prepares the tree selected while the technicians cut any small stems that may hinder the tree's fall and clear the area. A tarpaulin may be spread on the ground so as not to lose any leaves when felling (photo \@ref(fig:congo)). As the tree's fall may bring down branches from other crowns, the technicians separate these from those of the selected tree.
+
+```{r congo, out.width='100%', fig.scap="Biomass campaign in a eucalyptus plantation in Congo", fig.cap="(ref:congo)"}
+
+congo
+
+```
+
+
+#### Measuring the tree (operation 2)
+
+Stem profiles are then measured (photo \@ref(fig:gha)). As the trunk is never cut at ground level, it is vital to mark the tree at breast height (1.30 m) with paint prior to felling, and place the measuring tape's 1.30 m graduation on this mark once the tree has been felled. This avoids any introduction of bias in section location (the shift induced by cutting height). Circumferences are generally measured every meter or, more usefully for constructing stem profile models, by percentage of total height. This latter method, however, is far more difficult to apply in the field. If it is impossible to measure a circumference because the trunk is flat on the ground, use tree calipers to take two diameter measurements, one perpendicular to the other. When moving up the trunk, the cross-cutting points agreed with the forest management organization (or timber buyer) should be marked on the trunk with paint or a logger's mark.
+
+If the tree is straight and has a clearly identified main stem, there is no need to choose a principal axis. But if the stem is very twisted or branched (crown of hardwoods), the principal axis needs to be identified. This should then be marked, for instance with paint. The principal axis differs from the others by having the largest diameter at each fork in the trunk. All branched axes on the main stem are considered to be branches. It is possible, in the case of multistemmed trees, either to include each stem in the principal stem (photo \@ref(fig:thai)), or consider each stem as an individual and in this case trace the principal axis on each.
+
+```{r gha, out.width='100%', fig.scap="Biomass campaign in Ghana in a teak high forest and in France in a high forest coppice", fig.cap="(ref:gha)"}
+
+gha
+
+```
+
+```{r thai, out.width='100%', fig.scap="Biomass campaign in rubber tree plantations in Thailand", fig.cap="(ref:thai)"}
+
+thai
+
+```
+
+The length of the trunk and the position of the last live branch and major forks must then be determined. Various heights can be measured on the felled tree, for example: height at the small end $<1$ cm, height at cross-cut diameter 4 cm, and height at cross-cut diameter 7 cm. The measurements made on the felled tree can then be compared with those made in standing trees during forest inventories. This checks dataset consistency and can be used to correct aberrant data, though differences may of course arise from the imprecision of pre-felling height measurements (generally 1 m), or from stem sinuosity or breakages when measuring post-felling lengths.
+
+
+#### Cross-cutting (operations 3 and 4)
