@@ -18,7 +18,7 @@ cha <- grViz("digraph cha {
   B[label = 'Trees \nmeasured']
   C[label = Model]
   D1[label = 'Volume of an \nindividual tree']
-  D2[label = 'Mean tree volume']
+  D2[label = 'Mean tree \nvolume']
   D3[label = 'Volume of the \nstudied stand']
   D4[label = 'Volume of \nanother stand']
   
@@ -28,11 +28,11 @@ cha <- grViz("digraph cha {
   A -> B [label = 'plan']
   B -> C [label = 'model']
   B -> C [label = 'construction']
-  C -> D1 [label = 'prediction']
-  C -> D2
-  C -> D3
-  C -> D4 [label = '']
-  C -> D4 [label = 'extrapolation']
+  C:e -> D1:w [label = 'prediction']
+  C:e -> D2:w
+  C:e -> D3:w
+  C:e -> D4:w [label = '']
+  C:e -> D4:w [label = 'extrapolation  ']
   
   }",
 )
