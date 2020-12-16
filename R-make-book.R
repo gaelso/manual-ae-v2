@@ -6,10 +6,16 @@
 ## This script sources R scripts and makes the report with bookdown::render_book()
 ## ++++++
 
-## Figures settings 
-img_size <- list(height = 600, width = 1200)
+## Figures settings
+img_hires <- list(height = 2500, width = 4000, density = "300x300")
+img_lowres <- list(height = 600, width = 1200, density = "72x72")
+
+img_res <- "low" ## Choose "hi" for high resolution 
+
+img_size <- if (img_res == "low") img_lowres else img_hires
+img_path <- ifelse(img_res == "low", "source/photo_lowres", "source/photo_hires")
+
 fig_path <- "source/figures"
-img_path <- "source/photo_lowres"
 
 ## Source R scripts
 source("R/00-libs.R")
