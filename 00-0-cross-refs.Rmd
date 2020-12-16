@@ -40,6 +40,12 @@
 
 (ref:mlab) Laboratory measurements: (A) debarking, (B) weighing the wood, (C) weighing the bark (photos: L. Saint-Andr�), (D) oven-drying samples, (E) regular weighing to constant weight (photos: M. Henry).
 
+(ref:ka) Trimming shea trees (*Vitellaria paradoxa*) in north Cameroon (photo: R. Peltier).
+
+(ref:emond) Determination of total fresh biomass. (A) Separation and measurement of trimmed and untrimmed biomass, (B) numbering of the sections and branches measured on a trimmed tree.
+
+
+
 <!-------------------->
 <!-- Table captions --> 
 <!-------------------->

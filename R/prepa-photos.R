@@ -121,3 +121,13 @@ mlab2 <- c(photo_list$ghana3, photo_list$ghana4) %>%
 mlab <- c(mlab1, mlab2) %>%
   magick::image_append(stack = TRUE)
 mlab
+
+## ka
+ka <- c(photo_list$cameroun1, photo_list$cameroun2) %>%
+  image_scale(paste0("x", img_size$height)) %>%
+  image_border("black", "2x2") %>%
+  image_border("white", "5x5") %>%
+  image_append()
+ka  
+  
+  

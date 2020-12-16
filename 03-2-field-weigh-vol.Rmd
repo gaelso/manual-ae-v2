@@ -1,0 +1,64 @@
+
+
+## Direct weighing for certain compartments and volume and density measurements for others
+
+The second case we consider here is that where felling constraints mean that only semi-destructive measurements are taken. These combine direct measurements for certain parts of the tree, and volume and density measurements for the others. We will illustrate this by developing an allometric equation for the dry northern forests of Cameroon. The biomass of dry forests is particularly difficult to determine given the architectural complexity of the trees they contain. Human intervention is also particularly significant in dry areas because of the rarity of forest resources and the magnitude of the demand for bioenergy. This is reflected by the trimming, pruning and maintenance practices often employed for trees located in deciduous forests, agro-forest parks and hedges (photo \@ref(fig:ka)).
+
+```{r ka, out.width='100%', fig.scap="Trimming shea trees (*Vitellaria paradoxa*) in north Cameroon", fig.cap="(ref:ka)"}
+
+ka
+
+```
+
+The trees in most dry areas are protected as this woody resource regenerates particularly slowly and is endangered by human activities. Biomass measurements are therefore non-destructive and take full advantage of this trimming to measure the biomass of the trimmed compartments. Grazing activities limit regeneration and small trees are often few in number. This part of the guide will therefore consider only mature trees.
+
+
+### In the field: case of semi-destructive measurements
+
+Generally, the trunk and the large branches are not trimmed; only the small branches are affected. The measurement of fresh biomass (in kg) may be divided into two parts: measuring trimmed fresh biomass and measuring untrimmed fresh biomass (Figure \@ref(fig:emond)A).
+
+
+```{r emond, fig.align='center', fig.cap="(ref:emond)", fig.process=pdf2png, fig.scap="Determination of total fresh biomass", cache=TRUE, dev='tikz', out.width='100%'}
+
+#invisible(plot.new())
+grid.arrange(
+  white_space, 
+  pictureGrob(emonde1), 
+  rasterGrob(emonde2, x = 0.5, y = 0.5, w = 0.7), 
+  ncol = 3, widths = unit(c(6,7,7), "cm"), heights = unit(8, "cm") 
+  )
+grid.text("Fresh biomass of small untrimmed",
+          x = 0.01, y = 0.8, just = 'left')
+grid.text("branches calculated from their basal",
+          x = 0.01, y = 0.76, just = 'left')
+grid.text("circumference and a biomass table",
+          x = 0.01, y = 0.72, just = 'left')
+
+grid.text("Fresh biomass of large untrimmed",
+          x = 0.01, y = 0.56, just = 'left')
+grid.text("branches and trunk, calculated from",
+          x = 0.01, y = 0.52, just = 'left')
+grid.text("volume and density measurements.",
+          x = 0.01, y = 0.48, just = 'left')
+grid.text("Hypotheses: the sections cut are",
+          x = 0.01, y = 0.44, just = 'left')
+grid.text("considered to be cylinders and density",
+          x = 0.01, y = 0.4, just = 'left')
+grid.text("is considered to be the same in all the",
+          x = 0.01, y = 0.36, just = 'left')
+grid.text("compartments of the tree",
+          x = 0.01, y = 0.32, just = 'left')
+
+grid.text("Fresh biomass of the trimmed",
+          x = 0.01, y = 0.2, just = 'left')
+grid.text("branches, measured by weighing",
+          x = 0.01, y = 0.16, just = 'left')
+
+
+```
+
+
+
+
+
+

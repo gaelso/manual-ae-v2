@@ -112,7 +112,7 @@ Let us now examine the case where we are looking to optimize the sampling plan i
 
 ```{r plan, dev='tikz', cache=TRUE, fig.process = pdf2png, fig.align='center', out.width='100%', fig.scap="Sampling plan optimizing volume prediction precision for a particular tree", fig.cap="(ref:plan)"}
 
-plot.new()
+invisible(plot.new())
 grid.raster(plan)
 grid.text("$n/2$ trees", x = 0.15, y = 0.47)
 grid.text("Volume?"    , x = 0.38, y = 0.53)
