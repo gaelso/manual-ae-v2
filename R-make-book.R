@@ -10,7 +10,7 @@
 img_hires <- list(height = 2500, width = 4000, density = "300x300")
 img_lowres <- list(height = 600, width = 1200, density = "72x72")
 
-img_res <- "low" ## Choose "hi" for high resolution 
+img_res <- "low" ## Choose "hi" for high resolution !!! hires not supported yet !!!
 
 img_size <- if (img_res == "low") img_lowres else img_hires
 img_path <- ifelse(img_res == "low", "source/photo_lowres", "source/photo_hires")

@@ -34,6 +34,12 @@
 
 (ref:thai) Biomass campaign in rubber tree plantations in Thailand. Left, a multistemmed felled tree (3 stems on the same stump): limbing and stripping of the leaves. Right, leaves mixed together prior to aliquoting (photos: L. Saint-André).
 
+(ref:chen) Biomass campaign in an oak grove. Left, disks taken and placed in large bags for transfer to the samples weighing area; middle, samples weighing area; right, digger used to weigh logs (photos: C. Nys).
+
+(ref:mop) Weighing procedure for samples on arrival at the laboratory.
+
+(ref:mlab) Laboratory measurements: (A) debarking, (B) weighing the wood, (C) weighing the bark (photos: L. Saint-Andr�), (D) oven-drying samples, (E) regular weighing to constant weight (photos: M. Henry).
+
 <!-------------------->
 <!-- Table captions --> 
 <!-------------------->

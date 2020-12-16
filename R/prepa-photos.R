@@ -64,7 +64,7 @@ mix
 
 ## arriv
 arriv <- c(photo_list$arrivee2, photo_list$arrivee1) %>%
-  image_scale(paste0(img_size$width, "x")) %>%
+  image_scale(paste0(img_size$width/2, "x")) %>%
   image_border("black", "2x2") %>% 
   image_border("white", "5x5") %>%
   magick::image_append()
@@ -82,7 +82,7 @@ congo
 
 ## gha
 gha <- c(photo_list$profil1, photo_list$profil2) %>%
-  image_scale(paste0(img_size$width, "x")) %>%
+  image_scale(paste0(img_size$width/2, "x")) %>%
   image_border("black", "2x2") %>% 
   image_border("white", "5x5") %>%
   magick::image_append()
@@ -97,6 +97,27 @@ thai <- c(photo_list$thailand1, photo_list$thailand2) %>%
   image_append()
 thai
 
+## chen
+chen <- c(photo_list$rond1, photo_list$rond2, photo_list$rond3) %>%
+  image_scale(paste0(img_size$width/3, "x")) %>%
+  image_border("black", "2x2") %>% 
+  image_border("white", "5x5") %>%
+  magick::image_append()
+chen
 
+## mlab
+mlab1 <- c(photo_list$ecorce1, photo_list$ecorce2, photo_list$ecorce3) %>%
+  image_scale(paste0(img_size$width/3, "x")) %>%
+  image_border("black", "2x2") %>% 
+  image_border("white", "4x5") %>%
+  magick::image_append()
 
+mlab2 <- c(photo_list$ghana3, photo_list$ghana4) %>%
+  image_scale(paste0(img_size$width/2, "x")) %>%
+  image_border("black", "2x2") %>% 
+  image_border("white", "7x5") %>%
+  magick::image_append()
 
+mlab <- c(mlab1, mlab2) %>%
+  magick::image_append(stack = TRUE)
+mlab

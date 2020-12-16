@@ -55,7 +55,7 @@ knitr::include_graphics(paste0(fig_path, "/postes.pdf"))
 
 ```
 
-Given that limbing time is the longest, it may be useful to start with a large tree (photo \@ref(fig:arriv)). The site manager accompanies the loggers and places the sample bags at the base of the tree (operation 1). Bag size must be suitable for the size of the sample to be taken. The bags must systematically be labeled with information on compartment, tree and plot. After felling, the first team to intervene is that which measures stem profile (operation 2). Once this team has finished, it moves on to the second tree that the loggers have felled in the meantime while the limbing teams start work on the first tree (operation 3). A 12-tonne tree (about 90--100 cm in diameter) takes about half a day to process in this way. By the time limbing has been completed on the first tree, the loggers have had time to fell sufficient trees in advance to keep the profiles team busy for the rest of the day. The loggers can now return to the first tree for cross-cutting into logs, and to cut disks (operation 4). Once the cross-cutting and disk cutting has been completed on the first tree, the loggers can move on to the second tree that in the meantime has been limbed. The leaves, logs and branches from the first tree can now be weighed (operation 5) while the site manager takes samples of leaves and branches (operation 6). All the samples, including the disks, must be carried to the sample weighing area (operation 7). Once the stem profiling team has finished all the trees for the day, it can come to this area to complete the weighing operations.
+Given that limbing time is the longest, it may be useful to start with a large tree (photo \@ref(fig:arriv)). The site manager accompanies the loggers and places the sample bags at the base of the tree (operation 1). Bag size must be suitable for the size of the sample to be taken. The bags must systematically be labeled with information on compartment, tree and plot. After felling, the first team to intervene is that which measures stem profile (operation 2). Once this team has finished, it moves on to the second tree that the loggers have felled in the meantime while the limbing teams start work on the first tree (operation 3). A 12-tonne tree (about 90--100\ cm in diameter) takes about half a day to process in this way. By the time limbing has been completed on the first tree, the loggers have had time to fell sufficient trees in advance to keep the profiles team busy for the rest of the day. The loggers can now return to the first tree for cross-cutting into logs, and to cut disks (operation 4). Once the cross-cutting and disk cutting has been completed on the first tree, the loggers can move on to the second tree that in the meantime has been limbed. The leaves, logs and branches from the first tree can now be weighed (operation 5) while the site manager takes samples of leaves and branches (operation 6). All the samples, including the disks, must be carried to the sample weighing area (operation 7). Once the stem profiling team has finished all the trees for the day, it can come to this area to complete the weighing operations.
 
 ```{r arriv, out.width='100%', fig.scap="Measurement campaign in a high forest coppice in France", fig.cap="(ref:arriv)"}
 
@@ -95,9 +95,183 @@ thai
 
 ```
 
-The length of the trunk and the position of the last live branch and major forks must then be determined. Various heights can be measured on the felled tree, for example: height at the small end $<1$ cm, height at cross-cut diameter 4 cm, and height at cross-cut diameter 7 cm. The measurements made on the felled tree can then be compared with those made in standing trees during forest inventories. This checks dataset consistency and can be used to correct aberrant data, though differences may of course arise from the imprecision of pre-felling height measurements (generally 1 m), or from stem sinuosity or breakages when measuring post-felling lengths.
+The length of the trunk and the position of the last live branch and major forks must then be determined. Various heights can be measured on the felled tree, for example: height at the small end $<1$\ cm, height at cross-cut diameter 4\ cm, and height at cross-cut diameter 7\ cm. The measurements made on the felled tree can then be compared with those made in standing trees during forest inventories. This checks dataset consistency and can be used to correct aberrant data, though differences may of course arise from the imprecision of pre-felling height measurements (generally 1 m), or from stem sinuosity or breakages when measuring post-felling lengths.
 
 
 #### Cross-cutting (operations 3 and 4) {-}
 
+Ideally, the tree should be cut into 2 m logs to take account of wood density and moisture content variations in the stem. Once the tree has been prepared, the branches (and if necessary the leaves) must be separated from the trunk. The branches should then be cut to prepare bundles by small end class. When dealing with a stand of temperate hardwoods, the stem is generally cut into diameter classes of $>20$\ cm, 20--7\ cm, 7--4\ cm, $<4$\ cm. For eucalyptus in the DR of Congo, the branches were split into two groups: $<2$\ cm and $>2$\ cm. Branch bundles were prepared on an iron frame with two pieces of strong string (see \@ref(fig:matos) and photo \@ref(fig:cad)). If the branches bear leaves, these leaves should be stripped off the twigs. Tarpaulins should be used in this case to avoid losing any leaves. If the leaves are difficult to remove from the woody axes (e.g. holm oak or softwoods), a subsampling strategy should be adopted (see the example below for Cameroon). The leaves are placed in large plastic bags for weighing. Limbing and leaf stripping take time, and sufficient human resources (number of teams) should be allocated so as not to slow the loggers in their work. The limbs of the tree are often large in diameter ($>20$\ cm) and should be processed in the same manner as for the trunk, by cross-cutting into logs and disks.
 
+This cross-cutting should take place once the limbs have been separated from the main trunk. A disk about 3--5\ cm thick should be taken from the stump, then every $x$ meters (photo \@ref(fig:chen)). Log length $x$ depends on the dimensions of the tree and the agreements established with the body in charge of the forest or the timber company. As this field work is tedious and time-consuming, full advantage should be made of this time spent in the field to take multiple samples [e.g. an extra disk for more detailed measurements of wood density or nutrient content --- see for instance @saintandre02, for nutrient concentrations in the stems of eucalyptus]. It is important to indicate the position of each disk taken. These disks must be weighed *in situ* on the day the tree was processed to reduce moisture losses (this operation requires work by two people --- generally the stem profiling team performs this task by taking a break from its work a little earlier to weigh the disks, see \@ref(fig:post)).
+
+
+#### Weighing logs and brushwood bundles (operation 5) {-}
+
+The logs and bundles produced are weighed in the field (photo \@ref(fig:chen)) and within a short timeframe to ensure that the measurements for a given tree were taken under the same relative humidity conditions. The most practical approach here is to use hanging scales attached to a digger. The bundles are attached to the scales and fresh weight measured. The string and the tarpaulin can then be recovered for reuse.
+
+```{r chen, out.width='100%', fig.scap="Biomass campaign in an oak grove", fig.cap="(ref:chen)"}
+
+chen
+
+```
+
+
+#### Taking aliquots (operations 6 and 7) {-}
+
+Once the bundles have been weighed, aliquots are taken from each to estimate branch moisture content. Samples of different diameters should be taken from different branches to be representative of the architecture of a standard branch: sampling a single branch could lead to bias if it is more wet or dry than the others. The branches should be split into four diameter groups (class 1: $0<\varnothing\leq4$\ cm, class 2: $4<\varnothing\leq7$\ cm, class 3: $7<\varnothing\leq20$\ cm, and class 4: $\varnothing>20$\ cm). Samples about 10\ cm long should be taken of the class 1 branches. A similar principle applies for the other branches, but as they are larger in diameter, disks are taken instead of pieces 10\ cm long. About 9, 6 and 3 disks should be taken for classes 2, 3 and 4, respectively. These figures are only a rough guide but are nevertheless derived from a number of different campaigns conducted in different ecosystems. These aliquots are then placed in specially prepared paper bags (previously placed at the foot of the tree, see the first step). These paper bags are then placed in a plastic bag for a given tree to ensure that there is no mix up of samples between trees.
+
+To avoid sampling bias, the same person must take all the samples and work in a systematic manner that is representative of the variability in each branch size class. To minimize bias when measuring moisture content, all the samples should be taken to the weighing area (same place as the disks) and should be weighed in their paper bag before being processed in the laboratory. Although it is best to weigh the samples in the field, if this proves impossible then any loss of moisture should be avoided. For instance the use of a cool box is very highly recommended. When sampling leaves, they should first be mixed together and the sample should be taken randomly from the middle of the heap. This mixing-sampling operation should be conducted five or six times for each tree (photo \@ref(fig:thai)). The samples from each tree should then be placed in the same bag (the amount taken should be adapted to leaf size and heterogeneity, and particularly the proportion of green to senescent leaves --- one standard plastic bag is generally perfectly adequate).
+
+
+### In the laboratory {#lab1}
+
+If the trunk disks cannot be measured immediately they should be stocked in the fresh air on wooden battens so that air can circulate freely between them (to avoid mould). They can now be left to dry provided that fresh biomass was measured in the field. But if they were not weighed in the field, they must be weighed immediately on arrival.
+
+For aliquots that were weighed in a bag in the field, the weight of the empty bag must now be determined (if possible measure each bag, or if very damaged, weigh 10 to 20 bags and calculate mean weight). This value should then be deducted from the field measurements. If a fresh bag is used when drying the aliquots, this must bear all the necessary information.
+
+The oven should be set at 70$^{\circ}$C for leaves, flowers and fruits, or at 65$^{\circ}$C if the aliquots are subsequently to undergo chemical analysis. A temperature of 105$^{\circ}$C should be used for biomass determinations, and only for wood. At least three controls should be weighed every day for all sample categories until a constant weight is reached. This avoids withdrawing actual samples from the oven for daily controls. Leaf weight generally stabilizes after two days, and woody structures after about one week depending on the size of the sample.
+
+Figure \@ref(fig:mop) shows the operating procedure to be adopted for measuring the samples taken. Laboratory measurements begin by weighing the wet samples with their bag (measurement checking that made in the field). If the disks are too large, they may be subsampled. In this case it is vital to weight the full disk again, then the sample taken. Moisture lost from the disk between the field and the laboratory should be added to this laboratory measurement after drying the disk sample in the oven. If a great deal of time has elapsed between the field phase and the laboratory phase, and if this step in the protocol is overlooked, this may cause very considerable errors of up to 60 or 70\% in dry biomass estimations. The bark is generally removed using a bark knife or a wood chisel (photo \@ref(fig:mlab) --- placing the disks in a freezer when still wet may facilitate this operation (e.g. for oak). Samples of the bark and wood are then measured and dried in the oven (take care not to place too many bags at once in the oven).
+
+```{r mop, out.width='100%', fig.cap="(ref:mop)"}
+
+knitr::include_graphics(paste0(fig_path, "/modop.pdf"))
+
+```
+
+```{r mlab, out.width='100%', fig.scap="Laboratory measurements: debarking, weighing, oven-drying", fig.cap="(ref:mlab)"}
+
+mlab
+
+```
+
+
+### Calculations
+
+#### Calculating the biomass of the trunk {-}
+
+For each log $i$, measure the circumference at the two extremities: circumference $C_{1i}$ at the small end is the circumference of the disk taken at the small end and circumference $C_{2i}$ at the large end is the circumference of the disk taken at the large end. This can be employed to calculate the volume of the fresh log using the truncated cone volume formula (or Newton's formula):
+
+\begin{equation}
+V_{\text{fresh},i}=L_i\times\frac{\pi}{3}\times(R_{1i}^2+R_{1i}R_{2i}
++R_{2i}^2)(\#eq:cone)
+\end{equation}
+
+where $L_i$ is the length of log $i$, and $R_{1i}=C_{1i}/(2\pi)$
+and $R_{2i}=C_{2i}/(2\pi)$ are the radii of log $i$ at its two extremities. This volume may be measured with bark (circumferences being measured in the field) or without bark (circumferences being measured on the disks after debarking in the laboratory). Fresh volume with bark is widely employed when selling timber whereas the second measurement is used to check data consistency for it is used to calculate wood density in the tree.
+
+It should be noted that other formulas are also used to calculate the volume of a log. That most commonly used is Huber's formula (based on circumference measured in the middle of the log) and Smalian's formula (based on the quadratic mean of the circumferences measured at the top and bottom of the log). But if the logs are short (1 or 2 m), their shape is little different from that of a cone, with very little tapering, and the difference between the formulas is very slight.
+
+Also, for each sample taken of log $i$ we calculate:
+
+- the proportion of fresh biomass in the wood (without the bark):
+
+\[
+\omega_{\text{fresh wood},i}=\frac{B^{\text{aliquot}}_{\text{frresh wood},i}}{B^{\text{aliquot}}_{\text{fresh wood},i}+B^{\text{aliquot}}_{\text{fresh bark},i}}
+\]
+
+where $B^{\text{aliquot}}_{\text{fresh wood},i}$ is the fresh biomass of the wood (without the bark) in the sample of log $i$, and $B^{\text{aliquot}}_{\text{fresh bark},i}$ is the fresh biomass of the bark in the sample of log $i$;
+
+- the moisture content of the wood (without the bark):
+
+\begin{equation}
+\chi_{\text{wood},i}=\frac{B^{\text{aliquot}}_{\text{dry wood},i}}{B^{\text{aliquot}}_{\text{fresh wood},i}}(\#eq:qbois)
+\end{equation}
+
+where $B^{\text{aliquot}}_{\text{dry wood},i}$ is the oven-dried biomass of the wood (without the bark) in the sample of log $i$;
+
+- the proportion of fresh biomass in the bark:
+
+\[
+\omega_{\text{fresh bark},i}=1-\omega_{\text{fresh wood},i}
+\]
+
+- the moisture content of the bark:
+
+\[
+\chi_{\text{bark},i}=\frac{B^{\text{aliquot}}_{\text{dry bark},i}}{B^{\text{aliquot}}_{\text{fresh bark},i}}
+\]
+
+where $B^{\text{aliquot}}_{\text{dry bark},i}$ is the oven-dried biomass of the bark in the sample of log $i$.
+
+We then extrapolate the values obtained for the sample of log $i$ to the whole of log $i$ by rules of three:
+
+- the oven-dried biomass of the wood (without the bark) in log $i$ is:
+
+\[
+B_{\text{dry wood},i}=B_{\text{fresh},i}\times \omega_{\text{fresh wood},i}\times\chi_{\text{wood},i}
+\]
+
+where $B_{\text{fresh},i}$ is the fresh biomass (including the bark) of log $i$;
+
+- the oven-dried biomass of the bark in log $i$ is:
+
+\[
+B_{\text{dry bark},i}=B_{\text{fresh},i}\times
+\omega_{\text{fresh bark},i}\times\chi_{\text{bark},i}
+\]
+
+- the density of the wood in log $i$ is:
+
+\[
+\rho_i=\frac{B_{\text{dry wood},i}}{V_{\text{fresh},i}}
+\]
+
+where $V_{\text{fresh},i}$ is the fresh volume (without the bark) given by equation (\@ref(eq:cone)).
+
+The weights of all the logs should then be summed to obtain the dry weight of the trunk:
+
+- the dry biomass of the wood (without the bark) in the trunk is:
+
+\[
+B_{\text{trunk dry wood}}=\sum_iB_{\text{dry wood},i}
+\]
+
+where the sum concerns all logs $i$ that make up the trunk;
+
+- the dry biomass of the bark in the trunk is:
+
+\[
+B_{\text{trunk dry bark}}=\sum_iB_{\text{dry bark},i}
+\]
+
+The wood density $\rho_i$ used in the calculation of dry biomass must be the oven-dry wood density, i.e. the ratio of dry biomass (dried in the oven to constant dry weight) to the volume of fresh wood. Care should be taken not to confuse this wood density value with that calculated using the same moisture content for the mass and the volume (i.e. dry mass over dry volume or fresh mass over fresh volume). The @afnor85 standard, however, defines wood density differently, as the ratio of the biomass of the wood dried in the fresh air to the volume of the wood containing 12\ \% water [@fournier98c]. But the oven-dry wood density can be calculated from the density of wood containing 12\ \% water using the expression [@gourlet11]:
+
+\[
+\rho_{\chi}=\frac{\rho\ (1+\chi)}{1-\eta\ (\chi_0-\chi)}
+\]
+
+where $\rho_{\chi}$ is the ratio of the biomass of the wood dried in the fresh air to the volume of the wood containing $\chi$\ \% water (in g\ cm^-3^),
+$\rho$ is the ratio of the oven-dry wood density to the fresh volume of the wood (in g\ cm^-3^), $\eta$ is the volumetric shrinkage coefficient (figure without dimensions) and $\chi_0$ is the fibers saturation point. The coefficients $\eta$ and $\chi_0$ vary from one species to another and require information on the technological properties of the species' wood. Also, using findings for $\rho$ and $\rho_{12\%}$ in 379 trees, @reyes92 established an empirical relationship between oven-dry density $\rho$ and density with 12\ \% water $\rho_{12\%}$: $\rho=0.0134+0.800\rho_{12\%}$ with a determination coefficient of $R^2=0.988$.
+
+
+#### Calculating the biomass of the leaves {-}
+
+For each sample $i$ of leaves taken, calculate the moisture content:
+
+\[
+\chi_{\text{leaf},i}=\frac{B^{\text{aliquot}}_{\text{dry leaf},i}}{B^{\text{aliquot}}_{\text{fresh leaf},i}}
+\]
+
+where $B^{\text{aliquot}}_{\text{dry leaf},i}$ is the oven-dry biomass of the leaves in sample $i$, and $B^{\text{aliquot}}_{\text{fresh leaf},i}$ is the fresh biomass of the leaves in sample $i$. We then, by a rule of three, extrapolate sample $i$ to compartment $i$ from which this sample was drawn:
+
+\[
+B_{\text{dry leaf},i}=B_{\text{fresh leaf},i}\times
+\chi_{\text{leaf},i}
+\]
+
+where $B_{\text{dry leaf},i}$ is the (calculated) dry biomass of the leaves in compartment $i$, and $B_{\text{fresh leaf},i}$ is the (measured) fresh biomass of the leaves in compartment $i$. Often the entire crown corresponds to a single compartment. But if the crown has been compartmentalized (e.g. by successive tiers), the total dry weight of the leaves is obtained by adding together all compartments $i$:
+
+\[
+B_{\text{dry leaf}}=\sum_i B_{\text{dry leaf},i}
+\]
+
+
+#### Calculating the biomass of the branches {-}
+
+If the branches are very large (e.g. $>20$\ cm in diameter), proceed as for the trunk, and for the brushwood proceed as for the leaves.
+
+
+#### Calculating the biomass of fruits, flowers {-}
+
+The method is identical to that used for the leaves.
