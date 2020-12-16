@@ -66,7 +66,7 @@ arriv
 This chronological process is valid under temperate climatic conditions. In the tropics, it is impossible to wait for the end of the day before weighing the samples. The samples taken must therefore be weighed at the same time as the logs and brushwood. If the samples cannot be weighed *in situ*, they must be weighed in the laboratory, but in this case they must be shipped in a tightly sealed box to reduce evaporation of the water they contain. This should be considered as a last resort since weighing in the field is more reliable.
 
 
-#### Felling (operation 1)
+#### Felling (operation 1) {-}
 
 The logger prepares the tree selected while the technicians cut any small stems that may hinder the tree's fall and clear the area. A tarpaulin may be spread on the ground so as not to lose any leaves when felling (photo \@ref(fig:congo)). As the tree's fall may bring down branches from other crowns, the technicians separate these from those of the selected tree.
 
@@ -77,7 +77,7 @@ congo
 ```
 
 
-#### Measuring the tree (operation 2)
+#### Measuring the tree (operation 2) {-}
 
 Stem profiles are then measured (photo \@ref(fig:gha)). As the trunk is never cut at ground level, it is vital to mark the tree at breast height (1.30 m) with paint prior to felling, and place the measuring tape's 1.30 m graduation on this mark once the tree has been felled. This avoids any introduction of bias in section location (the shift induced by cutting height). Circumferences are generally measured every meter or, more usefully for constructing stem profile models, by percentage of total height. This latter method, however, is far more difficult to apply in the field. If it is impossible to measure a circumference because the trunk is flat on the ground, use tree calipers to take two diameter measurements, one perpendicular to the other. When moving up the trunk, the cross-cutting points agreed with the forest management organization (or timber buyer) should be marked on the trunk with paint or a logger's mark.
 
@@ -98,4 +98,6 @@ thai
 The length of the trunk and the position of the last live branch and major forks must then be determined. Various heights can be measured on the felled tree, for example: height at the small end $<1$ cm, height at cross-cut diameter 4 cm, and height at cross-cut diameter 7 cm. The measurements made on the felled tree can then be compared with those made in standing trees during forest inventories. This checks dataset consistency and can be used to correct aberrant data, though differences may of course arise from the imprecision of pre-felling height measurements (generally 1 m), or from stem sinuosity or breakages when measuring post-felling lengths.
 
 
-#### Cross-cutting (operations 3 and 4)
+#### Cross-cutting (operations 3 and 4) {-}
+
+
