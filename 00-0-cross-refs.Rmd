@@ -44,7 +44,7 @@
 
 (ref:emond) Determination of total fresh biomass. (A) Separation and measurement of trimmed and untrimmed biomass, (B) numbering of the sections and branches measured on a trimmed tree.
 
-
+(ref:archim) Measuring sample volume by water displacement.
 
 <!-------------------->
 <!-- Table captions --> 
