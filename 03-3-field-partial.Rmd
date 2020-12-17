@@ -1,0 +1,156 @@
+
+## Partial weighings in the field
+
+The third case we envisage is where the trees are too large to be weighed in their entirety by hand. We will illustrate this by developing an allometric equation to estimate the above-ground biomass of trees in a wet tropical forest based on destructive measurements. The method proposed must suit local circumstances and the resources available. And commercial value and the demand for timber are two other factors that must be taken into account when making measurements in forest concessions.
+
+The trees selected must be felled using suitable practices. Variables such as total height, and height of any buttresses can be determined using a measuring tape. The tree's architecture can then be analyzed (Figure \@ref(fig:arch)). The proposed approach separates trees that can be weighed manually in the field (e.g. trees of diameter $\leq20$\ cm) from those requiring more substantial technical means (trees of diameter $>20$\ cm).
+
+
+### Trees less than 20\ cm in diameter
+
+The approach for trees of diameter $\leq20$\ cm, is similar to that described in the first example (\S\ \@ref(pese)). The branches and the trunk are first separated. The fresh biomass of the trunk ($B_{\text{fresh trunk}}$) and branches ($B_{\text{fresh branch}}$, branch, wood and leaves together) is measured using appropriate scales. When measuring the biomass of the leaves, a limited number of branches should be selected at random for each individual. The leaves and the wood in this sample of branches should then be separated. The fresh biomass of the leaves ($B_{\text{fresh leaf}}^{\text{sample}}$) and the fresh biomass of the wood ($B_{\text{fresh wood}}^{\text{sample}}$) in this sample of branches should then be measured separately using appropriate scales. The foliage proportion of the branches must then be calculated:
+
+\[
+\omega_{\text{leaf}}=\frac{B_{\text{fresh leaf}}^{\text{sample}}}{B_{\text{fresh leaf}}^{\text{sample}}+B_{\text{fresh wood}}^{\text{sample}}}
+\]
+
+The fresh biomass of the leaves ($B_{\text{fresh leaf}}$) and the wood ($B_{\text{fresh wood}}$) in the branches is then calculated based on this mean proportion of leaves:
+
+\begin{eqnarray*}
+B_{\text{fresh leaf}} &=& \omega_{\text{leaf}}\times
+B_{\text{fresh branch}}
+\\ B_{\text{fresh wood}} &=& (1-\omega_{\text{leaf}})\times
+B_{\text{fresh branch}}
+\end{eqnarray*}
+
+Aliquots of leaves and wood are then taken at different points along the branches and along the trunk. The fresh biomass ($B_{\text{fresh leaf}}^{\text{aliquot}}$ and $B_{\text{fresh wood}}^{\text{aliquot}}$) of the aliquots must then be measured using electronic scales in the field. The aliquots must then be taken to the laboratory for drying and weighing in accordance with the same protocol as that described in the first example (\S\ \@ref(lab1)). The oven-dry biomass ($B_{\text{dry leaf}}^{\text{aliquot}}$ and $B_{\text{oven-dry}}^{\text{aliquot}}$) of the aliquots can then be used to calculate the water contents of the leaves and wood:
+
+\[
+\chi_{\text{leaf}}=\frac{B_{\text{dry leaf}}^{\text{aliquot}}}{B_{\text{fresh leaf}}^{\text{aliquot}}},\qquad \chi_{\text{wood}}=\frac{B_{\text{dry wood}}^{\text{aliquot}}}{B_{\text{fresh wood}}^{\text{aliquot}}}
+\]
+
+Finally, the dry biomass of the leaves and wood is obtained from their fresh biomass and water contents calculated in the aliquots. The biomass of the wood is obtained by adding its fresh biomass to that of the branches and the trunk:
+
+\begin{eqnarray*}
+B_{\text{dry leaf}} &=& \chi_{\text{leaf}}\times
+B_{\text{fresh leaf}}\\ B_{\text{dry wood}} &=&
+\chi_{\text{wood}}\times(B_{\text{fresh wood}}+B_{\text{fresh trunk}})
+\end{eqnarray*}
+
+Total dry mass is finally obtained by adding together the dry biomass of the leaves and the dry biomass of the wood:
+
+\[
+B_{\text{dry}}=B_{\text{dry leaf}}+B_{\text{dry wood}}
+\]
+
+
+### Trees more than 20 cm in diameter
+
+If a tree is very large, it possesses a very large quantity of branches and leaves, and it is impractical to separate the branches from the trunk. The alternative method proposed here therefore consists in processing the trunk and large branches (basal diameter more than 10 cm) differently from the small branches (basal diameter less than 10\ cm). Whereas the large branches of basal diameter $>10$\ cm are made up only of wood, the small branches of diameter $\leq10$\ cm may also bear leaves. The large branches of basal diameter $>10$\ cm should be processed in the same manner as the trunk. The first step therefore consists in dividing the branches into sections. Whereas the biomass of the sections of diameter $>10$\ cm may be deduced from their measured volume ($V_{\text{billon},i}$) and mean wood density ($\bar{\rho}$), that of the branches of basal diameter $\leq10$\ cm may be estimated using a regression between their basal diameter and the biomass they carry.
+
+
+#### Measuring the volume of sections of diameter $>10$\ cm (trunk or branch) {-}
+
+Once the trunk and the branches of basal diameter $>10$\ cm have been divided into sections, the volume of each section can be calculated from their length and diameters (or circumferences) at the two extremities ($D_{1i}$ and $D_{2i}$). A fixed length (e.g. two meters) may be used as the length of each section (photo \@ref(fig:ghan)A). A shorter section length than the fixed length must be used in some places where a fork prevents the log from assuming a cylindrical shape. The technician must record the length and diameters of each section before drawing a diagram of the tree's architecture (Figure \@ref(fig:arch)). This diagram is particularly useful for analyzing and interpreting the results.
+
+```{r arch, fig.cap="(ref:arch)"}
+
+knitr::include_graphics(paste0(fig_path, "/architecture.pdf"))
+
+```
+
+Trees of diameter $>20$\ cm often have buttresses. The volume of the buttresses may be estimated by assuming that they correspond in shape to a pyramid, the upper ridge of which is a quarter ellipse [insert to Figure \@ref(fig:arch); @henry10]. For each buttress $j$, we need to measure its height $H_j$, its width $l_j$ and its length $L_j$
+(insert to Figure \@ref(fig:arch)).
+
+Aliquots of wood must then be taken from the different sections of diameter $>10$\ cm (trunk, branches and any buttresses; photo \@ref(fig:ghan)B). These aliquots of fresh wood should be placed in tightly sealed bags and sent to the laboratory. In the laboratory, their volume ($V_{\text{fresh wood}}^{\text{aliquot}}$) should be measured in accordance with the protocol described in section \@ref(lab2). They should then be oven-dried and weighed as described in section \@ref(lab1). Their dry biomass ($B_{\text{dry wood}}^{\text{aliquot}}$) can be calculated from the results.
+
+```{r ghan, fig.scap="Measuring a large tree in the field", fig.cap="(ref:ghan)"}
+
+ghan
+
+```
+
+
+#### Calculating the biomass of sections of diameter $>10$\ cm (trunk or branch) {-}
+
+As previously described (see equation \@ref(eq:cyl)), the volume $V_{\text{log},i}$ of the section $i$ (trunk or branch of basal diameter $>10$\ cm) is calculated using Smalian's formula:
+
+\[
+V_{\text{log},i}=\frac{\pi\times L_i}{8}(D_{1i}^2+D_{2i}^2)\\ %
+\]
+
+where $L_i$ is the length of the section $i$, $D_{1i}$ is the diameter at one of the extremities and $D_{2i}$ is the diameter at the other. Given that its shape is that of a pyramid, a different formula is used to calculate the volume $V_{\text{buttress},j}$ of the buttress $j$:
+
+\[
+V_{\text{buttress},j} = \left(1-\frac{\pi}{4}\right)\frac{L_jH_jl_j}{3}
+\]
+
+where $l_j$ is the length of the buttress $j$, $L_j$ its length and $H_j$ its height.
+
+Mean wood density should then be calculated from the ovendry biomass and fresh volume of the wood aliquots:
+
+\[
+\bar{\rho}=\frac{B_{\text{dry wood}}^{\text{aliquot}}}
+{V_{\text{fresh wood}}^{\text{aliquot}}}
+\]
+
+The cumulated dry biomass of the sections (trunk and branches of basal diameter $>10$\ cm) is therefore:
+
+\[
+B_{\text{dry section}}=\bar{\rho}\times\sum_iV_{\text{log},i}
+\]
+
+where the sum corresponds to all the sections, whereas the dry biomass of the buttresses is:
+
+\[
+B_{\text{dry buttress}}=\bar{\rho}\times\sum_jV_{\text{buttress},j}
+\]
+
+where the sum corresponds to all the buttresses. Alternatively, instead of using mean wood density, a specific density for each compartment (trunk, branches, buttresses) may also be employed. In this case mean wood density $\bar{\rho}$ in the expressions above must be replaced by the specific density of the relevant compartment.
+
+
+#### Measuring branches of diameter $<10$\ cm {-}
+
+The basal diameter of all branches of diameter $\leq10$\ cm, should now be measured and their dry biomass can be estimated from the regression between their basal diameter and the dry biomass they carry. This regression can be established from a sample of branches selected in the tree such as to represent the different basal diameter classes present. The leaves and the wood in this sample must now be separated. The fresh biomass of the leaves ($B_{\text{fresh leaf},i}^{\text{sample}}$ in the branch $i$) and the fresh biomass of the wood ($B_{\text{fresh wood},i}^{\text{sample}}$ in the branch $i$) are weighed separately in the field for each branch in the sample.
+
+Some branches may be distorted and do not form a ramified architecture. In this case, the volume may be measured and the anomaly must be recorded in the field forms.
+
+Aliquots of wood and leaves should then be taken and their fresh biomass ($B_{\text{fresh wood}}^{\text{aliquot}}$ and $B_{\text{fresh leaf}}^{\text{aliquot}}$) determined immediately in the field. These aliquots should be placed in tightly sealed plastic bags and taken to the laboratory where they are oven-dried and weighed in accordance with the protocol described in section \@ref(lab1). Thus yields their ovendry biomass ($B_{\text{dry wood}}^{\text{aliquot}}$ and $B_{\text{dry leaf}}^{\text{aliquot}}$)
+
+
+#### Calculating the biomass of branches of diameter $<10$\ cm {-}
+
+The fresh biomass of the aliquots serves to determine the water content of the leaves and wood:
+
+\[
+\chi_{\text{leaf}}=\frac{B_{\text{dry leaf}}^{\text{aliquot}}}{B_{\text{fresh leaf}}^{\text{aliquot}}},\qquad 
+\chi_{\text{wood}}=\frac{B_{\text{dry wood}}^{\text{aliquot}}}{B_{\text{fresh wood}}^{\text{aliquot}}}
+\]
+
+From this, and for each branch $i$ of the sample of branches, may be determined the dry biomass of the leaves, the dry biomass of the wood, then the total dry biomass of branch $i$:
+
+\begin{eqnarray*}
+B_{\text{dry leaf},i}^{\text{sample}} &=&
+\chi_{\text{leaf}}\times B_{\text{fresh leaf},i}^{\text{sample}}
+\\ B_{\text{dry wood},i}^{\text{sample}} &=& \chi_{\text{wood}}\times
+B_{\text{fresh wood},i}^{\text{sample}}
+\\ B_{\text{dry branch},i}^{\text{sample}} &=& B_{\text{dry leaf},i}^{\text{sample}}+B_{\text{dry wood},i}^{\text{sample}}
+\end{eqnarray*}
+
+In the same manner as in section \@ref(calBsp), a biomass table for the branches can then be fitted to the data ($B_{\text{dry branch},i}^{\text{sample}}$, $D_i^{\text{sample}}$), where $D_i^{\text{sample}}$ is the basal diameter of the branch $i$ of the sample. The biomass model for the branches may be established by following the same procedure as for the development of an allometric equation (see chapter \@ref(don) to \@ref(util) herein). To increase sample size, the model can be established based on all the branches measured for all the trees of the same species or by species functional group [@hawthorne95b].
+
+The branch biomass model established in this way can then be used to calculate the dry biomass of all branches of basal diameter $\leq10$\ cm:
+
+\[
+B_{\text{dry branch}}=\sum_if(D_i)
+\]
+
+where the sum corresponds to all the branches of basal diameter $\leq10$\ cm, $D_i$ is the basal diameter of the branch $i$, and $f$ is the biomass model that predicts the dry biomass of a branch on the basis of its basal diameter.
+
+
+#### Calculating the biomass of the tree {-}
+
+The dry biomass of the tree may be obtained by summing the dry biomass of the sections (trunk and branches of basal diameter $>10$\ cm), dry biomass of the buttresses, and the dry biomass of the branches of diameter $\leq10$\ cm:
+\[
+B_{\text{dry}}=B_{\text{dry sections}}+B_{\text{dry buttresses}}+B_{\text{dry branches}}
+\]

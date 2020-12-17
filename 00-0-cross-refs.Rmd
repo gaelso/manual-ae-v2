@@ -46,6 +46,10 @@
 
 (ref:archim) Measuring sample volume by water displacement.
 
+(ref:arch) Diagram showing the different sections of a tree used to calculate its volume.
+
+(ref:ghan) Measuring a large tree in the field: Left, measuring the volume of a tree of diameter > 20 cm; right, taking aliquots of wood from the trunk (photos: M. Henry).
+
 <!-------------------->
 <!-- Table captions --> 
 <!-------------------->

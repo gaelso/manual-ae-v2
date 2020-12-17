@@ -167,4 +167,6 @@ B_{\text{untrimmed dry branch}}=\sum_j(a+bD_j^c)
 
 where the sum is all the untrimmed small branches and $D_j$ is the basal diameter of the branch $j$.
 
-
+<!--------------------->
+<!-- END SECTION 3.2 -->
+<!--------------------->

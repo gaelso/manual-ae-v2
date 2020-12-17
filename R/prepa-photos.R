@@ -2,25 +2,24 @@
 ###
 ### Load photos ----------------------------------------------------------------
 
-## Load all photos
-photo_file <- list.files(path = img_path, full.names = T)
-photo_names <- photo_file %>% 
-  str_remove(pattern = '.*/') %>%
-  str_remove(pattern = ".jpg|.png")
-
-## Resize all pictures to the desired density
-for (i in seq_along(photo_file)) {
-  
-  photo <- magick::image_read(path = photo_file[[i]])
-  
-  if (magick::image_info(photo)$density != img_size$density) {
-    
-    magick::image_write(photo, path = paste0(img_path, "/", photo_names[[i]], "_not72.jpg"))
-    magick::image_write(photo, path = paste0(photo_file[[i]]), density = "72x72")
-    
-  }
-  
-}
+## Resize all pictures to the desired density -- RUN ONE TIME ONLY
+# photo_file <- list.files(path = img_path, full.names = T)
+# photo_names <- photo_file %>% 
+#   str_remove(pattern = '.*/') %>%
+#   str_remove(pattern = ".jpg|.png")
+# 
+# for (i in seq_along(photo_file)) {
+#   
+#   photo <- magick::image_read(path = photo_file[[i]])
+#   
+#   if (magick::image_info(photo)$density != img_size$density) {
+#     
+#     magick::image_write(photo, path = paste0(img_path, "/", photo_names[[i]], "_not72.jpg"))
+#     magick::image_write(photo, path = paste0(photo_file[[i]]), density = "72x72")
+#     
+#   }
+#   
+# }
 
 ## Load again the correct sized pictures
 photo_file <- setdiff(
@@ -129,5 +128,14 @@ ka <- c(photo_list$cameroun1, photo_list$cameroun2) %>%
   image_border("white", "5x5") %>%
   image_append()
 ka  
-  
-  
+
+## ghan
+ghana2 <- photo_list$ghana2 %>%
+  image_rotate(90)
+
+ghan <- c(photo_list$ghana1, ghana2) %>%
+  image_scale(paste0("x", img_size$height)) %>%
+  image_border("black", "2x2") %>%
+  image_border("white", "5x5") %>%
+  image_append()
+ghan  
