@@ -24,9 +24,7 @@ rm(libs_install)
 lapply(libs, require, character.only = TRUE)
 
 ## Load Windows fonts and add Computer modern if missing
-
-extrafont::font_import(paths = "C:\\Users\\Admin\\Downloads", recursive = T, pattern = "cmu*", prompt = FALSE)
-extrafont::loadfonts(device = "win", quiet = TRUE)
+windowsFonts()
 
 if (!("CMU Serif"  %in% names(windowsFonts()))) {
   download.file(

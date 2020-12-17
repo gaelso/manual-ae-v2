@@ -120,7 +120,7 @@ grid.raster(emonde2)
 white_space <- rectGrob(gp = gpar(col = NA, fill = "white"))
 
 grid.arrange(
-  emonde_text,
+  white_space,
   pictureGrob(emonde1), 
   rasterGrob(emonde2, x = 0.5, y = 0.5, w = 0.7), 
   ncol = 3 
