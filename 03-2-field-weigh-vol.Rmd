@@ -25,7 +25,7 @@ grid.arrange(
   white_space, 
   pictureGrob(emonde1), 
   rasterGrob(emonde2, x = 0.5, y = 0.5, w = 0.7), 
-  ncol = 3, widths = unit(c(6,7,7), "cm"), heights = unit(8, "cm") 
+  ncol = 3, widths = unit(c(8,7,6), "cm")#, heights = unit(8, "cm") 
   )
 grid.text("Fresh biomass of small untrimmed",
           x = 0.01, y = 0.8, just = 'left')
