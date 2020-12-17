@@ -96,7 +96,7 @@ The dry biomass of the tree is obtained by the sum of the trimmed dry biomass an
 \[
 B_{\text{dry}}=B_{\text{trimmed dry}}+B_{\text{untrimmed dry}}
 \]
-\
+
 
 #### Calculating trimmed biomass {-}
 
@@ -121,39 +121,50 @@ B_{\text{trimmed dry}}=B_{\text{trimmed fresh wood}}\times \chi_{\text{wood}}+B_
 where $B_{\text{trimmed fresh leaf}}$ is the fresh biomass of the leaves stripped from the trimmed branches and $B_{\text{trimmed fresh wood}}$ is the fresh biomass of the wood in the trimmed branches.
 
 
-#### Calculating untrimmed biomass\label{calBsp}}
+#### Calculating untrimmed biomass {#calBsp}
 
 Two calculations are required to calculate the dry biomass of the untrimmed part (i.e. that still standing): one for the small branches, the other for the large branches and the trunk. The untrimmed biomass is the sum of the two results:
+
 \[
 B_{\text{untrimmed dry}}=B_{\text{untrimmed dry branch}}
 +B_{\text{dry section}}
 \]
+
 Each section $i$ of the trunk and the large branches may be considered to be a cylinder of volume (Smalian's formula):
+
 \begin{equation}
 V_i=\frac{\pi}{8}\ L_i\ (D_{1i}^2+D_{2i}^2)(\#eq:cyl)
 \end{equation}
-where $V_i$ is the volume of the section $i$, $L_i$ its lenght, and $D_{1i}$ and $D_{2i}$ are the diameters of the two extremities of section $i$. The truncated cone volume formula (see equation \ref{cone}) can also be used instead of the cylinder formula (\ref{cyl}), but the difference between the results will be slight as the tapering over one meter is not very pronounced in trees.
+
+where $V_i$ is the volume of the section $i$, $L_i$ its lenght, and $D_{1i}$ and $D_{2i}$ are the diameters of the two extremities of section $i$. The truncated cone volume formula (see equation \@ref(eq:cone)) can also be used instead of the cylinder formula (\@ref(eq:cyl)), but the difference between the results will be slight as the tapering over one meter is not very pronounced in trees.
 
 The dry biomass of the large branches and trunk is the product of mean wood density and total volume of the large branches and trunk:
+
 \begin{equation}
 B_{\text{dry section}}=\bar{\rho}\times\sum_iV_i(\#eq:Btr)
 \end{equation}
+
 where the sum corresponds to all the sections in the large branches and the trunk (Figure \@ref(fig:emond)B), and where mean wood density is calculated by:
+
 \[
 \bar{\rho}=\frac{B_{\text{dry wood}}^{\text{aliquot}}}
 {V_{\text{fresh wood}}^{\text{aliquot}}}
 \]
-Care must be taken to use consistent measurement units. For example, if mean wood density
-$\bar{\rho}$ in (\ref{Btr}) is expressed in g\ cm$^{-3}$, then volume $V_i$ must be expressed in cm$^3$, meaning that both length $L_i$ and diameters $D_{1i}$ and $D_{2i}$ must also be expressed in cm. Biomass in this case is therefore expressed in g.\
 
-The dry biomass of the untrimmed small branches should then be calculated using a model between dry biomass and basal diameter. This model is established by following the same procedure as for the development of an allometric model (see chapters \ref{don} to \ref{util} herein). Power type equations are often used:
+Care must be taken to use consistent measurement units. For example, if mean wood density $\bar{\rho}$ in (\@ref(eq:Btr)) is expressed in g\ cm^-3^, then volume $V_i$ must be expressed in cm^3^, meaning that both length $L_i$ and diameters $D_{1i}$ and $D_{2i}$ must also be expressed in cm. Biomass in this case is therefore expressed in g.
+
+The dry biomass of the untrimmed small branches should then be calculated using a model between dry biomass and basal diameter. This model is established by following the same procedure as for the development of an allometric model (see chapters \@ref(don) to \@ref(util) herein). Power type equations are often used:
+
 \[
 B_{\text{dry branch}}=a+bD^c
 \]
-where $a$, $b$ and $c$ are model parameters and $D$ branch basal diameter, but other regressions may be tested (see \ref{prim}). Using a model of this type, the dry biomass of the untrimmed branches is:
+
+where $a$, $b$ and $c$ are model parameters and $D$ branch basal diameter, but other regressions may be tested (see \@ref(tab:prim)). Using a model of this type, the dry biomass of the untrimmed branches is:
+
 \[
 B_{\text{untrimmed dry branch}}=\sum_j(a+bD_j^c)
 \]
+
 where the sum is all the untrimmed small branches and $D_j$ is the basal diameter of the branch $j$.
 
 
