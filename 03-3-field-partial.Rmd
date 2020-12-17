@@ -154,3 +154,7 @@ The dry biomass of the tree may be obtained by summing the dry biomass of the se
 \[
 B_{\text{dry}}=B_{\text{dry sections}}+B_{\text{dry buttresses}}+B_{\text{dry branches}}
 \]
+
+<!--------------------->
+<!-- END SECTION 3.3 -->
+<!--------------------->

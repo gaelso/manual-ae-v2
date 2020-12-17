@@ -20,6 +20,8 @@
 #   }
 #   
 # }
+# 
+# rm(photo)
 
 ## Load again the correct sized pictures
 photo_file <- setdiff(
@@ -35,7 +37,7 @@ photo_names <- photo_file %>%
 
 names(photo_list) <- photo_names
 
-rm(photo, photo_file, photo_names)
+rm(photo_file, photo_names)
 
 ###
 ### Photos Chapter 1 -----------------------------------------------------------
