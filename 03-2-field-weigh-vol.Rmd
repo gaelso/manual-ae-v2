@@ -89,7 +89,7 @@ knitr::include_graphics(paste0(fig_path, "/archim.pdf"))
 The wood and leaf aliquots should then be subject to the same laboratory measurements (oven drying, determination of dry weight, etc. ) as described in section \@ref(lab1).
 
 
-### Calculations
+### Calculations {#calBsp}
 
 The dry biomass of the tree is obtained by the sum of the trimmed dry biomass and the untrimmed dry biomass:
 
@@ -121,7 +121,7 @@ B_{\text{trimmed dry}}=B_{\text{trimmed fresh wood}}\times \chi_{\text{wood}}+B_
 where $B_{\text{trimmed fresh leaf}}$ is the fresh biomass of the leaves stripped from the trimmed branches and $B_{\text{trimmed fresh wood}}$ is the fresh biomass of the wood in the trimmed branches.
 
 
-#### Calculating untrimmed biomass {#calBsp}
+#### Calculating untrimmed biomass
 
 Two calculations are required to calculate the dry biomass of the untrimmed part (i.e. that still standing): one for the small branches, the other for the large branches and the trunk. The untrimmed biomass is the sum of the two results:
 
