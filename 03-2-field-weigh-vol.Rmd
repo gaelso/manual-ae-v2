@@ -50,14 +50,33 @@ grid.text("compartments of the tree",
           x = 0.01, y = 0.32, just = 'left')
 
 grid.text("Fresh biomass of the trimmed",
-          x = 0.01, y = 0.2, just = 'left')
-grid.text("branches, measured by weighing",
           x = 0.01, y = 0.16, just = 'left')
+grid.text("branches, measured by weighing",
+          x = 0.01, y = 0.12, just = 'left')
 
+grid.text("(A)",
+          x = 0.4, y = 0.85, just = 'left')
+grid.text("(B)",
+          x = 0.8, y = 0.85, just = 'left')
 
 ```
 
 
+#### Trimmed fresh biomass
+
+The branches may be trimmed in compliance with local practices (often using a machete). Use a measuring tape to determine the diameter at the base of each branch. Then separate the leaves from the trimmed branches. Determine (by weighing separately) the fresh biomass of the leaves from the trimmed branches ($B_{\text{trimmed fresh leaf}}$) and the fresh biomass of the wood from the trimmed branches ($B_{\text{trimmed fresh wood}}$). Suitable scales should be used for these weighing operations. If the leaves weigh less than 2 kg, they may be weighed using field-work electronic scales.
+
+Take a random sample of the leaves from the trimmed branches. At least three samples of leaves from three different branches are generally required to constitute the aliquot. Measure its fresh weight ($B_{\text{fresh leaf}}^{\text{aliquot}}$ in g). Take also an aliquot of the wood at random from the trimmed branches, without debarking. Measure its fresh mass ($B_{\text{fresh wood}}^{\text{aliquot}}$ in g) in the field, immediately after cutting. Place these aliquots in numbered plastic bags and send to the laboratory. The fresh volume of the wood aliquot will be measured later in the lab (see \S\ \@ref(lab2)), and the value used to determine mean wood density $\bar{\rho}$.
+
+
+#### Untrimmed fresh biomass
+
+Untrimmed biomass is measured indirectly as non-destructive. The different branches in the trimmed tree must first be numbered (Figure \@ref(fig:emond)B). The small untrimmed branches must be processed differently from the large branches and the trunk (Figure \@ref(fig:emond)A). For the small branches, only basal diameter needs to be measured. The biomass of these small untrimmed branches is estimated from the relationship between their basal diameter and their mass, as explained in section \@ref(calBsp).
+
+The biomass of the trunk and the large branches is estimated from measurements of volumes ($V_i$ in cm^3^) and mean wood density ($\bar{\rho}$ in g\ cm^-3^). The large branches and trunk should be divided virtually into sections that are then materialized by marking the tree. The volume $V_i$ of each section $i$ is obtained by measuring its diameter (or its circumference) and its length. Sections about one meter in length are preferable in order to consider diameter variations along the length of the trunk and branches.
+
+
+### In the laboratory {#lab2}
 
 
 
