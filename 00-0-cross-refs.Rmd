@@ -56,6 +56,7 @@
 
 (ref:evor) Left, superimposition of different sampling methods (cores, excavations by cubes, partial Voronoi excavation, total Voronoi excavation), from @levillain11 (photo: C. Jourdan). Right, manual excavation of large roots in a rubber tree plantation in Thailand (photo: L. Saint-André).\
 
+(ref:air) Air knife being used in Congo to extract the root systems (large and medium-size roots) of eucalyptus. Left, operator with protective equipment (dust, noise); middle, compressor and close up of the air pressure gauge (about 8 bars); right, the result (photos: C. Jourdan).
 <!-------------------->
 <!-- Table captions --> 
 <!-------------------->

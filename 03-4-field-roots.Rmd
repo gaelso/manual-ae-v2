@@ -37,23 +37,16 @@ Sampling methods vary with root size. @levillain11 conducted a study to compare 
 evor
 
 ```
-\begin{photo}
-\includetwophotos{root1}{0.5010309}{root2}{0.4989691}%% root1: 2592 x 1936  root2: 3072 x 2304
-\caption[]{label{evor}}
-\end{photo}
 
-The number of cores obtained and the size of the pit dug vary from one ecosystem to another. In Congo, in eucalyptus plantations, the optimum number of cores for 10\ \% precision is about 300 on the surface (0--10~cm) and about 100 for deeper roots (10--50 and 50--100~cm). Such a level of precision to a depth of 1~m requires 36 man-days. By contrast, if only 30\ \% precision is sought, this cuts sampling time by 75\ \%. This example clearly illustrates the usefulness of pre-sampling (see chapitre \ref{samp}) in order to evaluate the variability of the studied ecosystem then adapt the protocol to goals and desired precision.
+The number of cores obtained and the size of the pit dug vary from one ecosystem to another. In Congo, in eucalyptus plantations, the optimum number of cores for 10\ \% precision is about 300 on the surface (0--10~cm) and about 100 for deeper roots (10--50 and 50--100~cm). Such a level of precision to a depth of 1~m requires 36 man-days. By contrast, if only 30\ \% precision is sought, this cuts sampling time by 75\ \%. This example clearly illustrates the usefulness of pre-sampling (see chapter \@ref(samp)) in order to evaluate the variability of the studied ecosystem then adapt the protocol to goals and desired precision.
 
-Once the soil samples with the roots have been taken, the cores containing the fine roots can be sorted in the laboratory. On the other hand, given the volume and weight of the earth excavated, the medium-size and large roots must be sorted in the field. In the laboratory, the soil sample should first be washed through a filter and roots recovered either by flotation and/or by sieving. In the field, the samples should be sorted manually on tarpaulins. An air knife can be used on the large and medium-size roots to excavate the root system fully while preserving its architecture. This method, which is particularly advantageous in sandy soils, helps meet biomass and architecture goals but does require the presence of a mobile compressor (photo \ref{air}).
+Once the soil samples with the roots have been taken, the cores containing the fine roots can be sorted in the laboratory. On the other hand, given the volume and weight of the earth excavated, the medium-size and large roots must be sorted in the field. In the laboratory, the soil sample should first be washed through a filter and roots recovered either by flotation and/or by sieving. In the field, the samples should be sorted manually on tarpaulins. An air knife can be used on the large and medium-size roots to excavate the root system fully while preserving its architecture. This method, which is particularly advantageous in sandy soils, helps meet biomass and architecture goals but does require the presence of a mobile compressor (photo \@ref(fig:air)).
 
-\begin{photo}
-\setlength{\unitlength}{\textwidth}%
-\begin{picture}(1,0.2926829268292683)
-\put(0,0){\includethreephotos{air1}{0.3902439024390244}{air2}{0.2195121951219512}{air3}{0.39024390243902449}}
-\put(0.5,0){\includegraphics[width=0.108\textwidth]{air4}}
-\end{picture}
-\caption[Air knife being used in Congo to extract the root systems of eucalyptus.]{Air knife being used in Congo to extract the root systems (large and medium-size roots) of eucalyptus. Left, operator with protective equipment (dust, noise); middle, compressor and close up of the air pressure gauge (about 8 bars); right, the result (photos: C. Jourdan).\label{air}}
-\end{photo}
+```{r air, fig.scap="Air knife being used in Congo to extract the root systems of eucalyptus.", fig.cap="(ref:air)"}
+
+air
+
+```
 
 Once the roots have been sorted and harvested they should be dried in an oven using the same parameters as for above-ground biomass. The fine roots will require roughly the same drying time as for leaves, whereas the large and medium-size roots will need a drying time equivalent to that of branches.
 

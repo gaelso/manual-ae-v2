@@ -141,3 +141,19 @@ ghan <- c(photo_list$ghana1, ghana2) %>%
   image_border("white", "5x5") %>%
   image_append()
 ghan  
+
+## evor
+evor <- c(photo_list$root1, photo_list$root2) %>%
+  image_scale(paste0(img_size$width/2, "x")) %>%
+  image_border("black", "2x2") %>% 
+  image_border("white", "7x5") %>%
+  magick::image_append()
+evor
+
+## air
+air <- c(photo_list$air1, photo_list$air2, photo_list$air3) %>%
+  image_scale(paste0("x", img_size$height)) %>%
+  image_border("black", "2x2") %>%
+  image_border("white", "5x5") %>%
+  image_append()
+air
