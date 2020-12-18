@@ -101,7 +101,7 @@ dev.off()
 Sys.setenv(R_GSCMD = normalizePath("C:/Program Files/gs/gs9.53.3/bin/gswin64c.exe")) 
 
 ## Convert pdf to xml --- RUN ONE TIME
-# grImport::PostScriptTrace(paste0(fig_path, "/comparts.pdf"), paste0(fig_path, "/xml/comparts.pdf.xml"))
+# grImport::PostScriptTrace(paste0(fig_path, "/comparts.pdf"), paste0(fig_path, "/xml/comparts.pdf.xml")) ## RUN ONE TIME
 
 ## Read XML file
 comparts_vec <- grImport::readPicture(paste0(fig_path, "/xml/comparts.pdf.xml"))
@@ -110,13 +110,10 @@ comparts_vec <- grImport::readPicture(paste0(fig_path, "/xml/comparts.pdf.xml"))
 ###
 ### emond
 ###
-# grImport::PostScriptTrace(paste0(fig_path, "/emonde1.pdf"), paste0(fig_path, "/xml/emonde1.pdf.xml"))
+# grImport::PostScriptTrace(paste0(fig_path, "/emonde1.pdf"), paste0(fig_path, "/xml/emonde1.pdf.xml")) ## RUN ONE TIME
 
 emonde1 <- grImport::readPicture(paste0(fig_path, "/xml/emonde1.pdf.xml"))
 emonde2 <- photo_list$emonde2 
-grid.picture(emonde1)
-grid.raster(emonde2)
-
 white_space <- rectGrob(gp = gpar(col = NA, fill = "white"))
 
 grid.arrange(
@@ -125,4 +122,13 @@ grid.arrange(
   rasterGrob(emonde2, x = 0.5, y = 0.5, w = 0.7), 
   ncol = 3 
 )
+
+
+###
+### vanu
+###
+
+grImport::PostScriptTrace(paste0(fig_path, "/vanuatu.pdf"), paste0(fig_path, "/xml/vanuatu.pdf.xml"))
+vanu <- grImport::readPicture(paste0(fig_path, "/xml/vanuatu.pdf.xml"))
+grid.picture(vanu)
 

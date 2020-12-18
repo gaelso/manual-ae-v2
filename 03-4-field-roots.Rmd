@@ -12,12 +12,13 @@ A=\sqrt{p(p-2a)(p-2b)(p-2c)}
 
 where $p=a+b+c$ is the triangle perimeter and $A$ its area. Figure \@ref(fig:vanu) illustrates this procedure for coconut plantations in Vanuatu [@navarro08].
 
-\begin{figure}[htb]
-\begin{center}
-\includegraphics[width=0.75\textwidth]{voronoi}
-\end{center}
-\caption{Method used to draw a Voronoi diagram and its subdivisions around a tree in any neighborhood situation.\label{voro}}
-\end{figure}
+```{r voro, fig.cap="(ref:voro)"}
+
+knitr::include_graphics(paste0(fig_path, "/voronoi.pdf"))
+
+```
+
+
 
 \begin{figure}[htb]
 \setlength{\unitlength}{\textwidth}%

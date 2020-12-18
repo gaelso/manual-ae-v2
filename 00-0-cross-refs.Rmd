@@ -50,6 +50,10 @@
 
 (ref:ghan) Measuring a large tree in the field: Left, measuring the volume of a tree of diameter > 20 cm; right, taking aliquots of wood from the trunk (photos: M. Henry).
 
+(ref:voro) Method used to draw a Voronoi diagram and its subdivisions around a tree in any neighborhood situation.
+
+
+
 <!-------------------->
 <!-- Table captions --> 
 <!-------------------->
