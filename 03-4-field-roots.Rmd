@@ -18,28 +18,28 @@ knitr::include_graphics(paste0(fig_path, "/voronoi.pdf"))
 
 ```
 
+```{r vanu, fig.scap="Typical Voronoi diagram used for root sampling in a coconut plantation in Vanuatu", fig.cap="(ref:vanu)"}
 
+#plot.new()
+grid.picture(vanu)
+grid.raster(photo_list$cocoteraie, x = 0.1, y = 0.1, w = 0.5)
 
-\begin{figure}[htb]
-\setlength{\unitlength}{\textwidth}%
-\begin{picture}(1,0.7533133817870884)
-\put(0,0){\includegraphics[width=\textwidth]{vanuatu}}%% 935.6 x 704.8
-\put(0.03,0.035){\includegraphics[width=0.39\textwidth]{cocoteraie}}
-\put(0.23,0.215){\textcolor{yellow}{\tiny\sffamily Vorono� pit}}
-\put(0.17,0.083){\textcolor{orange}{\tiny\sffamily Simplified Vorono� pit}}
-\end{picture}
-\caption[Typical Voronoi diagram used for root sampling in a coconut plantation in Vanuatu]{Typical Voronoi diagram used for root sampling in a coconut plantation in Vanuatu (photo: C. Jourdan). (A) Drawing the Voronoi space and choosing to work on $1/12$th of this space; (B) section through the pits dug; (C) protocol simplification given the variability observed in the first sample; (D) tracing the pit on the ground.\label{vanu}}
-\end{figure}
+```
 
 The space established in this manner is not a materialization of the tree's "vital" space. It is simply a manner used to cut space into joined area to facilitate the sampling of below-ground biomass. The major hypothesis here is that the roots of other trees entering this space compensate for those of the selected tree leaving this space.
 
 In the case of multispecific stands or agro-forest, it is sometimes impossible to separate the roots of the different species. In this case its would be very risky to construct individual models (root biomass related to the sampled tree), but root biomass estimations per hectare, without any distinction between species, are perfectly valid.
 
-Sampling methods vary with root size. @levillain11 conducted a study to compare different methods in the same tree (photo \ref{evor}). They showed that the most profitable, in terms of cost-precision, was to sample the finest roots by coring, whereas medium-size roots require partial excavation and large roots total excavation from the Voronoi space.
+Sampling methods vary with root size. @levillain11 conducted a study to compare different methods in the same tree (photo \@ref(fig:evor)). They showed that the most profitable, in terms of cost-precision, was to sample the finest roots by coring, whereas medium-size roots require partial excavation and large roots total excavation from the Voronoi space.
 
+```{r evor, fig.scap = "Superimposition of different sampling methods (cores, excavations by cubes, partial Voronoi excavation, total Voronoi excavation)", fig.cap="(ref:evor)"}
+
+evor
+
+```
 \begin{photo}
 \includetwophotos{root1}{0.5010309}{root2}{0.4989691}%% root1: 2592 x 1936  root2: 3072 x 2304
-\caption[Superimposition of different sampling methods (cores, excavations by cubes, partial Voronoi excavation, total Voronoi excavation)]{Left, superimposition of different sampling methods (cores, excavations by cubes, partial Voronoi excavation, total Voronoi excavation), from @levillain11 (photo: C. Jourdan). Right, manual excavation of large roots in a rubber tree plantation in Thailand (photo: L. Saint-Andr�).\label{evor}}
+\caption[]{label{evor}}
 \end{photo}
 
 The number of cores obtained and the size of the pit dug vary from one ecosystem to another. In Congo, in eucalyptus plantations, the optimum number of cores for 10\ \% precision is about 300 on the surface (0--10~cm) and about 100 for deeper roots (10--50 and 50--100~cm). Such a level of precision to a depth of 1~m requires 36 man-days. By contrast, if only 30\ \% precision is sought, this cuts sampling time by 75\ \%. This example clearly illustrates the usefulness of pre-sampling (see chapitre \ref{samp}) in order to evaluate the variability of the studied ecosystem then adapt the protocol to goals and desired precision.

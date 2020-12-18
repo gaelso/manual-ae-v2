@@ -52,7 +52,9 @@
 
 (ref:voro) Method used to draw a Voronoi diagram and its subdivisions around a tree in any neighborhood situation.
 
+(ref:vanu) Typical Voronoi diagram used for root sampling in a coconut plantation in Vanuatu (photo: C. Jourdan). (A) Drawing the Voronoi space and choosing to work on $1/12$th of this space; (B) section through the pits dug; (C) protocol simplification given the variability observed in the first sample; (D) tracing the pit on the ground.
 
+(ref:evor) Left, superimposition of different sampling methods (cores, excavations by cubes, partial Voronoi excavation, total Voronoi excavation), from @levillain11 (photo: C. Jourdan). Right, manual excavation of large roots in a rubber tree plantation in Thailand (photo: L. Saint-André).\
 
 <!-------------------->
 <!-- Table captions --> 

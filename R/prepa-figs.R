@@ -96,23 +96,16 @@ dev.off()
 ### compart
 ###
 
-## For Vector images:
-## Install Ghostscript https://www.ghostscript.com/download/gsdnld.html and set path in Sys.setenv
-Sys.setenv(R_GSCMD = normalizePath("C:/Program Files/gs/gs9.53.3/bin/gswin64c.exe")) 
-
-## Convert pdf to xml --- RUN ONE TIME
-# grImport::PostScriptTrace(paste0(fig_path, "/comparts.pdf"), paste0(fig_path, "/xml/comparts.pdf.xml")) ## RUN ONE TIME
-
-## Read XML file
-comparts_vec <- grImport::readPicture(paste0(fig_path, "/xml/comparts.pdf.xml"))
-
+## Read SVG file
+comparts_vec <- grImport2::readPicture(paste0(fig_path, "/svg/comparts.pdf.svg"))
+grImport2::grid.picture(comparts_vec)
 
 ###
 ### emond
 ###
-# grImport::PostScriptTrace(paste0(fig_path, "/emonde1.pdf"), paste0(fig_path, "/xml/emonde1.pdf.xml")) ## RUN ONE TIME
 
-emonde1 <- grImport::readPicture(paste0(fig_path, "/xml/emonde1.pdf.xml"))
+
+emonde1 <- grImport2::readPicture(paste0(fig_path, "/svg/emonde1.pdf.svg"))
 emonde2 <- photo_list$emonde2 
 white_space <- rectGrob(gp = gpar(col = NA, fill = "white"))
 
@@ -128,7 +121,8 @@ grid.arrange(
 ### vanu
 ###
 
-grImport::PostScriptTrace(paste0(fig_path, "/vanuatu.pdf"), paste0(fig_path, "/xml/vanuatu.pdf.xml"))
-vanu <- grImport::readPicture(paste0(fig_path, "/xml/vanuatu.pdf.xml"))
-grid.picture(vanu)
+vanu <- grImport2::readPicture(paste0(fig_path, "/svg/vanuatu.pdf.svg"))
 
+# grid.picture(vanu)
+# grid.raster(photo_list$cocoteraie, x = 0.1, y = 0.1, w = 0.5)
+# dev.off()

@@ -26,19 +26,11 @@ source("R/prepa-photos.R")
 
 source("R/prepa-figs.R")
 
-#source("R/conv_tex_rmd.R")
+#source("R/conv_tex_rmd.R") ## Run one time
+
+#source("R/00-Linux-convert-pdf-svg.R") ## Need tools from Linux done with Rstudio server on WSL
 
 ## Make report
-
-## DOCX
-# bookdown::render_book(
-#   input = "index.Rmd",
-#   output_format = "bookdown::word_document2",
-#   output_file = paste0("Manual-AE-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"), ".docx"),
-#   output_dir = "Manual-AE",
-#   output_options = list(reference_docx = "ref-empty.docx")
-# )
-
 ## PDF -- For pdf install webshot and webshot::install_phantomjs() 
 bookdown::render_book(
   input = "index.Rmd",
@@ -57,4 +49,13 @@ bookdown::render_book(
 ## Clean temp files
 file.remove(list.files(pattern = "Manual-AE-"))
 unlink(x = "_bookdown_files", recursive = T)
+
+## DOCX -- Needs to restart R as gridExtra messes up with kables in DOCX
+# bookdown::render_book(
+#   input = "index.Rmd",
+#   output_format = "bookdown::word_document2",
+#   output_file = paste0("Manual-AE-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"), ".docx"),
+#   output_dir = "Manual-AE",
+#   output_options = list(reference_docx = "ref-empty.docx")
+# )
 

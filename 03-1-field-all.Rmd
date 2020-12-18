@@ -11,7 +11,7 @@ The general basis for measuring biomass, and even more nutrient content, is the 
 
 ```{r compart, dev='tikz', cache=TRUE, fig.process = pdf2png, out.width="100%", fig.cap="Example of tree compartmentalization for a biomass and nutrient content campaign on beech in France."}
 
-grid.arrange(grImport::pictureGrob(comparts_vec), ncol = 2)
+grid.arrange(grImport2::pictureGrob(comparts_vec), ncol = 2)
 grid.text(label = "Leaves: total weight and sample taken for", 
           x = 0.4, y = 0.8, just = 0)
 grid.text(label = "moisture content", 
