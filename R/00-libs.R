@@ -3,10 +3,9 @@
 libs <- c(
   "rmarkdown", "bookdown", "tinytex", "tidyverse", "magick", "DiagrammeR",
   "tikzDevice", "grImport", "gridExtra", "DiagrammeRsvg", "rsvg", "extrafont", 
-  "htmltools"
+  "htmltools", "grImport2"
 )
 
-## Not use: "grImport2", "grConvert"
 
 ## Install the dev version of tikzDevice
 if ("tikzDevice" %in% libs & !("tikzDevice" %in% installed.packages())) 
