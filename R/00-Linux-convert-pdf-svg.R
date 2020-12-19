@@ -5,7 +5,9 @@
 ## -- apt-get install libcairo2-dev libspectre-dev librsvg2-dev libpoppler-glib-dev
 
 ## Install grConvert
-devtools::install_github("sjp/grConvert", force = TRUE)
+if (!("grConvert" %in% installed.packages())) {
+  devtools::install_github("sjp/grConvert", force = TRUE)
+}
 
 library(grConvert)
 grConvert.capabilities()

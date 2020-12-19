@@ -52,8 +52,6 @@ html_print(HTML(cha_svg))
 ###
 
 arbre   <- magick::image_read(paste0(fig_path, "/arbre.png")) 
-
-arbre   <- magick::image_read(paste0(fig_path, "/arbre.png")) 
 arbrex8 <- magick::image_read(paste0(fig_path, "/arbrex8.png"))
 
 arbre_compo <- image_blank(width = 1200, height = 500, color = 'white') %>%
@@ -100,10 +98,10 @@ dev.off()
 comparts_vec <- grImport2::readPicture(paste0(fig_path, "/svg/comparts.pdf.svg"))
 grImport2::grid.picture(comparts_vec)
 
+
 ###
 ### emond
 ###
-
 
 emonde1 <- grImport2::readPicture(paste0(fig_path, "/svg/emonde1.pdf.svg"))
 emonde2 <- photo_list$emonde2 
