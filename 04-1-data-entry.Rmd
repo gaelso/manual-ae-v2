@@ -1,0 +1,15 @@
+
+\chapter{Graphical exploration of the data\label{explo}}
+
+A graphic exploration of the data is the first step in their analysis. It consists in visually assessing relations between variables in order to gain an idea of the type of model to be fitted. In practice, points are plotted on a graph as a cluster, the coordinates of which correspond to two variables: effect variable on the $x$ axis and response variable on the $y$ axis. A graph can be plotted only for at most two variables simultaneously (three-dimensional graphs cannot in practice be assessed visually). To explore graphically the relations between $p$ variables
+(where $p>1$), a total of $p(p-1)/2$ graphs should be plotted of one variable against the other and/or efforts should be made to construct combined effect variables from several effect variables (we will return to this point in \S\ \ref{plus}).
+
+Let us now suppose that we have one response variable $Y$ (volume, biomass\ldots) and $p$ effect variables $X_1$, $X_2$, \ldots, $X_p$ (dbh, height\ldots). The aim of the graphical exploration is not to select from among the $p$ effect variables those that will in fact be used for the model: when we select variables we need to be able to test the significant nature of a variable, which only comes later in the next phase of model fitting. The $p$ effect variables are therefore considered as fixed, and we look to determine the form of model that best links variable $Y$ to variables $X_1$ to $X_p$. A model is made up of two terms: the mean and the error (or residual). The graphical exploration aims to specify both the form of the mean relation and the form of the error, without any concern for the value of model parameters (dealt with in the next model-fitting step). The mean relation may be linear or non linear, linearizable or not; the residual error may be additive or multiplicative, of constant variance (homoscedasticity) or not (heteroscedasticity). By way of an illustration, Figure \@ref(fig:exgr) shows four examples where the relation is linear or not, and the variance of the residuals is constant or not.
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics{explogr}
+\end{center}
+\caption[Example of relations between two variables $X$ and
+$Y$]{Example of relations between two variables $X$ and $Y$: linear relation and constant variance of the residuals, (B) non linear relation and constant variance of the residuals, (C) linear relation and non constant variance of the residuals, (D) non linear relation and non constant variance of the residuals.\label{exgr}}
+\end{figure}
