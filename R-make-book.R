@@ -20,6 +20,8 @@ fig_path <- "source/figures"
 ## Source R scripts
 source("R/00-libs.R")
 
+#source("R/00-Linux-convert-pdf-svg.R") ## Need tools from Linux, done with Rstudio server on WSL
+
 source("R/00-functions.R")
 
 source("R/prepa-photos.R")
@@ -28,7 +30,7 @@ source("R/prepa-figs.R")
 
 #source("R/conv_tex_rmd.R") ## Run one time
 
-#source("R/00-Linux-convert-pdf-svg.R") ## Need tools from Linux, done with Rstudio server on WSL
+
 
 ## Make report
 ## PDF -- For pdf install webshot and webshot::install_phantomjs() 
