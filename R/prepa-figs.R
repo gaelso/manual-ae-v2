@@ -107,12 +107,12 @@ emonde1 <- grImport2::readPicture(paste0(fig_path, "/svg/emonde1.pdf.svg"))
 emonde2 <- photo_list$emonde2 
 white_space <- rectGrob(gp = gpar(col = NA, fill = "white"))
 
-grid.arrange(
-  white_space,
-  pictureGrob(emonde1), 
-  rasterGrob(emonde2, x = 0.5, y = 0.5, w = 0.7), 
-  ncol = 3 
-)
+# grid.arrange(
+#   white_space,
+#   pictureGrob(emonde1), 
+#   rasterGrob(emonde2, x = 0.5, y = 0.5, w = 0.7), 
+#   ncol = 3 
+# )
 
 
 ###
@@ -121,6 +121,6 @@ grid.arrange(
 
 vanu <- grImport2::readPicture(paste0(fig_path, "/svg/vanuatu.pdf.svg"))
 
+# plot.new()
 # grid.picture(vanu)
-# grid.raster(photo_list$cocoteraie, x = 0.1, y = 0.1, w = 0.5)
-# dev.off()
+# grid.raster(photo_list$cocoteraie, x = 0.27, y = 0.3, w = 0.25)
