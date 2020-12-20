@@ -6,17 +6,27 @@
 **Felling team:**
 one logger, two logging assistants, two persons to clear the area for felling. Count two days to fell 40 trees of 31 to 290~cm girth (mean: 140~cm). All the trees can be felled at the start of the campaign so that this team is freed for tree limbing. If team members are to be kept occupied, with no slack periods, about 10 trees per day (about 20~meters high, i.e. about 10 to 20 disks per tree) need to be ready for cross-cutting at the site.
 
+\  
+
 **Stem profiling team:**
 two people (one anchor, one measurer). This team intervenes as soon as the tree has been felled, and therefore follows the felling team. In general, these two teams work in a fairly synchronized manner. The profiling team never has to wait for the felling team, except in very rare cases of felling problems (e.g. large stems, or stems imprisoned by other trees that need to be released).
+
+\  
 
 **Limbing team:**
 three persons per processing unit. Each unit includes a power saw handler (with the small, maneuverable power saw) and two bundlers. These teams can be doubled or tripled depending on the size of the crown to be processed. As a rough guide: a tree with a breast-height girth of 200~cm will require three units; between girths of 80 and 200~cm the tree will require two units, and below a girth of 80~cm one unit will suffice. This rough guide includes the fact that the units must not hinder one another in their work. When three teams are working on the same tree, one should be positioned at the base, and should more upward along the length of the trunk. The two other teams should be positioned on each side of the main axis and should work from approximately the middle of the crown toward the top of the tree.
 
+\  
+
 **Logging team:**
 this consists of one logger (cutting stems) and one person to label the disks. In general, the felling team fulfills this function. Once all the trees have been felled, the logger joins the logging team and the logging assistants bolster the limbing units.
 
+\  
+
 **Weighing team:**
 three people (digger driver and two other persons to handle the logs and the branch bundles).
+
+\  
 
 **Branch sampling team:**
 one or two people.
