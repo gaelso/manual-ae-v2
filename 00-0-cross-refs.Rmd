@@ -65,6 +65,11 @@
 (ref:tsp) Transporting disks and aliquots in a sand or grain bag (photo: J.-F. Picard).
 
 
+<!-- Figures chapter 3 --> 
+
+(ref:niv) Example of four data tables for four nested levels.
+
+
 <!-------------------->
 <!-- Table captions --> 
 <!-------------------->
@@ -76,4 +81,7 @@
 (ref:c03) Coefficient of variation in relation to plot size: data drawn from Table 5 by @chave03 for Barro Colorado Island, Panama.
 
 
+<!-- Tables chapter 3 -->
+
+(ref:one) Data entry with four nested levels in a single data table.
 

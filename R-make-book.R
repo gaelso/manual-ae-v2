@@ -31,7 +31,6 @@ source("R/prepa-figs.R")
 #source("R/conv_tex_rmd.R") ## Run one time
 
 
-
 ## Make report
 ## PDF -- For pdf install webshot and webshot::install_phantomjs() 
 bookdown::render_book(
