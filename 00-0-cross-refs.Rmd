@@ -57,6 +57,14 @@
 (ref:evor) Left, superimposition of different sampling methods (cores, excavations by cubes, partial Voronoi excavation, total Voronoi excavation), from @levillain11 (photo: C. Jourdan). Right, manual excavation of large roots in a rubber tree plantation in Thailand (photo: L. Saint-André).\
 
 (ref:air) Air knife being used in Congo to extract the root systems (large and medium-size roots) of eucalyptus. Left, operator with protective equipment (dust, noise); middle, compressor and close up of the air pressure gauge (about 8 bars); right, the result (photos: C. Jourdan).
+
+(ref:mats) Field equipment. Left, equipment for cutting and labeling aliquots; middle, typical gauges for cutting branches; right, power saw and safety equipment (photo: A. Genet).
+
+(ref:cad) Bundling branches. Left, iron frame, tarpaulin and string for bundling branches (photo: A. Genet); middle, bundling branches in the field (photo: M. Rivoire); right, bundle ready for weighing (photo: M. Rivoire).
+
+(ref:tsp) Transporting disks and aliquots in a sand or grain bag (photo: J.-F. Picard).
+
+
 <!-------------------->
 <!-- Table captions --> 
 <!-------------------->

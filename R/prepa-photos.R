@@ -157,3 +157,26 @@ air <- c(photo_list$air1, photo_list$air2, photo_list$air3) %>%
   image_border("white", "5x5") %>%
   image_append()
 air
+
+## mats
+mats <- c(photo_list$matos1, photo_list$matos2, photo_list$matos3) %>%
+  image_scale(paste0(img_size$width/3, "x")) %>%
+  image_border("black", "2x2") %>%
+  image_border("white", "5x5") %>%
+  image_append()
+mats  
+
+## cad 
+cad <- c(photo_list$fagot1, photo_list$fagot2, photo_list$fagot3) %>%
+  image_scale(paste0("x", img_size$height)) %>%
+  image_border("black", "2x2") %>%
+  image_border("white", "5x5") %>%
+  image_append()
+cad
+
+## tsp
+tsp <- photo_list$transport %>%
+  image_scale(paste0("x", img_size$height)) %>%
+  image_border("black", "2x2") %>%
+  image_border("white", "5x5")
+tsp  
