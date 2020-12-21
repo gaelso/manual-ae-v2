@@ -27,3 +27,11 @@ pre code {
   max-width: 80%;
 }
 
+.filrouge {
+  padding: 1em;
+  border: 2px solid red;
+  border-radius: 10px;
+  background: #f5f5f5 5px center/3em no-repeat;
+  
+}
+

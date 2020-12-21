@@ -114,6 +114,70 @@ This formatting consists in organizing the data into a format suitable for the c
 This data formatting will be greatly facilitated if the data were initially entered in an appropriate format. In this matter, relational databases have the advantage of offering a search language that can be used to construct the appropriate tables easily. In Microsoft Excel, the notion of "pivot table" can also usefully be employed to format data.
 
 
+::: {.filrouge data-latex=""}
 
+(@eq-read) \Denarius\ **Red line dataset**
+
+To illustrate specific points in this guide we will be using a dataset collected in Ghana by @henry10. This dataset gives the dry biomass of 42 trees belonging to 16 different species in a wet tropical forest. The diameter at breast height of each tree was measured, together with its height, the diameter of its crown, the mean density of its wood, its volume, and its dry biomass in five compartments: branches, leaves, trunk, buttresses, and total biomass.
+
+Table \@ref(tab:data) gives the data @henry10 as they should be presented in a spreadsheet. The data table in the spreadsheet takes the form of a data rectangle; it should not contain any empty lines or empty columns, and its layout must not deviate from this matrix-like format. Decorative effects, indentations, cells left empty to "lighten" its appearance are to be avoided as the statistical software will be unable to read a dataset that deviates from a matrix format. Column headings should be reduced to short words, or even abbreviations. Information on the significance of these variables, and their units, should be presented separately in the meta-information.
+
+If information needs to be entered about species, this should be entered in a second table as this involves two nested levels: the species level, with several trees per species, and the tree level nested in the species level. Thus, if we are looking to enter the ecological guild and the vernacular name of the species, this will generate a second Table \@ref(tab:datasp) specific to the species where the scientific name of the species is used to create the link between Table \@ref(tab:data) and Table \@ref(tab:datasp).
+
+#### Data reading. {-}
+
+Let us suppose that the data formatted in the matrix format have been saved in the Excel file
+`Henry_et_al2010.xls`, the first worksheet of which, called `biomass`, contains Table \@ref(tab:data). In R software, these data are read using the commands:
+
+```{r, eval=FALSE, echo=TRUE}
+library(RODBC)%
+ch <- odbcConnectExcel("Henry_et_al2010.xls")
+dat <- sqlFetch(ch,"biomass")
+odbcClose(ch)
+```
+
+```{r}
+## Load the data
+dat <- read_csv("source/data/henry_et_al2010.csv", col_types = cols())
+
+```
+
+The data are then stored in the object `dat`.
+
+#### Data cleansing. {-}
+
+A few checks may be performed to verify data quality. In R, the command `summary` generates basic descriptive statistics for the variables in a data table:
+
+\  
+
+`summary(dat)`
+
+\  
+
+In particular for diameter at breast height, the result is:
+
+```{r}
+summary(dat$dbh)
+```
+
+Thus tree dbh varies from 2.6\ cm to 180\ cm, with a mean of 58.59\ cm and a median of 59.25\ cm. Basic descriptive statistics for total dry biomass `Btot` are as follows:
+
+```{r}
+summary(dat$Btot)
+```
+
+The total dry biomass of the largest tree is 70.24\ tonnes. The dry biomass of the smallest tree in the dataset is zero. As biomass is expressed in tonnes to two decimal places, this zero value is not aberrant, it means simply that the dry biomass of this tree is less than 0.01\ tonnes = 10 kg. This zero value will nevertheless pose a problem in the future when we want to log-transform the data.
+
+Finally, we can check that the total dry biomass is indeed the sum of the biomasses of the four other compartments:
+
+\  
+
+`max(abs(dat\$Btot-rowSums(dat[,c("Bbran","Bfol","Btronc","Bctf")])))`
+
+\  
+
+The greatest difference in absolute value is 0.01\ tonnes, which indeed corresponds to the precision of the data (two significant figures). The dataset therefore does not contain any inconsistencies at this level.
+
+:::
 
 
