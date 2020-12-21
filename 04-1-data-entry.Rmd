@@ -13,7 +13,7 @@ This consists in transferring the data recorded on the field forms into a comput
 
 The data must be entered as carefully as possible to minimize errors. One of the methods used to achieve this is double data entry: one operator enters the data, a second operator (if possible different from the first) repeats the data entry in a manner entirely independent from the first. The two files can then simply be compared to detect any data entry errors. As it is unlikely that the two operators will make the same data entry error, this method guarantees good quality data entry. But it is time consuming and tedious.
 
-Certain details, that have their importance, must also be respected during data entry. First, numbers must be distinguished from character strings. For the statistical software that will subsequently process the data, a number does not have the same role as a character string. This distinction must therefore be made during data entry. A number will be interpreted as the value of a numerical variable, whereas a character string will be interpreted as the category of a qualitative variable. The difference between the two is generally obvious, but not always. Let us, for instance, consider latitudes and longitudes. If we want to calculate the correlation between the latitude or the longitude and another variable (to identify a north-south or east-west gradient), the software must perceive the geographic coordinates as being numbers. These geographic coordinates must not therefore be entered as 7$^{\circ}$28'55.1" or 13$^{\circ}$41'25.9" as they would be interpreted as qualitative variables, and no calculations would be possible. A possible solution consists in converting geographic coordinates into decimal values. Another solution consists in entering geographic coordinated in three columns (one for degrees, one for minutes, and the third for seconds).
+Certain details, that have their importance, must also be respected during data entry. First, numbers must be distinguished from character strings. For the statistical software that will subsequently process the data, a number does not have the same role as a character string. This distinction must therefore be made during data entry. A number will be interpreted as the value of a numerical variable, whereas a character string will be interpreted as the category of a qualitative variable. The difference between the two is generally obvious, but not always. Let us, for instance, consider latitudes and longitudes. If we want to calculate the correlation between the latitude or the longitude and another variable (to identify a north-south or east-west gradient), the software must perceive the geographic coordinates as being numbers. These geographic coordinates must not therefore be entered as $7^{\circ}28'55.1"$ or $13^{\circ}41'25.9"$ as they would be interpreted as qualitative variables, and no calculations would be possible. A possible solution consists in converting geographic coordinates into decimal values. Another solution consists in entering geographic coordinated in three columns (one for degrees, one for minutes, and the third for seconds).
 
 When entering qualitative variables, care must be taken to avoid entering strings of great length as this enhances the risk of making data entry errors. It is far better to enter a short code and in the meta-information (see below) give the meaning of the code.
 
@@ -43,37 +43,75 @@ knitr::include_graphics(paste0(fig_path, "/nested.pdf"))
 ```{r one}
 
 kab <- tibble(
-  forest    = c(       1,          1,           1,           1,           2, "$\\vdots$"),
-  area      = c(     400,        400,         400,         400,         650, "$\\vdots$"),
-  plot      = c(     1.1,        1.1,         1.1,         1.2, "$\\vdots$", "$\\vdots$"),
-  longitude = c(   7.345,      7.345,       7.345,       7.832, "$\\vdots$", "$\\vdots$"),
-  latitude  = c(  12.146,     12.146,      12.146,      12.253, "$\\vdots$", "$\\vdots$"),
-  tree      = c(  "1.1.1",   "1.1.1",     "1.1.2", "$\\vdots$", "$\\vdots$", "$\\vdots$"),
-  species   = c(    "ANO",     "ANO",       "GUI", "$\\vdots$", "$\\vdots$", "$\\vdots$"),
-  x         = c(      3.2,       3.2,         7.2, "$\\vdots$", "$\\vdots$", "$\\vdots$"),
-  y         = c(      4.5,       4.5,         2.1, "$\\vdots$", "$\\vdots$", "$\\vdots$"),
-  stem      = c("1.1.1.1", "1.1.1.2", "$\\vdots$", "$\\vdots$", "$\\vdots$", "$\\vdots$"), 
-  D         = c(       20,        12, "$\\vdots$", "$\\vdots$", "$\\vdots$", "$\\vdots$"),
-  H         = c(       18,        15, "$\\vdots$", "$\\vdots$", "$\\vdots$", "$\\vdots$"),
-  V         = c(      2.3,       1.9, "$\\vdots$", "$\\vdots$", "$\\vdots$", "$\\vdots$")
+  forest    = c(       1,                 1,           1,           1,           2, "$\\vdots$"),
+  area      = c(     400, "40$\\textit{1}$",         400,         400,         650, "$\\vdots$"),
+  plot      = c(     1.1,               1.1,         1.1,         1.2, "$\\vdots$", "$\\vdots$"),
+  longitude = c(   7.345,             7.345,       7.345,       7.832, "$\\vdots$", "$\\vdots$"),
+  latitude  = c(  12.146,            12.146,      12.146,      12.253, "$\\vdots$", "$\\vdots$"),
+  tree      = c(  "1.1.1",          "1.1.1",     "1.1.2", "$\\vdots$", "$\\vdots$", "$\\vdots$"),
+  species   = c(    "ANO",            "ANO",       "GUI", "$\\vdots$", "$\\vdots$", "$\\vdots$"),
+  x         = c(      3.2,              3.2,         7.2, "$\\vdots$", "$\\vdots$", "$\\vdots$"),
+  y         = c(      4.5,              4.5,         2.1, "$\\vdots$", "$\\vdots$", "$\\vdots$"),
+  stem      = c("1.1.1.1",        "1.1.1.2", "$\\vdots$", "$\\vdots$", "$\\vdots$", "$\\vdots$"), 
+  D         = c(       20,               12, "$\\vdots$", "$\\vdots$", "$\\vdots$", "$\\vdots$"),
+  H         = c(       18,               15, "$\\vdots$", "$\\vdots$", "$\\vdots$", "$\\vdots$"),
+  V         = c(      2.3,              1.9, "$\\vdots$", "$\\vdots$", "$\\vdots$", "$\\vdots$")
 )
 
 kab_opt <- list(
   x = kab,
   caption = "(ref:one)",
   col.names = c("forest", "area", "plot", "longitude", "latitude", "tree", "species", "$x$", "$y$", "stem", "$D$", "$H$", "$V$"),
-  #booktabs = TRUE,
+  booktabs = TRUE,
   escape = F,
   align = "ccccccccccccc"
 )
 
 display_table()
-#kable(kab_opt, format = "html")
 
 ```
 
+Giving the data this structure minimizes the amount of information entered, and therefore minimizes data entry errors. An alternative consists in entering all the data in a single data table, as indicated for instance in Table \@ref(tab:one).
+This is not recommended as data is unnecessarily repeated and therefore the risk of making data entry errors is greatly increased. For instance, in Table \@ref(tab:one) we have deliberately introduced a data entry error in the second line of the data table, where the area of forest 1, which should be 400 ha, here is 401 ha. By unnecessarily repeating the information, we find ourselves multiplying this type of inconsistency that must subsequently be corrected.
+
+An effective method that can be used to resolve these nested level problems is to build a relational database. This type of database is specifically intended to manage different inter-related data tables. It removes all inconsistencies, such as that illustrated in Table \@ref(tab:one) by systematically checking relational integrity between the tables. But building a relational database requires technical knowledge, and a person with skills in this field may need to be called upon.
+
+In brief, when entering data, it is advisable to:
+
+- avoid repeating the same information,
+- prefer relational databases,
+- provide additional information (meta-information),
+- take great care with units,
+- distinguish between qualitative and quantitative information,
+- check the data,
+- reduce or correct missing data.
 
 
+## Data cleansing
+
+Data cleansing requires toing-and-froing between the data record forms and the statistical software (or use of specially designed data cleansing software). This step aims to remove all data inconsistencies. And, if the measurement system is still in place, it may require certain measurements to be repeated. Data cleansing removes:
+
+- aberrant data. For example, a tree 50 meters in diameter.
+- inconsistent data. For example, a tree with a trunk biomass of 755 kg and a total biomass of 440 kg, or a tree that is 5 cm in diameter and 40 m in height.
+- false categories for qualitative variables. For example, software that differentiates between upper case and lower case will interpret "yes" and "Yes" as two different categories, whereas in fact they are the same.
+
+The difficulty inherent to detecting aberrant data lies in choosing the threshold between what is a normal measurement and what is an aberrant measurement. It may happen that aberrant data stem from a change in unit during data entry. If the field data record form mentions 1.2 kg then 900 g for leaf biomass measurements, care must be taken to enter 1.2 and 0.9 (en kg), or 1200 and 900 (in
+g), not 1.2 and 900.
+Inconsistent data are more difficult to detect as they require the comparison of several variables one with another. In the example given above, it is perfectly normal for a tree to have a trunk biomass of 755 kg, as it is for a tree to have a total biomass of 440 kg, but obviously the two values cannot be simultaneously correct for the same tree. Likewise, there is nothing abnormal about a tree having a diameter of 5 cm, or a tree being 40 m high. It is simply that a tree with a diameter of 5 cm and a height of 40 m is abnormal.
+
+Aberrant data and data inconsistencies can be detected using descriptive statistics and by plotting two variables one against the other: an examination of means, quantiles, and maximum and minimum values, will often detect aberrant data; plots of two variables one against the other can be used to detect inconsistent data. For instance, in the above example, we could plot total biomass against trunk biomass, and check that all the points are located above the line $y=x$. Plots of height against diameter, volume against diameter, etc. can also be used to detect abnormal data. The categories describing qualitative variables could also be inspected by counting the number of observations per category. Two qualitative variables could then be crossed by building the corresponding contingency table. It should be assumed, during this inspection, that the statistical software has correctly interpreted numerical data as numerical data and qualitative data as qualitative data.
+
+False categories often stem from sloppy data entry. Involuntary spelling mistakes are often made when entering the names of species in full, and this generates false categories. False categories may also be very ambiguous and difficult to correct. Let us consider the example of a dataset of trees in Central African wet tropical forest which, among other things, contains two species: alombi (*Julbernardia seretii*) and ilomba (*Picnanthus
+angolensis*). Let us assume that, by mistake, the false category "alomba" was entered. This false category differs from the true alombi and ilomba categories by only one letter. But which is the right category? Accents are also often the source of false categories, depending on whether text was entered with or without accents. Let us for example consider the entering of a color: for the person entering the data (in French) it may be perfectly clear that "vert fonc�" and "vert fonce" are the same thing, but the software will consider these as two different categories. Masculines and feminines (again in French) may also pose a problem. "Feuille vert clair" and "feuille verte clair" will be understood by the software as two different categories. A false category often found is generated by a space. The "green" category (no space) and the "green\textvisiblespace" category (with a space, shown here by "\textvisiblespace") will be understand by the software as two different categories. This false category is particularly difficult to detect as the space is invisible on the screen and the user therefore has the impression that the two categories are the same. All invisible characters (carriage return, tabulation, etc.) and characters that appear in the same fashion on the screen but have different ASCII codes, may generate the same type of confusing error.
+
+False categories can be avoided by using data entry templates that restrict the entering of qualitative variable to a choice among admissible categories. Automatic data cleansing scripts, that remove incorrect spaces, check accents or letter upper or lower case, and check that qualitative variables take their value from a list of admissible categories, are a necessity for large datasets.
+
+
+## Data formatting
+
+This formatting consists in organizing the data into a format suitable for the calculations needed to construct the model. Typically, this consists of a model with one line per statistical individual (a tree for an individual model, a plot for a stand table) and as many columns as there are descriptive variables (i.e. variables predicting biomass, volume\ldots), and as there are effect variables (dbh, height\ldots). This formatting phase may require advanced data handling techniques. In some cases the data will need to be aggregated from one descriptive level to another. For example, if we are looking to construct an individual model for a coppice, and the measurements were made on stems, the data concerning the stems of a given stump will need to be aggregated: add together the volumes and masses, and calculate the equivalent diameter (i.e. the quadratic mean) of the stump from the diameters of its stems. Another example is the construction of a stand model from measurements in individual trees. In this case the data regarding the trees need to be aggregated into data characterizing the stand (volume per hectare, dominant height, etc.). In the opposite case, datasets need to be split. For example, we have calculated the volume of trees selected at random in a multispecific stand, and we are looking to construct a separate model for the five dominant species: the dataset needs to be split on the basis of tree species.
+
+This data formatting will be greatly facilitated if the data were initially entered in an appropriate format. In this matter, relational databases have the advantage of offering a search language that can be used to construct the appropriate tables easily. In Microsoft Excel, the notion of "pivot table" can also usefully be employed to format data.
 
 
 
