@@ -119,6 +119,7 @@ This data formatting will be greatly facilitated if the data were initially ente
 [**$\looparrowright$ `RedLineCounter` Red line dataset**]{color="red"}
 
 :::{.exercise #read name="(ref:read)"}
+\ 
 :::
 
 To illustrate specific points in this guide we will be using a dataset collected in Ghana by @henry10. This dataset gives the dry biomass of 42 trees belonging to 16 different species in a wet tropical forest. The diameter at breast height of each tree was measured, together with its height, the diameter of its crown, the mean density of its wood, its volume, and its dry biomass in five compartments: branches, leaves, trunk, buttresses, and total biomass.
@@ -151,11 +152,9 @@ The data are then stored in the object `dat`.
 
 A few checks may be performed to verify data quality. In R, the command `summary` generates basic descriptive statistics for the variables in a data table:
 
-\  
-
+\newline
 `summary(dat)`
-
-\  
+\newline
 
 In particular for diameter at breast height, the result is:
 
