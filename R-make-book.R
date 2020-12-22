@@ -33,11 +33,17 @@ source("R/prepa-figs.R")
 
 ## Make report
 ## PDF -- For pdf install webshot and webshot::install_phantomjs() 
+# bookdown::render_book(
+#   input = "index.Rmd",
+#   output_format = "bookdown::pdf_book",
+#   output_file = paste0("Manual-AE-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"), ".pdf"),
+#   output_dir = "Manual-AE"
+#   ) ## >> NOT WORKING WITH THEOREM AND PROOF HACK
+
 bookdown::render_book(
   input = "index.Rmd",
   output_format = "bookdown::pdf_book",
-  output_file = paste0("Manual-AE-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"), ".pdf"),
-  output_dir = "Manual-AE"
+  output_dir = paste0("Manual-AE/Manual-AE-pdf-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"))
   )
 
 ## HTML - GITBOOK

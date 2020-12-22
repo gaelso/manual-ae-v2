@@ -1,7 +1,7 @@
 bookdown::gitbook:
   split_bib: FALSE
   css: style.css
-  pandoc_args: ["--lua-filter=lua-color-text.lua"]
+  pandoc_args: ["--lua-filter=lua-redline-counter.lua"]
   config:
     toc:
       before: |
@@ -23,7 +23,7 @@ bookdown::pdf_book:
   citation_package: natbib
   toc: false
   keep_tex: yes
-  pandoc_args: ["--lua-filter=lua-color-text.lua"]
+  pandoc_args: ["--lua-filter=lua-redline-counter.lua"]
 
 #bookdown::epub_book: default
 

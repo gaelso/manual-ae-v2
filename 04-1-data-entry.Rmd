@@ -114,15 +114,12 @@ This formatting consists in organizing the data into a format suitable for the c
 This data formatting will be greatly facilitated if the data were initially entered in an appropriate format. In this matter, relational databases have the advantage of offering a search language that can be used to construct the appropriate tables easily. In Microsoft Excel, the notion of "pivot table" can also usefully be employed to format data.
 
 
-::: {.filrouge data-latex=""}
+::::: {.filrouge data-latex=""}
 
-(@eq-read) \Denarius\ [**Red line dataset**]{color="red"}
+[**$\looparrowright$ `RedLineCounter` Red line dataset**]{color="red"}
 
-(@eq-read) [\Denarius\ **Red line dataset**]{color="red"}
-
-[(@eq-read) \Denarius\ **Red line dataset**]{color="red"}
-
-[(\@eq-read) ---\Denarius___\ **Red line dataset**]{color="red"}
+:::{.exercise #read name="(ref:read)"}
+:::
 
 To illustrate specific points in this guide we will be using a dataset collected in Ghana by @henry10. This dataset gives the dry biomass of 42 trees belonging to 16 different species in a wet tropical forest. The diameter at breast height of each tree was measured, together with its height, the diameter of its crown, the mean density of its wood, its volume, and its dry biomass in five compartments: branches, leaves, trunk, buttresses, and total biomass.
 
@@ -184,6 +181,6 @@ Finally, we can check that the total dry biomass is indeed the sum of the biomas
 
 The greatest difference in absolute value is 0.01\ tonnes, which indeed corresponds to the precision of the data (two significant figures). The dataset therefore does not contain any inconsistencies at this level.
 
-:::
+::::::
 
 
