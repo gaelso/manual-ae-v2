@@ -1,6 +1,7 @@
 bookdown::gitbook:
   split_bib: FALSE
   css: style.css
+  pandoc_args: ["--lua-filter=lua-color-text.lua"]
   config:
     toc:
       before: |
@@ -11,6 +12,7 @@ bookdown::gitbook:
     download: null
     sharing: null
     info: null
+    
 bookdown::pdf_book:
   #highlight: tango
   includes:
@@ -21,27 +23,31 @@ bookdown::pdf_book:
   citation_package: natbib
   toc: false
   keep_tex: yes
+  pandoc_args: ["--lua-filter=lua-color-text.lua"]
 
 #bookdown::epub_book: default
-bookdown::pdf_document2:
-#  highlight: tango
-  includes:
-    in_header: preamble.tex
-  latex_engine: xelatex
-  citation_package: natbib
-  toc: false
-  keep_tex: yes
-bookdown::word_document2:
-  pandoc_args:
-    '--lua-filter=page-break.lua'
-bookdown::html_document2: 
-    highlight: pygments
-    theme: "flatly"      # for: html_document black theme: darkly, white them: flatly
-    toc: TRUE
-    toc_float: 
-      collapsed: FALSE
-    number_sections: TRUE
-    toc_depth: 2
-    css: style.css
+
+# bookdown::pdf_document2:
+# #  highlight: tango
+#   includes:
+#     in_header: preamble.tex
+#   latex_engine: xelatex
+#   citation_package: natbib
+#   toc: false
+#   keep_tex: yes
+
+# bookdown::word_document2:
+#   pandoc_args:
+#     '--lua-filter=lua-page-break.lua'
+    
+# bookdown::html_document2: 
+#     highlight: pygments
+#     theme: "flatly"      # for: html_document black theme: darkly, white them: flatly
+#     toc: TRUE
+#     toc_float: 
+#       collapsed: FALSE
+#     number_sections: TRUE
+#     toc_depth: 2
+#     css: style.css
 
     

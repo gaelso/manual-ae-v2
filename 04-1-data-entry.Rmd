@@ -116,7 +116,13 @@ This data formatting will be greatly facilitated if the data were initially ente
 
 ::: {.filrouge data-latex=""}
 
-(@eq-read) \Denarius\ **Red line dataset**
+(@eq-read) \Denarius\ [**Red line dataset**]{color="red"}
+
+(@eq-read) [\Denarius\ **Red line dataset**]{color="red"}
+
+[(@eq-read) \Denarius\ **Red line dataset**]{color="red"}
+
+[(\@eq-read) ---\Denarius___\ **Red line dataset**]{color="red"}
 
 To illustrate specific points in this guide we will be using a dataset collected in Ghana by @henry10. This dataset gives the dry biomass of 42 trees belonging to 16 different species in a wet tropical forest. The diameter at breast height of each tree was measured, together with its height, the diameter of its crown, the mean density of its wood, its volume, and its dry biomass in five compartments: branches, leaves, trunk, buttresses, and total biomass.
 
