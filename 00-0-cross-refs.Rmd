@@ -65,7 +65,7 @@
 (ref:tsp) Transporting disks and aliquots in a sand or grain bag (photo: J.-F. Picard).
 
 
-<!-- Figures chapter 3 --> 
+<!-- Figures chapter 4 --> 
 
 (ref:niv) Example of four data tables for four nested levels.
 
@@ -90,7 +90,7 @@
 (ref:data) Tree biomass data from @henry10 in Ghana. `dbh` is diameter at breast height in cm, `heig` is height in m,
 `houp` is the diameter of the crown in m, `dens` is mean wood density in g\ cm^-3^, `volume` is volume in m^3^, `Bbran` is the dry biomass of the branches in tonnes, `Bfol` is the dry biomass of the foliage in tonnes, `Btronc` is the dry biomass of the trunk in tonnes, `Bctf` is the dry mass of the buttresses in tonnes, and `Btot` is total dry biomass in tonnes.
 
-
+(ref:datasp) Data on the species sampled by @henry10 in Ghana.
 
 <!-------------------->
 <!-- Red line title --> 
