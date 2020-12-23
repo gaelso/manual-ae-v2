@@ -81,9 +81,15 @@
 (ref:c03) Coefficient of variation in relation to plot size: data drawn from Table 5 by @chave03 for Barro Colorado Island, Panama.
 
 
-<!-- Tables chapter 3 -->
+<!-- Tables chapter 4 -->
 
 (ref:one) Data entry with four nested levels in a single data table.
+
+(ref:datashort) Tree biomass data from @henry10 in Ghana.
+
+(ref:data) Tree biomass data from @henry10 in Ghana. `dbh` is diameter at breast height in cm, `heig` is height in m,
+`houp` is the diameter of the crown in m, `dens` is mean wood density in g\ cm^-3^, `volume` is volume in m^3^, `Bbran` is the dry biomass of the branches in tonnes, `Bfol` is the dry biomass of the foliage in tonnes, `Btronc` is the dry biomass of the trunk in tonnes, `Bctf` is the dry mass of the buttresses in tonnes, and `Btot` is total dry biomass in tonnes.
+
 
 
 <!-------------------->

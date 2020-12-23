@@ -10,7 +10,7 @@ display_table <- function(need_lscp = FALSE){
       tt <- do.call(kable, c(kab_opt, format = book_format)) %>%
         kableExtra::kable_styling(
           position = 'center', 
-          latex_options = c("scale_down", "repeat_header") ## removed for this book: "HOLD_position", 
+          latex_options = c("repeat_header") ## removed for this book: "HOLD_position", 
           )
     } else if (need_lscp == TRUE) {
       tt <- do.call(kable, c(kab_opt, format = book_format)) %>%
