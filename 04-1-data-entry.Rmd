@@ -116,10 +116,14 @@ This data formatting will be greatly facilitated if the data were initially ente
 
 ::::: {.filrouge data-latex=""}
 
-[**$\looparrowright$ `RedLineCounter` Red line dataset**]{color="red"}
+[**`RedLineCounter`**]{color="red"} (ref:read) *(simple counter: full red / 1 to n / no cross ref but list possible)*
+
+(@eq-read1) $\looparrowright$ [**Red line dataset**]{color="red"} *(\@eq- counter: not full red / 1 to n / cross ref no list)*
+
 
 :::{.exercise #read name="(ref:read)"}
 \ 
+*(hacking exercise environmment:not full red / section based number / cross ref and listing available)* 
 :::
 
 To illustrate specific points in this guide we will be using a dataset collected in Ghana by @henry10. This dataset gives the dry biomass of 42 trees belonging to 16 different species in a wet tropical forest. The diameter at breast height of each tree was measured, together with its height, the diameter of its crown, the mean density of its wood, its volume, and its dry biomass in five compartments: branches, leaves, trunk, buttresses, and total biomass.
@@ -152,9 +156,10 @@ The data are then stored in the object `dat`.
 
 A few checks may be performed to verify data quality. In R, the command `summary` generates basic descriptive statistics for the variables in a data table:
 
-\newline
-`summary(dat)`
-\newline
+
+```{r, echo=T, eval=F}
+summary(dat)
+```
 
 In particular for diameter at breast height, the result is:
 
@@ -172,11 +177,9 @@ The total dry biomass of the largest tree is 70.24\ tonnes. The dry biomass of t
 
 Finally, we can check that the total dry biomass is indeed the sum of the biomasses of the four other compartments:
 
-\  
-
-`max(abs(dat\$Btot-rowSums(dat[,c("Bbran","Bfol","Btronc","Bctf")])))`
-
-\  
+```{r, echo=T, eval=F}
+max(abs(dat$Btot-rowSums(dat[,c("Bbran","Bfol","Btronc","Bctf")])))
+```
 
 The greatest difference in absolute value is 0.01\ tonnes, which indeed corresponds to the precision of the data (two significant figures). The dataset therefore does not contain any inconsistencies at this level.
 

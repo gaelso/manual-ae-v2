@@ -90,8 +90,6 @@
 <!-- Red line title --> 
 <!-------------------->
 
-(ref:rl) [$\looparrowright$]{color="red"}
-
 <!-- Red line chapter 4 -->
 
-(ref:read) **$\looparrowright$\ Red line dataset**
+(ref:read) [**$\looparrowright$\ Red line dataset**]{color="red"}
