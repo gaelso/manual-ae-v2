@@ -6,14 +6,14 @@ Once the field measurements phase has been completed, and before any analysis, t
 
 ## Data entry
 
-This consists in transferring the data recorded on the field forms into a computer file. The first step is to choose the software. For a small dataset, a spreadsheet such as Microsoft Excel or OpenOffice Calc may be sufficient. For more substantial campaigns, a database management system such as Microsoft Access or MySQL (\url{www.mysql.com}) should be used.
+This consists in transferring the data recorded on the field forms into a computer file. The first step is to choose the software. For a small dataset, a spreadsheet such as Microsoft Excel or OpenOffice Calc may be sufficient. For more substantial campaigns, a database management system such as Microsoft Access or MySQL (www.mysql.com) should be used.
 
 
 ### Data entry errors
 
 The data must be entered as carefully as possible to minimize errors. One of the methods used to achieve this is double data entry: one operator enters the data, a second operator (if possible different from the first) repeats the data entry in a manner entirely independent from the first. The two files can then simply be compared to detect any data entry errors. As it is unlikely that the two operators will make the same data entry error, this method guarantees good quality data entry. But it is time consuming and tedious.
 
-Certain details, that have their importance, must also be respected during data entry. First, numbers must be distinguished from character strings. For the statistical software that will subsequently process the data, a number does not have the same role as a character string. This distinction must therefore be made during data entry. A number will be interpreted as the value of a numerical variable, whereas a character string will be interpreted as the category of a qualitative variable. The difference between the two is generally obvious, but not always. Let us, for instance, consider latitudes and longitudes. If we want to calculate the correlation between the latitude or the longitude and another variable (to identify a north-south or east-west gradient), the software must perceive the geographic coordinates as being numbers. These geographic coordinates must not therefore be entered as $7^{\circ}28'55.1"$ or $13^{\circ}41'25.9"$ as they would be interpreted as qualitative variables, and no calculations would be possible. A possible solution consists in converting geographic coordinates into decimal values. Another solution consists in entering geographic coordinated in three columns (one for degrees, one for minutes, and the third for seconds).
+Certain details, that have their importance, must also be respected during data entry. First, numbers must be distinguished from character strings. For the statistical software that will subsequently process the data, a number does not have the same role as a character string. This distinction must therefore be made during data entry. A number will be interpreted as the value of a numerical variable, whereas a character string will be interpreted as the category of a qualitative variable. The difference between the two is generally obvious, but not always. Let us, for instance, consider latitudes and longitudes. If we want to calculate the correlation between the latitude or the longitude and another variable (to identify a north-south or east-west gradient), the software must perceive the geographic coordinates as being numbers. These geographic coordinates must not therefore be entered as 7$^\circ$28'55.1" or 13$^\circ$41'25.9" as they would be interpreted as qualitative variables, and no calculations would be possible. A possible solution consists in converting geographic coordinates into decimal values. Another solution consists in entering geographic coordinated in three columns (one for degrees, one for minutes, and the third for seconds).
 
 When entering qualitative variables, care must be taken to avoid entering strings of great length as this enhances the risk of making data entry errors. It is far better to enter a short code and in the meta-information (see below) give the meaning of the code.
 
@@ -35,7 +35,7 @@ The data should be entered in the spreadsheets as one line per individual. If th
 
 ```{r niv, fig.cap="(ref:niv)"}
 
-knitr::include_graphics(paste0(fig_path, "/nested.pdf"))
+knitr::include_graphics(paste0(fig_path, "/nested.png"), auto_pdf = TRUE)
 
 ```
 
@@ -185,6 +185,8 @@ The greatest difference in absolute value is 0.01\ tonnes, which indeed correspo
 
 ::::::
 
+\  
+
 ```{r data}
 
 kab_opt <- list(
@@ -204,6 +206,8 @@ if (book_format == "latex") {
 }
 
 ```
+
+\  
 
 ```{r datasp}
 

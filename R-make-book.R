@@ -20,7 +20,9 @@ fig_path <- "source/figures"
 ## Source R scripts
 source("R/00-libs.R")
 
-#source("R/00-Linux-convert-pdf-svg.R") ## Need tools from Linux, done with Rstudio server on WSL
+#source("R/00-convert-pdf-svg-LINUX.R") ## Need tools from Linux, done with Rstudio server on WSL
+
+#source("R/00-convert-pdf-png.R")
 
 source("R/00-functions.R")
 
