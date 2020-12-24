@@ -1,0 +1,11 @@
+
+<!-- Cross references to have superscripts / underscript in tables and captions -->
+<!-- also used to avoid having long captions in R chunk headers                 -->
+
+<!-------------------->
+<!-- Red line title --> 
+<!-------------------->
+
+<!-- Red line chapter 4 -->
+
+(ref:read) [**$\looparrowright$\ Red line dataset**]{color="red"}

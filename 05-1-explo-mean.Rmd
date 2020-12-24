@@ -1,0 +1,27 @@
+
+# Graphical exploration of the data {#explo}
+
+A graphic exploration of the data is the first step in their analysis. It consists in visually assessing relations between variables in order to gain an idea of the type of model to be fitted. In practice, points are plotted on a graph as a cluster, the coordinates of which correspond to two variables: effect variable on the $x$ axis and response variable on the $y$ axis. A graph can be plotted only for at most two variables simultaneously (three-dimensional graphs cannot in practice be assessed visually). To explore graphically the relations between $p$ variables (where $p>1$), a total of $p(p-1)/2$ graphs should be plotted of one variable against the other and/or efforts should be made to construct combined effect variables from several effect variables (we will return to this point in \S\ \@ref(plus)).
+
+Let us now suppose that we have one response variable $Y$ (volume, biomass\ldots) and $p$ effect variables $X_1$, $X_2$, \ldots, $X_p$ (dbh, height\ldots). The aim of the graphical exploration is not to select from among the $p$ effect variables those that will in fact be used for the model: when we select variables we need to be able to test the significant nature of a variable, which only comes later in the next phase of model fitting. The $p$ effect variables are therefore considered as fixed, and we look to determine the form of model that best links variable $Y$ to variables $X_1$ to $X_p$. A model is made up of two terms: the mean and the error (or residual). The graphical exploration aims to specify both the form of the mean relation and the form of the error, without any concern for the value of model parameters (dealt with in the next model-fitting step). The mean relation may be linear or non linear, linearizable or not; the residual error may be additive or multiplicative, of constant variance (homoscedasticity) or not (heteroscedasticity). By way of an illustration, Figure \@ref(fig:exgr) shows four examples where the relation is linear or not, and the variance of the residuals is constant or not.
+
+```{r exgr, fig.scap="Example of relations between two variables $X$ and $Y$", fig.cap="(ref:exgr)"}
+
+knitr::include_graphics(paste0(fig_path, "/explogr.png"), auto_pdf = TRUE)
+
+``` 
+
+The graphical exploration of the data phase is also necessary to avoid falling into the traps of 
+"blind" fitting: the impression can be gained that the model accurately fits the data, whereas in fact this result is an artifact. This is illustrated in Figure \ref{badR2} for a linear relation. In all four cases shown in this figure the $R^2$ of the linear regression of $Y$ against $X$ is high, while in actual fact the linear relation $Y=a+bX+\varepsilon$ does not fit the data. In Figure \@ref(fig:badR2)A, the cluster of points is split into three subsets, each of which shows a linear relation between $Y$ and $X$ with a negative correlation coefficient. But the three subsets are located along a line that has a positive slope, i.e. that reflecting the linear regression. In \ref{badR2}B, the cluster of points, except one outlier (very likely an aberrant value), does not show any relation between $Y$ and $X$.
+But the outlier is sufficient to make it look as though there is a positive relation between $Y$ and $X$. In \ref{badR2}C, the relation between $Y$ and $X$ is parabolic. Finally, in \ref{badR2}D, the cluster of points, except one outlier, is located along a line with a positive slope. In this case, a linear relation between $Y$ and $X$ is well suited to describing the data, once the outlier has been removed. This outlier artificially reduces the value of $R^2$ (contrary to the situation in Figure \@ref(fig:badR2)B where the outlier artificially increases $R^2$).
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics{badR2}
+\end{center}
+\caption[Determination coefficients of linear regressions for clusters of points not showing a linear relation]{Determination coefficients ($R^2$) of linear regressions for clusters of points not showing a linear relation.\label{badR2}}
+\end{figure}
+
+As indicated by its name, this graphical exploration phase is more an exploration than a systematic method. Although some advice can be given in matters of finding the right model, the process requires both experience and intuition.
+
+## Exploring the mean relation
