@@ -14,3 +14,8 @@
 <!-- Red line chapter 5 -->
 
 (ref:feBvD) [**$\looparrowright$\ Exploring the biomass-dbh relation**]{color="red"}
+
+(ref:feBvD2H) [**$\looparrowright$\ Exploring the biomass--$D^2H$ relation**]{color="red"}
+
+(ref:frho) [**$\looparrowright$\ Conditioning on wood density**]{color="red"}
+

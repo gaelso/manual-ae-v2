@@ -55,3 +55,156 @@ knitr::include_graphics(paste0(fig_path, "/fBvD.png"), auto_pdf = TRUE)
 
 
 ### When there is more than one effect variable {#plus}
+
+The first step is to determine whether it is possible to form a single combined effect variable out of the several effect variables considered. For example, if we are looking to predict trunk volume from its dbh $D$ and its height $H$,
+we can be sure that the new variable $D^2H$ will be an effective predictor. We have therefore taken two effect variables, $D$ and $H$ and used them to form a new (single!) effect variable, $D^2H$. As an illustration of this, @louppe94 created the following individual volume model for *Afzelia africana* in the Badénou forest reserve in Côte d'Ivoire:
+\[
+V=-0.0019+0.04846C^2H
+\]
+where $V$ is total volume in m$^3$, $C$ is circumference at 1.30\ m in m and $H$ is height in m. Although this table is double-entry (girth and height), it in fact contains only one effect variable: $C^2H$. Another example is the stand volume model established by 
+@fonweban97 in Cameroon for *Eucalyptus saligna*:
+\[
+V=\beta_1G^{\beta_2}\left(\frac{H_0}{N}\right)^{\beta_3}
+\]
+where $V$ is stand volume in m^3^\ ha^-1^, $G$ is basal area in m^2^\ ha^-1^, $H_0$ is the height of the dominant tree in the stand, $N$ is stand density (number of stems per hectare) and $\beta$ are constants. Although this table is triple-entry (basal area, dominant height and density), it in fact contains only two effect variables: $G$ and the ratio $H_0/N$.
+
+
+::::::{.filrouge data-latex=""}
+
+:::{.exercise #feBvD2H name="(ref:feBvD2H)"}
+\  
+:::
+
+Compared with a double-entry biomass model using dbh $D$ and height $H$, the $D^2H$ data item constitutes an approximation of trunk volume (to within the form factor) and can therefore be used as a combined effect variable. The scatter plot of biomass points against $D^2H$ is obtained by the command:
+
+```{r, eval=F, echo=T}
+
+with(dat,plot(dbh^2*haut,Btot,xlab="D2H (cm2.m)",ylab="Biomass (t)"))
+
+```
+
+and the result is shown in Figure \@ref(fig:fBvD2H). This cluster of points is of the same type as that in Figure \@ref(fig:exgr)C: the relation between biomass and $D^2H$ is linear, but the variance of the biomass increases with $D^2H$.
+
+::::::
+
+
+```{r fBvD2H, fig.cap="(ref:fBvD2H)"}
+
+knitr::include_graphics(paste0(fig_path, "/fBvD2H.png"), auto_pdf = TRUE)
+
+```
+
+Assume that, once the effect variables have been aggregated, we are still left with $p$ effect variables $X_1$,
+\ldots, $X_p$ (with $p>1$). We could first explore the $p$ relations between $Y$ and each of the $p$ effect variables. As these take the form of relations between two variables, the graphical methods presented hereafter are perfectly suitable. However, this approach often yields little information as the relation between $Y$ and $p$ variables does not boil down to the $p$ relations between $Y$ and each of the $p$ variables separately. A simple example can clearly illustrate this: let us suppose that variable $Y$ is (to within the errors) the sum of two effect variables:
+
+\begin{equation}
+Y=X_1+X_2+\varepsilon(\#eq:truem)
+\end{equation}
+
+where $\varepsilon$ is a zero expectation error, and variables $X_1$ and $X_2$ are related such that $X_1$ varies between 0 and $-X_{\max}$ and, for a given $X_1$, $X_2$ varies between $\max(0,-X1)$ and $\min(X_{\max},1-X_1)$. Figure \@ref(fig:badex) shows the two plots of $Y$ against each of the effect variables $X_1$ and $X_2$ using simulated data for this model (with $X_{\max}=5$). The cluster of points does not appear to have any particular structure, and no model is therefore detected that generates $\mbox{E}(Y)=X_1+X_2$.
+
+```{r badex, fig.cap="(ref:badex)"}
+
+knitr::include_graphics(paste0(fig_path, "/badexplo.png"), auto_pdf=TRUE)
+
+```
+
+When we have two effect variables, one way to solve the problem is by conditioning. This consists in looking at the relation between the response variable $Y$ and one of the effect variables (let us say $X_2$) conditionally on the values of the other effect variable (in this case $X_1$). In practice, we divide the dataset into classes based on the value of $X_1$, then we explore the relation between $Y$ and $X_2$ in each data subset. If we consider again the previous example, we divide the values of $X_1$ into 12 large intervals of 0.5 units: the first ranging from $-5$ to $-4.5$, the second from $-4.5$ to $-4$, etc., up to the last interval that ranges from 0.5 to 1. The dataset shown in Figure \@ref(fig:badex) has therefore been divided into 12 data subsets based on the 12 classes of $X_1$ values, and 12 plots can be constructed of $Y$ against $X_2$ for each of these 12 data subsets. The result is shown in Figure \@ref(fig:cX1). If we superimpose all the plots in Figure \@ref(fig:cX1) this will give the plot shown on the right in Figure \@ref(fig:badex). These plots show that, for any given value of $X_1$, relation between $Y$ and $X_2$ is indeed linear. Additionally, we can see that the slope of the line of $Y$ plotted against $X_2$ for any given $X_1$ has the same constant value for all values of $X_1$. This graphical exploration therefore shows that the model takes the form:
+\[
+\mbox{E}(Y)=f(X_1)+aX_2
+\]
+where $a$ is a constant coefficient (in this case it has a value of 1, but the graphical exploration is not concerned with parameter values), and $f(X_1)$ is the y-intercept of the line generated by plotting $Y$ against $X_2$ for a given value of $X_1$. This y-intercept potentially varies with $X_1$, in accordance with function $f$ that remains to be determined.
+
+```{r cX1, fig.cap="(ref:cX1)"}
+
+knitr::include_graphics(paste0(fig_path, "/conditioX1.png"), auto_pdf = TRUE)
+
+```
+
+In order to explore the form of function $f$, we can plot a linear regression for each of the 12 data subsets of $Y$ and $X_2$ corresponding to the 12 classes of $X_1$ values. The y-intercept of each of these 12 lines is then recorded, called $y_0$, and a graph is plotted of $y_0$ against the middle of each class of $X_1$ values. This plot is shown in Figure \@ref(fig:y0X1) for the same simulated data as previously. This graphical exploration shows that the relation between $y_0$ and $X_1$ is linear, i.e.: $f(X_1)=bX_1+c$. Altogether, the graphical exploration based on the conditioning relative to $X_1$ showed that an adequate model is:
+\[
+\mbox{E}(Y)=aX_2+bX_1+c
+\]
+
+```{r y0X1, fig.cap="(ref:y0X1)"}
+
+knitr::include_graphics(paste0(fig_path, "/ordonX1.png"), auto_pdf = TRUE)
+
+```
+
+Given that the variables $X_1$ and $X_2$ play symmetrical roles in the model (\@ref(eq:truem)), the conditioning is also symmetrical with regard to these two variables. Here we have studied the relation between $Y$ and $X_2$ conditionally on $X_1$, but would have arrived, in the same manner, at the same model had we explored the relation between $Y$ and $X_1$ conditionally on $X_2$.
+
+In this example, the relation between $Y$ and $X_2$ for a given $X_1$ is a line whose slope is independent of $X_2$: it may be said that there is no interaction between $X_1$ and $X_2$. A model with an interaction would, for example, correspond to: $\mbox{E}(Y)=X_1+X_2+X_1X_2$. In this case, the relation between $Y$ and $X_2$ at a given $X_1$ is a line whose slope, which is $1+X_1$, is indeed dependent on $X_1$. The conditioning used means that we can without additional difficulty explore the form of models that include interactions between effect variables.
+
+This conditioning can, in principle, be extended to any number of effect variables.For three effect variables $X_1$,
+$X_2$, $X_3$ for example, we could explore the relation between $Y$ and $X_3$ with $X_1$ and $X_2$ fixed and note $f$ the function defining this relation and $\theta(X_1,\ X_2)$ the parameters of $f$ (that potentially depend on $X_1$ and $X_2$):
+\[
+\mbox{E}(Y)=f[X_3;\ \theta(X_1,\ X_2)]
+\]
+We would then explore the relation between $\theta$ and the two variables $X_1$ and $X_2$. Again, we would condition by exploring the relation between $\theta$ and $X_2$ with $X_1$ fixed; and note $g$ the function defining this relation and $\phi(X_1)$ the parameters of $g$ (that potentially depend on $X_1$):
+\[
+\theta(X_1,\ X_2)=g[X_2;\ \phi(X_1)]
+\]
+Finally, we would explore the relation between $\phi$ and $X_1$; i.e. $h$ the function defining this relation. Ultimately, the model describing the data corresponds to:
+\[
+\mbox{E}(Y)=f\{X_3;\ g[X_2;\ h(X_1)]\}
+\]
+This reasoning may, in principle, be extended to any number of effect variables, but it is obvious, in practice, that it becomes difficult to implement for $p>3$. This conditioning requires a great deal of data as each data subset, established by the value classes of the conditional variables, must include sufficient data to allow a valid graphical exploration of the relations between variables. When using three effect variables, the data subsets are established by crossing classes of $X_1$ and $X_2$ values (for example). If the full dataset includes $n$ observations, if $X_1$ and $X_2$ are divided into 10 value classes, and if the data are evenly distributed between these classes, then each data subset will contain only $n/100$ observations! Therefore, in practice, and unless the dataset is particularly huge, it is difficult to use the conditioning method for more than two effect variables.
+
+The number of entries employed when fitting biomass or volume tables is in most cases limited to at most two or three, meaning that we generally are not faced with the problem of conducting the graphical exploration with a large number of effect variables. Otherwise, multivariate analyses such as the principal components analysis may be usefully employed [@philippeau86; @hardle03]. These analyses aim to project the observations made onto a reduced subspace (usually in two or three dimensions), constructed from linear combinations of effect variables and in such a manner to maximize the variability of the observations in this subspace. In other words, these multivariate analyses can be used to visualize relations between variables while losing as little information as possible, which is precisely the aim of graphical exploration.
+
+::::::{.filrouge data-latex=""}
+
+:::{.exercise #frho name="(ref:frho)"}
+\  
+:::
+
+Let us now explore the relation between biomass, $D^2H$ and wood density $\rho$. Let us define `n` classes of wood density such that each class contains approximately the same number of observations:
+
+```{r, eval=F, echo=T}
+n <- 4
+d <- quantile(dat$dens,(0:n)/n)
+i <- findInterval(dat$dens,d,rightmost.closed=TRUE)
+```
+
+The object `d` defines the limits of the density classes while object `i` contains the number of the density class to which each observation belongs. The plot of biomass against $D^2H$ on a log scale, with different symbols and colors for the different density classes, may be obtained by the command:
+
+```{r, eval=F, echo=T}
+with(dat,plot(dbh^2*heig,Btot,xlab="D2H (cm2m)",ylab="Biomass (t)",log="xy",
+              pch=i, col=i))
+```
+
+and is shown in Figure \@ref(fig:fcond) for `n=4` wood density classes. Pre-empting chapter \@ref(fit), we will now plot the linear regression between $\ln(B)$ and $\ln(D^2H)$ for each subset of observations corresponding to each wood density class:
+
+```{r, eval=F, echo=T}
+m <- as.data.frame(lapply(split(dat,i), function(x) 
+  coef(lm(log(Btot) ~ I(log(dbh^2*heig)),data=x[x$Btot>0,]))))
+```
+
+When we plot the y-intercepts of the regression and its slopes against median wood density for the class:
+
+```{r, eval=F, echo=T}
+dmid <- (d[-1]+d[-n])/2
+plot(dmid,m[1,],xlab="Wood density (g/cm3)",ylab="y-Intercept")
+plot(dmid,m[2,],xlab="Wood density (g/cm3)",ylab="Slope")
+```
+
+this at first sight does not appear to yield any particular relation (Figure \@ref(fig:flmcond).
+
+:::::::
+
+```{r fcond, fig.scap="(ref:fcond-short)", fig.cap="(ref:fcond)"}
+
+knitr::include_graphics(paste0(fig_path, "/fcondi.png"), auto_pdf = TRUE)
+
+``` 
+
+```{r flmcond, fig.scap="(ref:flmcond-short)", fig.cap="(ref:flmcond)"}
+
+knitr::include_graphics(paste0(fig_path, "/flmcond.png"), auto_pdf = TRUE)
+
+```
+
+
+### Determining whether or not a relation is adequate
+
