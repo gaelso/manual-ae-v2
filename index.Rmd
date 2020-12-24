@@ -24,7 +24,11 @@ book_format <- knitr::opts_knit$get('rmarkdown.pandoc.to')
 
 if (book_format %in% c("html", "latex")) {
   library(kableExtra)
-  knitr::opts_chunk$set(fig.align='center', out.width='80%') ## NOT USED: fig.pos='H', 
+  if (book_format == "latex") {
+    knitr::opts_chunk$set(fig.align='center', out.width='100%') ## NOT USED: fig.pos='H', 
+  } else {
+    knitr::opts_chunk$set(fig.align='center', out.width='60%') ## NOT USED: fig.pos='H', 
+  }
 }
 
 # automatically create a bib database for R packages

@@ -4,7 +4,7 @@
 
 The second case we consider here is that where felling constraints mean that only semi-destructive measurements are taken. These combine direct measurements for certain parts of the tree, and volume and density measurements for the others. We will illustrate this by developing an allometric equation for the dry northern forests of Cameroon. The biomass of dry forests is particularly difficult to determine given the architectural complexity of the trees they contain. Human intervention is also particularly significant in dry areas because of the rarity of forest resources and the magnitude of the demand for bioenergy. This is reflected by the trimming, pruning and maintenance practices often employed for trees located in deciduous forests, agro-forest parks and hedges (photo \@ref(fig:ka)).
 
-```{r ka, out.width='100%', fig.scap="Trimming shea trees (*Vitellaria paradoxa*) in north Cameroon", fig.cap="(ref:ka)"}
+```{r ka, fig.scap="Trimming shea trees (*Vitellaria paradoxa*) in north Cameroon", fig.cap="(ref:ka)"}
 
 ka
 
@@ -80,9 +80,9 @@ The biomass of the trunk and the large branches is estimated from measurements o
 
 First, measure the volume ($V_{\text{fresh wood}}^{\text{aliquot}}$) of the wood aliquot taken from the trimmed compartments. This volume may be measured in different manners [@maniatis11]. That most commonly employed measures the volume of water displaced when the sample is immersed in water. The volume of water displaced may be measured using a graduated tube of suitable dimensions for the sample (Figure \@ref(fig:archim)). Another method consists in cutting the sample into shapes whose volume may be accurately measured. This method requires precision tools and personnel trained in cutting wood.
 
-```{r archim, out.width='100%', fig.cap="(ref:archim)"}
+```{r archim, out.width='60%', fig.cap="(ref:archim)"}
 
-knitr::include_graphics(paste0(fig_path, "/archim.pdf"))
+knitr::include_graphics(paste0(fig_path, "/archim.png"), auto_pdf = TRUE)
 
 ```
 
@@ -92,7 +92,6 @@ The wood and leaf aliquots should then be subject to the same laboratory measure
 ### Calculations
 
 The dry biomass of the tree is obtained by the sum of the trimmed dry biomass and the untrimmed dry biomass:
-
 \[
 B_{\text{dry}}=B_{\text{trimmed dry}}+B_{\text{untrimmed dry}}
 \]
@@ -101,35 +100,27 @@ B_{\text{dry}}=B_{\text{trimmed dry}}+B_{\text{untrimmed dry}}
 #### Calculating trimmed biomass {-}
 
 From the fresh biomass $B_{\text{fresh wood}}^{\text{aliquot}}$ of a wood aliquot and its dry biomass $B_{\text{dry wood}}^{\text{aliquot}}$, calculate as above (see equation \@ref(eq:qbois)) the moisture content of the wood (including bark):
-
 \[
 \chi_{\text{wood}}=\frac{B^{\text{aliquot}}_{\text{dry wood}}}{B^{\text{aliquot}}_{\text{fres wood}}}
 \]
-
 Likewise, calculate the moisture content of the leaves from the fresh biomass $B_{\text{fresh leaf}}^{\text{aliquot}}$ of the leaf aliquot and its dry biomass $B_{\text{dry leaf}}^{\text{aliquot}}$:
-
 \[
 \chi_{\text{leaf}}=\frac{B^{\text{aliquot}}_{\text{dry leaf}}}{B^{\text{aliquot}}_{\text{fresh leaf}}}
 \]
-
 Trimmed dry biomass can then be calculated:
-
 \[
 B_{\text{trimmed dry}}=B_{\text{trimmed fresh wood}}\times \chi_{\text{wood}}+B_{\text{trimmed fresh leaf}}\times \chi_{\text{leaf}}
 \]
-
 where $B_{\text{trimmed fresh leaf}}$ is the fresh biomass of the leaves stripped from the trimmed branches and $B_{\text{trimmed fresh wood}}$ is the fresh biomass of the wood in the trimmed branches.
 
 
 #### Calculating untrimmed biomass {.unnumbered #calBsp}
 
 Two calculations are required to calculate the dry biomass of the untrimmed part (i.e. that still standing): one for the small branches, the other for the large branches and the trunk. The untrimmed biomass is the sum of the two results:
-
 \[
 B_{\text{untrimmed dry}}=B_{\text{untrimmed dry branch}}
 +B_{\text{dry section}}
 \]
-
 Each section $i$ of the trunk and the large branches may be considered to be a cylinder of volume (Smalian's formula):
 
 \begin{equation}
@@ -145,26 +136,20 @@ B_{\text{dry section}}=\bar{\rho}\times\sum_iV_i(\#eq:Btr)
 \end{equation}
 
 where the sum corresponds to all the sections in the large branches and the trunk (Figure \@ref(fig:emond)B), and where mean wood density is calculated by:
-
 \[
 \bar{\rho}=\frac{B_{\text{dry wood}}^{\text{aliquot}}}
 {V_{\text{fresh wood}}^{\text{aliquot}}}
 \]
-
 Care must be taken to use consistent measurement units. For example, if mean wood density $\bar{\rho}$ in (\@ref(eq:Btr)) is expressed in g\ cm^-3^, then volume $V_i$ must be expressed in cm^3^, meaning that both length $L_i$ and diameters $D_{1i}$ and $D_{2i}$ must also be expressed in cm. Biomass in this case is therefore expressed in g.
 
 The dry biomass of the untrimmed small branches should then be calculated using a model between dry biomass and basal diameter. This model is established by following the same procedure as for the development of an allometric model (see chapters \@ref(don) to \@ref(util) herein). Power type equations are often used:
-
 \[
 B_{\text{dry branch}}=a+bD^c
 \]
-
 where $a$, $b$ and $c$ are model parameters and $D$ branch basal diameter, but other regressions may be tested (see \@ref(tab:prim)). Using a model of this type, the dry biomass of the untrimmed branches is:
-
 \[
 B_{\text{untrimmed dry branch}}=\sum_j(a+bD_j^c)
 \]
-
 where the sum is all the untrimmed small branches and $D_j$ is the basal diameter of the branch $j$.
 
 <!--------------------->

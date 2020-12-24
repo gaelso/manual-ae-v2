@@ -16,7 +16,7 @@ display_table <- function(need_lscp = FALSE){
       tt <- do.call(kable, c(kab_opt, format = book_format, linesep = "")) %>%
         kableExtra::kable_styling(
           position = 'center', 
-          latex_options = c("HOLD_position", "scale_down", "repeat_header")
+          latex_options = c("scale_down", "repeat_header") ## Not used: "HOLD_position",
           ) %>%
         kableExtra::landscape()
     } else {

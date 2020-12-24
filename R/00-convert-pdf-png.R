@@ -9,4 +9,4 @@ conv_png <- function(.path){
   magick::image_write(fig, path2 , format = "png", density = img_size$density)
 }
 
-map(list_fig, conv_png)
+walk(list_fig, conv_png)

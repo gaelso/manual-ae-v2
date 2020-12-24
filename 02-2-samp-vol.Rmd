@@ -42,18 +42,14 @@ Root tables, that require an even greater measurement effort, are often based on
 ### Sorting trees {#vent}
 
 The sorting of trees in the sample on the basis of their size (and more generally on the basis of table entry variables) can in principle be optimized. For example, in the case of a linear regression, the semi-amplitude of the confidence interval at $\alpha$ of the regression slope is [@saporta90, p.367]:
-
 \[
 t_{n-2}\ \frac{\hat{\sigma}}{S_X\sqrt{n}}
 \]
-
 where $t_{n-2}$ is the quantile $1-\alpha/2$ of a Student's distribution with $n-2$ degrees of freedom, $\hat{\sigma}$ is the empirical standard deviation of the model's residuals, $n$ is sample size and $S_X$ is the empirical standard deviation of the entry variable $X$ in the sample:
-
 \[
 S_X^2=\frac{1}{n}\sum_{i=1}^n(X_i-\bar{X})^2\quad\mbox{where}\quad
 \bar{X}=\frac{1}{n}\sum_{i=1}^nX_i
 \]
-
 Therefore, the higher the value of $S_X$ the more precise the estimation of the slope, which, for a set sample size, brings us back to a trees breakdown similar to that shown in Figure \@ref(fig:plan). We have already seen the limitations of this reasoning: although the sampling plan that consists in selecting trees at the two extremities of the size gradient is optimal when the conditions of a linear relationship are met, it results in erroneous estimations when the relationship is not linear (Figure \@ref(fig:bad)). It is therefore preferable, in practice, to sample trees right across the size gradient in order to check the form of the relationship between their volume (or their mass) and their size.
 
 The theory of response surfaces [@box87; @goupy99; @myers02] can be used to optimize tree sorting on the basis of dbh (and more generally on the basis of table entry variables). We will not enter into the details of this theory here, but will simply sketch a few general principles. The first principle is to spread the tree size gradient of the sample as broadly as possible.
@@ -81,27 +77,21 @@ We have already seen for the sorting of trees into size classes that selecting t
 where $h$ is the stratum, $N_h$ the number of individuals in the stand that belong to stratum $h$, $n_h$ is the number of individuals in the sample that belong to stratum $h$, $V_{ih}$
 is the volume of the $i$th individual in stratum $h$ in the sample, $\bar{V}_{eh}$ is the empirical mean volume in stratum $h$ of the sample, etc.
 This formula replaces (\@ref(eq:VV)). Let us now illustrate the precision gained by the stratification using a simple numerical example. Let us suppose, to simplify, that we have two strata, each corresponding to 50\ \% of the stand (such that $N_1/N=N_2/N=0.5$), and that the sampling in each stratum is such that the second term between brackets in (\@ref(eq:VVh)) is negligible. Let us also assume that $n_1\ll N_1$ and $n_2\ll N_2$. The variance of the regression estimator in this case is approximately proportional to:
-
 \[
 \widehat{\mbox{Var}}(\bar{V})\propto \frac{1}{n_1-2}\left\{
 \frac{1}{n_1}\sum_{i=1}^{n_1}(V_{1i}-\bar{V}_{e1})^2\right\}
 +\frac{1}{n_2-2}\left\{\frac{1}{n_2}\sum_{i=1}^{n_2}(V_{2i}
 -\bar{V}_{e2})^2\right\}
 \]
-
 The terms in brackets represent within-strata variances in volume. Let us suppose that the standard deviation of the volume is 4 m$^3$ in the first stratum and 2 m$^3$ in the second. Total sample size is set at $n_1+n_2=60$ individuals.
 If we take account of the stratification, i.e. if we select the number of trees in each stratum in proportion to the frequency $N_h/N$ of the stratum in the stand, then in this case we have the same number of trees in each stratum of the sample: $n_1=n_2=30$ individuals. The variance of the regression estimator is therefore approximately:
-
 \[
 \frac{4^2}{30-2}+\frac{2^2}{30-2}=0.71\mbox{ m}^6
 \]
-
 By contrast, if we set the number of trees in each stratum in proportion to the standard deviation of the volume in the stratum, then: $n_1=2n_2$, giving $n_1=40$ individuals and $n_2=20$ individuals. The variance of the regression estimator is therefore approximately:
-
 \[
 \frac{4^2}{40-2}+\frac{2^2}{20-2}=0.64\mbox{ m}^6
 \]
-
 It can thus be seen that from the standpoint of estimator variance, $30+30$ does not equal $40+20$. We can also check that the minimum of the function that at $n_1$ associates $16/(n_1-2)+4/(58-n_1)$ is obtained for $n_1=39.333$.
 
 From the standpoint of sampling theory, stratification aims to increase the precision of the estimation by fitting the sampling plan to the variability in each stratum. But from the standpoint of constructing volume tables, stratification has a second aim that is just as important as the first: check that the relationship between tree volume (or biomass) and size is the same in each stratum and, if needed, break down the tables into as many relations as necessary. This second point is implicit in equation (\@ref(eq:VVh)) that is based on the fitting of a different slope $b$ (see equation \@ref(eq:reg)) in each stratum.
@@ -112,36 +102,33 @@ In short, stratification aims to explore the variability of the study area to (*
 
 ```{r mel, fig.scap="Predicting volume from tree size in two strata", fig.cap="(ref:mel)"}
 
-knitr::include_graphics(paste0(fig_path, "/badmel.pdf"))
+knitr::include_graphics(paste0(fig_path, "/badmel.png"), auto_pdf = TRUE)
 
 ```
 
 
-#### Stratification factors
+#### Stratification factors {-}
 
 Any factor that can explain the variability in the study area may be envisaged: stand age (above all for plantations), fertility, station, silvicultural treatments, variety or species, altitude, depth of the water table, etc. [@parde88 p.106; @ctft89 p.255]. Stratification factors may be nested: stratification according to morpho-pedological region, then according to fertility in each region, then according to age in each fertility class, then according to density in each age class. The "finenesse" of the stratification factors must also be adapted to match the context. The stratification factors employed are not the same when reasoning on a global scale like @brown97, on a landscape scale like @vanbreugel11, or on the scale of a plantation of clones like @saintandre05. @brown97 proposes "all-species" tables for climatic areas (dry forests, wet forests). At the other extreme, on an "eddy-correlation" plot, and with the aim of comparing NEP estimations, trees may be stratified according to plot age, season and flux tower "foot-print".
 
 
-#### Species as stratification factor
+#### Species as stratification factor {-}
 
 When dealing with natural formations that contain several species, the species may also be considered as stratification factor. Here, it is routine practice to construct volume tables separately for each species (or at least the most abundant species), then attempt to group gender or group together all the species ("all species" table). By merging the datasets we increase sample size which can be advantageous if this compensates for the increase in variability resulting from the mix of different species. In comparison with a mono-specific model, a multi-specific model introduces a prediction bias that may be viewed as between-species variability. As an illustration, @vanbreugel11 quantified the prediction bias resulting from the aggregation of several species. Therefore, merging the data from several species is advantageous if the gain in within-species variability provided by this merger compensates for the between-species variability introduced. However, a check must be made that (*i*) this merger is meaningful and that (*ii*) the sample sizes for the different species are comparable (Figure \@ref(fig:mel)). If from the outset we are looking to construct "all species" volume table (which is often the case for natural stands), care must be taken to ensure that the individuals are selected for the sample independently of their species, such that the tables are not biased in favor of one particular species.
 
 
-#### Allocating to strata
+#### Allocating to strata {-}
 
 Once the strata have been identified, the sampling plan must be adapted to it following empirical rules. If we have an *a priori* estimation of volume variability (for volume tables) or biomass variability (for biomass tables) for each stratum, the empirical rule is to select a sampling intensity in proportion to the standard deviation in each stratum. If no *a priori* estimation of the variability is available, then a constant sampling intensity should be used in each stratum (this does not correspond to random sampling if the strata do not have the same frequency in the stand).
 
 
-#### Parameterized models
+#### Parameterized models {-}
 
 Strata-related information is then incorporated into the volume model by establishing different models for each stratum. We can then test whether the models for the two strata are significantly different and, if appropriate, merge the two datasets to construct a single model. We could also construct a parameterized model from several models for different strata by following the principle of the mixed model: the model's parameters themselves become functions of the variables defining the strata. These different points will be developed in the sections below, devoted to the actual construction of volume/biomass models. By way of an example, @ketterings01 developed individual, single-entry biomass models of the power form:
-
 \[
 B=aD^b
 \]
-
 where $D$ is the dbh and $B$ biomass of different trees of different species at different sites in the Jambi province of Sumatra in Indonesia. The site factor was then taken into account in parameter $b$ that was written $b=2+c$, where $c$ is the parameter in the allometric equation that links height to dbh at each site: $H=kD^c$. The species factor was taken into account in parameter $a$ that was written $a=r\rho$, where $\rho$ is the wood density of the species and $r$ is a constant parameter. The model finally obtained, and valid for all the species at all the sites, is a parameterized model:
-
 \[
 B=r\rho D^{2+c}
 \]

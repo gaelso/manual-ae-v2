@@ -17,17 +17,13 @@ Let $A$ be the area of a sampling plot and $\mathcal{A}$ be the area of the stan
 ### Relation between coefficient of variation and plot size
 
 According to the central limit theorem, the confidence interval at the threshold $\alpha$ for the expectation of plot biomass is approximately (this expression is accurate when the biomass follows a normal distribution, or when the number of plots approaches infinity) [@saporta90, p.304]:
-
 \[
 \bar{B}\pm t_{n-1}\frac{S_B}{\sqrt{n-1}}
 \]
-
 where $t_{n-1}$ is the quantile $1-\alpha/2$ of a Student distribution with $n-1$ degrees of freedom, and $S_B$ is the empirical standard deviation of plot biomass:
-
 \[
 S_B^2=\frac{1}{n-1}\sum_{i=1}^n(B_i-\bar{B})^2
 \]
-
 By definition, the precision of the estimation $E$ at the threshold $\alpha$ is the ratio of the semi-amplitude of the confidence interval at the threshold $\alpha$ to the mean biomass:
 
 \begin{equation}
@@ -35,11 +31,9 @@ E=t_{n-1}\frac{S_B}{\bar{B}\sqrt{n-1}}=t_{n-1}\frac{\mathrm{CV}_B}{\sqrt{n-1}}(\
 \end{equation}
 
 where $\mathrm{CV}_B=S_B/\bar{B}$ is the biomass coefficient of variation. By rounding $t_{n-1}$ to 2, the sample size $n$ required to reach a given estimation precision $E$ is therefore:
-
 \[
 n\simeq\bigg(\frac{2\mathrm{CV}_B}{E}\bigg)^2+1
 \]
-
 The biomass coefficient of variation for a plot of area $A$ is therefore the essential factor when constructing the sampling plan. Also, as area $A$ of the plots is not in principle known, the relation between the biomass coefficient of variation and the area $A$ of the plots must in fact be determined.
 
 The exact derivation of this relation between $A$ and $\mathrm{CV}_B$
@@ -48,51 +42,38 @@ needs a model capable of describing the spatial distribution of the trees. The t
 
 1. although plot *shape* has an effect on the coefficient of variation [as already demonstrated empirically, see @johnson52; @bormann53], it has a negligible effect compared to plot size;
 2. the relation between $A$ and $\mathrm{CV}_B$ can be approached by a power relation [@fairfield38; @picard11b]:
-
 \[
 \mathrm{CV}_B=kA^{-c}
 \]
-
-
 In practice it is this power relation that is most often specified. Intuitively, the value $c=0.5$ corresponds to a random spatial biomass distribution within the stand; a value of $0<c<0.5$ corresponds to an clustered spatial biomass distribution; and a value $c>0.5$ corresponds to a regular spatial biomass distribution [@ctft89, p.284]. Using biomass data for a large plot in Paracou, French Guiana, @wagner10 found:
-
 \[
 \mathrm{CV}_B=557\times A^{-0.430}\qquad\mbox{($A$ in m$^2$,
 CV$_B$ in \%)}
 \]
-
 If compared to the above definition, this corresponds to a slightly aggregated spatial biomass distribution. In the Brazilian Amazon, @keller01 found the following relationship (fitted to the data in their Figure 4 with
 $R^2=0.993$ on log-transformed data):
-
 \[
 \mathrm{CV}_B=706\times A^{-0.350}\qquad\mbox{($A$ in m$^2$,
 CV$_B$ in \%)}
 \]
-
 The lowest (absolute) value for the exponent is indicative of a more aggregated distribution than in French Guiana. A similar study was conducted by @chave03
 using data from a 50 ha plot on Barro Colorado Island, Panama. @chave03 in their Table 5 reported 95\ \%
 interval amplitude values not for the biomass expectation of a plot, but for biomass expectation by unit area. The amplitude of the 95\ \% confidence interval for the biomass expectation of a plot therefore corresponds to the amplitude reported by @chave03 times plot area, i.e.:
-
 \[
 2t_{n-1}\frac{S_B}{\sqrt{n-1}}=\Delta\times A
 \]
-
 where $\Delta$ is the amplitude of the 95\ \% confidence interval reported by @chave03 in their Table 5. We can deduce from this:
-
 \[
 \mathrm{CV}_B=\frac{S_B}{\bar{B}}=\frac{\Delta
 A\sqrt{n-1}}{2t_{n-1}\bar{B}}=\frac{\Delta
 \sqrt{n-1}}{2t_{n-1}\mu}
 \]
-
 where $\mu$ is mean biomass per unit area, and reported as 274~Mg\ ha$^{-1}$ in the study by @chave03. Table \@ref(tab:c03) supplements Table 5 by @chave03 with the calculated value of $\mathrm{CV}_B$. The $\mathrm{CV}_B$
 values given in Table \@ref(tab:c03) closely fit ($R^2=0.998$ on log-transformed data) the following power relation with plot size:
-
 \[
 \mathrm{CV}_B=942\times A^{-0,450}\qquad\mbox{($A$ in m$^2$,
 CV$_B$ in \%)}
 \]
-
 Biomass variability (expressed by the value of the multiplier $k=942$) was greater than at Paracou, but the spatial structure of the biomass (expressed by the exponent $c=0.45$) fairly similar to that observed in Paracou by @wagner10. Also, the fact that $c$ approached 0.5 showed that the biomass was only slightly spatially aggregated. @chave03 underlined that there was no significant spatial autocorrelation of the biomass (which would correspond to $c=0.5$, or to a constant value of $\Delta$).
 
 ```{r c03}
@@ -123,32 +104,29 @@ The size of sampling plots may be selected in such a way to optimize the precisi
 These two points of view are dual one to the other and lead to the same optimum. The sampling effort may be quantified simply by the sampling rate $n\times A/\mathcal{A}$ or, more realistically, by a cost whose expression is more complex. Let us examine these two options.
 
 
-#### Fixed sampling rate
+#### Fixed sampling rate {-}
 
 At a constant sampling rate, the area $A$ and the number $n$ of sampling plots are linked by an inversely proportional relation: $n\propto1/A$. Choosing appropriate plot size boils down to the following question: "is it better to select a few large plots or many small plots?", also called the SLOSS compromise [for "single large or several small";
 @lahti85]. If we calculate the relation $n\propto1/A$ in (\@ref(eq:E)) (and considering that $t_{n-1}/\sqrt{n-1}$ is little different from $2/\sqrt{n}$):
-
 \[
 E\propto2\;\mathrm{CV}_B\;\sqrt{A}
 \]
-
 If the spatial distribution of the biomass is random, $\mathrm{CV}_B\propto A^{-0,5}$ and therefore the precision of the estimation $E$ is independent of the area $A$ of the plots. If the spatial distribution of the biomass is aggregated, $\mathrm{CV}_B\propto A^{-c}$ with $c<0.5$ and therefore $E\propto A^{0,5-c}$ with $0.5-c>0$: then the smaller the plot area $A$, the greater the precision of the estimation (low value of $E$). In this case, and with a fixed sampling rate, it is therefore better to select several small plots than a few large plots. This is demonstrated by Table \@ref(tab:c03), where we can see that the value of $\Delta$ decreases when $A$ decreases (this decrease is only slight as $c$ is close to 0.5). If the spatial distribution of the biomass is regular, $\mathrm{CV}_B\propto A^{-c}$ with $c>0.5$ and therefore $E\propto A^{0,5-c}$ with $0.5-c<0$: the larger the plot area $A$ the better the precision of the estimation (low value of $E$). In this case, and with a fixed sampling rate, it is therefore better to select a few large plots than many small plots.
 
 The parameters measured in biology in most cases have an aggregated spatial distribution ($c<0.5$), sometimes random distribution ($c=0.5$), and only rarely a regular distribution ($c>0.5$) [@fairfield38]. In other words, the SLOSS compromise is in most cases resolved to the benefit of a multitude of small plots. If we push this reasoning to its limit, we see that the precision of the estimation would be optimal ($E$ minimal) for $A=0$, i.e. by selecting an infinite number of plots of zero size! This illustrates the limits of this reasoning. When we quantify the sampling effort by the sampling rate $nA/\mathcal{A}$, we assume implicitly that the sampling cost, i.e. the time or money necessary for the sampling, is proportional to $nA$. This means that we consider only an area-based cost, i.e. a sampling cost that is proportional to the inventoried area.
 
 
-#### Sampling cost
+#### Sampling cost {-}
 
 In actual fact, the area-based cost is only one component of the sampling cost. Strictly speaking, the inventory made of the sampling plots, and whose duration is indeed proportional to the inventoried area, is not the only task that takes time. Staking out the boundaries of the sampling plots also takes time. And this time is proportional to the cumulated length of their boundaries: this is therefore a linear cost. Moving from one plot to another also takes time. It is therefore more realistic to measure sampling effort by a cost that includes all these tasks rather than simply by the sampling rate. If we measure this cost in terms of time, and if the sampling plots are square, the sampling cost would for example be [@zeide80; @gambill85]:
-
 \[
 C=\alpha\;nA+\beta\times4n\sqrt{A}+\gamma\;d(n,A)
 \]
-
 where $\alpha$ is inventory time by unit area, $\beta$ is staking out time by unit length ($4\sqrt{A}$ corresponds to the boundaries of a square plot of area $A$), $\gamma$ is travel speed, and $d(n,A)$
 is the length of the path linking the $n$ sampling plots. This sampling cost expression can be further supplemented to take account of other tasks. The reasoning followed in the previous section consisted of $\beta=\gamma=0$. If $\beta>0$ and $\gamma>0$, the solution to the SLOSS compromise is now no longer $A=0$ in the case of aggregated spatial biomass distribution ($c<0.5$).
 
-#### Other constraints
+
+#### Other constraints {-}
 
 However, it would be too restrictive to limit the question of sampling the biomass of a stand to a question of estimation precision. Often, the question is not limited to estimating a stand's biomass since a number of goals are pursued simultaneously. For instance, we may also be interesting in determining biomass variations over time. Mortality processes must also be considered in this case, and the inventoried area may therefore be far larger [@chave03; @chave04; @rutishauser10; @wagner10]. Or we may be looking to estimate plot biomass in order to determine a relation with satellite image indices and thereby extrapolate the biomass estimation to a landscape scale. In this case the area of the sampling plots is also constrained by the resolution of the satellite images and by the smallest area necessary to calculate satellite remote sensing indices.
 

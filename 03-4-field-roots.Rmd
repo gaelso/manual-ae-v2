@@ -5,20 +5,18 @@ It is far more difficult to determine root biomass than above-ground biomass. Th
 
 The first step, whatever the ecosystem, consists in drawing a Voronoi^[A Voronoi diagram (also called a Voronoi decomposition, a Voronoi partition or Voronoi polygons) is a special kind of decomposition of a metric space determined by distances to a specified family of objects, generally a set of points.] 
 diagram around the selected tree. Figure \@ref(fig:voro) indicates the procedure employed: *(i)* draw the segments that link the selected tree to each of its neighbors; *(ii)* draw the bisectors for each segment, *(iii)* connect the bisectors one to another to bound a space around the tree; *(iv)* this space can then be divided into joined triangles, the area of each zone being easy to calculate when the length of all three sides ($a$, $b$ and $c$) is known:
-
 \[
 A=\sqrt{p(p-2a)(p-2b)(p-2c)}
 \]
-
 where $p=a+b+c$ is the triangle perimeter and $A$ its area. Figure \@ref(fig:vanu) illustrates this procedure for coconut plantations in Vanuatu [@navarro08].
 
 ```{r voro, fig.cap="(ref:voro)"}
 
-knitr::include_graphics(paste0(fig_path, "/voronoi.pdf"))
+knitr::include_graphics(paste0(fig_path, "/voronoi.png"), auto_pdf = TRUE)
 
 ```
 
-```{r vanu, out.width='100%', fig.scap="Typical Voronoi diagram used for root sampling in a coconut plantation in Vanuatu", fig.cap="(ref:vanu)"}
+```{r vanu, fig.scap="Typical Voronoi diagram used for root sampling in a coconut plantation in Vanuatu", fig.cap="(ref:vanu)"}
 
 invisible(plot.new())
 grid.picture(vanu)

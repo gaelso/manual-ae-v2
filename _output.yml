@@ -12,7 +12,8 @@ bookdown::gitbook:
     download: null
     sharing: null
     info: null
-    
+  split_by: chapter+number
+  
 bookdown::pdf_book:
   #highlight: tango
   includes:

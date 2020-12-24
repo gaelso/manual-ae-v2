@@ -13,9 +13,9 @@ In conventional sampling theory, the volumes of $N$ trees in the stand are fixed
 
 The sampling method depends on the goal. Therefore, in principle, the question must first be asked as to the purpose of the volume or biomass tables we are seeking to construct. Are they to serve to predict the characteristics of a particular tree that has known entry variables? Are they to serve to predict the characteristics of an average tree from data on entry variables? Are they to serve to predict the total volume of the stand that yielded the trees used to construct the tables, or the total volume of another stand? In both these latter cases, are the tables' entry variables measured in all the trees of the stand, or again on a sample of trees? Etc. We can therefore construct a chain that runs from the studied stand to the variable we are looking to predict (Figure \@ref(fig:cha)).
 
-```{r cha, out.width='100%', fig.cap="Chain running from the studied stand to the variables we are looking to predict."}
+```{r cha, fig.cap="Chain running from the studied stand to the variables we are looking to predict."}
 
-knitr::include_graphics(paste0(fig_path, "/cha.pdf"))
+knitr::include_graphics(paste0(fig_path, "/cha.png"), auto_pdf = TRUE)
   
 ```
 
@@ -52,33 +52,25 @@ In sampling theory jargon, the entry variables for the volume/biomass tables (di
 ### Predicting the volume of a particular tree
 
 Let us assume that the goal is to predict the volume of a tree in a stand of dbh $D^*$ and height $H^*$. Its predicted volume is of course:
-
 \[
 V^*=a+b D^{*2}H^*
 \]
-
 The super-population model stipulates that because of white noise 
 $\varepsilon$, two trees selected at random and with the same dbh $D$ and the same height $H$ do not necessarily have the same volume. This means we are faced with intrinsic variability when we measure a particular tree, equal to $\sigma^2$. When attempting to predict volumes, this intrinsic variability is supplemented by the variability due to the imprecision of the $\alpha$ and $\beta$ parameter estimations. We will return to these notions later (in Chapter \@ref(util)). Thus, for a linear regression, the semi-amplitude of the confidence interval at the threshold $\alpha$ (typically 5\ \%) of $V^*$ is equal to [p.374 @saporta90]:
-
 \[
 t_{n-2}\;\hat{\sigma} \sqrt{1+\frac{1}{n}+
 \frac{(D^{*2}H^*-\overline{D^2H}_e)^2}{\sum_{i=1}^n(D_i^2H_i
 -\overline{D^2H}_e)^2}}
 \]
-
 where $t_{n-2}$ is the quantile $1-\alpha/2$ of a Student's distribution with 
 $n-2$ degrees of freedom, $\overline{D^2H}_e$ is the empirical mean of the $D^2H$ values measured in the sample:
-
 \[
 \overline{D^2H}_e=\frac{1}{n}\sum_{i=1}^nD_i^2H_i
 \]
-
 and $\hat{\sigma}$ is an estimate of the standard deviation of the residuals:
-
 \[
 \hat{\sigma}^2=\frac{1}{n-2}\sum_{i=1}^n[V_i-(a+b D_i^2H_i)]^2
 \]
-
 The lowest value of this semi-amplitude (when $n\rightarrow\infty$) is $1.96\ \sigma$. We will now set our precision target for the estimation as a deviation of $E\ \%$
 from this incompressible minimum, i.e. in an approximate manner we are looking for sample size $n$
 such that:
@@ -90,22 +82,20 @@ such that:
 \end{equation}
 
 
-#### Random sampling
+#### Random sampling {-}
 
 Let us first examine the case where we do not look to optimize the sampling plan, for example by selecting sample trees at random. The empirical mean of $D^2H$ in the sample is therefore an estimation of $\mu$, while the empirical variance of $D^2H$ in the sample is an estimation of $\tau^2$. Thus:
-
 \[
 (1+E)^2-1\approx\frac{1}{n}\left[
 1+\frac{(D^{*2}H^*-\mu)^2}{\tau^2}\right]
 \]
-
 By way of a numerical example, let us take $\mu=5$ m^3^ as the mean value of $D^2H$ in the entire stand and $\tau=1$ m^3^
 as its standard deviation. If we want to predict the volume of a tree that has a $D^2H$ of 2 m^3^ with a precision deviation of $E=5\ \%$, we will have to measure approximately $n=98$ trees.
 We can see here that the expression of $n$ in relation to $D^{*2}H^*$
 is symmetrical around $\mu$ and passes through a minimum for $D^{*2}H^*=\mu$. As $\mu-2=3$ m^3^ and $\mu+3=8$ m^3^, we will also need $n=98$ trees to predict the volume of a tree whose $D^2H$ is 8 m^3^ with a precision deviation of 5\ \%. The $n=98$ sample size may also be interpreted as that which ensures a precision deviation of at most 5\ \% (at $\alpha=5\ \%$) for all predictions in the 2--8 m^3^ range.
 
 
-#### Optimized sampling
+#### Optimized sampling {-}
 
 Let us now examine the case where we are looking to optimize the sampling plan in relation to the value of $D^{*2}H^*$. Equation \@ref(eq:E1) shows that precision deviation $E$ is smallest when $\overline{D^2H}_e=D^{*2}H^*$. It is therefore advantageous to select sample trees in such a manner that their empirical mean $D^2H$ value is $D^{*2}H^*$. In practice, as the empirical mean of the sample's $D^2H$ values will never be exactly $D^{*2}H^*$, it is advantageous to maximize the denominator $\sum_i(D_i^2H_i-\overline{D^2H}_e)^2$, i.e. to maximize the empirical variance of the sample's $D^2H$ values. Ultimately, the sampling plan that maximizes the precision of the volume prediction of trees with $D^2H$ values of $D^{*2}H^*$ consists in selecting $n/2$ trees with $D^2H$ values of $D^{*2}H^*-\Delta$ and $n/2$ trees with $D^2H$ values of $D^{*2}H^*+\Delta$, with $\Delta$ being as large as possible (Figure \@ref(fig:plan)).
 
@@ -126,18 +116,16 @@ grid.text("$\\Delta$"  , x = 0.5 , y = 0.21)
 ```
 
 This sampling plan means that we can ignore the term dependent upon $D^{*2}H^*$ in Equation \@ref(eq:E1), thus simplifying the relationship to:
-
 \[
 (1+E)^2-1\approx\frac{1}{n}
 \]
-
 For $E=5\ \%$, this gives us $n=10$ trees. Optimizing the sampling plan has therefore "saved" us measuring 88 trees compared to the plan that consisted in selecting trees at random. However, the optimized plan is restricted to estimating the volume of a $D^{*2}H^*$sized tree. It is not optimized for estimating the volume of other sized trees. This reasoning therefore clearly has its limitations as volume tables are not generally (or even never) constructed to predict the volume of only one size of tree.
 
 Even more seriously, the optimized sampling plan is also reliant upon the super-population model and may yield erroneous estimations if it does not correspond to reality. This is illustrated in Figure \@ref(fig:bad). The optimized sampling plan for a given $D^{*2}H^*$ size leads to the selection of extreme points (in black in Figure \@ref(fig:bad)) for the sample. This situation is critical for a linear regression as two groups of points far removed one from the other will give an elevated $R^2$ value without us really knowing what is happening between the two. If the linear relation assumed by the super-population model is correct (Figure \@ref(fig:bad) left), then there is no problem: the volume predicted by the tables (shown by a star) will indeed be close to the actual value (gray point). By contrast, if the super-population model is wrong, the predicted volume will be wrong: this is illustrated in Figure \@ref(fig:bad) on the right (where the sample points, in black, are exactly the same as those in Figure \@ref(fig:bad) on the left), where the size-volume relationship is in fact parabolic, not linear. In practice, the shape of the size-volume relationship (and therefore the volume tables) is not known in advance, and it is therefore best to sample trees across the entire size variation interval so as to visualize the nature of the size-volume relationship.
 
 ```{r bad, fig.scap="Volume prediction based on a linear regression constructed using extreme points when the size-volume relationship is indeed linear and when it is not", fig.cap="(ref:bad)"}
 
-knitr::include_graphics(paste0(fig_path, "/badplan.pdf"))
+knitr::include_graphics(paste0(fig_path,"/badplan.png"), auto_pdf = TRUE)
 
 ```
 
@@ -145,11 +133,9 @@ knitr::include_graphics(paste0(fig_path, "/badplan.pdf"))
 ### Predicting the volume of a stand {#peup}
 
 Let us now assume that the goal is to predict the volume of an entire stand. Here, we must first assume that we measure dbh $D$ and height $H$ in *all* the trees in the stand. Let $N$ be the number of trees in the stand (including the $n$ trees in the sample). Modulo renumbering of the trees therefore gives us a measurement of tree volume $V$ for $i=1$, \ldots, $n$ and a measurement of tree size $D^2H$ for $i=1$, \ldots, $N$. The estimator for the total volume of the stand deduced from the volume tables is therefore:
-
 \[
 V_{\mbox{\scriptsize tot}}=\sum_{i=1}^N(a+bD_i^2H_i)
 \]
-
 which may also be written: $V_{\mbox{\scriptsize tot}}=N\bar{V}$, where $\bar{V}=a+b\overline{D^2H}$ is the mean volume of the trees in the stand, and $\overline{D^2H}=(\sum_{i=1}^ND_i^2H_i)/N$ is the mean dbh of the trees in the stand. To the extent that the volume tables are obtained by linear regression of ($V_1$, \ldots, $V_n$) against ($D_1^2H_1$, \ldots, $D_n^2H_n$), the numerical values of the coefficients $a$ and $b$ verify [p.363 @saporta90]:
 $\bar{V}_e=a+b\overline{D^2H}_e$, where
 $\bar{V}_e=(\sum_{i=1}^nV_i)/n$ is the mean volume of the trees in the sample and $\overline{D^2H}_e=(\sum_{i=1}^nD_i^2H_i)/n$ is the mean size of the trees in the sample. By subtracting, we arrive at the following result:
