@@ -12,16 +12,46 @@ knitr::include_graphics(paste0(fig_path, "/explogr.png"), auto_pdf = TRUE)
 ``` 
 
 The graphical exploration of the data phase is also necessary to avoid falling into the traps of 
-"blind" fitting: the impression can be gained that the model accurately fits the data, whereas in fact this result is an artifact. This is illustrated in Figure \ref{badR2} for a linear relation. In all four cases shown in this figure the $R^2$ of the linear regression of $Y$ against $X$ is high, while in actual fact the linear relation $Y=a+bX+\varepsilon$ does not fit the data. In Figure \@ref(fig:badR2)A, the cluster of points is split into three subsets, each of which shows a linear relation between $Y$ and $X$ with a negative correlation coefficient. But the three subsets are located along a line that has a positive slope, i.e. that reflecting the linear regression. In \ref{badR2}B, the cluster of points, except one outlier (very likely an aberrant value), does not show any relation between $Y$ and $X$.
-But the outlier is sufficient to make it look as though there is a positive relation between $Y$ and $X$. In \ref{badR2}C, the relation between $Y$ and $X$ is parabolic. Finally, in \ref{badR2}D, the cluster of points, except one outlier, is located along a line with a positive slope. In this case, a linear relation between $Y$ and $X$ is well suited to describing the data, once the outlier has been removed. This outlier artificially reduces the value of $R^2$ (contrary to the situation in Figure \@ref(fig:badR2)B where the outlier artificially increases $R^2$).
+"blind" fitting: the impression can be gained that the model accurately fits the data, whereas in fact this result is an artifact. This is illustrated in Figure \@ref(fig:badR2) for a linear relation. In all four cases shown in this figure the $R^2$ of the linear regression of $Y$ against $X$ is high, while in actual fact the linear relation $Y=a+bX+\varepsilon$ does not fit the data. In Figure \@ref(fig:badR2)A, the cluster of points is split into three subsets, each of which shows a linear relation between $Y$ and $X$ with a negative correlation coefficient. But the three subsets are located along a line that has a positive slope, i.e. that reflecting the linear regression. In \@ref(fig:badR2)B, the cluster of points, except one outlier (very likely an aberrant value), does not show any relation between $Y$ and $X$.
+But the outlier is sufficient to make it look as though there is a positive relation between $Y$ and $X$. In \@ref(fig:badR2)C, the relation between $Y$ and $X$ is parabolic. Finally, in \@ref(fig:badR2)D, the cluster of points, except one outlier, is located along a line with a positive slope. In this case, a linear relation between $Y$ and $X$ is well suited to describing the data, once the outlier has been removed. This outlier artificially reduces the value of $R^2$ (contrary to the situation in Figure \@ref(fig:badR2)B where the outlier artificially increases $R^2$).
 
-\begin{figure}[htb]
-\begin{center}
-\includegraphics{badR2}
-\end{center}
-\caption[Determination coefficients of linear regressions for clusters of points not showing a linear relation]{Determination coefficients ($R^2$) of linear regressions for clusters of points not showing a linear relation.\label{badR2}}
-\end{figure}
+```{r badR2, fig.scap="", fig.cap="(ref:badR2)"}
+
+knitr::include_graphics(paste0(fig_path, "/badR2.png"), auto_pdf = TRUE)
+
+```
 
 As indicated by its name, this graphical exploration phase is more an exploration than a systematic method. Although some advice can be given in matters of finding the right model, the process requires both experience and intuition.
 
+
 ## Exploring the mean relation
+
+Here in this section we will focus on the graphical method used to determine the nature of the mean relation between two variables $X$ and $Y$, i.e. on how to find the form of the function $f$ (if it exists !) such that $\mbox{E}(Y)=f(X)$. When there is only one effect variable $X$, the graphical exploration consists in plotting the cluster of points $Y$ against$X$.
+
+:::::: {.filrouge data-latex=""}
+
+::: {.exercise #feBvD name="(ref:feBvD)"}
+\  
+:::
+
+To visualize the form of the relation between total dry biomass and dbh, the biomass cluster of points should be plotted against dbh. As the dataset has already been read (see red line \@ref(exr:read)), the following command can be used to plot the cluster of points:
+
+```{r echo=T, eval=F}
+plot(dat$dbh, dat$Btot, xlab = "dbh (cm)", ylab = "Biomass (t)")
+```
+
+The resulting scatter plot is shown in Figure \@ref(fig:fBvD). This cluster of points is of the same type as that in Figure \@ref(fig:exgr)D: the relation between biomass and dbh is not linear, and the variance of the biomass increases with dbh.
+
+::::::
+
+
+As the scatter plot graphical method is applicable only to one effect variable, we should attempt to achieve this when there are several effect variables. Let us first explain this point.
+
+```{r fBvD, fig.cap="(ref:fBvD)"}
+
+knitr::include_graphics(paste0(fig_path, "/fBvD.png"), auto_pdf = TRUE)
+
+```
+
+
+### When there is more than one effect variable {#plus}

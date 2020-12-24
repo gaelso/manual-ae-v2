@@ -73,3 +73,6 @@
 
 (ref:exgr) Example of relations between two variables $X$ and $Y$: linear relation and constant variance of the residuals, (B) non linear relation and constant variance of the residuals, (C) linear relation and non constant variance of the residuals, (D) non linear relation and non constant variance of the residuals.
 
+(ref:badR2) Determination coefficients ($R^2$) of linear regressions for clusters of points not showing a linear relation.
+
+(ref:fBvD) Scatter plot of total dry biomass (tonnes) against diameter at breast height (cm) for the 42 trees measured in Ghana by @henry10.
