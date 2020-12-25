@@ -26,7 +26,7 @@ As indicated by its name, this graphical exploration phase is more an exploratio
 
 ## Exploring the mean relation
 
-Here in this section we will focus on the graphical method used to determine the nature of the mean relation between two variables $X$ and $Y$, i.e. on how to find the form of the function $f$ (if it exists !) such that $\mbox{E}(Y)=f(X)$. When there is only one effect variable $X$, the graphical exploration consists in plotting the cluster of points $Y$ against$X$.
+Here in this section we will focus on the graphical method used to determine the nature of the mean relation between two variables $X$ and $Y$, i.e. on how to find the form of the function $f$ (if it exists!) such that $\mbox{E}(Y)=f(X)$. When there is only one effect variable $X$, the graphical exploration consists in plotting the cluster of points $Y$ against $X$.
 
 :::::: {.filrouge data-latex=""}
 
@@ -61,8 +61,7 @@ we can be sure that the new variable $D^2H$ will be an effective predictor. We h
 \[
 V=-0.0019+0.04846C^2H
 \]
-where $V$ is total volume in m$^3$, $C$ is circumference at 1.30\ m in m and $H$ is height in m. Although this table is double-entry (girth and height), it in fact contains only one effect variable: $C^2H$. Another example is the stand volume model established by 
-@fonweban97 in Cameroon for *Eucalyptus saligna*:
+where $V$ is total volume in m$^3$, $C$ is circumference at 1.30\ m in m and $H$ is height in m. Although this table is double-entry (girth and height), it in fact contains only one effect variable: $C^2H$. Another example is the stand volume model established by @fonweban97 in Cameroon for *Eucalyptus saligna*:
 \[
 V=\beta_1G^{\beta_2}\left(\frac{H_0}{N}\right)^{\beta_3}
 \]
@@ -208,3 +207,197 @@ knitr::include_graphics(paste0(fig_path, "/flmcond.png"), auto_pdf = TRUE)
 
 ### Determining whether or not a relation is adequate
 
+Henceforth, we will assume that we have a single effect variable $X$ and that we are looking to explore the relation between $X$ and the response variable $Y$. The first step is to plot all the cluster of points on a graph, with $X$ on the x-axis and $Y$ on the y-axis. We then need to guess visually the function that passes through the middle of this cluster of points while following its shape. In fact, the human eye is not very good at discriminating between similar shapes. For example, Figure \@ref(fig:wii1) shows three scatter plots corresponding to the three following models, but not in the right order (the error term here has been set at zero):
+\[
+\begin{array}{lcl}
+\mbox{power model:} && Y=aX^b
+\\\mbox{exponential model:} && Y=a\exp(bX)
+\\\mbox{polynomial model:} && Y=a+bX+cX^2+dX^3
+\end{array}
+\]
+The three scatter plots look fairly similar, and it would be no mean feat to sort out which one corresponds to which model.
+
+```{r wii1, fig.cap="(ref:wii1)"}
+
+knitr::include_graphics(paste0(fig_path, "/whoisit1.png"), auto_pdf = TRUE)
+
+```
+
+By contrast, the human eye is very good at detecting whether a relation is linear or not. To detect visually whether or not the shape of a cluster of points fits a function, it is therefore greatly in our interests when possible to use a variables transformation
+that renders the relation linear. For instance, in the case of the power model, $Y=aX^b$ yields $\ln Y=\ln a+b\ln X$,
+and this variables transformation:
+
+\begin{equation}
+\left\{
+\begin{array}{l}
+X'=\ln X\\ Y'=\ln Y
+\end{array}
+\right.(\#eq:lXlY)
+\end{equation}
+
+renders the relation linear. In the case of the exponential model, $Y=a\exp(bX)$ yields $\ln Y=\ln a+bX$, and this variables transformation:
+
+\begin{equation}
+\left\{
+\begin{array}{l}
+X'=X\\ Y'=\ln Y
+\end{array}
+\right.(\#eq:XlY)
+\end{equation}
+
+renders the relation linear. By contrast, neither of these two transformation is able to render the polynomial relation linear. If we apply these transformations to the data presented in Figure \@ref(fig:wii1), we should be able to detect which of the scatter plots corresponds to which model. Figure \@ref(fig:wii2) shows the three scatter plots after transforming the variables as in (\@ref(eq:XlY)). The first scatter plot takes the form of a straight line while the two others are still curves. The scatter plot on the left of Figure \@ref(fig:wii1) therefore corresponds to the exponential model.
+
+```{r wii2, fig.cap="(ref:wii2)"}
+
+knitr::include_graphics(paste0(fig_path, "/whoisit2.png"), auto_pdf = TRUE)
+
+```
+
+Figure \@ref(fig:wii3) shows the three scatter plots after transforming the variables as in (\@ref(eq:lXlY)).The second scatter plot takes the form of a straight line while the two others are still curves. The scatter plot in the center of Figure \@ref(fig:wii1) therefore corresponds to the power model. By deduction, the scatter plot on the right of Figure  \@ref(fig:wii1) corresponds to the polynomial model.
+
+```{r wii3, fig.cap="(ref:wii3)"}
+
+knitr::include_graphics(paste0(fig_path, "/whoisit3.png"), auto_pdf = TRUE)
+
+```
+
+It is not always possible to find a variable transformation that renders the relation linear. This, for instance, is precisely the case of the polynomial model $Y=a+bX+cX^2+dX^3$: no transformation of $X$ into $X'$ and of $Y$ into $Y'$ was found such that the relation between $Y'$ and $X'$ is a straight line, whatever the coefficients $a$, $b$, $c$ et $d$. It must also be clearly understood that the linearity we are talking about here is that of the relation between the response variable $Y$ and the effect variable $X$. It is not linearity in the sense of the linear model, which describes linearity with regards to model coefficients (thus, the model $Y=a+bX^2$ is linear in the sense of the linear model whereas it describes a non-linear relation between $X$ and $Y$).
+
+When no transformation of the variable is able to render the relation between $X$ and $Y$ linear, the best approach is to fit the model and determine visually whether the fitted model passes through the middle of the cluster of points and follows its shape. Also, in this case, we have much to gain by examining the plot of the residuals against the fitted values.
+
+::::::{.filrouge data-latex=""}
+
+:::{.exercise #feln name="(ref:feln)"}
+\ 
+:::
+
+Let us use the log transformation to transform simultaneously both dbh and biomass. The scatter plot of the log-transformed data is obtained as follows:
+
+```{r, echo=T, eval=F}
+plot(dat$dbh,dat$Btot,xlab="Diameter (cm)",ylab="Biomass (t)",log="xy")
+```
+
+The resulting scatter plot is shown in Figure \@ref(fig:flnBvlnD). The log transformation has rendered linear the relation between biomass and dbh: the relation between $\ln(D)$ and $\ln(B)$ is a straight line and the variance of $\ln(B)$ does not vary with diameter (like in Figure \@ref(fig:exgr)A).
+
+::::::
+
+```{r flnBvlnD, fig.cap="(ref:flnBvlnD)"}
+
+knitr::include_graphics(paste0(fig_path, "/flnBvlnD.png"), auto_pdf = TRUE)
+
+```
+
+::::::{.filrouge data-latex=""}
+
+:::{.exercise #feln2 name="(ref:feln2)"}
+\ 
+:::
+
+Let us use the log transformation to transform simultaneously both $D^2H$ and biomass. The scatter plot of the log-transformed data is obtained as follows:
+
+```{r, echo=T, eval=F}
+with(dat,plot(dbh^2*heig,Btot,log="xy",xlab="D2H (cm2.m)",ylab="Biomass (t)"))
+```
+
+The resulting scatter plot is shown in Figure \@ref(fig:flnBvD2H). The log transformation has rendered linear the relation between biomass and $D^2H$: the relation between $\ln(D^2H)$ and $\ln(B)$ is a straight line and the variance of $\ln(B)$ does not vary with $D^2H$ (like in Figure \@ref(fig:exgr)A).
+
+::::::
+
+```{r flnBvD2H, fig.cap="(ref:flnBvD2H)"}
+
+knitr::include_graphics(paste0(fig_path, "/flnBvD2H.png"), auto_pdf = TRUE)
+
+```
+
+
+### Catalog of primitives
+
+If we consider the tables calculated by @zianis05 for Europe, by @henry11 for sub-Saharan Africa, or more specifically by @hofstad05 for southern Africa, this gives an idea as to the form of the models most commonly found in the literature on biomass and volume tables. This shows that two models are often used: the power model and the (second, or at most, third order) polynomial model. These two models are therefore useful starting points for the graphical exploration of data when looking to construct a volume or biomass model. The power model $Y=aX^b$ is also known as an allometric relation and the literature contains a number of biological interpretations of this model [@gould79; @franc00b\S\ 1.1.5]. In particular, the "metabolic scaling theory" [@enquist98; @enquist99; @west97; @west99] predicts in a theoretical manner, and based on a fractal description of the internal structure of trees, that the biomass of a tree is related to its dbh by a power relation where the exponent is $8/3\approx\decimal{2}{67}$:
+\[
+B\propto\rho D^{8/3}
+\]
+where $\rho$ is specific wood density. Although metabolic scaling theory has been widely criticized 
+[@mullerlandau06], it does at least have the merit of laying a biological basis for this often observed power relation.
+
+In addition to this power model $B=aD^b$ and the second-order polynomial model $B=a_0+a_1D+a_2D^2$, and without pretending in any way to be exhaustive, the following biomass tables are also often found [@yamakura86; @brown89; @brown97; @martinez92; @araujo99; @nelson99; @ketterings01; @chave01b; @chave05; @nogueira08; @basuki09; @navar09; @djomo10; @henry10]:
+
+1. double-entry model of the power form in relation to the variable $D^2H$: $B=a(\rho D^2H)^b$
+2. double-entry model: $\ln(B)=a_0+a_1\ln(D)+a_2\ln(H)+a_3\ln(\rho)$
+3. single-entry model: $\ln(B)=a_0+a_1\ln(D)+a_2[\ln(D)]^2+a_3[\ln(D)]^3+a_4\ln(\rho)$,
+
+where $\rho$ is specific wood density. To within the form factor, the variable $D^2H$ corresponds to the volume of the trunk, which explains why it is so often used as effect variable. The second equation may be considered to be a generalization of the first for if we apply the log transformation, the first equation is equivalent to: 
+$\ln(B)=\ln(a)+2b\ln(D)+b\ln(H)+b\ln(\rho)$. The first equation is therefore equivalent to the second in the particular case where $a_2=a_3=a_1/2$. Finally, the third equation may be considered to be a generalization of the power model $B=aD^b$.
+
+```{r prim}
+
+kab_opt <- list(
+  x = kab_prim,
+  caption = "(ref:prim)",
+  #col.names = c("),
+  #align = "ccccccccccccc",
+  booktabs = TRUE,
+  escape = F,
+  linesep = ""
+)
+
+display_table() %>%
+  pack_rows(index = c("Polynomial models" = 3, "Exponential models" = 5))
+
+```
+
+\begin{table}[p]
+\caption{A few models linking two variables.\label{prim}}
+{\footnotesize
+\begin{tabular}{|lll|}\hline
+Name & Equation & Transformation\\\hline%\endfirsthead%
+%\hline\multicolumn{3}{c}{Suite\ldots}\\\hline\endhead%
+%\hline\multicolumn{3}{c}{Suite page suivante}\\\hline\endfoot%
+%\hline\endlastfoot%
+\multicolumn{3}{|l|}{\it Polynomial models}\\ %
+linear & $Y=a+bX$ & same\\ %
+parabolic ou quadratic & $Y=a+bX+cX^2$ &\\ %
+$p$-order polynomial & $Y=a_0+a_1X+a_2X^2+\ldots+a_pX^p$ &\\ %
+\hline\multicolumn{3}{|l|}{\it Exponential models}\\ %
+exponential or Malthus & $Y=a\exp(bX)$ & $Y'=\ln Y$, $X'=X$\\ %
+modified exponential & $Y=a\exp(b/X)$ & $Y'=\ln Y$, $X'=1/X$\\ %
+logarithm & $Y=a+b\ln X$ & $Y'=Y$, $X'=\ln X$\\ %
+reciprocal log & $Y=1/(a+b\ln X)$ & $Y'=1/Y$, $X'=\ln X$\\ %
+Vapor pressure & $Y=\exp(a+b/X+c\ln X)$ & \\ %
+\hline\multicolumn{3}{|l|}{\it Power law models}\\ %
+power & $Y=aX^b$ & $Y'=\ln Y$, $X'=\ln X$\\ %
+modified power & $Y=ab^X$ & $Y'=\ln Y$, $X'=X$\\ %
+shifted power & $Y=a(X-b)^c$ & \\ %
+geometric & $Y=aX^{bX}$ & $Y'=\ln Y$, $X'=X\ln X$\\ %
+modified geometric & $Y=aX^{b/X}$ & $Y'=\ln Y$, $X'=(\ln X)/X$\\ %
+root & $Y=ab^{1/X}$ & $Y'=\ln Y$, $X'=1/X$\\ %
+Hoerl's model & $Y=ab^XX^c$ & \\ %
+modified Hoerl's model & $Y=ab^{1/X}X^c$ & \\ %
+\hline\multicolumn{3}{|l|}{\it Production-density models}\\ %
+inverse & $Y=1/(a+bX)$ & $Y'=1/Y$, $X'=X$\\ %
+quadratic inverse & $Y=1/(a+bX+cX^2)$ & \\ %
+Bleasdale's model & $Y=(a+bX)^{-1/c}$ & \\ %
+Harris's model & $Y=1/(a+bX^c)$ & \\ %
+\hline\multicolumn{3}{|l|}{\it Growth models}\\ %
+saturated growth & $Y=aX/(b+X)$ & $Y'=X/Y$, $X'=X$\\ %
+mononuclear or Mitscherlich's model & $Y=a[b-\exp(-cX)]$ & \\ %
+\hline\multicolumn{3}{|l|}{\it Sigmoidal models}\\ %
+Gompertz & $Y=a\exp[-b\exp(-cX)]$ & \\ %
+Sloboda & $Y=a\exp[-b\exp(-cX^d)]$ & \\ %
+logistic or Verhulst & $Y=a/[1+b\exp(-cX)]$ & \\ %
+Nelder & $Y=a/[1+b\exp(-cX)]^{1/d}$ & \\ %
+von Bertalanffy & $Y=a[1-b\exp(-cX)]^3$ & \\ %
+Chapman-Richards & $Y=a[1-b\exp(-cX)]^d$ & \\ %
+Hossfeld & $Y=a/[1+b(1+cX)^{-1/d}]$ & \\ %
+Levakovic & $Y=a/[1+b(1+cX)^{-1/d}]^{1/e}$ & \\ %
+multiple multiplicative factor & $Y=(ab+cX^d)/(b+X^d)$ & \\ %
+Johnson-Schumacher & $Y=a\exp[-1/(b+cX)]$ & \\ %
+Lundqvist-Mat�rn ou de Korf & $Y=a\exp[-(b+cX)^d]$ & \\ %
+Weibull & $Y=a-b\exp(-cX^d)$ & \\ %
+\hline\multicolumn{3}{|l|}{\it Miscellaneous models}\\ %
+hyperbolic & $Y=a+b/X$ & $Y'=Y$, $X'=1/X$\\ %
+sinusoidal & $Y=a+b\cos(cX+d)$ & \\ %
+heat capacity & $Y=a+bX+c/X^2$ & \\ %
+Gaussian & $Y=a\exp[-(X-b)^2/(2c^2)]$ & \\ %
+rational fraction & $Y=(a+bX)/(1+cX+dX^2)$ & \\\hline%
+\end{tabular}}
+\end{table}

@@ -77,15 +77,8 @@ CV$_B$ in \%)}
 Biomass variability (expressed by the value of the multiplier $k=942$) was greater than at Paracou, but the spatial structure of the biomass (expressed by the exponent $c=0.45$) fairly similar to that observed in Paracou by @wagner10. Also, the fact that $c$ approached 0.5 showed that the biomass was only slightly spatially aggregated. @chave03 underlined that there was no significant spatial autocorrelation of the biomass (which would correspond to $c=0.5$, or to a constant value of $\Delta$).
 
 ```{r c03}
-kab <- tibble(
-  a     = c( 100  ,  200  ,  400  , 1000  , 2500  , 5000  , 10000  ),
-  n     = c(5000  , 2500  , 1250  ,  500  , 2900  ,  100  ,    50  ),
-  delta = c(  17.4,   18.7,   20.0,   21.4,   20.1,   22.4,    23.5),
-  cv    = c( 114.5,   87.0,   65.7,   44.4,   26.2,   20.5,    14.9)
-)
-
 kab_opt <- list(
-  x = kab,
+  x = kab_c03,
   caption = "(ref:c03)",
   caption.short = "Coefficient of variation in relation to plot size",
   col.names = linebreak(c("$A$\n$(m^2)$", "$n$", "$\\Delta$\n$(Mg\\ ha^-1)$", "$\\mathrm{CV}_B$\n(\\%)"), align = "c"),

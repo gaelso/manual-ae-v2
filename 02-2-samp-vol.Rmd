@@ -10,19 +10,8 @@ Given the limitations of the sampling theory, the number of measured trees for v
 
 ```{r eff}
 
-kab <- tibble(
-  area = c(
-    "Single, homogeneous stand",
-    "15-ha plot",
-    "1000-ha forest",
-    "Natural area",
-    "Species area"
-    ),
-  n = c("30", "100", "400", "800", "2000 to 3000")
-  )
-
 kab_opt <- list(
-  x = kab,
+  x = kab_eff,
   caption = "(ref:eff)",
   caption.short = "Number of trees to be measured to establish a volume table for different surface areas over which the tables are to be used",
   col.names = c("Area", "$n$"),

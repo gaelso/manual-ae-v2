@@ -98,10 +98,14 @@ with different symbols for the different wood density classes: black circles, $0
 
 (ref:flmcond) Y-intercept $a$ and slope $b$ of the linear regression $\ln(B)=a+b\ln(D^2H)$ conditioned on wood density class, against the median wood density of the classes. The regressions were plotted using the data from the 42 trees measured by @henry10 au Ghana.
 
+(ref:wii1) Three scatter points corresponding to three models: power model, exponential model and polynomial model, but not in the right order.
 
+(ref:wii2) Application of the variables transformation  $X\rightarrow X$, $Y\rightarrow\ln Y$ to the scatter plots given in \@ref(fig:wii1).
 
+(ref:wii3) Application of the variables transformation $X\rightarrow\ln X$, $Y\rightarrow\ln Y$ to the scatter plots shown in \@ref(fig:wii1).
 
+(ref:flnBvlnD) Scatter plot (log-transformed data) of total dry biomass (tonnes) against diameter at breast height (cm) for the 42 trees measured in Ghana by @henry10.
 
-
+(ref:flnBvD2H) Scatter plot (log-transformed data) of total dry biomass (tonnes) against $D^2H$, where $D$ is diameter at breast height (cm) and $H$ is height (m) for the 42 trees measured in Ghana by @henry10.
 
 
