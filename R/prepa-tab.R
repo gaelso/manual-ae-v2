@@ -62,65 +62,91 @@ kab_datasp <- tibble(
 ### Tables chapter 5 -----------------------------------------------------------
 
 ## prim
-kab_prim <- tibble(
-  Name = c(
-    "linear", "parabolic or quadratic", "$p$-order polynomial",
-    "exponential or Malthus", "modified exponential", "logarithm", 
-    "reciprocal log", "Vapor pressure"
+kab_prim <- bind_rows(
+  poly = tibble(
+    Name = c("linear", "parabolic or quadratic", "$p$-order polynomial"),
+    Equation = c("$Y=a+bX$", "$Y=a+bX+cX^2$", "$Y=a_0+a_1X+a_2X^2+\\ldots+a_pX^p$"),
+    Transformation = c("same", "", "")
   ),
-  Equation = c(
-    "$Y=a+bX$", "$Y=a+bX+cX^2$", "$Y=a_0+a_1X+a_2X^2+\\ldots+a_pX^p$",
-    "$Y=a\\exp(bX)$", "$Y=a\\exp(b/X)$", "$Y=a+b\\ln X$", 
-    "$Y=1/(a+b\\ln X)$", "$Y=\\exp(a+b/X+c\\ln X)$"
+  expo = tibble(
+    Name = c(
+      "exponential or Malthus", "modified exponential", "logarithm", 
+      "reciprocal log", "Vapor pressure"
+    ),
+    Equation = c(
+      "$Y=a\\exp(bX)$", "$Y=a\\exp(b/X)$", "$Y=a+b\\ln X$", 
+      "$Y=1/(a+b\\ln X)$", "$Y=\\exp(a+b/X+c\\ln X)$"
+    ),
+    Transformation = c(
+      "$Y'=\\ln Y$, $X'=X$", "$Y'=\\ln Y$, $X'=1/X$", "$Y'=Y$, $X'=\\ln X$",
+      "$Y'=1/Y$, $X'=\\ln X$", ""
+    )
   ),
-  Transformation = c(
-    "same", "", "",
-    "$Y'=\\ln Y$, $X'=X$", "$Y'=\\ln Y$, $X'=1/X$",
-    "$Y'=Y$, $X'=\\ln X$","$Y'=1/Y$, $X'=\\ln X$", ""
+  pow = tibble(
+    Name = c(
+      "power", "modified power", "shifted power", "geometric", 
+      "modified geometric", "root", "Hoerl's model", "modified Hoerl's model"
+    ),
+    Equation = c(
+      "$Y'=\\ln Y$", "$Y=ab^X$", "$Y=a(X-b)^c$", "$Y=aX^{bX}$", 
+      "$Y=aX^{b/X}$", "$Y=ab^{1/X}$", "$Y=ab^XX^c$", "$Y=ab^{1/X}X^c$"
+    ),
+    Transformation = c(
+      "$Y'=\\ln Y$, $X'=\\ln X$", "$Y'=\\ln Y$, $X'=X$", "", "$Y'=\\ln Y$, $X'=X\\ln X$", 
+      "$Y'=\\ln Y$, $X'=(\\ln X)/X$", "$Y'=\\ln Y$, $X'=1/X$", "", ""
+    )
+  ),
+  dens = tibble(
+    Name = c(
+      "inverse", "quadratic inverse", "Bleasdale's model", "Harri's model"
+    ),
+    Equation = c(
+      "$Y=1/(a+bX)$", "$Y=1/(a+bX+cX^2)$", "$Y=(a+bX)^{-1/c}$", "$Y=1/(a+bX^c)$"
+    ),
+    Transformation = c(
+      "$Y'=1/Y$, $X'=X$", "", "", ""
+    )
+  ),
+  grow = tibble(
+    Name = c(
+      "saturated growth", "mononuclear or Mitscherlich's model"
+    ),
+    Equation = c(
+      "$Y=aX/(b+X)$", "$Y=a[b-\\exp(-cX)]$"
+    ),
+    Transformation = c(
+      "$Y'=X/Y$, $X'=X$", ""
+    )
+  ),
+  sig = tibble(
+    Name = c(
+      "Gompertz", "Sloboda", "logistic or Verhulst", "Nelder",
+      "von Bertalanffy", "Chapman-Richards", "Hossfeld", "Levakovic",
+      "multiple multiplicative factor", "Johnson-Schumacher", "Lundqvist-Matérn or de Korf", "Weibull"
+    ),
+    Equation = c(
+      "$Y=a\\exp[-b\\exp(-cX)]$", "$Y=a\\exp[-b\\exp(-cX^d)]$", "$Y=a/[1+b\\exp(-cX)]$", "$Y=a/[1+b\\exp(-cX)]^{1/d}$",
+      "$Y=a[1-b\\exp(-cX)]^3$", "$Y=a[1-b\\exp(-cX)]^d$", "$Y=a/[1+b(1+cX)^{-1/d}]$", "$Y=a/[1+b(1+cX)^{-1/d}]^{1/e}$",
+      "$Y=(ab+cX^d)/(b+X^d)$", "$Y=a\\exp[-1/(b+cX)]$", "$Y=a\\exp[-(b+cX)^d]$", "$Y=a-b\\exp(-cX^d)$"
+    ),
+    Transformation = c(
+      "", "", "", "", "", "", "", "", "", "", "", ""
+    )
+  ),
+  misc = tibble(
+    Name = c(
+      "hyperbolic", "sinusoidal", "heat capacity", "Gaussian", "rational fraction"
+    ),
+    Equation = c(
+      "$Y=a+b/X$", "$Y=a+b\\cos(cX+d)$", "$Y=a+bX+c/X^2$", "$Y=a\\exp[-(X-b)^2/(2c^2)]$", "$Y=(a+bX)/(1+cX+dX^2)$" 
+    ),
+    Transformation = c(
+      "$Y'=Y$, $X'=1/X$", "", "", "", ""
+    )
   )
 )
+kab_prim
 
-
-\hline\multicolumn{3}{|l|}{\it Exponential models}\\ %
-exponential or Malthus & $Y=a\exp(bX)$ & $Y'=\ln Y$, $X'=X$\\ %
-modified exponential & $Y=a\exp(b/X)$ & $Y'=\ln Y$, $X'=1/X$\\ %
-logarithm & $Y=a+b\ln X$ & $Y'=Y$, $X'=\ln X$\\ %
-reciprocal log & $Y=1/(a+b\ln X)$ & $Y'=1/Y$, $X'=\ln X$\\ %
-Vapor pressure & $Y=\exp(a+b/X+c\ln X)$ & \\ %
-
-\hline\multicolumn{3}{|l|}{\it Power law models}\\ %
-power & $Y=aX^b$ & $Y'=\ln Y$, $X'=\ln X$\\ %
-modified power & $Y=ab^X$ & $Y'=\ln Y$, $X'=X$\\ %
-shifted power & $Y=a(X-b)^c$ & \\ %
-geometric & $Y=aX^{bX}$ & $Y'=\ln Y$, $X'=X\ln X$\\ %
-modified geometric & $Y=aX^{b/X}$ & $Y'=\ln Y$, $X'=(\ln X)/X$\\ %
-root & $Y=ab^{1/X}$ & $Y'=\ln Y$, $X'=1/X$\\ %
-Hoerl's model & $Y=ab^XX^c$ & \\ %
-modified Hoerl's model & $Y=ab^{1/X}X^c$ & \\ %
-
-\hline\multicolumn{3}{|l|}{\it Production-density models}\\ %
-inverse & $Y=1/(a+bX)$ & $Y'=1/Y$, $X'=X$\\ %
-quadratic inverse & $Y=1/(a+bX+cX^2)$ & \\ %
-Bleasdale's model & $Y=(a+bX)^{-1/c}$ & \\ %
-Harris's model & $Y=1/(a+bX^c)$ & \\ %
-
-\hline\multicolumn{3}{|l|}{\it Growth models}\\ %
-saturated growth & $Y=aX/(b+X)$ & $Y'=X/Y$, $X'=X$\\ %
-mononuclear or Mitscherlich's model & $Y=a[b-\exp(-cX)]$ & \\ %
-
-\hline\multicolumn{3}{|l|}{\it Sigmoidal models}\\ %
-Gompertz & $Y=a\exp[-b\exp(-cX)]$ & \\ %
-Sloboda & $Y=a\exp[-b\exp(-cX^d)]$ & \\ %
-logistic or Verhulst & $Y=a/[1+b\exp(-cX)]$ & \\ %
-Nelder & $Y=a/[1+b\exp(-cX)]^{1/d}$ & \\ %
-von Bertalanffy & $Y=a[1-b\exp(-cX)]^3$ & \\ %
-Chapman-Richards & $Y=a[1-b\exp(-cX)]^d$ & \\ %
-Hossfeld & $Y=a/[1+b(1+cX)^{-1/d}]$ & \\ %
-Levakovic & $Y=a/[1+b(1+cX)^{-1/d}]^{1/e}$ & \\ %
-multiple multiplicative factor & $Y=(ab+cX^d)/(b+X^d)$ & \\ %
-Johnson-Schumacher & $Y=a\exp[-1/(b+cX)]$ & \\ %
-Lundqvist-Mat�rn ou de Korf & $Y=a\exp[-(b+cX)^d]$ & \\ %
-Weibull & $Y=a-b\exp(-cX^d)$ & \\ %
 
 \hline\multicolumn{3}{|l|}{\it Miscellaneous models}\\ %
 hyperbolic & $Y=a+b/X$ & $Y'=Y$, $X'=1/X$\\ %
@@ -129,3 +155,29 @@ heat capacity & $Y=a+bX+c/X^2$ & \\ %
 Gaussian & $Y=a\exp[-(X-b)^2/(2c^2)]$ & \\ %
 rational fraction & $Y=(a+bX)/(1+cX+dX^2)$ & \\\hline%
 \end{tabula
+
+
+kab_prim <- tibble(
+  Name = c(
+    "linear", "parabolic or quadratic", "$p$-order polynomial",
+    "exponential or Malthus", "modified exponential", "logarithm", 
+    "reciprocal log", "Vapor pressure",
+    "power", "modified power", "shifted power", "geometric", 
+    "modified geometric", "root", "Hoerl's model", "modified Hoerl's model"
+  ),
+  Equation = c(
+    "$Y=a+bX$", "$Y=a+bX+cX^2$", "$Y=a_0+a_1X+a_2X^2+\\ldots+a_pX^p$",
+    "$Y=a\\exp(bX)$", "$Y=a\\exp(b/X)$", "$Y=a+b\\ln X$", 
+    "$Y=1/(a+b\\ln X)$", "$Y=\\exp(a+b/X+c\\ln X)$",
+    "$Y'=\\ln Y$", "$Y=ab^X$", "$Y=a(X-b)^c$", "$Y=aX^{bX}$", 
+    "$Y=aX^{b/X}$", "$Y=ab^{1/X}$", "$Y=ab^XX^c$", "$Y=ab^{1/X}X^c$"
+  ),
+  Transformation = c(
+    "same", "", "",
+    "$Y'=\\ln Y$, $X'=X$", "$Y'=\\ln Y$, $X'=1/X$",
+    "$Y'=Y$, $X'=\\ln X$","$Y'=1/Y$, 
+    $X'=\\ln X$", "",
+    "$Y'=\\ln Y$, $X'=\\ln X$", "$Y'=\\ln Y$, $X'=X$", "", "$Y'=\\ln Y$, $X'=X\\ln X$", 
+    "$Y'=\\ln Y$, $X'=(\\ln X)/X$", "$Y'=\\ln Y$, $X'=1/X$", "", ""
+  )
+)

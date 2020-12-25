@@ -336,68 +336,18 @@ kab_opt <- list(
   #col.names = c("),
   #align = "ccccccccccccc",
   booktabs = TRUE,
-  escape = F,
-  linesep = ""
-)
+  escape = F
+  )
 
 display_table() %>%
-  pack_rows(index = c("Polynomial models" = 3, "Exponential models" = 5))
+  pack_rows(
+    index = c(
+      "Polynomial models" = 3, "Exponential models" = 5, 
+      "Power law models" = 8, "Production-density models" = 4,
+      "Growth models" = 2, "Sigmoidal models" = 12,
+      "Miscellaneous models" = 5
+      )
+    )
 
 ```
 
-\begin{table}[p]
-\caption{A few models linking two variables.\label{prim}}
-{\footnotesize
-\begin{tabular}{|lll|}\hline
-Name & Equation & Transformation\\\hline%\endfirsthead%
-%\hline\multicolumn{3}{c}{Suite\ldots}\\\hline\endhead%
-%\hline\multicolumn{3}{c}{Suite page suivante}\\\hline\endfoot%
-%\hline\endlastfoot%
-\multicolumn{3}{|l|}{\it Polynomial models}\\ %
-linear & $Y=a+bX$ & same\\ %
-parabolic ou quadratic & $Y=a+bX+cX^2$ &\\ %
-$p$-order polynomial & $Y=a_0+a_1X+a_2X^2+\ldots+a_pX^p$ &\\ %
-\hline\multicolumn{3}{|l|}{\it Exponential models}\\ %
-exponential or Malthus & $Y=a\exp(bX)$ & $Y'=\ln Y$, $X'=X$\\ %
-modified exponential & $Y=a\exp(b/X)$ & $Y'=\ln Y$, $X'=1/X$\\ %
-logarithm & $Y=a+b\ln X$ & $Y'=Y$, $X'=\ln X$\\ %
-reciprocal log & $Y=1/(a+b\ln X)$ & $Y'=1/Y$, $X'=\ln X$\\ %
-Vapor pressure & $Y=\exp(a+b/X+c\ln X)$ & \\ %
-\hline\multicolumn{3}{|l|}{\it Power law models}\\ %
-power & $Y=aX^b$ & $Y'=\ln Y$, $X'=\ln X$\\ %
-modified power & $Y=ab^X$ & $Y'=\ln Y$, $X'=X$\\ %
-shifted power & $Y=a(X-b)^c$ & \\ %
-geometric & $Y=aX^{bX}$ & $Y'=\ln Y$, $X'=X\ln X$\\ %
-modified geometric & $Y=aX^{b/X}$ & $Y'=\ln Y$, $X'=(\ln X)/X$\\ %
-root & $Y=ab^{1/X}$ & $Y'=\ln Y$, $X'=1/X$\\ %
-Hoerl's model & $Y=ab^XX^c$ & \\ %
-modified Hoerl's model & $Y=ab^{1/X}X^c$ & \\ %
-\hline\multicolumn{3}{|l|}{\it Production-density models}\\ %
-inverse & $Y=1/(a+bX)$ & $Y'=1/Y$, $X'=X$\\ %
-quadratic inverse & $Y=1/(a+bX+cX^2)$ & \\ %
-Bleasdale's model & $Y=(a+bX)^{-1/c}$ & \\ %
-Harris's model & $Y=1/(a+bX^c)$ & \\ %
-\hline\multicolumn{3}{|l|}{\it Growth models}\\ %
-saturated growth & $Y=aX/(b+X)$ & $Y'=X/Y$, $X'=X$\\ %
-mononuclear or Mitscherlich's model & $Y=a[b-\exp(-cX)]$ & \\ %
-\hline\multicolumn{3}{|l|}{\it Sigmoidal models}\\ %
-Gompertz & $Y=a\exp[-b\exp(-cX)]$ & \\ %
-Sloboda & $Y=a\exp[-b\exp(-cX^d)]$ & \\ %
-logistic or Verhulst & $Y=a/[1+b\exp(-cX)]$ & \\ %
-Nelder & $Y=a/[1+b\exp(-cX)]^{1/d}$ & \\ %
-von Bertalanffy & $Y=a[1-b\exp(-cX)]^3$ & \\ %
-Chapman-Richards & $Y=a[1-b\exp(-cX)]^d$ & \\ %
-Hossfeld & $Y=a/[1+b(1+cX)^{-1/d}]$ & \\ %
-Levakovic & $Y=a/[1+b(1+cX)^{-1/d}]^{1/e}$ & \\ %
-multiple multiplicative factor & $Y=(ab+cX^d)/(b+X^d)$ & \\ %
-Johnson-Schumacher & $Y=a\exp[-1/(b+cX)]$ & \\ %
-Lundqvist-Mat�rn ou de Korf & $Y=a\exp[-(b+cX)^d]$ & \\ %
-Weibull & $Y=a-b\exp(-cX^d)$ & \\ %
-\hline\multicolumn{3}{|l|}{\it Miscellaneous models}\\ %
-hyperbolic & $Y=a+b/X$ & $Y'=Y$, $X'=1/X$\\ %
-sinusoidal & $Y=a+b\cos(cX+d)$ & \\ %
-heat capacity & $Y=a+bX+c/X^2$ & \\ %
-Gaussian & $Y=a\exp[-(X-b)^2/(2c^2)]$ & \\ %
-rational fraction & $Y=(a+bX)/(1+cX+dX^2)$ & \\\hline%
-\end{tabular}}
-\end{table}
