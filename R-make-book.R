@@ -30,7 +30,7 @@ source("R/prepa-photos.R")
 
 source("R/prepa-figs.R")
 
-source("R/prepa-tab.R")
+source("R/prepa-tabs.R")
 
 #source("R/conv_tex_rmd.R") ## Run one time
 

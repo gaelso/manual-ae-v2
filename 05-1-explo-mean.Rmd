@@ -351,3 +351,52 @@ display_table(.latex_scaling = "scale_down") %>%
 
 ```
 
+More generally, Table \@ref(tab:prim) gives a number of functions that are able to model the relation between the two variables. It is indicated when variables have been transformed to render linear the relation between $X$ and $Y$. It should be noted that the modified power model is simply a re-writing of the exponential model, and that the root model is simply a re-writing of the modified exponential model. It should also be noted that a large proportion of these models are simply special cases of more complex models that contain more parameters. For example, the linear model is simply a special case of the polynomial model, and the Gompertz model is simply a special case of the Sloboda model, etc.
+
+The $p$ order polynomial model should be used with caution as polynomials are able to fit any form provided the $p$ order is sufficiently high (the usual functions can all be decomposed in a polynomials database: this is the principle of limited development). In practice, we may have a polynomial that very closely follows the form of the cluster of points across the range of values available, but which assumes a very unlikely form outside this range. In other words, the polynomial model may present a risk when extrapolating, and the higher the $p$ order, the greater the risk. In practice, therefore, fitting greater than 3rd order polynomials should be avoided.
+
+
+## Exploring variance
+
+Let us now consider the model's error term $\varepsilon$ that links the response variable $Y$ to an effect variable 
+$X$. Exploring the form of the variance corresponds basically to answering the question: is the variance of the residuals constant (homoscedasticity) or not (heteroscedasticity)? The reply to this question depends implicitly on the precise form of the relation that will be used to fit the model. For example, for the power relation $Y=aX^b$, we can
+
+- either fit the non-linear model $Y=aX^b+\varepsilon$, which corresponds to estimating
+parameters $a$ and $b$ directly;
+- or fit the linear model $Y'=a'+bX'+\varepsilon$ to the transformed data $Y'=\ln Y$ and $X'=\ln X$, which corresponds to estimating parameters $a'=\ln a$ and $b$.
+
+These two options are obviously not interchangeable as the error term $\varepsilon$ (which we assume follows a normal distribution of constant standard deviation) does not play the same role in the two cases. In the first case the error is additive with respect to the power model. In the second case the error is additive with respect to the linearized model. Therefore, if we return to the power model:
+\[
+Y=\exp(Y')=aX^b\ \exp(\varepsilon)=aX^b\ \varepsilon'
+\]
+which corresponds to a multiplicative error with respect to the power model, where $\varepsilon'$ follows a lognormal distribution. The difference between these two options is illustrated in Figure \@ref(fig:adml). The additive error is expressed by a constant variance in the plot (a) of $Y$ against $X$ and by a variance that decreases with $X$ in the plot (c) of the same, but log-transformed, data. The multiplicative error is expressed by a variance that increases with $X$
+in the plot (b) of $Y$ against $X$ and by a constant variance in the plot (d) of the same, but log-transformed, data.
+
+```{r adml, fig.scap="Power model with additive or multiplicative error", fig.cap="(ref:adml)"}
+
+knitr::include_graphics(paste0(fig_path, "/addmult.png"), auto_pdf = TRUE)
+
+```
+
+Thus, when the model linking $Y$ to $X$ is linearized by a variables transformation, this affects both the form of the mean relation and that of the error term. This property may be used to stabilize residuals that vary with $X$ rendering them constant, but this point will be addressed in the next chapter. For the moment, we are looking to explore the form of the error $Y-\mbox{E}(Y)$ in relation to $X$, without transforming the variables $X$ and $Y$.
+
+As the form of the mean relation $\mbox{E}(Y)=f(X)$ has already been determined graphically, a simple visual examination of the plot of $Y$ against $X$ will show whether the points are evenly distributed on each side of the curve $f$ for all values of $X$. Plots (a) and (b) in Figure \@ref(fig:exgr), for example, illustrate the case of residuals of constant variance at all values of $X$, whereas plots (c) and (d) in the same figure show the case of residuals that increase in variance with $X$. More complex relations, like that illustrated in Figure \@ref(fig:sin), may also be imagined. In the particular case illustrated by Figure \@ref(fig:sin), the variance of the residuals fluctuates periodically with $X$.
+
+```{r sin, fig.cap="(ref:sin)"}
+
+display_fig("sinvar")
+
+```
+
+However, there is little risk of encountering such situations in practice in the context of biomass or volume tables. In almost all cases we need to choose between two situations: the variance of the residuals is constant or increases with $X$.
+In the first case, nothing further needs to be done. In the second case, there is no need to investigate the exact form of the relation between $X$ and the variance of the residuals, but simply from the outset adopt a power model to link the variance of the residuals $\varepsilon$ to $X$:
+\[
+\mbox{Var}(\varepsilon)=\alpha X^{\beta}
+\]
+The values of the coefficients $\alpha$ and $\beta$ can be estimated at the same time as those of the model's other coefficients during the model fitting phase, which will be considered in the next chapter.
+
+
+## Exploring doesn't mean selecting
+
+By way of a conclusion, it should be underlined that this graphical exploration does not aim to select a single type of model, but rather to sort between models that are able to describe the dataset and those that are not. Far from seeking to select THE model assumed to be the best at describing the data, efforts should be made to select three or four candidate models likely to be able to describe the data. The final choice between these three or four models selected during the graphical exploration phase can then be made after the data fitting phase that is described in the next chapter.
+

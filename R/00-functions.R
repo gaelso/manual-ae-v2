@@ -1,7 +1,18 @@
 
 ###
-### Adapt kable to TeX (pdf), html (gitbook) or docx ---------------------------
+### Convert pdf to png for html output -----------------------------------------
+pdf2png <- function(path) {
+  # only do the conversion for non-LaTeX output
+  if (knitr::is_latex_output()) 
+    return(path)
+  path2 <- xfun::with_ext(path, "png")
+  img <- magick::image_read_pdf(path)
+  magick::image_write(img, path2, format = "png")
+  path2
+}
 
+###
+### Adapt kable to TeX (pdf), html (gitbook) or docx ---------------------------
 display_table <- function(.list_opts=kab_opt, .format=book_format, .latex_scaling = FALSE){
   
   if (book_format == "latex") {
@@ -9,7 +20,7 @@ display_table <- function(.list_opts=kab_opt, .format=book_format, .latex_scalin
     tt <- do.call(kable, c(.list_opts, format = .format, linesep = "")) %>%
       kableExtra::kable_styling(
         position = 'center', latex_options = c("repeat_header")  ## removed for this book: "HOLD_position",
-        )
+      )
     
     if (.latex_scaling == "scale_down") {
       
@@ -37,15 +48,11 @@ display_table <- function(.list_opts=kab_opt, .format=book_format, .latex_scalin
   
 } ## End function
 
-
 ###
-### Convert pdf to png for html output -----------------------------------------
-pdf2png <- function(path) {
-  # only do the conversion for non-LaTeX output
-  if (knitr::is_latex_output()) 
-    return(path)
-  path2 <- xfun::with_ext(path, "png")
-  img <- magick::image_read_pdf(path)
-  magick::image_write(img, path2, format = "png")
-  path2
+### Custom include_graphics for the book
+
+display_fig <- function(.name, .path=fig_path){
+  
+  knitr::include_graphics(paste0(fig_path, "/", .name, ".png"), auto_pdf = TRUE)
+  
 }
