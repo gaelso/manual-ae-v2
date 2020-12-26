@@ -2,35 +2,34 @@
 ###
 ### Adapt kable to TeX (pdf), html (gitbook) or docx ---------------------------
 
-display_table <- function(need_lscp = FALSE){
+display_table <- function(.list_opts=kab_opt, .format=book_format, .latex_scaling = FALSE){
   
   if (book_format == "latex") {
     
-    if (need_lscp == FALSE) {
-      tt <- do.call(kable, c(kab_opt, format = book_format, linesep = "")) %>%
-        kableExtra::kable_styling(
-          position = 'center', 
-          latex_options = c("repeat_header") ## removed for this book: "HOLD_position", 
-          )
-    } else if (need_lscp == TRUE) {
-      tt <- do.call(kable, c(kab_opt, format = book_format, linesep = "")) %>%
-        kableExtra::kable_styling(
-          position = 'center', 
-          latex_options = c("scale_down", "repeat_header") ## Not used: "HOLD_position",
-          ) %>%
+    tt <- do.call(kable, c(.list_opts, format = .format, linesep = "")) %>%
+      kableExtra::kable_styling(
+        position = 'center', latex_options = c("repeat_header")  ## removed for this book: "HOLD_position",
+        )
+    
+    if (.latex_scaling == "scale_down") {
+      
+      tt <- tt %>% kableExtra::kable_styling(latex_options = c("scale_down"))
+      
+    } else if (.latex_scaling == "lscp") {
+      
+      tt <- tt %>% 
+        kableExtra::kable_styling(latex_options = c("scale_down")) %>%
         kableExtra::landscape()
-    } else {
-      stop("Error need_lscp should be TRUE/FALSE")
-    } ## End if need_lscp
+    } ## END IF .latex_scaling
     
   } else if (book_format == "html") {
     
-    tt <- do.call(kable, c(kab_opt, format = book_format)) %>%
+    tt <- do.call(kable, c(.list_opts, format = .format)) %>%
       kableExtra::kable_styling(full_width = F)
     
   } else {
     
-    tt <- do.call(kable, kab_opt)
+    tt <- do.call(kable, .list_opts)
     
   } ## End if book_format
   

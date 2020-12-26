@@ -312,7 +312,7 @@ knitr::include_graphics(paste0(fig_path, "/flnBvD2H.png"), auto_pdf = TRUE)
 
 ### Catalog of primitives
 
-If we consider the tables calculated by @zianis05 for Europe, by @henry11 for sub-Saharan Africa, or more specifically by @hofstad05 for southern Africa, this gives an idea as to the form of the models most commonly found in the literature on biomass and volume tables. This shows that two models are often used: the power model and the (second, or at most, third order) polynomial model. These two models are therefore useful starting points for the graphical exploration of data when looking to construct a volume or biomass model. The power model $Y=aX^b$ is also known as an allometric relation and the literature contains a number of biological interpretations of this model [@gould79; @franc00b\S\ 1.1.5]. In particular, the "metabolic scaling theory" [@enquist98; @enquist99; @west97; @west99] predicts in a theoretical manner, and based on a fractal description of the internal structure of trees, that the biomass of a tree is related to its dbh by a power relation where the exponent is $8/3\approx\decimal{2}{67}$:
+If we consider the tables calculated by @zianis05 for Europe, by @henry11 for sub-Saharan Africa, or more specifically by @hofstad05 for southern Africa, this gives an idea as to the form of the models most commonly found in the literature on biomass and volume tables. This shows that two models are often used: the power model and the (second, or at most, third order) polynomial model. These two models are therefore useful starting points for the graphical exploration of data when looking to construct a volume or biomass model. The power model $Y=aX^b$ is also known as an allometric relation and the literature contains a number of biological interpretations of this model [@gould79; @franc00b\S\ 1.1.5]. In particular, the "metabolic scaling theory" [@enquist98; @enquist99; @west97; @west99] predicts in a theoretical manner, and based on a fractal description of the internal structure of trees, that the biomass of a tree is related to its dbh by a power relation where the exponent is $8/3\approx2.67$:
 \[
 B\propto\rho D^{8/3}
 \]
@@ -339,7 +339,7 @@ kab_opt <- list(
   escape = F
   )
 
-display_table() %>%
+display_table(.latex_scaling = "scale_down") %>%
   pack_rows(
     index = c(
       "Polynomial models" = 3, "Exponential models" = 5, 

@@ -183,11 +183,7 @@ kab_opt <- list(
   escape = F
 )
 
-if (book_format == "latex") {
-  display_table() %>% kableExtra::kable_styling(latex_options = "scale_down")
-} else {
-  display_table()
-}
+display_table(.latex_scaling = "scale_down")
 
 ```
 
