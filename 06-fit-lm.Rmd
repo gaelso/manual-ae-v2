@@ -48,4 +48,160 @@ display_fig("reglin")
 
 #### Estimating coefficients {-}
 
+Figure \@ref(fig:reglin) shows the observations and the plot of predicted values. The best fit is that which minimizes the residual error. There are several ways of quantifying this residual error. From a mathematical standpoint, this is equivalent with choosing a norm to measure $\varepsilon$ and various norms could be used. The norm that is commonly used is the $L_2$ norm, which is equivalent with quantifying the residual difference between the actual observations and the predictions by summing the squares of the residuals, which is also called the sum of squares (SS):
+\[
+\mathrm{SSE}(a,b)=\sum_{i=1}^n\varepsilon_i^2=\sum_{i=1}^n(Y_i-\hat{Y}_i)^2
+=\sum_{i=1}^n(Y_i-a-bX_i)^2
+\]
+The best fit is therefore that which minimizes SS. In other words, the estimations $\hat{a}$ and $\hat{b}$ of the coefficients $a$ and $b$ are values of $a$ and $b$ that minimize the sum of squares:
+\[
+(\hat{a},\ \hat{b})=\arg\min_{(a,\ b)}\mathrm{SSE}(a,b)
+\]
+This minimum may be obtained by calculating the partial derivatives of SS in relation to $a$ and $b$, and by looking for the values of $a$ and $b$ that cancel these partial derivatives. Simple calculations yield the following results: $\hat{b}=\widehat{\mathrm{Cov}}(X,\ Y)/S_X^2$ and $\hat{a}=\bar{Y}-\hat{b}\bar{X}$, where $\bar{X}=(\sum_{i=1}^nX_i)/n$ is the empirical mean of the effect variable, $\bar{Y}=(\sum_{i=1}^nY_i)/n$ is the empirical mean of the response variable,
+\[
+S_X^2=\frac{1}{n}\sum_{i=1}^n(X_i-\bar{X})^2
+\]
+is the empirical variance of the effect variable, and
+\[
+\widehat{\mathrm{Cov}}(X,\ Y)=\frac{1}{n}\sum_{i=1}^n(X_i-\bar{X})(Y_i-\bar{Y})
+\]
+is the empirical covariance between the effect variable and the response variable. The estimation of the residual variance is:
+\[
+\hat{\sigma}^2=\frac{1}{n-2}\sum_{i=1}^n(Y_i-\hat{a}-\hat{b}X_i)^2
+=\frac{\mathrm{SSE}(\hat{a},\ \hat{b})}{n-2}
+\]
+Because this method of estimating the coefficients is based on minimizing the sum of squares, it is called the *least squares* method (sometimes it is called the "ordinary least squares" method to differentiate it from the weighted least squares method we will see in \S\ \@ref(pond)). This estimation method has the advantage of providing an explicit expression of the estimated coefficients.
 
+
+#### Interpreting the results of a regression {-}
+
+When fitting a simple linear regression, several outputs need to be analyzed. The determination coefficient, more commonly called $R^2$, measures the quality of the fit. $R^2$ is directly related to the residual variance since:
+\[
+R^2=1-\frac{\hat{\sigma}^2(n-2)/n}{S_Y^2}
+\]
+where $S_Y^2=[\sum_{i=1}^n(Y_i-\bar{Y})^2]/n$ is the empirical variance of $Y$. The difference $S_Y^2-\hat{\sigma}^2(n-2)/n$ between the variance of $Y$ and the residual variance corresponds to the variance explained by the model. The determination coefficient $R^2$ can be interpreted as being the ratio between the variance explained by the model and the total variance. It is between 0 and 1, and the closer it is to 1, the better the quality of the fit. In the case of a simple linear regression, and only in this case, $R^2$ is also the square of the linear correlation coefficient (also called Pearson's coefficient) between $X$ and $Y$. We have already seen in chapter \@ref(explo) (particularly in Figure \@ref(fig:badR2)) that the interpretation of $R^2$ has its limitations.
+
+In addition to estimating values for coefficients $a$ and $b$, model fitting also provides the standard deviations of these estimations (i.e. the standard deviations of estimators $\hat{a}$ and $\hat{b}$), and the results of significance tests on these coefficients. A test is performed on the y-intercept $a$, which tests the null hypothesis that $a=0$, and likewise a test is performed on the slope $b$, which tests the hypothesis that $b=0$.
+
+Finally, the result given by the overall significance test for the model is also analyzed. This test is based on breaking down the total variance of $Y$ into the sum of the variance explained by the model and the residual variance. Like in an analysis of variance, the test used is Fisher's test which, as test statistic, uses a weighted ratio of the explained variance over the residual variance. In the case of a simple linear regression, and only in this case, the test for the overall significance of the model gives the same result as the test on the null hypothesis $b=0$. This can be grasped intuitively: a line linking $X$ to $Y$ is significant only if its slope is not zero.
+
+
+#### Checking hypotheses {-}
+
+Model fitting may be brought to a conclusion by checking that the hypotheses put forward for the residuals are in fact satisfied. We will not consider here the hypothesis that the residuals are independent for this has already been satisfied thanks to the sampling plan adopted. If there is a natural order in the observations, we could possibly use the Durbin-Watson test to test if the residuals are indeed independent [@durbin71]. The hypothesis that the residuals are normally distributed can be checked visually by inspecting the quantile--quantile graph. This graph plots the empirical quantiles of the residuals against the theoretical quantiles of the standard normal distribution. If the hypothesis that the residuals are normally distributed is satisfied, then the points are approximately aligned along a straight line, as in  Figure \@ref(fig:res1) (right plot).
+
+```{r res1, fig.cap="(ref:res1)"}
+
+display_fig("resid1")
+
+```
+
+In the case of fitting volume or biomass models, the most important hypothesis to satisfy is that of the constant variance of the residuals. This can be checked visually by plotting the cluster of points for the residuals $\varepsilon_i=Y_i-\hat{Y}_i$ in function to predicted values $\hat{Y}_i=\hat{a}+\hat{b}X_i$.
+
+ If the variance of the residuals is indeed constant, this cluster of points should not show any particular trend and no particular structure. This for instance is the case for the plot shown on the left in  Figure \@ref(fig:res1). By contrast, if the cluster of points shows some form of structure, the hypothesis should be questioned. This for instance is the case in  Figure \@ref(fig:res2) where the cluster of points for the residuals plotted against fitted values forms a funnel shape. This shape is typical of a residual variance that increases with the effect variable (which we call heteroscedasticity). If this is the case, a model other than a simple linear regression must be fitted.
+
+```{r res2, fig.cap="(ref:res2)"}
+
+display_fig("resid2")
+
+```
+
+In the case of biological data such as tree volume or biomass, heteroscedasticity is the rule and homoscedasticity the exception. This means simply that the greater tree biomass (or volume), the greater the variability of this biomass (or volume). This increase in the variability of biomass with increasing size is a general principle in biology. Thus, when fitting biomass or volume models, simple linear regression using biomass as response variable ($Y=B$) is generally of little use. The log transformation (i.e. $Y=\ln(B)$) resolves this problem and therefore the linear regressions we use for adjusting models nearly always use log-transformed data. We will return at length to this fundamental point later.
+
+::::::{.filrouge data-latex=""}
+
+:::{.exercise #rllnBvD, name="(ref:rllnBvD)}
+\  
+:::
+
+The exploratory analysis (red line \@ref(exr:feln)) showed that the relation between the log of the biomass and the log of the dbh was linear, with a variance of $\ln(B)$ that was approximately constant. A simple linear regression may therefore be fitted to predict $\ln(B)$from $\ln(D)$:
+\[
+\ln(B)=a+b\ln(D)+\varepsilon
+\]
+where
+\[
+\mathrm{Var}(\varepsilon)=\sigma^2
+\]
+The regression is fitted using the ordinary least squares method. Given that we cannot apply the log transformation to a value of zero, zero biomass data (see red line \@ref(exr:read)) must first be withdrawn from the dataset:
+
+```{r, echo=T, eval=F}
+m <- lm(log(Btot) ~ I(log(dbh)),data = dat[dat$Btot>0,])
+summary(m)
+```
+
+The residual standard deviation is $\hat{\sigma}=0.462$, $R^2$ is 0.9642 and the model is highly significant (Fisher's test: $F_{1,39}=1051$, p-value $<2.2\times10^{-16}$). The values of the coefficients are given in the table below:
+
+```{r}
+summary(m)$coef
+```
+
+The first column in the table gives the values of the coefficients. The model is therefore: $\ln(B)=-8.42722+2.36104\ln(D)$. The second column gives the standard deviations of the coefficient estimators. The third column gives the result of the test on the null hypothesis that the coefficient is zero. Finally, the fourth column gives the p-value of this test. In the present case, both the slope and the y-intercept are significantly different from zero.
+We must now check graphically that the hypotheses of the linear regression are satisfied:
+\R{plot(m,which=1:2)}%
+The result is shown in  Figure \@ref(fig:fBvDres). Even though the quantile--quantile plot of the residuals appears to have a slight structure, we will consider that the hypotheses of the simple linear regression are suitably satisfied.
+
+::::::
+
+\begin{filrouge}{Simple linear regression between $\ln(B)$ and $\ln(D)$}{rllnBvD}%
+The exploratory analysis (red line \ref{feln}) showed that the relation between the log of the biomass and the log of the dbh was linear, with a variance of $\ln(B)$ that was approximately constant. A simple linear regression may therefore be fitted to predict $\ln(B)$from $\ln(D)$:
+
+\[
+\ln(B)=a+b\ln(D)+\varepsilon
+\]
+where
+\[
+\mathrm{Var}(\varepsilon)=\sigma^2
+\]
+The regression is fitted using the ordinary least squares method. Given that we cannot apply the log transformation to a value of zero, zero biomass data (see red line \ref{read}) must first be withdrawn from the dataset:
+\R{m <- lm(log(Btot)$\sim$I(log(dbh)),data=dat[dat\$Btot>0,])%
+\\ summary(m)}%
+The residual standard deviation is $\hat{\sigma}=\decimal{0}{462}$, $R^2$ is \decimal{0}{9642} and the model is highly significant (Fisher's test: $F_{1,39}=1051$, p-value $<\decimal{2}{2}\times10^{-16}$). The values of the coefficients are given in the table below:
+
+\Rout{\begin{tabular}{lrrrrl}%
+            & Estimate & Std. Error & t value & Pr(>|t|) &    \\ %
+(Intercept) & -8.42722 &    0.27915 &  -30.19 &   <2e-16 & ***\\ %
+I(log(dbh)) &  2.36104 &    0.07283 &   32.42 &   <2e-16 & ***\\ %
+\end{tabular}}%
+The first column in the table gives the values of the coefficients. The model is therefore:
+$\ln(B)=-\decimal{8}{42722}+\decimal{2}{36104}\ln(D)$. The second column gives the standard deviations of the coefficient estimators. The third column gives the result of the test on the null hypothesis that the coefficient is zero. Finally, the fourth column gives the p-value of this test. In the present case, both the slope and the y-intercept are significantly different from zero.
+We must now check graphically that the hypotheses of the linear regression are satisfied:
+\R{plot(m,which=1:2)}%
+The result is shown in  Figure \@ref(fig:fBvDres). Even though the quantile--quantile plot of the residuals appears to have a slight structure, we will consider that the hypotheses of the simple linear regression are suitably satisfied.
+\end{filrouge}
+
+\begin{figure}[htb]
+\includegraphics[width=\textwidth]{fBvDres}
+\caption[Residuals plotted against fitted values and quantile--quantile plot of the residuals of the simple linear regression of $\ln(B)$ against $\ln(D)$ fitted for the 42 trees measured by @henry10 in Ghana]{Residuals plotted against fitted values (left) and quantile--quantile plot (right) of the residuals of the simple linear regression of $\ln(B)$ against $\ln(D)$ fitted for the 42 trees measured by @henry10 in Ghana.\label{fBvDres}}
+\end{figure}
+
+\begin{filrouge}{
+Simple linear regression between $\ln(B)$ and $\ln(D^2H)$}{rllnBvD2H}%
+The exploratory analysis (red line \ref{feln2}) showed that the relation between the log of the biomass and the log of $D^2H$ was linear, with a variance of $\ln(B)$ that was approximately constant. We can therefore fit a simple linear regression to predict $\ln(B)$ from $\ln(D^2H)$:
+\[
+\ln(B)=a+b\ln(D^2H)+\varepsilon
+\]
+where
+\[
+\mathrm{Var}(\varepsilon)=\sigma^2
+\]
+The regression is fitted by the ordinary least squares method. Given that we cannot apply the log transformation to a value of zero, zero biomass data (see red line \ref{read}) must first be withdrawn from the dataset:
+\R{m <- lm(log(Btot)$\sim$I(log(dbh\^{}2*haut)),data=dat[dat\$Btot>0,])%
+\\ summary(m)}%
+The residual standard deviation is $\hat{\sigma}=\decimal{0}{4084}$, $R^2$ is \decimal{0}{972} and the model is highly significant (Fisher's test: $F_{1,39}=1356$, p-value $<\decimal{2}{2}\times10^{-16}$). The values of the coefficients are as follows:
+\Rout{\begin{tabular}{lrrrrl}%
+                      & Estimate & Std. Error & t value & Pr(>|t|) &    \\ %
+(Intercept)           & -8.99427 & 0.26078    & -34.49  & <2e-16   & ***\\ %
+I(log(dbh\^{}2*haut)) &  0.87238 & 0.02369    &  36.82  & <2e-16   & ***\\ %
+\end{tabular}}%
+The first column in the table gives the values of the coefficients. The model is therefore:
+$\ln(B)=-\decimal{8}{99427}+\decimal{0}{87238}\ln(D^2H)$. The second column gives the standard deviations of the coefficient estimators. The third column gives the result of the test on the null hypothesis that "the coefficient is zero". Finally, the fourth column gives the p-value of this test. In the present case, both the slope and the y-intercept are significantly different from zero.
+
+We must now check graphically that the hypotheses of the linear regression are satisfied:
+\R{plot(m,which=1:2)}%
+The result is shown in  Figure \@ref(fig:fBvD2Hres). Even though the plot of the residuals against the fitted values appears to have a slight structure, we will consider that the hypotheses of the simple linear regression are suitably satisfied.
+\end{filrouge}
+
+\begin{figure}[htb]
+\includegraphics[width=\textwidth]{fBvD2Hres}
+\caption[Residuals plotted against fitted values and quantile--quantile plot of the residuals of the simple linear regression of $\ln(B)$ against $\ln(D^2H)$ fitted for the 42 trees measured by @henry10 in Ghana]{Residuals plotted against fitted values (left) and quantile--quantile plot (right) of the residuals of the simple linear regression of $\ln(B)$ against $\ln(D^2H)$ fitted for the 42 trees measured by @henry10 in Ghana.\label{fBvD2Hres}}
+\end{figure}

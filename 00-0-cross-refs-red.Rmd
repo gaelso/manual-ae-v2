@@ -6,12 +6,12 @@
 <!-- Red line title --> 
 <!-------------------->
 
-<!-- Red line chapter 4 -->
+<!-- Red lines chapter 4 -->
 
 (ref:read) [**$\looparrowright$\ Red line dataset**]{color="red"}
 
 
-<!-- Red line chapter 5 -->
+<!-- Red lines chapter 5 -->
 
 (ref:feBvD) [**$\looparrowright$\ Exploring the biomass--dbh relation**]{color="red"}
 
@@ -24,3 +24,6 @@
 (ref:feln2) [**$\looparrowright$\ Exploring the biomass--$D^2H$ relation: variables transformation**]{color="red"}
 
 
+<!-- Red lines chapter 6 -->
+
+(ref:rllnBvD) Simple linear regression between $\ln(B)$ and $\ln(D)$
