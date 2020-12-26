@@ -1,0 +1,51 @@
+
+# Model fitting {#fit}
+
+Fitting a model consists in estimating its parameters from data. This assumes, therefore, that data are already available and formatted, and that the mathematical expression of the model to be fitted is known. For example, fitting the power model $B=aD^b$ consists in estimating coefficients $a$ and $b$ from a dataset that gives the values of $B_i$ and $D_i$ from the biomass and dbh of $n$ trees ($i=1$, \ldots, $n$). The response variable (also in the literature called the output variable or the dependent variable) is the variable fitted by the model. There is only one. In this guide, the response variable is always a volume or a biomass. Effect variables are the variables used to predict the response variable. There may be several, and their number is denoted by $p$. Care must be taken not to confuse effect variables and model entry data. The model $B=a(D^2H)^b$ possesses a single effect variable ($D^2H$) but two entries (dbh $D$ and height $H$). Conversely, the model $B=a_0+a_1D+a_2D^2$ possesses two effect variables ($D$ and $D^2$) but only a single entry (dbh $D$). Each effect variable is associated with a coefficient to be calculated. To this must be added, if necessary, the y-intercept or a multiplier such that the total number of coefficients to be calculated in a model with $p$ effect variables is $p$ or $p+1$.
+
+An observation consists of the data forming the response variable (volume or biomass) and the effect variables for a tree. If we again consider the model $B=aD^b$, an observation consists of the doublet ($B_i$, $D_i$). The number of observations is therefore $n$. An observation stems from a measurement in the field. The prediction provided by the model is the value it predicts for the response variable from the data available for the effect variables. A prediction stems from a calculation. For example, the prediction provided by the model $B=aD^b$ for a tree of dbh $D_i$ is $\hat{B}_i=aD_i^b$. There are as many predictions as there are observations. A key concept in model fitting is the residual. The residual, or residual error, is the difference between the observed value of the response variable and its prediction. Again for the same example, the residual of the $i$th observation is: $\varepsilon_i=B_i-\hat{B}_i=B_i-aD_i^b$. There are as many residuals as there are observations. The lower the residuals, the better the fit. Also, the statistical properties of the model stem from the properties that the residuals are assumed to check *a priori*, in particular the form of their distribution. The type of a model's fitting is therefore directly dependent upon the properties of its residuals.
+
+In all the models we will be considering here, the observations will be assumed to be independent or, which comes to the same thing, the residuals will be assumed to be independent: for each $i\neq j$, $\varepsilon_i$ is assumed to be independent of $\varepsilon_j$. This independence property is relatively easy to ensure through the sampling protocol. Typically, care must be taken to ensure that the characteristics of a tree measured in a given place do not affect the characteristics of another tree in the sample. Selecting trees that are sufficiently far apart is generally enough to ensure this independence. If the residuals are not independent, the model can be modified to take account of this. For example, a spatial dependency structure could be introduced into the residuals to take account of a spatial auto-correlation between the measurements. We will not be considering these models here as they are far more complex to use.
+
+In all the models we will be looking at, we assume also that the residuals have a normal distribution with zero expectation. The zero mean of the residuals is in fact a property that stems automatically from model fitting, and ensures that the model's predictions are not biased. It is the residuals that are assumed to have a normal distribution, not the observations. This hypothesis in fact causes little constraint for volume or biomass data. In the unlikely case where the distribution of the residuals is far from normal, efforts could be made to fit other model types, e.g. the generalized linear model, but this will not be addressed here in this guide. The hypotheses that the residuals are independent and follow a normal distribution are the first two hypotheses underlying model fitting. We will see a third hypothesis later. It should be checked that these two hypotheses are actually valid. To the extent that these hypotheses concern model residuals, not the observations, they cannot be tested until they have been calculated, i.e. until the model has been fitted. These hypotheses are therefore checked a posteriori, after model fitting. The models we will look at here are also robust with regard to these hypotheses, i.e. the predictive quality of the fitted models is acceptable even when the independence and the normal distribution of the residuals are not perfectly satisfied. For this reason, we will not look to test these two hypotheses very formally. In practice we will simply perform a visual verification of the plots.
+
+
+## Fitting a linear model
+
+The linear model is the simplest of all models to fit. The word *linear* means here that the model is *linearly* dependent on its coefficients. For example, $Y=a+bX^2$ and $Y=a+b\ln(X)$ are linear models because the response variable $Y$ is linearly dependent upon coefficients $a$ and $b$, even if $Y$ is not linearly dependent on the effect variable $X $. Conversely, $Y=aX^b$ is not a linear model because $Y$ is not linearly dependent on coefficient $b$. Another property of the linear model is that the residual is additive. This is underlined by explicitly including the residual $\varepsilon$ in the model's formula. For example, a linear regression of $Y$ against $X$ will be written: $Y=a+bX+\varepsilon$.
+
+
+### Simple linear regression
+
+A simple linear regression is the simplest of the linear models. It assumes (*i*) that there is only one effect variable $X$, (*ii*) that the relation between the response variable $Y$ and $X$ is a straight line:
+\[
+Y=a+bX+\varepsilon
+\]
+where $a$ is the y-intercept of the line and $b$ its slope, and (*iii*) that the residuals are of constant variance: $\mathrm{Var}(\varepsilon)=\sigma^2$. For example, the model
+
+\begin{equation}
+\ln(B)=a+b\ln(D)+\varepsilon(\#eq:pow)
+\end{equation}
+
+is a typical simple linear regression, with response variable $Y=\ln(B)$ and effect variable $X=\ln(D)$. It corresponds to a power model for biomass: $B=\exp(a)D^b$. This model is often used to fit a single-entry biomass model. Another example is the double-entry biomass model:
+
+\begin{equation}
+\ln(B)=a+b\ln(D^2H)+\varepsilon(\#eq:powH)
+\end{equation}
+
+The hypothesis whereby the residuals are of constant variance is added to the two independence and normal distribution hypotheses (we also speak of homoscedasticity). These three hypotheses may be summarized by writing:
+\[
+\varepsilon\;\mathop{\sim}_{\mathrm{i.i.d.}}\;\mathcal{N}(0,\ \sigma)
+\]
+where $\mathcal{N}(\mu,\ \sigma)$ designates a normal distribution of expectation $\mu$ and standard deviation $\sigma$, the tilde "$\sim$" means "is distributed in accordance with", and "i.i.d." is the abbreviation of "independently and identically distributed".
+
+```{r reglin, fig.cap="(ref:reglin)"}
+
+display_fig("reglin")
+
+```
+
+
+#### Estimating coefficients {-}
+
+
