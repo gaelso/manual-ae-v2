@@ -282,7 +282,116 @@ Y=a_0+a_1X+a_2X^2+\ldots+a_pX^p
 \]
 $R^2$ will automatically increase with the number of orders $p$. This may give the illusion that the higher the number of orders $p$ in a polynomial, the better its fit. This of course is not the case. If the number $p$ of orders is too high, this will result in model over-parameterization. In other words, $R^2$ is not a valid criterion on which model selection may be based. We will return to this point in section \@ref(select).
 
+
 #### Checking hypotheses {-}
 
+Like simple linear regression, multiple regression is based on three hypotheses: that the residuals are independent, that they follow a normal distribution and that their variance is constant. These hypotheses may be checked in exactly the same manner as for the simple linear regression. To check that the residuals follow a normal distribution, we can plot a quantile--quantile graph and verify visually that the cluster of points forms a straight line. To check that the variance of the residuals is constant, we can plot the residuals against the fitted values and verify visually that the cluster of points does not show any particular trend. The same restriction as for the simple linear regression applies to volume or biomass data that nearly always (or always) show heteroscedasticity. For this reason, multiple regression is generally applicable for fitting models only on log-transformed data.
 
+::::::{.filrouge data-latex=""}
+
+:::{.exercise #flnDpol name="(ref:flnDpol)"}
+\  
+:::
+
+::::::
+
+\begin{filrouge}{}{flnDpol}%
+The exploratory analysis (red line \ref{feln}) showed that the relation between the log of the biomass and the log of the dbh was linear. We can ask ourselves the question of whether this relation is truly linear, or has a more complex shape. To do this, we must construct a polynomial regression with $p$ orders, i.e. a multiple regression of $\ln(B)$ against $\ln(D)$, $[\ln(D)]^2$, \ldots, $[\ln(D)]^p$:
+
+\[
+\ln(B)=a_0+a_1\ln(D)+a_2[\ln(D)]^2+\ldots+a_p[\ln(D)]^p+\varepsilon
+\]
+where
+\[
+\mathrm{Var}(\varepsilon)=\sigma^2
+\]
+The regression is fitted by the ordinary least squares method. As the log transformation stabilizes the residual variance, the hypotheses on which the multiple regression is based are in principle satisfied. For a second-order polynomial, the polynomial regression is fitted by the following code:
+
+\R{m2 <- lm(log(Btot)$\sim$I(log(dbh))+I(log(dbh)\^{}2),data=dat[dat\$Btot>0,])%
+\\ print(summary(m2))}%
+This yields:
+\Rout{\begin{tabular}{lrrrrl}%
+                 &  Estimate & Std. Error & t value & Pr(>|t|) &    \\ %
+(Intercept)      & -8.322190 &   1.031359 &  -8.069 & 9.25e-10 & ***\\ %
+I(log(dbh))      &  2.294456 &   0.633072 &   3.624 & 0.000846 & ***\\ %
+I(log(dbh)\^{}2) &  0.009631 &   0.090954 &   0.106 & 0.916225 &    \\ %
+\end{tabular}}%
+with $R^2=\decimal{0}{9642}$. And as for a third-order polynomial regression:
+\R{m3 <- lm(log(Btot)$\sim$I(log(dbh))+I(log(dbh)\^{}2)+I(log(dbh)\^{}3),data=dat[dat\$Btot>0,])%
+\\ print(summary(m3))}%
+it yields:
+\Rout{\begin{tabular}{lrrrr}%
+                 & Estimate & Std. Error & t value & Pr(>|t|)\\ %
+(Intercept)      & -5.46413 &    3.80855 &  -1.435 &    0.160\\ %
+I(log(dbh))      & -0.42448 &    3.54394 &  -0.120 &    0.905\\ %
+I(log(dbh)\^{}2) &  0.82073 &    1.04404 &   0.786 &    0.437\\ %
+I(log(dbh)\^{}3) & -0.07693 &    0.09865 &  -0.780 &    0.440\\ %
+\end{tabular}}%
+with $R^2=\decimal{0}{9648}$. Finally, a fourth-order polynomial regression:
+\R{m4 <-
+lm(log(Btot)$\sim$I(log(dbh))+I(log(dbh)\^{}2)+I(log(dbh)\^{}3)+I(log(dbh)\^{}4),data=dat[\bidouille{\newline}
+dat\$Btot>0,])%
+\\ print(summary(m4))}%
+yields:
+\Rout{\begin{tabular}{lrrrrl}%
+                 & Estimate & Std. Error & t value & Pr(>|t|) &  \\ %
+(Intercept)      & -26.7953 &    15.7399 &  -1.702 &   0.0973 & .\\ %
+I(log(dbh))      &  26.3990 &    19.5353 &   1.351 &   0.1850 &  \\ %
+I(log(dbh)\^{}2) & -11.2782 &     8.7301 &  -1.292 &   0.2046 &  \\ %
+I(log(dbh)\^{}3) &   2.2543 &     1.6732 &   1.347 &   0.1863 &  \\ %
+I(log(dbh)\^{}4) &  -0.1628 &     0.1166 &  -1.396 &   0.1714 &  \\ %
+\end{tabular}}%
+with $R^2=\decimal{0}{9666}$. Adding higher order terms above 1 therefore does not improve the model. The coefficients associated with these terms were not significantly different from zero. But the model's $R^2$ continued to increase with the number $p$ of orders in the polynomial. $R^2$ is not therefore a reliable criterion for selecting the order of the polynomial. The plots fitted by these different polynomials may be superimposed on the biomass-dbh cluster of points: with object \texttt{m} indicating the linear regression of $\ln(B)$ against $\ln(D)$ fitted in red line \ref{rllnBvD},
+
+\R{with(dat,plot(dbh,Btot,xlab="Dbh (cm)",ylab="Biomass (t)",log="xy"))%
+\\ D <- 10\^{}seq(par("usr")[1],par("usr")[2],length=200)%
+\\ lines(D,exp(predict(m,newdata=data.frame(dbh=D))))%
+\\ lines(D,exp(predict(m2,newdata=data.frame(dbh=D))))%
+\\ lines(D,exp(predict(m3,newdata=data.frame(dbh=D))))%
+\\ lines(D,exp(predict(m4,newdata=data.frame(dbh=D))))}%
+
+The plots are shown in  Figure \@ref(fig:fDpol): the higher the order of the polynomial, the more deformed the plot in order to fit the data, with increasingly unrealistic extrapolations outside the range of the data (typical of model over-parameterization).
+
+\end{filrouge}
+
+\begin{figure}[tbhp]
+\includegraphics[width=\textwidth]{fDpol}
+\caption[Biomass against dbh for 42 trees in Ghana measured by @henry10, and predictions by a polynomial regression of $\ln(B)$ against $\ln(D)$: (A) first-order polynomial; (B) second-order polynomial; (C) third-order polynomial; (D) fourth-order polynomial.]{Biomass against dbh for 42 trees in Ghana measured by @henry10 (points), and predictions (plots) by a polynomial regression of $\ln(B)$ against $\ln(D)$: (A) first-order polynomial (straight line); (B) second-order polynomial (parabolic); (C) third-order polynomial; (D) fourth-order polynomial.\label{fDpol}}
+\end{figure}
+
+\begin{filrouge}{Multiple regression between $\ln(B)$, $\ln(D)$ and $\ln(H)$}{flnDlnH}%
+
+The graphical exploration (red lines \ref{feBvD2H} and \ref{feln2}) showed that the combined variable $D^2H$ was linked to biomass by a power relation (i.e. a linear relation on a log scale): $B=a(D^2H)^b$. We can, however, wonder whether the variables $D^2$ and $H$ have the same exponent $b$, or whether they have different exponents: $B=a\times(D^2)^{b_1}H^{b_2}$. Working on the log-transformed data (which in passing stabilizes the residual variance), means fitting a multiple regression of $\ln(B)$ against $\ln(D)$ and $\ln(H)$:
+\[
+\ln(B)=a+b_1\ln(D)+b_2\ln(H)+\varepsilon
+\]
+where
+\[
+\mathrm{Var}(\varepsilon)=\sigma^2
+\]
+The regression is fitted by the ordinary least squares method. Fitting this multiple regression:
+
+\R{m <- lm(log(Btot)$\sim$I(log(dbh))+I(log(haut)),data=dat[dat\$Btot>0,])%
+\\ summary(m)}%
+yields:
+\Rout{\begin{tabular}{lrrrrl}%
+             & Estimate & Std. Error & t value & Pr(>|t|) &    \\ %
+(Intercept)  &  -8.9050 &     0.2855 & -31.190 &  < 2e-16 & ***\\ %
+I(log(dbh))  &   1.8654 &     0.1604 &  11.632 & 4.35e-14 & ***\\ %
+I(log(haut)) &   0.7083 &     0.2097 &   3.378 &  0.00170 & ** \\ %
+\end{tabular}}%
+with a residual standard deviation of  \decimal{0}{4104} and $R^2=\decimal{0}{9725}$. 
+The model is highly significant (Fisher's test: $F_{2,38}=\decimal{671}{5}$, p-value $<\decimal{2}{2}\times10^{-16}$). The model, all of whose coefficients are significantly different from zero, is written: $\ln(B)=-\decimal{8}{9050}+\decimal{1}{8654}\ln(D)+\decimal{0}{7083}\ln(H)$. By applying the exponential function to return to the starting data, the model becomes: $B=\decimal{1}{357}\times10^{-4}D^{1.8654}H^{0.7083}$. The exponent associated with height is a little less than half that associated with dbh, and is a little less than the exponent of \decimal{0}{87238} found for the combined variable $D^2H$ (see red line \ref{rllnBvD2H}). An examination of the residuals:
+
+\R{plot(m,which=1:2)}%
+shows nothing in particular (Figure \@ref(fig:flnDHres)).
+\end{filrouge}
+
+\begin{figure}[htb]
+\includegraphics[width=\textwidth]{flnDlnHres}
+\caption[Residuals plotted against fitted values and quantile--quantile plot for residuals of the multiple regression of $\ln(B)$ against $\ln(D)$ and $\ln(H)$ fitted for the 42 trees measured by @henry10 in Ghana]{Residuals plotted against fitted values (left) and quantile--quantile plot (right) for residuals of the multiple regression of $\ln(B)$ against $\ln(D)$ and $\ln(H)$ fitted for the 42 trees measured by @henry10 in Ghana.\label{flnDHres}}
+\end{figure}
+
+
+\subsection{Weighted regression\label{pond}}
 

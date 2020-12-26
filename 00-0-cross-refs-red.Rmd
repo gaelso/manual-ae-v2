@@ -29,3 +29,7 @@
 (ref:rllnBvD) [**$\looparrowright$\ Simple linear regression between $\ln(B)$ and $\ln(D)$**]{color="red"}
 
 (ref:rllnBvD2H) [**$\looparrowright$\ Simple linear regression between $\ln(B)$ and $\ln(D^2H)$**]{color="red"}
+
+(ref:flnDpol) [**$\looparrowright$\ Polynomial regression between $\ln(B)$ and $\ln(D)$**]{color="red"}
+
+
