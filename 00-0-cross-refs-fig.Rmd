@@ -119,3 +119,12 @@ with $\mbox{E}(Y)=X_1+X_2$.
 
 (ref:res2) Plot of residuals against fitted values when the residuals have a non constant variance (heteroscedasticity).
 
+(ref:fBvDres) Residuals plotted against fitted values (left) and quantile--quantile plot (right) of the residuals of the simple linear regression of $\ln(B)$ against $\ln(D)$ fitted for the 42 trees measured by @henry10 in Ghana.
+
+(ref:fBvD2Hres) Residuals plotted against fitted values (left) and quantile--quantile plot (right) of the residuals of the simple linear regression of $\ln(B)$ against $\ln(D^2H)$ fitted for the 42 trees measured by @henry10 in Ghana.
+
+
+
+
+
+
