@@ -78,7 +78,7 @@ Compared with a double-entry biomass model using dbh $D$ and height $H$, the $D^
 
 ```{r, eval=F, echo=T}
 
-with(dat,plot(dbh^2*haut,Btot,xlab="D2H (cm2.m)",ylab="Biomass (t)"))
+with(dat,plot(dbh^2*heig,Btot,xlab="D2H (cm2.m)",ylab="Biomass (t)"))
 
 ```
 
