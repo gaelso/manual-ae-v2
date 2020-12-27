@@ -293,11 +293,7 @@ Like simple linear regression, multiple regression is based on three hypotheses:
 \  
 :::
 
-::::::
-
-\begin{filrouge}{}{flnDpol}%
-The exploratory analysis (red line \ref{feln}) showed that the relation between the log of the biomass and the log of the dbh was linear. We can ask ourselves the question of whether this relation is truly linear, or has a more complex shape. To do this, we must construct a polynomial regression with $p$ orders, i.e. a multiple regression of $\ln(B)$ against $\ln(D)$, $[\ln(D)]^2$, \ldots, $[\ln(D)]^p$:
-
+The exploratory analysis (red line \@ref(exr:feln)) showed that the relation between the log of the biomass and the log of the dbh was linear. We can ask ourselves the question of whether this relation is truly linear, or has a more complex shape. To do this, we must construct a polynomial regression with $p$ orders, i.e. a multiple regression of $\ln(B)$ against $\ln(D)$, $[\ln(D)]^2$, \ldots, $[\ln(D)]^p$:
 \[
 \ln(B)=a_0+a_1\ln(D)+a_2[\ln(D)]^2+\ldots+a_p[\ln(D)]^p+\varepsilon
 \]
@@ -307,52 +303,57 @@ where
 \]
 The regression is fitted by the ordinary least squares method. As the log transformation stabilizes the residual variance, the hypotheses on which the multiple regression is based are in principle satisfied. For a second-order polynomial, the polynomial regression is fitted by the following code:
 
-\R{m2 <- lm(log(Btot)$\sim$I(log(dbh))+I(log(dbh)\^{}2),data=dat[dat\$Btot>0,])%
-\\ print(summary(m2))}%
-This yields:
-\Rout{\begin{tabular}{lrrrrl}%
-                 &  Estimate & Std. Error & t value & Pr(>|t|) &    \\ %
-(Intercept)      & -8.322190 &   1.031359 &  -8.069 & 9.25e-10 & ***\\ %
-I(log(dbh))      &  2.294456 &   0.633072 &   3.624 & 0.000846 & ***\\ %
-I(log(dbh)\^{}2) &  0.009631 &   0.090954 &   0.106 & 0.916225 &    \\ %
-\end{tabular}}%
-with $R^2=\decimal{0}{9642}$. And as for a third-order polynomial regression:
-\R{m3 <- lm(log(Btot)$\sim$I(log(dbh))+I(log(dbh)\^{}2)+I(log(dbh)\^{}3),data=dat[dat\$Btot>0,])%
-\\ print(summary(m3))}%
-it yields:
-\Rout{\begin{tabular}{lrrrr}%
-                 & Estimate & Std. Error & t value & Pr(>|t|)\\ %
-(Intercept)      & -5.46413 &    3.80855 &  -1.435 &    0.160\\ %
-I(log(dbh))      & -0.42448 &    3.54394 &  -0.120 &    0.905\\ %
-I(log(dbh)\^{}2) &  0.82073 &    1.04404 &   0.786 &    0.437\\ %
-I(log(dbh)\^{}3) & -0.07693 &    0.09865 &  -0.780 &    0.440\\ %
-\end{tabular}}%
-with $R^2=\decimal{0}{9648}$. Finally, a fourth-order polynomial regression:
-\R{m4 <-
-lm(log(Btot)$\sim$I(log(dbh))+I(log(dbh)\^{}2)+I(log(dbh)\^{}3)+I(log(dbh)\^{}4),data=dat[\bidouille{\newline}
-dat\$Btot>0,])%
-\\ print(summary(m4))}%
-yields:
-\Rout{\begin{tabular}{lrrrrl}%
-                 & Estimate & Std. Error & t value & Pr(>|t|) &  \\ %
-(Intercept)      & -26.7953 &    15.7399 &  -1.702 &   0.0973 & .\\ %
-I(log(dbh))      &  26.3990 &    19.5353 &   1.351 &   0.1850 &  \\ %
-I(log(dbh)\^{}2) & -11.2782 &     8.7301 &  -1.292 &   0.2046 &  \\ %
-I(log(dbh)\^{}3) &   2.2543 &     1.6732 &   1.347 &   0.1863 &  \\ %
-I(log(dbh)\^{}4) &  -0.1628 &     0.1166 &  -1.396 &   0.1714 &  \\ %
-\end{tabular}}%
-with $R^2=\decimal{0}{9666}$. Adding higher order terms above 1 therefore does not improve the model. The coefficients associated with these terms were not significantly different from zero. But the model's $R^2$ continued to increase with the number $p$ of orders in the polynomial. $R^2$ is not therefore a reliable criterion for selecting the order of the polynomial. The plots fitted by these different polynomials may be superimposed on the biomass-dbh cluster of points: with object \texttt{m} indicating the linear regression of $\ln(B)$ against $\ln(D)$ fitted in red line \ref{rllnBvD},
+```{r, echo=T, eval=F}
+m2 <- lm(log(Btot) ~ I(log(dbh)) + I(log(dbh)^2), data=dat[dat$Btot>0,])
+print(summary(m2))
+```
 
-\R{with(dat,plot(dbh,Btot,xlab="Dbh (cm)",ylab="Biomass (t)",log="xy"))%
-\\ D <- 10\^{}seq(par("usr")[1],par("usr")[2],length=200)%
-\\ lines(D,exp(predict(m,newdata=data.frame(dbh=D))))%
-\\ lines(D,exp(predict(m2,newdata=data.frame(dbh=D))))%
-\\ lines(D,exp(predict(m3,newdata=data.frame(dbh=D))))%
-\\ lines(D,exp(predict(m4,newdata=data.frame(dbh=D))))}%
+This yields:
+
+```{r}
+summary(m2)$coef
+```
+
+with $R^2=$ ```r round(summary(m2)$r.squared, 4)```. And as for a third-order polynomial regression:
+
+```{r, echo=T, eval=F}
+m3 <- lm(log(Btot) ~ I(log(dbh))+I(log(dbh)^2)+I(log(dbh)^3),data=dat[dat$Btot>0,])
+print(summary(m3))
+```
+
+it yields:
+
+```{r}
+summary(m3)$coef
+```
+
+with $R^2=$ ```r round(summary(m3)$r.squared,4)```. Finally, a fourth-order polynomial regression:
+
+```{r, echo=T, eval=F}
+m4 <- lm(log(Btot) ~ I(log(dbh))+I(log(dbh)^2)+I(log(dbh)^3)++I(log(dbh)^4),data=dat[dat$Btot>0,])
+print(summary(m4))
+```
+
+yields:
+
+```{r}
+summary(m4)$coef
+```
+
+with $R^2=$ ```r round(summary(m3)$r.squared,4)```. Adding higher order terms above 1 therefore does not improve the model. The coefficients associated with these terms were not significantly different from zero. But the model's $R^2$ continued to increase with the number $p$ of orders in the polynomial. $R^2$ is not therefore a reliable criterion for selecting the order of the polynomial. The plots fitted by these different polynomials may be superimposed on the biomass-dbh cluster of points: with object `m` indicating the linear regression of $\ln(B)$ against $\ln(D)$ fitted in red line \@ref(exr:rllnBvD),
+
+```{r, echo=T, eval=F}
+with(dat,plot(dbh,Btot,xlab="Dbh (cm)",ylab="Biomass (t)",log="xy"))
+D <- 10^seq(par("usr")[1],par("usr")[2],length=200)
+lines(D,exp(predict(m,newdata=data.frame(dbh=D))))
+lines(D,exp(predict(m2,newdata=data.frame(dbh=D))))
+lines(D,exp(predict(m3,newdata=data.frame(dbh=D))))
+lines(D,exp(predict(m4,newdata=data.frame(dbh=D))))
+```
 
 The plots are shown in  Figure \@ref(fig:fDpol): the higher the order of the polynomial, the more deformed the plot in order to fit the data, with increasingly unrealistic extrapolations outside the range of the data (typical of model over-parameterization).
 
-\end{filrouge}
+::::::
 
 \begin{figure}[tbhp]
 \includegraphics[width=\textwidth]{fDpol}
