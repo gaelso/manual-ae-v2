@@ -460,13 +460,13 @@ The least squares method is adjusted to take account of the weighting of the obs
 \]
 or as a matrix:
 \[
-\mathrm{SSE}(\vect{a})=\tr{(\vect{Y}-\hat{\vect{Y}})}\matx{W}
-(\vect{Y}-\hat{\vect{Y}})=\tr{(\vect{Y}-\matx{X}\vect{a})}
-\matx{W} (\vect{Y}-\matx{X}\vect{a})
+\mathrm{SSE}(\mathbf{a})={}^{\mathrm{t}}{(\mathbf{Y}-\hat{\mathbf{Y}})}\mathbf{W}
+(\mathbf{Y}-\hat{\mathbf{Y}})={}^{\mathrm{t}}{(\mathbf{Y}-\mathbf{X}\mathbf{a})}
+\mathbf{W} (\mathbf{Y}-\mathbf{X}\mathbf{a})
 \]
-where $\matx{W}$ is the $n\times n$ diagonal matrix with $w_i$ on its diagonal:
+where $\mathbf{W}$ is the $n\times n$ diagonal matrix with $w_i$ on its diagonal:
 \[
-\matx{W}=\left[
+\mathbf{W}=\left[
 \begin{array}{ccc}
 w_1 && \mathbf{0}\\ %
 & \ddots & \\ %
@@ -476,8 +476,8 @@ w_1 && \mathbf{0}\\ %
 \]
 The least SS is obtained for [@magnus07]:
 \[
-\hat{\vect{a}}=\arg\min_{\vect{a}}\mathrm{SSE}(\vect{a})
-=(\tr{\matx{X}}\matx{W}\matx{X})^{-1}\tr{\matx{X}}\matx{W}\vect{Y}
+\hat{\mathbf{a}}=\arg\min_{\mathbf{a}}\mathrm{SSE}(\mathbf{a})
+=({}^{\mathrm{t}}{\mathbf{X}}\mathbf{W}\mathbf{X})^{-1}{}^{\mathrm{t}}{\mathbf{X}}\mathbf{W}\mathbf{Y}
 \]
 This minimum does not change when all the weights $w_i$ are multiplied by the same scalar, clearly proving that the method is not sensitive to normalization of weights. We can check that the estimation yielded by the weighted least squares method applied to observations $X_{ij}$ and $Y_i$ gives the same result as that yielded by the ordinary least squares method applied to observations $\sqrt{w_i}\ X_{ij}$ and $\sqrt{w_i}\ Y_i$. Like previously, this fitting method has the advantage that the estimations of the coefficients have an explicit expression.
 

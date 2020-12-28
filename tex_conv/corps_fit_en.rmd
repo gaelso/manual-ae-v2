@@ -1400,9 +1400,9 @@ $\sum_{m=1}^5a_m$ $D^{b_m}$ is not a power function of dbh. By contrast, polynom
 
 #### Fitting a multivariate model
 
-In order to take account of the correlations between the biomasses of the different compartments, we can fit the models relative to the different compartments in a simultaneous manner rather than separately. This last step in model integration requires us to redefine the response variable. As we are looking to predict simultaneously the biomasses of different compartments, we are no longer dealing with a response variable but a *response vector* $\vect{Y}$. The length of this vector is equal to the number $M$ of compartments. For example, if the response variable is the biomass,
+In order to take account of the correlations between the biomasses of the different compartments, we can fit the models relative to the different compartments in a simultaneous manner rather than separately. This last step in model integration requires us to redefine the response variable. As we are looking to predict simultaneously the biomasses of different compartments, we are no longer dealing with a response variable but a *response vector* $\mathbf{Y}$. The length of this vector is equal to the number $M$ of compartments. For example, if the response variable is the biomass,
 \[
-\vect{Y}=\left[
+\mathbf{Y}=\left[
 \begin{array}{l}
 B^{\mbox{\scriptsize above-ground}}\\ %
 B^{\mathrm{stump}}\\ %
@@ -1415,7 +1415,7 @@ B^{\mathrm{leaves}}
 \]
 If the response variable is the log of the biomass,
 \[
-\vect{Y}=\left[
+\mathbf{Y}=\left[
 \begin{array}{l}
 \ln(B^{\mbox{\scriptsize above-ground}})\\ %
 \ln(B^{\mathrm{stump}})\\ %
@@ -1435,13 +1435,13 @@ Y_m=f_m(X_1,\ \ldots,\ X_p;\theta_m)+\varepsilon_m(\#eq:uvar)
 \end{equation}
 for $m=1$, \ldots, $M$, then the multivariate model is written:
 \[
-\vect{Y}=\vect{F}(X_1,\ \ldots,\ X_p;\boldsymbol{\theta})+
+\mathbf{Y}=\mathbf{F}(X_1,\ \ldots,\ X_p;\boldsymbol{\theta})+
 \boldsymbol{\varepsilon}
 \]
-where $\vect{Y}=\tr{[Y_1,\ \ldots,\ Y_M]}$,
-$\boldsymbol{\theta}=\tr{[\theta_1,\ \ldots,\ \theta_M]}$, and
+where $\mathbf{Y}={}^{\mathrm{t}}{[Y_1,\ \ldots,\ Y_M]}$,
+$\boldsymbol{\theta}={}^{\mathrm{t}}{[\theta_1,\ \ldots,\ \theta_M]}$, and
 \begin{equation}
-\vect{F}(X_1,\ \ldots,\ X_p;\boldsymbol{\theta})=\left[
+\mathbf{F}(X_1,\ \ldots,\ X_p;\boldsymbol{\theta})=\left[
 \begin{array}{c}
 f_1(X_1,\ \ldots,\ X_p;\theta_1)
 \\\vdots\\
