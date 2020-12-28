@@ -1,0 +1,94 @@
+
+
+
+\section{Recommended equipment\label{matos}}
+
+### Heavy machinery and vehicles
+
+\begin{itemize}
+\item Cars, trucks, trailer: for transporting personnel, equipment and samples to/from the laboratory.
+\item Quad bike (if possible): for transporting bulky equipment and samples in the field.
+\item Digger for weighing brushwood bundles.
+\end{itemize}
+
+### General equipment
+
+\begin{itemize}
+\item Tool box with basic tools.
+\item Plastic boxes (for storing and transporting materials --- about 10).
+\item Plastic bags (count one or two large bags per tree) to hold all the samples from a given tree and avoid water losses. Paper bags (count one per compartment and per tree) to hold samples immediately after they are taken. Ideally, these bags should be pre-labeled with tree and compartment number (which saves time in the field). But plan also to take a number of unmarked bags and a black, felt-tip pen (indelible ink) to make up for any mistakes made, or so that extra samples may be taken.
+\item Large tarpaulins for the crown (either cut up for the branch bundles, or spread on the ground to recover leaves torn off the trees).
+\item Labels (stapled onto the disks), staples and stapler; or fuschine pencil (but, if the samples are to be stored for later measurements of nutrient content, fuchsine should be avoided) (photo \ref{mats}).
+\item Cutters, machetes, axes, shears, saws (photo \ref{mats}).
+\item Iron frames for making bundling branches (photo \ref{cad}) or alternatively bins of different sizes.
+\item Power saws (ideally one power saw suitable for felling trees and another smaller more maneuverable power saw for limbing --- photo \ref{mats}).
+\item Strong string for bundling the branches (given that this will be reused throughout the campaign, the knots should be undoable).
+\item Very strong large bags (such as grain or sand bags --- photo \ref{tsp}) for transporting the disks and field samples to vehicles (if these are parked some distance from the felling site).
+\end{itemize}
+
+\begin{photo}
+\includethreephotos{matos1}{0.333333333}{matos2}{0.333333333}{matos3}{0.333333333}
+\caption[Field equipment]{Field equipment. Left, equipment for cutting and labeling aliquots; middle, typical gauges for cutting branches; right, power saw and safety equipment (photo: A. Genet).\label{mats}}
+\end{photo}
+
+\begin{photo}
+\includethreephotos{fagot1}{0.2195122}{fagot2}{0.3902439}{fagot3}{0.3902439}
+\caption[Bundling branches]{Bundling branches. Left, iron frame, tarpaulin and string for bundling branches (photo: A. Genet); middle, bundling branches in the field (photo: M. Rivoire); right, bundle ready for weighing (photo: M. Rivoire).\label{cad}}
+\end{photo}
+
+\begin{photo}
+\begin{center}
+\framebox{\includegraphics[width=0.5\textwidth]{transport}}
+\end{center}
+\caption[Transporting disks and aliquots in a sand or grain bag]{Transporting disks and aliquots in a sand or grain bag (photo: J.-F. Picard).\label{tsp}}
+\end{photo}
+
+### Computer-entering field data
+
+\begin{itemize}
+\item Pocket PC (with battery charger and cables) or field record forms on waterproof paper or cardboard, if possible bound in notebooks with plasticized covers front and back.
+\item Tree identification guide or key for wet tropical forest sites.
+\item 2B pencils, eraser, pencil sharpener.
+\item Field scales (with 2 batteries and charger) for weighing samples (precise to within 1~g), ideally a full range of scales for different sample weights (a 1 or 2~m log may weigh several hundred kg, whereas the wood disks weigh from a few dozen g to several dozen kg). A digger will facilitate the field weighing of large logs. Straps should therefore be taken into the field to attach two scales to the bucket and self-blocking claws to attach the log.
+\item Decameter to measure lengths along the trunk (stem profiles).
+\item Tree calipers and girth tape to measure circumference.
+\item Tree marking paint gun (for marking standing trees and the main stem in highly developed crowns).
+\item Logger's mark to indicate where disks should be cut (or marked with the paint gun).
+\end{itemize}
+
+### Laboratory equipment
+
+\begin{itemize}
+\item Ovens.
+\item Graduated tubes of at least 500 ml.
+\item Bark knife.
+\item Secateurs.
+\item Scales of a 2 to 2000~g capacity (precise to within 0.1 to 1~g).
+\item Band saw.
+\end{itemize}
+
+\section{Recommended field team composition\label{equip}}
+
+\paragraph{Felling team:}
+
+one logger, two logging assistants, two persons to clear the area for felling. Count two days to fell 40 trees of 31 to 290~cm girth (mean: 140~cm). All the trees can be felled at the start of the campaign so that this team is freed for tree limbing. If team members are to be kept occupied, with no slack periods, about 10 trees per day (about 20~meters high, i.e. about 10 to 20 disks per tree) need to be ready for cross-cutting at the site.
+
+\paragraph{Stem profiling team:}
+
+two people (one anchor, one measurer). This team intervenes as soon as the tree has been felled, and therefore follows the felling team. In general, these two teams work in a fairly synchronized manner. The profiling team never has to wait for the felling team, except in very rare cases of felling problems (e.g. large stems, or stems imprisoned by other trees that need to be released).
+
+\paragraph{Limbing team:}
+
+three persons per processing unit. Each unit includes a power saw handler (with the small, maneuverable power saw) and two bundlers. These teams can be doubled or tripled depending on the size of the crown to be processed. As a rough guide: a tree with a breast-height girth of 200~cm will require three units; between girths of 80 and 200~cm the tree will require two units, and below a girth of 80~cm one unit will suffice. This rough guide includes the fact that the units must not hinder one another in their work. When three teams are working on the same tree, one should be positioned at the base, and should more upward along the length of the trunk. The two other teams should be positioned on each side of the main axis and should work from approximately the middle of the crown toward the top of the tree.
+
+\paragraph{Logging team:}
+
+this consists of one logger (cutting stems) and one person to label the disks. In general, the felling team fulfills this function. Once all the trees have been felled, the logger joins the logging team and the logging assistants bolster the limbing units.
+
+\paragraph{Weighing team:}
+
+three people (digger driver and two other persons to handle the logs and the branch bundles).
+
+\paragraph{Branch sampling team:}
+
+one or two people.

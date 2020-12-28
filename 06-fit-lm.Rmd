@@ -233,10 +233,9 @@ In the same manner as for simple linear regression, the estimation of the coeffi
 =\sum_{i=1}^n(Y_i-\hat{Y}_i)^2
 =\sum_{i=1}^n(Y_i-a_0-a_1X_{i1}-\ldots-a_pX_{ip})^2
 \]
-where $X_{ij}$ is the value of the $j$th effect variable for the $i$th observation ($i=1$, \ldots, $n$ and $j=1$\  \ldots, $p$). Once again, estimations of the coefficients may be obtained by calculating the partial derivatives of SS in relation to the coefficients, and by looking for the values of the coefficients that cancel these partial derivatives. These computations are barely more complex than for simple linear regression, on condition that they are arranged in a matrix form. 
-Let $\matx{X}$ be the matrix with $n$ lines and $p$ columns, called the design matrix, containing the values observed for the effect variables:
+where $X_{ij}$ is the value of the $j$th effect variable for the $i$th observation ($i=1$, \ldots, $n$ and $j=1$\  \ldots, $p$). Once again, estimations of the coefficients may be obtained by calculating the partial derivatives of SS in relation to the coefficients, and by looking for the values of the coefficients that cancel these partial derivatives. These computations are barely more complex than for simple linear regression, on condition that they are arranged in a matrix form. Let $\mathbf{X}$ be the matrix with $n$ lines and $p$ columns, called the design matrix, containing the values observed for the effect variables:
 \[
-\matx{X}=\left[
+\mathbf{X}=\left[
 \begin{array}{cccc}
 1      & X_{11} & \cdots & X_{1p}\\ %
 \vdots & \vdots &        & \vdots\\ %
@@ -244,9 +243,9 @@ Let $\matx{X}$ be the matrix with $n$ lines and $p$ columns, called the design m
 \end{array}
 \right]
 \]
-Let $\vect{Y}=\tr{[Y_1,\ \ldots,\ Y_n]}$ be the vector of the $n$ values observed for the response variable, and $\vect{a}=\tr{[a_0,\ \ldots,\ a_p]}$ be the vector of the $p+1$ coefficients to be estimated. Thus
+Let $\mathbf{Y}={}^{\mathrm{t}}{[Y_1,\ \ldots,\ Y_n]}$ be the vector of the $n$ values observed for the response variable, and $\mathbf{a}={}^{\mathrm{t}}{[a_0,\ \ldots,\ a_p]}$ be the vector of the $p+1$ coefficients to be estimated. Thus
 \[
-\matx{X}\vect{a}=\left[
+\mathbf{X}\mathbf{a}=\left[
 \begin{array}{c}
 a_0+a_1X_{11}+\ldots+a_pX_{1p}\\ %
 \vdots\\ %
@@ -254,27 +253,27 @@ a_0+a_1X_{n1}+\ldots+a_pX_{np}\\ %
 \end{array}
 \right]
 \]
-is none other than the vector $\hat{\vect{Y}}$  of the $n$ values fitted by the response variable model. Using these matrix notations, the sum of squares is written:
+is none other than the vector $\hat{\mathbf{Y}}$  of the $n$ values fitted by the response variable model. Using these matrix notations, the sum of squares is written:
 \[
-\mathrm{SSE}(\vect{a})=\tr{(\vect{Y}-\hat{\vect{Y}})}
-(\vect{Y}-\hat{\vect{Y}})=\tr{(\vect{Y}-\matx{X}\vect{a})}
-(\vect{Y}-\matx{X}\vect{a})
+\mathrm{SSE}(\mathbf{a})={}^{\mathrm{t}}{(\mathbf{Y}-\hat{\mathbf{Y}})}
+(\mathbf{Y}-\hat{\mathbf{Y}})={}^{\mathrm{t}}{(\mathbf{Y}-\mathbf{X}\mathbf{a})}
+(\mathbf{Y}-\mathbf{X}\mathbf{a})
 \]
 And using matrix differential calculus [@magnus07], we finally obtain:
 \[
-\hat{\vect{a}}=\arg\min_{\vect{a}}\mathrm{SSE}(\vect{a})
-=(\tr{\matx{X}}\matx{X})^{-1}\tr{\matx{X}}\vect{Y}
+\hat{\mathbf{a}}=\arg\min_{\mathbf{a}}\mathrm{SSE}(\mathbf{a})
+=({}^{\mathrm{t}}{\mathbf{X}}\mathbf{X})^{-1}{}^{\mathrm{t}}{\mathbf{X}}\mathbf{Y}
 \]
 The estimation of the residual variance is:
 \[
-\hat{\sigma}^2=\frac{\mathrm{SSE}(\hat{\vect{a}})}{n-p-1}
+\hat{\sigma}^2=\frac{\mathrm{SSE}(\hat{\mathbf{a}})}{n-p-1}
 \]
 Like for simple linear regression, this estimation method has the advantage of providing an explicit expression of the coefficients estimated. As simple linear regression is a special case of multiple regression (case where $p=1$), we can check that the matrix expressions for estimating the coefficients and $\hat{\sigma}$ actually --- when $p=1$ --- give again the expressions given previously with a simple linear regression.
 
 
 #### Interpreting the results of a multiple regression {.unnumbered #irm}
 
-In the same manner as for simple linear regression, fitting a multiple regression provides a determination coefficient $R^2$ corresponding to the proportion of the variance explained by the model, values $\hat{\vect{a}}$ for model coefficients $a_0$, $a_1$, \ldots, $a_p$, standard deviations for these estimations, the results of significance tests on these coefficients (there are $p+1$ --- one for each coefficient --- null hypotheses $a_i=0$ for $i=0$, \ldots, $p$), and the result of the test on the overall significance of the model.
+In the same manner as for simple linear regression, fitting a multiple regression provides a determination coefficient $R^2$ corresponding to the proportion of the variance explained by the model, values $\hat{\mathbf{a}}$ for model coefficients $a_0$, $a_1$, \ldots, $a_p$, standard deviations for these estimations, the results of significance tests on these coefficients (there are $p+1$ --- one for each coefficient --- null hypotheses $a_i=0$ for $i=0$, \ldots, $p$), and the result of the test on the overall significance of the model.
 
 As previously, $R^2$ has a value of between 0 and 1. The higher the value, the better the fit. However, it should be remembered that the value of $R^2$ increases automatically with the number of effect variables used. For instance, if we are predicting $Y$ using a polynomial with $p$ orders in $X$,
 \[
@@ -317,7 +316,8 @@ summary(m2)$coef
 with $R^2=$ ```r round(summary(m2)$r.squared, 4)```. And as for a third-order polynomial regression:
 
 ```{r, echo=T, eval=F}
-m3 <- lm(log(Btot) ~ I(log(dbh))+I(log(dbh)^2)+I(log(dbh)^3),data=dat[dat$Btot>0,])
+m3 <- lm(log(Btot) ~ I(log(dbh))+I(log(dbh)^2)+I(log(dbh)^3),
+         data=dat[dat$Btot>0,])
 print(summary(m3))
 ```
 
@@ -330,7 +330,8 @@ summary(m3)$coef
 with $R^2=$ ```r round(summary(m3)$r.squared,4)```. Finally, a fourth-order polynomial regression:
 
 ```{r, echo=T, eval=F}
-m4 <- lm(log(Btot) ~ I(log(dbh))+I(log(dbh)^2)+I(log(dbh)^3)++I(log(dbh)^4),data=dat[dat$Btot>0,])
+m4 <- lm(log(Btot) ~ I(log(dbh))+I(log(dbh)^2)+I(log(dbh)^3)++I(log(dbh)^4),
+         data=dat[dat$Btot>0,])
 print(summary(m4))
 ```
 
@@ -369,7 +370,7 @@ display_fig("fDpol")
 \  
 :::
 
-The graphical exploration (red lines \ref{feBvD2H} and \ref{feln2}) showed that the combined variable $D^2H$ was linked to biomass by a power relation (i.e. a linear relation on a log scale): $B=a(D^2H)^b$. We can, however, wonder whether the variables $D^2$ and $H$ have the same exponent $b$, or whether they have different exponents: $B=a\times(D^2)^{b_1}H^{b_2}$. Working on the log-transformed data (which in passing stabilizes the residual variance), means fitting a multiple regression of $\ln(B)$ against $\ln(D)$ and $\ln(H)$:
+The graphical exploration (red lines \@ref(exr:feBvD2H) and \@ref(exr:feln2)) showed that the combined variable $D^2H$ was linked to biomass by a power relation (i.e. a linear relation on a log scale): $B=a(D^2H)^b$. We can, however, wonder whether the variables $D^2$ and $H$ have the same exponent $b$, or whether they have different exponents: $B=a\times(D^2)^{b_1}H^{b_2}$. Working on the log-transformed data (which in passing stabilizes the residual variance), means fitting a multiple regression of $\ln(B)$ against $\ln(D)$ and $\ln(H)$:
 \[
 \ln(B)=a+b_1\ln(D)+b_2\ln(H)+\varepsilon
 \]
@@ -411,3 +412,73 @@ display_fig("flnDlnHres")
 
 ### Weighted regression {#pond}
 
+Let us now suppose that we want to fit directly a polynomial model of biomass $B$ against $D$. For example, for a second-order polynomial:
+
+\begin{equation}
+B=a_0+a_1D+a_2D^2+\varepsilon(\#eq:pol)
+\end{equation}
+
+As mentioned earlier, the variability of the biomass nearly always (if not always\ldots) increases with tree dbh $D$. In other words, the variance of $\varepsilon$ increases with $D$, in contradiction with the homoscedasticity hypothesis required by multiple regression. Therefore, model \@ref(eq:pol) cannot be fitted by multiple regression. Log transformation stabilizes the residual variance (we will return to this in section \@ref(trans)). If we take $\ln(B)$ as the response variable, the model becomes:
+
+\begin{equation}
+\ln(B)=\ln(a_0+a_1D+a_2D^2)+\varepsilon(\#eq:logpol)
+\end{equation}
+
+It is reasonable to assume that the variance of the residuals in such a model is constant. But unfortunately, this is no longer a linear model as the dependency of the response variables on the coefficients $a_0$, $a_1$ and $a_2$ is not linear. Therefore, model \@ref(eq:logpol) cannot be fitted by a linear model. We will see later (\S\ \@ref(nlm)) how to fit this non-linear model.
+
+A weighted regression can be used to fit a model such as \@ref(eq:pol) where the variance of the residuals is not constant, while nevertheless using the formalism of the linear model. It may be regarded as extending multiple regression to the case where the variance of the residuals is not constant. Weighted regression was developed in forestry between the 1960s and the 1980s, particularly thanks to the work of @cunia64; @cunia87b. It was widely used to fit linear tables [@whraton87; @brown89; @parresol99], before being replaced by more efficient fitting methods we will see in section \@ref(lme).
+
+A weighted regression is written in an identical fashion to the multiple regression \@ref(eq:regmul):
+\[
+Y=a_0+a_1X_1+a_2X_2+\ldots+a_pX_p+\varepsilon
+\]
+except that it is no longer assumed that the variance of the residuals is constant. Each observation now has its own residual variance $\sigma_i^2$:
+\[
+\varepsilon_i\sim\mathcal{N}(0,\ \sigma_i)
+\]
+Each observation is associated with a positive *weight* $w_i$ (hence the term "weighted" to describe this regression), which is inversely proportional to the residual variance:
+\[
+w_i\propto1/\sigma_i^2
+\]
+The proportionality coefficient between $w_i$ and $1/\sigma_i^2$ does not need to be specified as the method is insensitive to any renormalization of the weights (as we shall see in the next section). Associating each observation with a weight inversely proportional to its variance is quite natural. If an observation has a very high residual variance, this means that it has very high intrinsic variability, and it is therefore quite natural that it has less weight in model fitting. As we cannot estimate $n$ weights from $n$ observations, we must model the weighting. When dealing with biological data such as biomass or volume, heteroscedasticity of the residuals corresponds nearly always to a power relation between the residual variance and the size of the trees. We may therefore assume that among the $p$ effect variables of the weighted regression, there is one (typically tree dbh) such that $\sigma_i$ is a power relation of this variable. Without loss of generality, we can put forward that this variable is $X_1$, such that:
+\[
+\sigma_i=k\ X_{i1}^c
+\]
+where $k>0$ and $c\geq0$. In consequence:
+\[
+w_i\propto X_{i1}^{-2c}
+\]
+The exponent $c$ cannot be estimated in the same manner as $a_0$, $a_1$, \ldots, $a_p$, but must be fixed in advance. This is the main drawback of this fitting method. We will see later how to select a value for exponent $c$. By contrast, the multiplier $k$ does not need to be estimated as the weights $w_i$ are defined only to within a multiplier factor. In practice therefore we can put forward $w_i=X_{i1}^{-2c}$.
+
+
+#### Estimating coefficients {-}
+
+The least squares method is adjusted to take account of the weighting of the observations. We therefore speak of the weighted least squares method. For a fixed exponent $c$, estimations of coefficients $a_0$, \ldots, $a_p$ have values that minimize the weighted sum of squares:
+\[
+\mathrm{SSE}(a_0,\ a_1,\ \ldots,\ a_p)=\sum_{i=1}^nw_i\ \varepsilon_i^2
+=\sum_{i=1}^nw_i(Y_i-a_0-a_1X_{i1}-\ldots-a_pX_{ip})^2
+\]
+or as a matrix:
+\[
+\mathrm{SSE}(\vect{a})=\tr{(\vect{Y}-\hat{\vect{Y}})}\matx{W}
+(\vect{Y}-\hat{\vect{Y}})=\tr{(\vect{Y}-\matx{X}\vect{a})}
+\matx{W} (\vect{Y}-\matx{X}\vect{a})
+\]
+where $\matx{W}$ is the $n\times n$ diagonal matrix with $w_i$ on its diagonal:
+\[
+\matx{W}=\left[
+\begin{array}{ccc}
+w_1 && \mathbf{0}\\ %
+& \ddots & \\ %
+\mathbf{0} && w_n
+\end{array}
+\right]
+\]
+The least SS is obtained for [@magnus07]:
+\[
+\hat{\vect{a}}=\arg\min_{\vect{a}}\mathrm{SSE}(\vect{a})
+=(\tr{\matx{X}}\matx{W}\matx{X})^{-1}\tr{\matx{X}}\matx{W}\vect{Y}
+\]
+This minimum does not change when all the weights $w_i$ are multiplied by the same scalar, clearly proving that the method is not sensitive to normalization of weights. We can check that the estimation yielded by the weighted least squares method applied to observations $X_{ij}$ and $Y_i$ gives the same result as that yielded by the ordinary least squares method applied to observations $\sqrt{w_i}\ X_{ij}$ and $\sqrt{w_i}\ Y_i$. Like previously, this fitting method has the advantage that the estimations of the coefficients have an explicit expression.
+
+#### Interpreting results and checking hypotheses {-}
