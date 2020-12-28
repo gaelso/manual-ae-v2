@@ -123,8 +123,8 @@ with $\mbox{E}(Y)=X_1+X_2$.
 
 (ref:fBvD2Hres) Residuals plotted against fitted values (left) and quantile--quantile plot (right) of the residuals of the simple linear regression of $\ln(B)$ against $\ln(D^2H)$ fitted for the 42 trees measured by @henry10 in Ghana.
 
+(ref:fDpol) Biomass against dbh for 42 trees in Ghana measured by @henry10 (points), and predictions (plots) by a polynomial regression of $\ln(B)$ against $\ln(D)$: (A) first-order polynomial (straight line); (B) second-order polynomial (parabolic); (C) third-order polynomial; (D) fourth-order polynomial.
 
-
-
+(ref:flnDlnHres) Residuals plotted against fitted values (left) and quantile--quantile plot (right) for residuals of the multiple regression of $\ln(B)$ against $\ln(D)$ and $\ln(H)$ fitted for the 42 trees measured by @henry10 in Ghana.
 
 

@@ -350,17 +350,24 @@ lines(D,exp(predict(m2,newdata=data.frame(dbh=D))))
 lines(D,exp(predict(m3,newdata=data.frame(dbh=D))))
 lines(D,exp(predict(m4,newdata=data.frame(dbh=D))))
 ```
+<!-- this code doesn't work in the workflow, need to call back Btot ~ dbh as m and display one plotr at a time -->
 
 The plots are shown in  Figure \@ref(fig:fDpol): the higher the order of the polynomial, the more deformed the plot in order to fit the data, with increasingly unrealistic extrapolations outside the range of the data (typical of model over-parameterization).
 
 ::::::
 
-\begin{figure}[tbhp]
-\includegraphics[width=\textwidth]{fDpol}
-\caption[Biomass against dbh for 42 trees in Ghana measured by @henry10, and predictions by a polynomial regression of $\ln(B)$ against $\ln(D)$: (A) first-order polynomial; (B) second-order polynomial; (C) third-order polynomial; (D) fourth-order polynomial.]{Biomass against dbh for 42 trees in Ghana measured by @henry10 (points), and predictions (plots) by a polynomial regression of $\ln(B)$ against $\ln(D)$: (A) first-order polynomial (straight line); (B) second-order polynomial (parabolic); (C) third-order polynomial; (D) fourth-order polynomial.\label{fDpol}}
-\end{figure}
+```{r fDpol, fig.cap="(ref:fDpol)"}
 
-\begin{filrouge}{Multiple regression between $\ln(B)$, $\ln(D)$ and $\ln(H)$}{flnDlnH}%
+display_fig("fDpol")
+
+```
+
+
+::::::{.filrouge data-latex=""}
+
+:::{.exercise #flnDlnH name="(ref:flnDlnH)"}
+\  
+:::
 
 The graphical exploration (red lines \ref{feBvD2H} and \ref{feln2}) showed that the combined variable $D^2H$ was linked to biomass by a power relation (i.e. a linear relation on a log scale): $B=a(D^2H)^b$. We can, however, wonder whether the variables $D^2$ and $H$ have the same exponent $b$, or whether they have different exponents: $B=a\times(D^2)^{b_1}H^{b_2}$. Working on the log-transformed data (which in passing stabilizes the residual variance), means fitting a multiple regression of $\ln(B)$ against $\ln(D)$ and $\ln(H)$:
 \[
@@ -372,27 +379,35 @@ where
 \]
 The regression is fitted by the ordinary least squares method. Fitting this multiple regression:
 
-\R{m <- lm(log(Btot)$\sim$I(log(dbh))+I(log(haut)),data=dat[dat\$Btot>0,])%
-\\ summary(m)}%
+```{r, echo=T, results='hide'}
+m <- lm(log(Btot) ~ I(log(dbh))+I(log(heig)),data=dat[dat$Btot>0,])
+summary(m)
+```
+
 yields:
-\Rout{\begin{tabular}{lrrrrl}%
-             & Estimate & Std. Error & t value & Pr(>|t|) &    \\ %
-(Intercept)  &  -8.9050 &     0.2855 & -31.190 &  < 2e-16 & ***\\ %
-I(log(dbh))  &   1.8654 &     0.1604 &  11.632 & 4.35e-14 & ***\\ %
-I(log(haut)) &   0.7083 &     0.2097 &   3.378 &  0.00170 & ** \\ %
-\end{tabular}}%
-with a residual standard deviation of  \decimal{0}{4104} and $R^2=\decimal{0}{9725}$. 
-The model is highly significant (Fisher's test: $F_{2,38}=\decimal{671}{5}$, p-value $<\decimal{2}{2}\times10^{-16}$). The model, all of whose coefficients are significantly different from zero, is written: $\ln(B)=-\decimal{8}{9050}+\decimal{1}{8654}\ln(D)+\decimal{0}{7083}\ln(H)$. By applying the exponential function to return to the starting data, the model becomes: $B=\decimal{1}{357}\times10^{-4}D^{1.8654}H^{0.7083}$. The exponent associated with height is a little less than half that associated with dbh, and is a little less than the exponent of \decimal{0}{87238} found for the combined variable $D^2H$ (see red line \ref{rllnBvD2H}). An examination of the residuals:
 
-\R{plot(m,which=1:2)}%
+```{r}
+summary(m)$coef
+```
+
+with a residual standard deviation of  ```r round(summary(m)$sigma, 4)```  and $R^2=$ ```r round(summary(m)$r.squared, 4)```. The model is highly significant (Fisher's test: $F_{2,38}=671.5$, p-value $<2.2\times10^{-16}$). The model, all of whose coefficients are significantly different from zero, is written: $\ln(B)=-8.9050+1.8654\ln(D)+0.7083\ln(H)$. By applying the exponential function to return to the starting data, the model becomes: $B=1.357\times10^{-4}D^{1.8654}H^{0.7083}$. The exponent associated with height is a little less than half that associated with dbh, and is a little less than the exponent of 0.87238 found for the combined variable $D^2H$ (see red line \@ref(exr:rllnBvD2H)). An examination of the residuals:
+
+```{r, echo=T, eval=F}
+plot(m,which=1:2)
+```
+
 shows nothing in particular (Figure \@ref(fig:flnDHres)).
-\end{filrouge}
 
-\begin{figure}[htb]
-\includegraphics[width=\textwidth]{flnDlnHres}
-\caption[Residuals plotted against fitted values and quantile--quantile plot for residuals of the multiple regression of $\ln(B)$ against $\ln(D)$ and $\ln(H)$ fitted for the 42 trees measured by @henry10 in Ghana]{Residuals plotted against fitted values (left) and quantile--quantile plot (right) for residuals of the multiple regression of $\ln(B)$ against $\ln(D)$ and $\ln(H)$ fitted for the 42 trees measured by @henry10 in Ghana.\label{flnDHres}}
-\end{figure}
+::::::
 
 
-\subsection{Weighted regression\label{pond}}
+
+```{r flnDHres, fig.cap="(ref:flnDlnHres)"}
+
+display_fig("flnDlnHres")
+
+```
+
+
+### Weighted regression {#pond}
 
