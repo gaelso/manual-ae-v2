@@ -33,3 +33,8 @@
 (ref:flnDpol) [**$\looparrowright$\ Polynomial regression between $\ln(B)$ and $\ln(D)$**]{color="red"}
 
 (ref:flnDlnH) [**$\looparrowright$\ Multiple regression between $\ln(B)$, $\ln(D)$ and $\ln(H)$**]{color="red"}
+
+(ref:frlpD2H) [**$\looparrowright$\ Weighted linear regression between $B$ and $D^2H$**]{color="red"}
+
+
+

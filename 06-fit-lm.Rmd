@@ -124,7 +124,7 @@ where
 \]
 The regression is fitted using the ordinary least squares method. Given that we cannot apply the log transformation to a value of zero, zero biomass data (see red line \@ref(exr:read)) must first be withdrawn from the dataset:
 
-```{r, echo=T, eval=F}
+```{r, echo=T, results='hide'}
 m <- lm(log(Btot) ~ I(log(dbh)),data = dat[dat$Btot>0,])
 summary(m)
 ```
@@ -132,7 +132,7 @@ summary(m)
 The residual standard deviation is $\hat{\sigma}=0.462$, $R^2$ is 0.9642 and the model is highly significant (Fisher's test: $F_{1,39}=1051$, p-value $<2.2\times10^{-16}$). The values of the coefficients are given in the table below:
 
 ```{r}
-summary(m)$coef
+printCoefmat(summary(m)$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
 ```
 
 The first column in the table gives the values of the coefficients. The model is therefore: $\ln(B)=-8.42722+2.36104\ln(D)$. The second column gives the standard deviations of the coefficient estimators. The third column gives the result of the test on the null hypothesis that the coefficient is zero. Finally, the fourth column gives the p-value of this test. In the present case, both the slope and the y-intercept are significantly different from zero. We must now check graphically that the hypotheses of the linear regression are satisfied:
@@ -169,7 +169,7 @@ where
 \]
 The regression is fitted by the ordinary least squares method. Given that we cannot apply the log transformation to a value of zero, zero biomass data (see red line \@ref(exr:read)) must first be withdrawn from the dataset:
 
-```{r, echo=T, eval=F}
+```{r, echo=T, results="hide"}
 m <- lm(log(Btot) ~ I(log(dbh^2*heig)),data=dat[dat$Btot>0,])
 summary(m)
 ```
@@ -177,7 +177,7 @@ summary(m)
 The residual standard deviation is $\hat{\sigma}=0.4084$, $R^2$ is 0.972 and the model is highly significant (Fisher's test: $F_{1,39}=1356$, p-value $<2.2\times10^{-16}$). The values of the coefficients are as follows:
 
 ```{r}
-summary(m)$coef
+printCoefmat(summary(m)$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
 ```
 
 The first column in the table gives the values of the coefficients. The model is therefore: $\ln(B)=-8.99427+0.87238\ln(D^2H)$. The second column gives the standard deviations of the coefficient estimators. The third column gives the result of the test on the null hypothesis that "the coefficient is zero". Finally, the fourth column gives the p-value of this test. In the present case, both the slope and the y-intercept are significantly different from zero.
@@ -310,7 +310,7 @@ print(summary(m2))
 This yields:
 
 ```{r}
-summary(m2)$coef
+printCoefmat(summary(m2)$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
 ```
 
 with $R^2=$ ```r round(summary(m2)$r.squared, 4)```. And as for a third-order polynomial regression:
@@ -324,7 +324,7 @@ print(summary(m3))
 it yields:
 
 ```{r}
-summary(m3)$coef
+printCoefmat(summary(m3)$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
 ```
 
 with $R^2=$ ```r round(summary(m3)$r.squared,4)```. Finally, a fourth-order polynomial regression:
@@ -338,10 +338,10 @@ print(summary(m4))
 yields:
 
 ```{r}
-summary(m4)$coef
+printCoefmat(summary(m4)$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
 ```
 
-with $R^2=$ ```r round(summary(m3)$r.squared,4)```. Adding higher order terms above 1 therefore does not improve the model. The coefficients associated with these terms were not significantly different from zero. But the model's $R^2$ continued to increase with the number $p$ of orders in the polynomial. $R^2$ is not therefore a reliable criterion for selecting the order of the polynomial. The plots fitted by these different polynomials may be superimposed on the biomass-dbh cluster of points: with object `m` indicating the linear regression of $\ln(B)$ against $\ln(D)$ fitted in red line \@ref(exr:rllnBvD),
+with $R^2=$ `r round(summary(m3)$r.squared,4)`. Adding higher order terms above 1 therefore does not improve the model. The coefficients associated with these terms were not significantly different from zero. But the model's $R^2$ continued to increase with the number $p$ of orders in the polynomial. $R^2$ is not therefore a reliable criterion for selecting the order of the polynomial. The plots fitted by these different polynomials may be superimposed on the biomass-dbh cluster of points: with object `m` indicating the linear regression of $\ln(B)$ against $\ln(D)$ fitted in red line \@ref(exr:rllnBvD),
 
 ```{r, echo=T, eval=F}
 with(dat,plot(dbh,Btot,xlab="Dbh (cm)",ylab="Biomass (t)",log="xy"))
@@ -388,10 +388,10 @@ summary(m)
 yields:
 
 ```{r}
-summary(m)$coef
+printCoefmat(summary(m)$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
 ```
 
-with a residual standard deviation of  ```r round(summary(m)$sigma, 4)```  and $R^2=$ ```r round(summary(m)$r.squared, 4)```. The model is highly significant (Fisher's test: $F_{2,38}=671.5$, p-value $<2.2\times10^{-16}$). The model, all of whose coefficients are significantly different from zero, is written: $\ln(B)=-8.9050+1.8654\ln(D)+0.7083\ln(H)$. By applying the exponential function to return to the starting data, the model becomes: $B=1.357\times10^{-4}D^{1.8654}H^{0.7083}$. The exponent associated with height is a little less than half that associated with dbh, and is a little less than the exponent of 0.87238 found for the combined variable $D^2H$ (see red line \@ref(exr:rllnBvD2H)). An examination of the residuals:
+with a residual standard deviation of (0.4104) `r round(summary(m)$sigma, 4)`  and $R^2=$ `r round(summary(m)$r.squared, 4)` (0.971). The model is highly significant (Fisher's test: $F_{2,38}=671.5$, p-value $<2.2\times10^{-16}$). The model, all of whose coefficients are significantly different from zero, is written: $\ln(B)=-8.9050+1.8654\ln(D)+0.7083\ln(H)$. By applying the exponential function to return to the starting data, the model becomes: $B=1.357\times10^{-4}D^{1.8654}H^{0.7083}$. The exponent associated with height is a little less than half that associated with dbh, and is a little less than the exponent of 0.87238 found for the combined variable $D^2H$ (see red line \@ref(exr:rllnBvD2H)). An examination of the residuals:
 
 ```{r, echo=T, eval=F}
 plot(m,which=1:2)
@@ -481,4 +481,136 @@ The least SS is obtained for [@magnus07]:
 \]
 This minimum does not change when all the weights $w_i$ are multiplied by the same scalar, clearly proving that the method is not sensitive to normalization of weights. We can check that the estimation yielded by the weighted least squares method applied to observations $X_{ij}$ and $Y_i$ gives the same result as that yielded by the ordinary least squares method applied to observations $\sqrt{w_i}\ X_{ij}$ and $\sqrt{w_i}\ Y_i$. Like previously, this fitting method has the advantage that the estimations of the coefficients have an explicit expression.
 
+
 #### Interpreting results and checking hypotheses {-}
+
+The results of the weighted regression are interpreted in exactly the same fashion as for the multiple regression. The same may also be said of the residuals-related hypotheses, except that the residuals are replaced by the weighted residuals $\varepsilon'_i=\sqrt{w_i}\ \varepsilon_i=\varepsilon_i/X_i^c$. The graph of the weighted residuals $\varepsilon_i'$ against the fitted values must not show any particular trend (like in Figure \@ref(fig:res3)B). If the cluster of points given by plotting the residuals against the fitted values takes on a funnel-like shape open toward the right (as in  Figure \@ref(fig:res3)A), then the value of exponent $c$ is too low (the lowest possible value being zero). If the cluster of points takes on a funnel-like shape closed toward the right (as in  Figure \@ref(fig:res3)C), then the value of exponent $c$ is too high.
+
+```{r res3, fig.scap="Plot of weighted residuals against fitted values for a weighted regression", fig.cap="(ref:res3)"}
+
+display_fig("resid3")
+
+```
+
+
+#### Choosing the right weighting {.unnumbered #chx}
+
+A crucial point in weighted regression is the prior selection of a value for exponent c that defines the weighting. Several methods can be used to determine $c$. The first consists in proceeding by trial and error based on the appearance of the plot of the residuals against the fitted values. As the appearance of the plot provides information on the pertinence of the value of $c$ (Figure \@ref(fig:res3)), several values of $c$ can simply be tested until the cluster of points formed by plotting the weighted residuals against the fitted values no longer shows any particular trend.
+
+As linear regression is robust with regard to the hypothesis that the variance of the residuals is constant, there is no need to determine $c$ with great precision. In most cases it is enough to test integers of $c$. In practice, the weighted regression may be fitted for $c$ values of 0, 1, 2, 3 or 4 (it is rarely useful to go above 4), and retain the integer value that yields the best appearance for the cluster of points in the plot of the weighted residuals against the fitted values. This simple method is generally amply sufficient.
+
+If we are looking to obtain a more precise value for exponent $c$, we can calculate approximately the conditional variance of response variable $Y$ as we know $X_1$:
+
+1. divide $X_1$ into $K$ classes centered on $X_{1k}$ ($k=1$, \ldots, $K$);
+2. calculate the empirical variance, $\sigma^2_k$, of $Y$ for the observations in class $k$ (avec $k=1$, \ldots, $K$);
+3. plot the linear regression of $\ln(\sigma_k)$ against $\ln(X_{1k})$.
+
+The slope of this regression is an estimation of $c$.
+
+The third way of estimating $c$ consists in looking for the value of $c$ that minimizes @furnival61 index. `r ifelse(book_format == "latex", "This index is defined on page \\pageref{eq:furni}.", "")`
+
+::::::{.filrouge data-latex=""}
+
+:::{.exercise #frlpD2H name="(ref:frlpD2H)"}
+\  
+:::
+
+The exploratory analysis of the relation between biomass and $D^2H$ showed (red line \@ref(exr:feBvD2H)) that this relation is linear, but that the variance of the biomass increases with $D^2H$. We can therefore fit a weighted linear regression of biomass $B$ against $D^2H$:
+\[
+B=a+bD^2H+\varepsilon
+\]
+where
+\[
+\mathrm{Var}(\varepsilon)\propto D^{2c}
+\]
+The linear regression is fitted by the weighted least squares method, meaning that we must beforehand know the value of exponent $c$. Let us first estimate coefficient $c$ for the weighting of the observations. To do this we must divide the observations into dbh classes and calculate the standard deviation of the biomass in each dbh class:
+
+```{r, echo=T, results='hide'}
+D <- quantile(dat$dbh,(0:5)/5)
+i <- findInterval(dat$dbh,D,rightmost.closed=TRUE)
+sdB <- data.frame(D=(D[-1]+D[-6])/2,sdB=tapply(dat$Btot,i,sd))
+```
+
+Object `D` contains the bounds of the dbh classes that are calculated such to have 5 classes containing approximately the same number of observations: Object `i` contains the number of the dbh class to which each observation belongs.  Figure \@ref(fig:fpond), obtained by the command:
+
+```{r, echo=T, eval=F}
+with(sdB,plot(D,sdB,log="xy",xlab="Diameter (cm)",
+              ylab="Biomass standard deviation (t)"))
+```
+
+shows a plot of the standard deviation of the biomass against the median dbh of each dbh class, on a log scale. The points are roughly aligned along a straight line, confirming that the power model is appropriate for modeling the residual variance. The linear regression of the log of the standard deviation of the biomass against the log of the median dbh for each class, fitted by the command:
+
+```{r, echo=T, eval=F}
+summary(lm(log(sdB) ~ I(log(D)),data=sdB))
+```
+
+yields:
+
+```{r}
+printCoefmat(summary(lm(log(sdB) ~ I(log(D)),data=sdB))$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
+```
+
+The slope of the regression corresponds to $c$,  and is $2$. Thus, the standard deviation $\sigma$  of the biomass is approximately proportional to $D^2$, and we will select a weighting of the observations that is inversely proportional to $D^4$. The weighted regression of biomass $B$ against $D^2H$ with this weighting, and fitted by the command:
+
+```{r, echo=T, results='hide'}
+m <- lm(Btot ~ I(dbh^2*heig),data=dat,weights=1/dat$dbh^4)
+summary(m)
+```
+
+yields:
+
+```{r}
+printCoefmat(summary(m)$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
+```
+
+An examination of the result of this fitting shows that the y-intercept is not significantly different from zero. This leads us to fit a new weighted regression of biomass $B$ against $D^2H$ without an intercept:
+
+```{r, echo=T, results='hide'}
+m <- lm(Btot ~ -1+I(dbh^2*heig),data=dat,weights=1/dat$dbh^4)
+summary(m)
+```
+
+which yields:
+
+```{r}
+printCoefmat(summary(m)$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
+```
+
+The model is therefore: $B=2.747\times10^{-5}D^2H$, with $R^2$ = 0.8897 and a residual standard deviation $k=0.0003513$\ tonnes cm^-2^. The model is highly significant (Fisher's test: $F_{1,41}=330.8$, p-value $<2.2\times10^{-16}$). As this model was fitted directly on non-transformed data, it should be noted that it was unnecessary to withdraw the observations of zero biomass (unlike the situation in red line \@ref(exr:rllnBvD2H)). Figure \@ref(fig:fD2Hpres)A, obtained by the command:
+
+```{r, echo=T, eval=F}
+plot(fitted(m),residuals(m)/dat$dbh^2,xlab="Fitted values",
+     ylab="Weighted residuals")
+```
+
+gives a plot of the weighted residuals against the fitted values. By way of a comparison,  Figure \@ref(fig:fD2Hpres)B shows a plot of the weighted residuals against the fitted values when the weighting is too low (with weights inversely proportional to $D^2$):
+
+```{r, echo=T, eval=F}
+m <- lm(Btot ~ -1+I(dbh^2*heig),data=dat,weights=1/dat$dbh^2)
+plot(fitted(m),residuals(m)/dat$dbh,xlab="Fitted values",ylab="Weighted residuals")
+```
+
+whereas \@ref(fig:fD2Hpres)C shows a plot of the weighted residuals against the fitted values when the weighting is too high (with weights inversely proportional to $D^5$):
+
+```{r, echo=T, eval=F}
+m <- lm(Btot ~ -1+I(dbh^2*heig),data=dat,weights=1/dat$dbh^5)
+plot(fitted(m),residuals(m)/dat$dbh^2.5,xlab="Fitted values",
+     ylab="Weighted residuals")
+```
+
+Thus, the coefficient $c=2$ for the weighting indeed proves to be that which is suitable.
+
+::::::
+
+```{r fpond, fig.cap="(ref:fpond)"}
+
+display_fig("fpond")
+
+```
+
+```{r fD2Hpres, fig.scap="Plot of weighted residuals against fitted values for a weighted regression of biomass against $D^2H$ for 42 trees measured in Ghana by @henry10", fig.cap="(ref:fD2Hpres)"}
+
+display_fig("fD2Hpres")
+
+``` 
+

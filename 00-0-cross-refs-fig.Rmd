@@ -127,4 +127,8 @@ with $\mbox{E}(Y)=X_1+X_2$.
 
 (ref:flnDlnHres) Residuals plotted against fitted values (left) and quantile--quantile plot (right) for residuals of the multiple regression of $\ln(B)$ against $\ln(D)$ and $\ln(H)$ fitted for the 42 trees measured by @henry10 in Ghana.
 
+(ref:res3) Plot of weighted residuals against fitted values for a weighted regression: (A) the value of exponent $c$ is too low for the weighting; (B) the value of exponent $c$ is appropriate; (C) the value of exponent $c$ is too high. It should be noted that as the value of c increases, the rank of the values for the weighted values $\varepsilon/X^c$ decreases.
 
+(ref:fpond) Plot of standard deviation of biomass calculated in five dbh classes against median dbh of the class (on a log scale), for 42 trees measured in Ghana by @henry10.
+
+(ref:fD2Hpres) Plot of weighted residuals against fitted values for a weighted regression of biomass against $D^2H$ for 42 trees measured in Ghana by @henry10: (A) the weighting is inversely proportional to $D^4$; (B) the weighting is inversely proportional to $D^2$; (C) the weighting is inversely proportional to $D^5$.
