@@ -1,9 +1,5 @@
 
 
-
-
-
-
 \begin{filrouge}{Weighted polynomial regression between $B$ and $D$}{fDpara}%
 The exploratory analysis (red line \ref{feBvD}) showed that the relation between biomass and dbh was parabolic, with the variance of the biomass increasing with dbh. Log-transformation rendered the relation between biomass and dbh linear, but we can also model the relation between biomass and dbh directly by a parabolic relation:
 \[
