@@ -36,5 +36,5 @@
 
 (ref:frlpD2H) [**$\looparrowright$\ Weighted linear regression between $B$ and $D^2H$**]{color="red"}
 
-
+(ref:fDpara) [**$\looparrowright$\ Weighted polynomial regression between $B$ and $D$**]{color="red"}
 

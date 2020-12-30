@@ -1,56 +1,6 @@
 
 
-\begin{filrouge}{Weighted polynomial regression between $B$ and $D$}{fDpara}%
-The exploratory analysis (red line \ref{feBvD}) showed that the relation between biomass and dbh was parabolic, with the variance of the biomass increasing with dbh. Log-transformation rendered the relation between biomass and dbh linear, but we can also model the relation between biomass and dbh directly by a parabolic relation:
-\[
-B=a_0+a_1D+a_2D^2+\varepsilon
-\]
-where
-\[
-\mathrm{Var}(\varepsilon)\propto D^{2c}
-\]
-In red line \ref{frlpD2H} we saw that the value $c=2$ of the exponent was suitable for modeling the conditional standard deviation of the biomass when we know the dbh. We will therefore fit the multiple regression using the weighted least squares method with weighting of the observations proportional to $1/D^4$:
-\R{m <- lm(Btot$\sim$dbh+I(dbh\^{}2),data=dat,weights=1/dat\$dbh\^{}4)%
-\\ summary(m)}%
-which yields:
-\Rout{\begin{tabular}{lrrrrl}%
-            &   Estimate & Std. Error & t value & Pr(>|t|) &    \\ %
-(Intercept) &  1.127e-02 &  6.356e-03 &   1.772 &  0.08415 & .  \\ %
-dbh         & -7.297e-03 &  2.140e-03 &  -3.409 &  0.00153 & ** \\ %
-I(dbh\^{}2) &  1.215e-03 &  9.014e-05 &  13.478 & 2.93e-16 & ***\\ %
-\end{tabular}}%
-with a residual standard deviation 
-$k=\decimal{0}{0003882}$~tonnes~cm$^{-2}$ and
-$R^2=\decimal{0}{8709}$. The y-intercept is not significantly different from zero. We can therefore again fit a parabolic relation but without the intercept:
-\R{m <- lm(Btot$\sim$-1+dbh+I(dbh\^{}2),data=dat,weights=1/dat\$dbh\^{}4)%
-\\ summary(m)}%
-which yields:
-\Rout{\begin{tabular}{lrrrrl}%
-            &   Estimate & Std. Error & t value & Pr(>|t|) &    \\ %
-dbh         & -3.840e-03 &  9.047e-04 & -4.245  & 0.000126 & ***\\ %
-I(dbh\^{}2) &  1.124e-03 &  7.599e-05 & 14.789  &  < 2e-16 & ***\\ %
-\end{tabular}}%
-with a residual standard deviation 
-$k=\decimal{0}{0003985}$~tonnes~cm$^{-2}$ and
-$R^2=\decimal{0}{8615}$. The model is highly significant
-(Fisher's test: $F_{2,40}=\decimal{124}{4}$, p-value
-$=\decimal{2}{2}\times10^{-16}$) and is written: 
-$B=-\decimal{3}{840}\times10^{-3}D+\decimal{1}{124}\times10^{-3}D^2$.
- Figure \@ref(fig:fDD2res) obtained by the command:
 
-\R{plot(fitted(m),residuals(m)/dat\$dbh\^{}2,xlab="fitted values",ylab=\bidouille{\newline}"Weighted residuals")}%
-gives a plot of the weighted residuals against the fitted values.
-
-\end{filrouge}
-
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics[width=8cm]{fresDD2}
-\end{center}
-\caption{Plot of weighted residuals against fitted values for a weighted regression of biomass against $D$ and $D^2$ for 42 trees measured in Ghana by @henry10.\label{fDD2res}}
-\end{figure}
-
-\subsection{Linear regression with variance model\label{lme}}
 
 An alternative to the weighted regression is to use explicitly a model for the variance of the residuals. As previously, it is realistic to assume that there is an effect variable (without loss of generality, the first) such that the residual standard deviation is a power function of this variable:
 
