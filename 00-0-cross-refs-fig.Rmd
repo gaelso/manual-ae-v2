@@ -135,4 +135,6 @@ with $\mbox{E}(Y)=X_1+X_2$.
 
 (ref:fresDD2) Plot of weighted residuals against fitted values for a weighted regression of biomass against $D$ and $D^2$ for 42 trees measured in Ghana by @henry10.
 
+(ref:fD2Hvar) Linear regression between $B$ and $D^2H$ with variance model
+
 

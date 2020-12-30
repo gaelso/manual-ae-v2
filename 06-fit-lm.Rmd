@@ -673,3 +673,134 @@ display_fig("fresDD2")
 
 
 ### Linear regression with variance model {#lme}
+
+An alternative to the weighted regression is to use explicitly a model for the variance of the residuals. As previously, it is realistic to assume that there is an effect variable (without loss of generality, the first) such that the residual standard deviation is a power function of this variable:
+
+\begin{equation}
+\mathrm{Var}(\varepsilon)=(kX_1^c)^2(\#eq:modvar)
+\end{equation}
+
+where $k>0$ and $c\geq0$. The model is therefore written:
+
+\begin{equation}
+Y=a_0+a_1X_1+a_2X_2+\ldots+a_pX_p+\varepsilon(\#eq:modmoy)
+\end{equation}
+
+where:
+\[
+\varepsilon\sim\mathcal{N}(0,\ kX_1^c)
+\]
+In its form the model is little different from the weighted regression. Regarding its content, it has one fundamental difference: the coefficients $k$ and $c$ are now model parameters that need to be estimated, in the same manner as coefficients $a_0$, $a_1$, \ldots, $a_p$. Because of these $k$ and $c$ parameters that need to be estimated, the least squares method can no longer be used to estimate model coefficients. Another estimation method has to be used, the maximum likelihood method. Strictly speaking, the model defined by \@ref(eq:modvar) and \@ref(eq:modmoy) is not a linear model. It is far closer conceptually to the non-linear model we will see in section \@ref(nlm). We will not go any further here in presenting the non-linear model: the model fitting method defined by \@ref(eq:modvar) and \@ref(eq:modmoy) will be presented as a special case of the non-linear model in section \@ref(nlm).
+
+::::::{.filrouge data-latex=""}
+
+:::{.exercise #fD2Hvar name="(ref:fD2Hvar)"}
+\  
+:::
+
+Pre-empting section \@ref(nlm), we will fit a linear regression of biomass against $D^2H$ by specifying a power model on the residual variance:
+\[
+B=a+bD^2H+\varepsilon
+\]
+where
+\[
+\mathrm{Var}(\varepsilon)=(kD^c)^2
+\]
+We will see later (\S\ \@ref(nlm)) that this model is fitted by maximum likelihood. This regression is in spirit very similar to the previously-constructed weighted regression of biomass against $D^2H$ (red line \@ref(exr:frlpD2H)), except that exponent $c$ used to define the weighting of the observations is now a parameter that must be estimated in its own right rather than a coefficient that is fixed in advance. The linear regression with variance model is fitted as follows:
+
+```{r, echo=T, results='hide'}
+library(nlme)
+start <- coef(lm(Btot ~ I(dbh^2*heig),data=dat))
+names(start) <- c("a","b")
+summary(nlme(Btot ~ a+b*dbh^2*heig, data=cbind(dat,g="a"),
+fixed=a+b ~ 1, start=start, groups= ~g,
+weights=varPower(form=~dbh)))
+```
+and yields (we will return in section \@ref(nlm) to the meaning of the start object `start`):
+
+```{r}
+m <- nlme(
+  Btot ~ a+b*dbh^2*heig, 
+  data=cbind(dat,g="a"),
+  fixed=a+b ~ 1, 
+  start=start, 
+  groups= ~g,
+  weights=varPower(form=~dbh)
+  )
+summary(m)$tTable
+```
+
+with an estimated value of exponent $c=$ `r summary(m)$modelStruct$varStruct[[1]]`. Like for the weighted linear regression (red line \@ref(exr:frlpD2H)), the y-intercept proves not to be significantly different from zero. We can therefore refit the model without the intercept:
+
+```{r, echo=T, eval=F}
+summary(nlme(Btot ~ b*dbh^2*heig,
+data=cbind(dat,g="a"), fixed=b~1, start=start["b"],
+groups=~g, weights=varPower(form=~dbh)))
+```
+which yields:
+
+```{r}
+start["b"] <- 2.6484 * 10^-5
+
+m <- nlme(
+  Btot ~ b*dbh^2*heig,
+  data=cbind(dat,g="a"), 
+  fixed=b~1, 
+  start=start["b"],
+  groups=~g, 
+  weights=varPower(form=~dbh)
+  )
+summary(m)$tTable
+```
+
+with an estimated value of exponent $c=$ `r summary(m)$modelStruct$varStruct[[1]]`. This value is very similar to that evaluated for the weighted linear regression ($c=2$ in red line \@ref(exr:frlpD2H)). The fitted model is therefore: $B=2.740688\times10^{-5}D^2H$, which is very similar to the model fitted by weighted linear regression (red line \@ref(exr:frlpD2H)).
+
+::::::
+
+
+::::::{.filrouge data-latex=""}
+
+
+
+::::::
+\begin{filrouge}{Polynomial regression between $B$ and $D$ with variance model}{fDD2var}%
+Pre-empting section \ref{nlm}, we will fit a multiple regression of biomass against $D$ and $D^2$ by specifying a power model on the residual variance:
+\[
+B=a_0+a_1D+a_2D^2+\varepsilon
+\]
+where
+\[
+\mathrm{Var}(\varepsilon)=(kD^c)^2
+\]
+We will see later (\S\ \ref{nlm}) that this model is fitted by maximum likelihood. This regression is in spirit very similar to the previously-constructed polynomial regression of biomass against $D$ and $D^2$ (red line \ref{fDpara}), except that exponent $c$ employed to define the weighting of the observations is now a parameter that must be estimated in its own right rather than a coefficient that is fixed in advance. The linear regression with variance model is fitted as follows:
+\R{library(nlme)%
+\\ start <- coef(lm(Btot$\sim$dbh+I(dbh\^{}2),data=dat))%
+\\ names(start) <- c("a0","a1","a2")%
+\\ summary(nlme(Btot$\sim$a0+a1*dbh+a2*dbh\^{}2,data=cbind(dat,g="a"),%
+fixed=a0+a1+a2$\sim$1,\bidouille{\newline}start=start,groups=$\sim$g,%
+weights=varPower(form=$\sim$dbh)))}%
+and yields (we will return in section \ref{nlm} to the meaning of the start object\texttt{start}):
+\Rout{\begin{tabular}{lrrrrr}%
+   &        Value &   Std.Error & DF &   t-value & p-value\\ %
+a0 &  0.009048498 & 0.005139129 & 39 &  1.760706 &  0.0861\\ %
+a1 & -0.006427411 & 0.001872346 & 39 & -3.432812 &  0.0014\\ %
+a2 &  0.001174388 & 0.000094063 & 39 & 12.485081 &  0.0000\\ %
+\end{tabular}}%
+with an estimated value of exponent $c=\decimal{2}{127509}$. Like for the weighted polynomial regression (red line \ref{fDpara}), the y-intercept proves not to be significantly different from zero. We can therefore refit the model without the intercept:
+%
+\R{summary(nlme(Btot$\sim$a1*dbh+a2*dbh\^{}2,data=cbind(dat,g="a"),%
+fixed=a1+a2$\sim$1,start=start[
+c("a1","a2")],groups=$\sim$g,weights=varPower(form=$\sim$dbh)))}%
+which yields:
+\Rout{\begin{tabular}{lrrrrr}%
+   &        Value &    Std.Error & DF &   t-value & p-value\\ %
+a1 & -0.003319456 & 0.0006891736 & 40 & -4.816574 &       0\\ %
+a2 &  0.001067068 & 0.0000759745 & 40 & 14.045082 &       0\\ %
+\end{tabular}}%
+with an estimated value of exponent $c=\decimal{2}{139967}$. This value is very similar to that evaluated for the weighted polynomial regression ($c=2$ in red line \ref{fDpara}). 
+The fitted model is therefore: $B=-\decimal{3}{319456}\times10^{-3}D+\decimal{1}{067068}\times10^{-3}D^2$, which is very similar to the model fitted by weighted polynomial regression (red line \ref{fDpara}).
+\end{filrouge}
+
+\subsection{Transforming variables\label{trans}}
+
+
