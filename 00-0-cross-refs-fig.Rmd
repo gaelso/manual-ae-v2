@@ -137,4 +137,14 @@ with $\mbox{E}(Y)=X_1+X_2$.
 
 (ref:fD2Hvar) Linear regression between $B$ and $D^2H$ with variance model
 
+(ref:linh) Linear relation between an effect variable ($X$) and a response variable ($Y$), with an increase in the variability of $Y$ with an increase in $X$ (heteroscedasticity).
+
+(ref:fBD2vH) Scatter plot of biomass divided by the square of the dbh (tonnes\ cm^-2^) against height (m) for the 42 trees measured in Ghana by @henry10.
+
+(ref:fHres) Residuals plotted against fitted values (left) and quantile--quantile plot (right) of the residuals of the simple linear regression of $B/D^2$ against $H$ fitted for the 42 trees measured by @henry10 in Ghana.
+
+(ref:fBD2vD) Scatter plot of biomass divided by the square of the dbh (tonnes in\ cm^-2^) against the inverse of the dbh (cm^-1^) for 42 trees measured in Ghana by @henry10.
+
+(ref:finvDres) Residuals plotted against fitted values (left) and quantile--quantile plot (right) of the residuals of the simple linear regression of $B/D^2$ against $1/D$ fitted for the 42 trees measured by @henry10 in Ghana.
+
 

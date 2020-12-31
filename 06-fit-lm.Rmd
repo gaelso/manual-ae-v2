@@ -760,11 +760,11 @@ with an estimated value of exponent $c=$ `r summary(m)$modelStruct$varStruct[[1]
 
 ::::::{.filrouge data-latex=""}
 
+:::{.exercise #fDD2var name="(ref:fDD2var)"}
+\  
+:::
 
-
-::::::
-\begin{filrouge}{Polynomial regression between $B$ and $D$ with variance model}{fDD2var}%
-Pre-empting section \ref{nlm}, we will fit a multiple regression of biomass against $D$ and $D^2$ by specifying a power model on the residual variance:
+Pre-empting section \ref(nlm), we will fit a multiple regression of biomass against $D$ and $D^2$ by specifying a power model on the residual variance:
 \[
 B=a_0+a_1D+a_2D^2+\varepsilon
 \]
@@ -772,35 +772,287 @@ where
 \[
 \mathrm{Var}(\varepsilon)=(kD^c)^2
 \]
-We will see later (\S\ \ref{nlm}) that this model is fitted by maximum likelihood. This regression is in spirit very similar to the previously-constructed polynomial regression of biomass against $D$ and $D^2$ (red line \ref{fDpara}), except that exponent $c$ employed to define the weighting of the observations is now a parameter that must be estimated in its own right rather than a coefficient that is fixed in advance. The linear regression with variance model is fitted as follows:
-\R{library(nlme)%
-\\ start <- coef(lm(Btot$\sim$dbh+I(dbh\^{}2),data=dat))%
-\\ names(start) <- c("a0","a1","a2")%
-\\ summary(nlme(Btot$\sim$a0+a1*dbh+a2*dbh\^{}2,data=cbind(dat,g="a"),%
-fixed=a0+a1+a2$\sim$1,\bidouille{\newline}start=start,groups=$\sim$g,%
-weights=varPower(form=$\sim$dbh)))}%
-and yields (we will return in section \ref{nlm} to the meaning of the start object\texttt{start}):
-\Rout{\begin{tabular}{lrrrrr}%
-   &        Value &   Std.Error & DF &   t-value & p-value\\ %
-a0 &  0.009048498 & 0.005139129 & 39 &  1.760706 &  0.0861\\ %
-a1 & -0.006427411 & 0.001872346 & 39 & -3.432812 &  0.0014\\ %
-a2 &  0.001174388 & 0.000094063 & 39 & 12.485081 &  0.0000\\ %
-\end{tabular}}%
-with an estimated value of exponent $c=\decimal{2}{127509}$. Like for the weighted polynomial regression (red line \ref{fDpara}), the y-intercept proves not to be significantly different from zero. We can therefore refit the model without the intercept:
-%
-\R{summary(nlme(Btot$\sim$a1*dbh+a2*dbh\^{}2,data=cbind(dat,g="a"),%
-fixed=a1+a2$\sim$1,start=start[
-c("a1","a2")],groups=$\sim$g,weights=varPower(form=$\sim$dbh)))}%
-which yields:
-\Rout{\begin{tabular}{lrrrrr}%
-   &        Value &    Std.Error & DF &   t-value & p-value\\ %
-a1 & -0.003319456 & 0.0006891736 & 40 & -4.816574 &       0\\ %
-a2 &  0.001067068 & 0.0000759745 & 40 & 14.045082 &       0\\ %
-\end{tabular}}%
-with an estimated value of exponent $c=\decimal{2}{139967}$. This value is very similar to that evaluated for the weighted polynomial regression ($c=2$ in red line \ref{fDpara}). 
-The fitted model is therefore: $B=-\decimal{3}{319456}\times10^{-3}D+\decimal{1}{067068}\times10^{-3}D^2$, which is very similar to the model fitted by weighted polynomial regression (red line \ref{fDpara}).
-\end{filrouge}
+We will see later (\S\ \@ref(nlm)) that this model is fitted by maximum likelihood. This regression is in spirit very similar to the previously-constructed polynomial regression of biomass against $D$ and $D^2$ (red line \@ref(exr:fDpara)), except that exponent $c$ employed to define the weighting of the observations is now a parameter that must be estimated in its own right rather than a coefficient that is fixed in advance. The linear regression with variance model is fitted as follows:
 
-\subsection{Transforming variables\label{trans}}
+```{r, echo=T, results='hide'}
+library(nlme)
+start <- coef(lm(Btot ~ dbh+I(dbh^2),data=dat))
+names(start) <- c("a0","a1","a2")
+summary(nlme(Btot ~ a0+a1*dbh+a2*dbh^2,data=cbind(dat,g="a"),
+             fixed=a0+a1+a2~1,
+             start=start,groups=~g,
+             weights=varPower(form=~dbh)))
+```
+
+and yields (we will return in section \@ref(nlm) to the meaning of the start object `start`):
+
+```{r}
+m <- nlme(
+  Btot ~ a0+a1*dbh+a2*dbh^2,data=cbind(dat,g="a"),
+  fixed=a0+a1+a2~1,
+  start=start,groups=~g,
+  weights=varPower(form=~dbh)
+  )
+summary(m)$tTable
+```
+
+with an estimated value of exponent $c=2.127509$. Like for the weighted polynomial regression (red line \@ref(exr:fDpara)), the y-intercept proves not to be significantly different from zero. We can therefore refit the model without the intercept:
+
+```{r, echo=T, results='hide'}
+summary(nlme(Btot ~ a1*dbh+a2*dbh^2,data=cbind(dat,g="a"),
+             fixed=a1+a2~1, start=start[c("a1","a2")],
+             groups=~g, weights=varPower(form=~dbh)))
+```
+
+which yields:
+
+```{r}
+m <- nlme(
+  Btot ~ a1*dbh+a2*dbh^2,
+  data=cbind(dat,g="a"),
+  fixed=a1+a2~1, 
+  start=start[c("a1","a2")],
+  groups=~g, weights=varPower(form=~dbh)
+  )
+summary(m)$tTable
+```
+with an estimated value of exponent $c=2.139967$. This value is very similar to that evaluated for the weighted polynomial regression ($c=2$ in red line \@ref(exr:fDpara)). The fitted model is therefore: $B=-3.319456\times10^{-3}D+1.067068\times10^{-3}D^2$, which is very similar to the model fitted by weighted polynomial regression (red line \@ref(exr:fDpara)).
+
+::::::
+
+
+### Transforming variables {#trans}
+
+Let us reconsider the example of the biomass model with a single entry (here dbh) of the power type:
+
+\begin{equation}
+B=aD^b(\#eq:p)
+\end{equation}
+
+We have already seen that this is a non-linear model as $B$ is non linearly dependent upon coefficients $a$ and $b$. But this model can be rendered linear by log transformation. Relation \@ref(eq:p) is equivalent to: $\ln(B)=\ln(a)+b\ln(D)$, which can be considered to be a linear regression of response variable $Y=\ln(B)$ against effect variable $X=\ln(D)$. We can therefore estimate coefficients $a$ and $b$ (or rather $\ln(a)$ and $b$) in power model \@ref(eq:p) by linear regression on log-transformed data. What about the residual error? If the linear regression on log-transformed data is appropriate, this means that $\varepsilon=\ln(B)-\ln(a)-b\ln(D)$ follows a centered normal distribution of constant standard deviation $\sigma$. If we return to the starting data and use exponential transformation (which is the inverse transformation to log transformation), the residual error here is a factor:
+\[
+B=aD^b\times\varepsilon'
+\]
+where $\varepsilon'=\exp(\varepsilon)$. Thus, we have moved from an additive error on log-transformed data to a multiplicative error on the starting data. Also, if $\varepsilon$ follows a centered normal distribution of standard deviation $\sigma$, then, by definition, $\varepsilon'=\exp(\varepsilon)$ follows a log-normal distribution of parameters 0 and $\sigma$:
+\[
+\varepsilon'\mathop{\sim}_{\mathrm{i.i.d.}}\mathcal{LN}(0,\ \sigma)
+\]
+Contrary to $\varepsilon$, which has a mean of zero, the mean of $\varepsilon'$ is not zero but:
+$\mathrm{E}(\varepsilon')=\exp(\sigma^2/2)$. The implications of this will be considered in chapter \@ref(util).
+
+We can draw two lessons from this example:
+
+1. when we are faced by a non-linear relation between a response variable and one (or several) effect variables, a transformation may render this relation linear;
+2. this transformation of the variable affects not only the form of the relation between the effect variable(s) and the response variable, but also the residual error.
+
+Concerning the first point, this variables transformation means that we have two approaches for fitting a non-linear model. The first, when faced with a non-linear relation between a response variable and effect variables, consists in looking for a transformation that renders this relation linear, and thereafter using the approach employed for the linear model. The second consists in fitting the non-linear model directly, as we shall see in section \@ref(nlm). Each approach has its advantages and its drawbacks. The linear model has the advantage of providing a relatively simple theoretical framework and, above all, the estimations of its coefficients have explicit expressions. The drawback is that the model linearization step introduces an additional difficulty, and the inverse transformation, if we are not careful, may produce prediction bias (we will return to this in chapter \@ref(util)). Also, not all models can be rendered linear. For example, no variables transformation can render the following model linear: $Y=a_0+a_1X+a_2\exp(a_3X)$.
+
+Regarding the second point, we are now, therefore, obliged to distinguish the form of the relation between the response variable and the effect variables (we also speak of the mean model, i.e. the mean of the response variable $Y$), and the form of the model for the residual error (we also speak of the variance model, i.e. the variance of $Y$). This transformation of the variable affects both simultaneously. The art of transforming variables therefore lies in tackling the two simultaneously and thereby rendering the model linear with regard to its coefficients and stabilizing the variance of the residuals (i.e. rendering it constant).
+
+#### Common variable transformations {-}
+
+Although theoretically there is no limit as to the variable transformations we can use, the transformations likely to concern volumes and biomasses are few in number. That most commonly employed to fit models is the log transformation. Given a power model:
+\[
+Y=aX_1^{b_1}X_2^{b_2}\times\ldots\times X_p^{b_p}\times\varepsilon
+\]
+the log transformation consists in replacing the variable $Y$ by its log: $Y'=\ln(Y)$, and each of the effect variables by their log: $X_j'=\ln(X_j)$. The resulting model corresponds to:
+
+\begin{equation}
+Y'=a'+b_1X_1'+b_2X_2'+\ldots+b_pX_p'+\varepsilon'(\#eq:rm2)
+\end{equation}
+
+where $\varepsilon'=\ln(\varepsilon)$. The inverse transformation is the exponential for all the effect and response variables. In terms of residual error, the log transformation is appropriate if $\varepsilon'$ follows a normal distribution, therefore if the error $\varepsilon$ is positive and multiplicative. It should be noted that log transformation poses a problem for variables that may take a zero value. In this case, the transformation $X'=\ln(X+1)$ is used rather than $X'=\ln(X)$ (or more generally, $X'=\ln(X+\mathrm{constant})$ if $X$ can take a negative value, e.g. a dbh increment). By way of examples, the following biomass models:
+
+\begin{eqnarray*}
+B &=& aD^b\\ %
+B &=& a(D^2H)^b\\ %
+B &=& a\rho^{b_1}D^{b_2}H^{b_3}
+\end{eqnarray*}
+
+may be fitted by linear regression after log transformation of the data.
+
+Given an exponential model:
+
+\begin{equation}
+Y=a\exp(b_1X_1+b_2X_2+\ldots+b_pX_p)\times\varepsilon(\#eq:expo)
+\end{equation}
+
+the appropriate transformation consists in replacing variable $Y$ by its log: $Y'=\ln(Y)$, and not transforming the effect variables: $X_j'=X_j$. The resulting model is identical to \@ref(eq:rm2).  The inverse transformation is the exponential for the response variable and no change for the effect variables. In terms of residual error, this transformation is appropriate if $\varepsilon'$ follows a normal distribution, therefore if the error $\varepsilon$ is positive and multiplicative. It should be noted that, without loss of generality, we can reparameterize the coefficients of the exponential model \@ref(eq:expo) by applying $b'_j=\exp(b_j)$. Strictly identical writing of exponential model \@ref(eq:expo) therefore yields:
+\[
+Y=a{b'_1}^{X_1}{b'_2}^{X_2}\times\ldots\times{b'_p}^{X_p}\times\varepsilon
+\]
+For example, the following biomass model:
+\[
+B=\exp\{a_0+a_1\ln(D)+a_2[\ln(D)]^2+a_3[\ln(D)]^3\}
+\]
+may be fitted by linear regression after this type of variable transformation (with, in this example, $X_j=[\ln(D)]^j$).
+
+The Box-Cox transformation generalizes the log transformation. It is in fact a family of transformations indexed by a parameter $\xi$. Given a variable $X$, its Box-Cox transform $X'_{\xi}$ corresponds to:
+\[
+X'_{\xi}=\left\{
+\begin{array}{lcl}
+(X^{\xi}-1)/\xi && (\xi\neq0)\\ %
+\ln(X)=\lim_{\xi\rightarrow0}(X^{\xi}-1)/\xi && (\xi=0)
+\end{array}
+\right.
+\]
+The Box-Cox transformation can be used to convert the question of choosing a variable transformation into a question of estimating parameter $\xi$ [@hoeting99].
+
+#### A special variable transformation {.unnumbered #apart}
+
+The usual variable transformations change the form of the relation between the response variable and the effect variable. When the cluster of points $(X_i,\ Y_i)$ formed by plotting the response variable against the effect variable is a straight line with heteroscedasticity, as shown in  Figure \@ref(fig:linh), then variable transformation needs to be employed to stabilize the variance of $Y$, though without affecting the linear nature of the relation between $X$ and $Y$. The particular case illustrated by \@ref(fig:linh) occurs fairly often when an allometric equation is fitted between two values that vary in a proportional manner [see for example @ngomanda12]. The linear nature of the relation between X and Y means that the model has the form:
+
+\begin{equation}
+Y=a+bX+\varepsilon(\#eq:rl2)
+\end{equation}
+
+but the heteroscedasticity indicates that the variance of $\varepsilon$ is not constant, and this prevents any fitting of a linear regression. A variable transformation in this case consists in replacing $Y$ by $Y'=Y/X$ and $X$ by $X'=1/X$. By dividing each member of \@ref(eq:rl2) by $X$, the post-variable transformation model becomes:
+
+\begin{equation}
+Y'=aX'+b+\varepsilon'(\#eq:rl3)
+\end{equation}
+
+where $\varepsilon'=\varepsilon/X$. The transformed model still corresponds to a linear relation, except that the y-intercept $a$ of the relation between $X$ and $Y$ has become the slope of the relation between $X'$ and $Y'$, and reciprocally, the slope $b$ of the relation between $X$ and $Y$ has become the y-intercept of the relation between $X'$ and $Y'$. Model \@ref(eq:rl3) may be fitted by simple linear regression if the variance of $\varepsilon'$ is constant. As $\mathrm{Var}(\varepsilon')=\sigma^2$ means $\mathrm{Var}(\varepsilon)=\sigma^2X^2$, the variable transformation is appropriate if the standard deviation of $\varepsilon$ is proportional to $X$.
+
+```{r linh, fig.cap="(ref:linh)"}
+
+display_fig("transfo")
+
+```
+
+As model \@refeq:rl3) was fitted by simple linear regression, its sum of squares corresponds to:
+\[
+\mathrm{SSE}(a,\ b)=\sum_{i=1}^n(Y'_i-aX'_i-b)^2
+=\sum_{i=1}^n(Y_i/X_i-a/X_i-b)^2=\sum_{i=1}^nX_i^{-2}(Y_i-a-bX_i)^2
+\]
+Here we recognize the expression for the sum of squares for a weighted regression using the weight $w_i=X_i^{-2}$. Thus, the variable transformation $Y'=Y/X$ and $X'=1/X$ is strictly identical to a weighted regression of weight $w=1/X^2$.
+
+::::::{.filrouge data-latex=""}
+
+$\looparrowright$ (@eq-fH)
+
+:::{.exercise #fH name="(fref:fH)"}
+\  
+:::
+
+We saw in red line \@ref(exr:frlpD2H) that a double-entry biomass model using dbh and height corresponds to: $B=a+bD^2H+\varepsilon$ where $\mathrm{Var}(\varepsilon)\propto D^4$. By dividing each member of the equation by $D^2$, we obtain:
+\[
+B/D^2=a/D^2+bH+\varepsilon'
+\]
+where
+\[
+\mathrm{Var}(\varepsilon')=\sigma^2
+\]
+Thus, the regression of the response variable $Y=B/D^2$ against the two effect variables $X_1=1/D^2$ and $X_2=H$ in principle satisfies the hypotheses of multiple linear regression. This regression is fitted by the ordinary least squares method. Fitting of this multiple regression by the command:
+
+```{r, echo=T, results='hide'}
+summary(lm((Btot/dbh^2) ~ -1+I(1/dbh^2)+heig,data=dat))
+``` 
+
+yields:
+
+```{r}
+printCoefmat(summary(lm((Btot/dbh^2) ~ -1+I(1/dbh^2)+heig,data=dat))$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
+```
+
+where it can be seen that the coefficient associated with $X_1=1/D^2$ is not significantly different from zero. If we now return to the starting data, this means simply that the y-intercept $a$ is not significantly different from zero, something we had already noted in red line \@ref(exr:frlpD2H) [or ref (@eq-frlpD2H)]. Therefore, $X_1$ may be withdrawn and a simple linear regression may be fitted of $Y=B/D^2$ against $X_2=H$:
+
+```{r, echo-=T, eval=F}
+with(dat,plot(heig,Btot/dbh^2,xlab="Height (m)",
+              ylab="Biomass/square of dbh (t/cm2)"))
+m <- lm((Btot/dbh^2) ~ -1+heig,data=dat)
+summary(m)
+plot(m,which=1:2)
+```
+
+The scatter plot of $B/D^2$ against $H$ is indeed a straight line with a variance of $B/D^2$ that is approximately constant ( Figure \@ref(fig:fBD2vH)). Fitting the simple linear regression yields:
+
+```{r}
+m <- lm((Btot/dbh^2) ~ -1+heig,data=dat)
+printCoefmat(summary(m)$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
+```
+
+with $R^2=$ `r print(summary(m)$r.squared, digits = 4)` and a residual standard deviation of `r print(summary(m)$sigma, digits = 4`\ tonnes\ cm^-2^. The model is written: $B/D^2=2.747\times10^{-5}H$, or if we return to the starting variables: $B=2747\times10^{-5}D^2H$. We now need to check that this model is strictly identical to the weighted regression of $B$ against $D^2H$ shown in red line \@ref(exr:frlpD2H) with weighting proportional to $1/D^4$. The plot of the residuals against the fitted values and the quantile-quantile plot of the residuals are shown in  Figure \@ref(fig:fHres).
+
+::::::
+
+```{r fBD2vH. fig.cap="(ref:fBD2vH)"}
+
+display_fig("fBD2vH")
+
+```
+
+```{r fHres, fig.cap="(ref:fHres)"}
+
+display_fig("fHres")
+
+```
+
+
+::::::{.filrouge data-latex=""}
+
+$\looparrowright$ (eq-finvD)
+
+:::{.exercise #finvD name="(ref:finvD)"}
+\  
+:::
+
+We saw in red line \@ref(ref:fDpara) that a polynomial biomass model against dbh corresponded to: $B=a_0+a_1D+a_2D^2+\varepsilon$ where $\mathrm{Var}(\varepsilon)\propto D^4$. By dividing each member of the equation by $D^2$, we obtain:
+\[
+B/D^2=a_0/D^2+a_1/D+a_2+\varepsilon'
+\]
+where
+\[
+\mathrm{Var}(\varepsilon')=\sigma^2
+\]
+Thus, the regression of the response variable $Y=B/D^2$ against the two effect variables $X_1=1/D^2$ and $X_2=1/D$ in principle satisfies the hypotheses of multiple linear regression. This regression is fitted by the ordinary least squares method. Fitting this multiple regression by the command:
+
+```{r, echo=T, results='hide'}
+summary(lm((Btot/dbh^2) ~ I(1/dbh^2)+I(1/dbh),data=dat))
+```
+
+yields:
+
+```{r}
+printCoefmat(summary(lm((Btot/dbh^2) ~ I(1/dbh^2)+I(1/dbh),data=dat))$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
+``` 
+
+where it can be seen that the coefficient associated with $X_1=1/D^2$ is not significantly different from zero. If we now return to the starting data, this means simply that the y-intercept $a_0$ is not significantly different from zero, something we had already noted in red line \@ref(exr:fDpara). Therefore, $X_1$ may be withdrawn and a simple linear regression may be fitted of $Y=B/D^2$ against $X_2=1/D$:
+
+```{r, echo=T, eval=F}
+with(dat, plot(1/dbh, Btot/dbh^2, xlab = "1/Diameter (/cm)", 
+               ylab="Biomass/square of dbh (t/cm2)"))
+m <- lm((Btot/dbh^2) ~ I(1/dbh),data = dat)
+summary(m)
+plot(m,which=1:2)
+```
+
+The scatter plot of $B/D^2$ against $1/D$ is approximately a straight line with a variance of $B/D^2$ that is approximately constant (Figure \@ref(fig:fBD2vD)). Fitting the simple linear regression yields:
+
+```{r}
+m <- lm((Btot/dbh^2) ~ I(1/dbh),data = dat)
+printCoefmat(summary(m)$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
+```
+
+with $R^2=$ `r print(summary(m)$r.squared, digits = 4)` and a residual standard deviation of `r preint(summary(m))$sigma, digits = 4)` tonnes\ cm^-2^. The model is written: $B/D^2=1.124\times10^{-3}-3.84\times10^{-3}D^{-1}$, or if we return to the starting variables: $B=-3.84\times10^{-3}D+1.124\times10^{-3}D^2$. We now need to check that this model is strictly identical to the polynomial regression of $B$ against $D$ shown in red line \@ref(exr:fDpara) with weighting proportional to $1/D^4$. The plot of the residuals against the fitted values and the quantile-quantile plot of the residuals are shown in  Figure \@ref(fig:finvDres).
+
+::::::
+
+```{r fBD2vD, fig.cap="(ref:fBD2vD)"}
+
+display_fig("fBD2vD")
+
+```
+
+```{r finvDres, fig.cap="(ref:finvDres)"}
+
+display_fig("finvDres")
+
+```
+
+\begin{figure}[htb]
+\includegraphics[width=\textwidth]{finvDres}
+\caption[Residuals plotted against fitted values (left) and quantile--quantile plot (right) of the residuals of the simple linear regression of $B/D^2$ against $1/D$ fitted for the 42 trees measured by @henry10 in Ghana]{\label{finvDres}}
+\end{figure}
 
 

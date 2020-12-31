@@ -38,3 +38,9 @@
 
 (ref:fDpara) [**$\looparrowright$\ Weighted polynomial regression between $B$ and $D$**]{color="red"}
 
+(ref:fDD2var) [**$\looparrowright$\ Polynomial regression between $B$ and $D$ with variance model**]{color="red"}
+
+(ref:fH) [**$\looparrowright$\ Linear regression between $B/D^2$ and $H$**]{color="red"}
+
+(ref:finvD) [**$\looparrowright$\ Linear regression between $B/D^2$ and $1/D$**]{color="red"}
+
