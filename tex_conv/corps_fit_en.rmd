@@ -2,54 +2,6 @@
 
 
 
-\section{Fitting a non-linear model\label{nlm}}
-
-Let us now address the more general case of fitting a non-linear model. This model is written:
-\[
-Y=f(X_1,\ \ldots,\ X_p;\theta)+\varepsilon
-\]
-where $Y$ is the response variable, $X_1$, \ldots, $X_p$ are the effect variables, $\theta$ is the vector of all the model coefficients, $\varepsilon$ is the residual error, and $f$ is a function. If $f$ is linear in relation to the coefficients $\theta$, this brings us back to the previously studied linear model. We will henceforth no longer make any a priori hypotheses concerning the linearity of $f$ in relation to coefficients $\theta$. As previously, we assume that the residuals are independent and that they follow a centered normal distribution. By contrast, we do not make any a priori hypothesis concerning their variance. $\mathrm{E}(\varepsilon)=0$ means that $\mathrm{E}(Y)=f(X_1,\ \ldots,\ X_p;\theta)$. This is why we can say that $f$ defines the mean model (i.e. for $Y$). Let us write:
-\[
-\mathrm{Var}(\varepsilon)=g(X_1,\ \ldots,\ X_p;\vartheta)
-\]
-where $g$ is a function and $\vartheta$ a set of parameters.
-As $\mathrm{Var}(Y)=\mathrm{Var}(\varepsilon)$, we can say that $g$ defines the variance model. Function $g$ may take various forms, but for biomass or volume data it is generally a power function of a variable that characterizes tree size (typically dbh). Without loss of generality, we can put forward that this effect variable is $X_1$, and therefore:
-\[
-g(X_1,\ \ldots,\ X_p;\vartheta)\equiv(kX_1^c)^2
-\]
-where $\vartheta\equiv(k,\ c)$, $k>0$ and $c\geq0$.
-
-Interpreting the results of fitting a non-linear model is fundamentally the same as for the linear model. The difference between the linear model and the non-linear model, in addition to their properties, lies in the manner by which model coefficients are estimated. Two particular approaches are used: (*i*) exponent $c$ is fixed in advance; (*ii*) exponent $c$ is a parameter to be estimated in the same manner as the model's other parameters.
-
-### Exponent known
-
-Let us first consider the case where the exponent $c$ of the variance model is known in advance. Here, the least squares method can again be used to fit the model. The weighted sum of squares corresponds to:
-\[
-\mathrm{SSE}(\theta)=\sum_{i=1}^nw_i\ \varepsilon_i^2
-=\sum_{i=1}^nw_i\ [Y_i-f(X_{i1},\ \ldots,\ X_{ip};\theta)]^2
-\]
-where the weights are inversely proportional to the variance of the residuals:
-\[
-w_i=\frac{1}{X_{i1}^{2c}}\propto\frac{1}{\mathrm{Var}(\varepsilon_i)}
-\]
-As previously, the estimator of the model's coefficients corresponds to the value of $\theta$ that minimizes the weighted sum of squares:
-\[
-\hat{\theta}=\arg\min_{\theta}\mathrm{SSE}(\theta)
-=\arg\min_{\theta}\bigg\{\sum_{i=1}^n\frac{1}{X_{i1}^{2c}}
-[Y_i-f(X_{i1},\ \ldots,\ X_{ip};\theta)]^2\bigg\}
-\]
-In the particular case where the residuals have a constant variance (i.e. $c=0$), the weighted least squares method is simplified to the ordinary least squares method (all weights $w_i$ are 1), but the principle behind the calculations remains the same. The estimator $\theta$ is obtained by resolving
-
-\begin{equation}
-\frac{\partial\mathrm{SSE}}{\partial\theta}(\hat{\theta})=0
-(\#eq:der)
-\end{equation}
-with the constraint $(\partial^2\mathrm{SSE}/\partial\theta^2)>0$ to ensure that this is indeed a minimum, not a maximum. In the previous case of the linear model, resolving (\ref{der}) yielded an explicit expression for the estimator $\hat{\theta}$. This is not the case for the general case of the non-linear model: there is no explicit expression for $\hat{\theta}$. The sum of squares must therefore be minimized using a numerical algorithm. We will examine this point in depth in section \ref{algo}.
-
-\subsubsection{*A priori* value for the exponent}
-
-The *a priori* value of exponent $c$ is obtained in the non-linear case in the same manner as for the linear case (see page \pageref{chx}): by trial and error, by dividing $X_1$ into classes and estimating the variance of $Y$ for each class, or by minimizing Furnival's index (see p.\pageref{furni}).
-
 \begin{filrouge}{Weighted non-linear regression between $B$ and $D$}{fnlsD}%
 The graphical exploration (red lines \ref{feBvD} and \ref{feln}) showed that the relation between biomass $B$ and dbh $D$ was of the power type, with the variance of the biomass increasing with dbh:
 \[
