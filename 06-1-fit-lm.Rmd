@@ -1050,9 +1050,5 @@ display_fig("finvDres")
 
 ```
 
-\begin{figure}[htb]
-\includegraphics[width=\textwidth]{finvDres}
-\caption[Residuals plotted against fitted values (left) and quantile--quantile plot (right) of the residuals of the simple linear regression of $B/D^2$ against $1/D$ fitted for the 42 trees measured by @henry10 in Ghana]{\label{finvDres}}
-\end{figure}
 
 
