@@ -127,7 +127,7 @@ with a residual standard deviation $k=$ `r print(summary(m)$sigma, digits = 4)` 
 
 (@eq-fnlsDH) (ref:fnlsDH)
 
-:::{.exercise #fnlsDH name="(ref:fnlsDH"}
+:::{.exercise #fnlsDH name="(ref:fnlsDH)"}
 \  
 :::
 
