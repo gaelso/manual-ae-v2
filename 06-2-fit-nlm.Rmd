@@ -49,4 +49,163 @@ with the constraint $(\partial^2\mathrm{SSE}/\partial\theta^2)>0$ to ensure that
 
 The *a priori* value of exponent $c$ is obtained in the non-linear case in the same manner as for the linear case `r ifelse(book_format == "latex", "(see page \\pageref{chx})", "")`: by trial and error, by dividing $X_1$ into classes and estimating the variance of $Y$ for each class, or by minimizing Furnival's index `r ifelse(book_format == "latex", "(see p.\\pageref{furni})", "")`.
 
+::::::{.filrouge data-latex=""}
+
+(@eq-fnlsD) (ref:fnlsD)
+
+:::{.exercise #fnlsD name="(ref:fnlsD)"}
+\  
+:::
+
+The graphical exploration (red lines \@ref(exr:feBvD) and \@ref(exr:feln)) showed that the relation between biomass $B$ and dbh $D$ was of the power type, with the variance of the biomass increasing with dbh:
+\[
+B=aD^b+\varepsilon
+\]
+where
+\[
+\mathrm{Var}(\varepsilon)\propto D^{2c}
+\]
+We saw in red line \@ref(exr:frlpD2H) that the conditional standard deviation of the biomass derived from the dbh was proportional to the square of the dbh: $c=2$. We can therefore fit a non-linear regression by the weighted least squares method using a weighting that is inversely proportional to $D^4$:
+
+```{r, echo=T, results='hide'} 
+start <- coef(lm(log(Btot) ~ I(log(dbh)),data=dat[dat$Btot>0,]))
+start[1] <- exp(start[1])
+names(start) <- c("a","b")
+m <- nls(Btot ~ a*dbh^b, data=dat, start=start, weights=1/dat$dbh^4)
+summary(m)
+```
+
+The non-linear regression is fitted using the `nls` command which calls on the start values of the coefficients. These start values are contained in the `start` object and are calculated by re-transforming the coefficients of the linear regression on the log-transformed data. Fitting the non-linear regression by the weighted least squares method gives:
+
+```{r}
+printCoefmat(summary(m)$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
+```
+
+with a residual standard deviation $k=$ ``r print(summary(m)$sigma, digits = 4)` tonnes\ cm^-2^. The model is therefore written: $B=2.492\times10^{-4}D^{2.346}$. Let us now return to the linear regression fitted to log-transformed data (red line \@ref(exr:rllnBvD)) which was written: $\ln(B)=-8.42722+2.36104\ln(D)$. If we return naively to the starting data by applying the exponential function (we will see in \S\ \@ref(invtra) why this is naive), the model becomes: $B=\exp(-8.42722)\times D^{2.36104}=2.188\times10^{-4}D^{2.36104}$. The model fitted by non-linear regression and the model fitted by linear regression on log-transformed data are therefore very similar.
+
+::::::
+
+
+::::::{.filrouge data-latex=""}
+
+(@eq-pfnlsD2H) (ref:fnlsD2H)
+
+:::{.exercise #fnlsD2H name="(ref:fnlsD2H)"}
+\  
+:::
+
+We have already fitted a power model $B=a(D^2H)^b$ by simple linear regression on log-transformed data (red line \@ref(exr:rllnBvD2H)). Let us now fit this model directly by non-linear regression:
+\[
+B=a(D^2H)^b+\varepsilon
+\]
+where
+\[
+\mathrm{Var}(\varepsilon)\propto D^{2c}
+\]
+In order to take account of the heteroscedasticity, and considering that the conditional standard deviation of the biomass derived from the diameter is proportional to $D^2$ (red line \@ref(exr:frlpD2H)), we can fit this non-linear model by the weighted least squares method using a weighting inversely proportional to $D^4$:
+
+```{r, echo=T, results='hide'}
+start <- coef(lm(log(Btot) ~ I(log(dbh^2*heig)), data=dat[dat$Btot>0,]))
+start[1] <- exp(start[1])
+names(start) <- c("a","b")
+m <- nls(Btot ~ a*(dbh^2*heig)^b, data=dat, start=start, weights=1/dat$dbh^4)
+summary(m)
+```
+
+As previously (red line \@ref(exr:fnlsD)), the `nls` command calls on start values for the coefficients and these are obtained from the coefficients of the multiple regression on log-transformed data. The result of the fitting is as follows:
+
+```{r}
+printCoefmat(summary(m)$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
+```
+
+with a residual standard deviation $k=$ `r print(summary(m)$sigma, digits = 4)` tonnes\ cm^-2^. The model is therefore written: $B=7.885\times10^{-5}(D^2H)^{0.9154}$. Let us now return to the linear regression fitted to log-transformed data (red line \@ref(exr:rllnBvD2H)), which was written: $\ln(B)=-8.99427+0.87238\ln(D^2H)$. If we return naively to the starting data by applying the exponential function, this model becomes: $B=\exp(-8.99427)\times D^{0.87238}=1.241\times10^{-4}D^{0.87238}$. The model fitted by non-linear regression and the model fitted by linear regression on log-transformed data are therefore very similar.
+
+::::::
+
+
+::::::{.filrouge data-latex=""}
+
+(@eq-fnlsDH) (ref:fnlsDH)
+
+:::{.exercise #fnlsDH name="(ref:fnlsDH"}
+\  
+:::
+
+We have already fitted a power model $B=aD^{b_1}H^{b_2}$ by multiple linear regression on log-transformed data (red line \@ref(exr:flnDlnH)). Let us now fit this model directly by non-linear regression:
+\[
+B=aD^{b_1}H^{b_2}+\varepsilon
+\]
+where
+\[
+\mathrm{Var}(\varepsilon)\propto D^{2c}
+\]
+In order to take account of the heteroscedasticity, and considering that the conditional standard deviation of the biomass derived from dbh is proportional to $D^2$ (red line \@ref(exr:frlpD2H)), we can fit this non-linear model by the weighted least squares method using a weighting inversely proportional to $D^4$:
+
+```{r, echo=T, results='hide'}
+start <- coef(lm(log(Btot) ~ I(log(dbh))+I(log(heig)),data=dat[dat$Btot>0,]))
+start[1] <- exp(start[1])
+names(start) <- c("a","b1","b2")
+m <- nls(Btot ~ a*dbh^b1*heig^b2,data=dat,start=start,weights=1/dat$dbh^4)
+summary(m)
+```
+
+As previously (red line \@ref(exr:fnlsD)), the `nls` command calls on start values for the coefficients and these are obtained from the coefficients of the multiple regression on log-transformed data. The result of the fitting is as follows:
+
+```{r}
+printCoefmat(summary(m)$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
+```
+
+with a residual standard deviation $k=$ `r print(summary(m)$sigma, digits = 4)` tonnes\ cm^-2^. The model is therefore written: $B=1.003\times10^{-4}D^{1.923}H^{0.7435}$. The model is similar to that fitted by multiple regression on log-transformed data (red line \@ref(exr:flnDlnH)). But coefficient $a$ is estimated with less precision here than by the multiple regression on log-transformed data.
+
+::::::
+
+
+### Estimating the exponent
+
+Let us now consider the case where the exponent $c$ needs to be estimated at the same time as the model's other parameters. This case includes the linear regression with variance model that we mentioned in section \@ref(lme). In this case the least squares method is no longer valid. We are therefore obliged to use another fitting method: the maximum likelihood method. The likelihood of an observation ($X_{i1}$, \ldots, $X_{ip}$, $Y_i$) is the probability density of observing ($X_{i1}$, \ldots, $X_{ip}$, $Y_i$) in the specified model. The probability density of a normal distribution of expectation $\mu$ and standard deviation $\sigma$ is:
+\[
+\phi(x)=\frac{1}{\sigma\sqrt{2\pi}}\exp\bigg[-\frac{1}{2}\bigg(
+\frac{x-\mu}{\sigma}\bigg)^2\bigg]
+\]
+As $Y_i$ follows a normal distribution of expectation $f(X_{i1},\ \ldots,\ X_{ip};\theta)$ and standard deviation $kX_{i1}^c$, the likelihood of the $i$th observation is:
+\[
+\frac{1}{kX_{i1}^c\sqrt{2\pi}}\exp\bigg[-\frac{1}{2}\bigg(
+\frac{Y_i-f(X_1,\ \ldots,\ X_p;\theta)}{kX_{i1}^c}\bigg)^2\bigg]
+\]
+As the observations are independent, their joint likelihood is the product of the likelihoods of each observation. The likelihood of the sample of $n$ observations is therefore:
+
+\begin{eqnarray}
+\ell(\theta,\ k,\ c) &=& \prod_{i=1}^n
+\frac{1}{kX_{i1}^c\sqrt{2\pi}}\exp\bigg[-\frac{1}{2}\bigg(
+\frac{Y_i-f(X_1,\ \ldots,\ X_p;\theta)}{kX_{i1}^c}\bigg)^2\bigg]
+(\#eq:vrais)
+\\ &=& \frac{1}{(k\sqrt{2\pi})^n}\frac{1}{(\prod_{i=1}^nX_{i1})^c}
+\exp\bigg[-\frac{1}{2}\sum_{i=1}^n\bigg(
+\frac{Y_i-f(X_1,\ \ldots,\ X_p;\theta)}{kX_{i1}^c}\bigg)^2\bigg]
+\nonumber
+\end{eqnarray}
+
+This likelihood is considered to be a function of parameters $\theta$, $k$ and $c$.
+
+The better the values of parameters $\theta$, $k$ and $c$ the higher the probability of the observations being obtained in the model corresponding to these parameter values. In other words, the best values for parameters $\theta$, $k$ and $c$ are those that maximize the likelihood of the observations. The corresponding estimator is by definition the maximum likelihood estimator, and is written:
+\[
+(\hat{\theta},\ \hat{k},\ \hat{c})=\arg\max_{(\theta,\ k,\ c)}\;
+\ell(\theta,\ k,\ c)=\arg\max_{(\theta,\ k,\ c)}\;
+\ln[\ell(\theta,\ k,\ c)]
+\]
+where the last equality stems from the fact that a function and its logarithm reach their maximum for the same values of their argument. The logarithm of the likelihood, which we call the log-likelihood and which we write $\mathcal{L}$, is easier to calculate than the likelihood, and therefore, for our calculations, it is the log-likelihood we will be seeking to maximize. In the present case, the log-likelihood is written:
+
+\begin{eqnarray}
+\mathcal{L}(\theta,\ k,\ c) &=&
+\ln[\ell(\theta,\ k,\ c)]
+(\#eq:ll)
+\\ &=& -n\ln(k\sqrt{2\pi})-c\sum_{i=1}^n\ln(X_{i1})-\frac{1}{2}\sum_{i=1}^n\bigg(
+\frac{Y_i-f(X_1,\ \ldots,\ X_p;\theta)}{kX_{i1}^c}\bigg)^2\nonumber
+\\ &=& -\frac{1}{2}\sum_{i=1}^n\bigg[\bigg(
+\frac{Y_i-f(X_1,\ \ldots,\ X_p;\theta)}{kX_{i1}^c}\bigg)^2
++\ln(2\pi)+\ln(k^2X_i^{2c})\bigg]\nonumber
+\end{eqnarray}
+
+To obtain the maximum likelihood estimators of the parameters, we would need to calculate the partial derivatives of the log-likelihood with respect to these parameters, and look for the values where they cancel each other out (while ensuring that the second derivatives are indeed negative). In the general case, there is no analytical solution to this problem. In the same manner as previously for the sum of squares, we will need to use a numerical algorithm to maximize the log-likelihood. We can show that the maximum likelihood method yields a coefficients estimator that is asymptotically (i.e. when the number $n$ of observations tends toward infinity) the best. We can also show that in the case of the linear model, the least squares estimator and the maximum likelihood estimator are the same.
+
 

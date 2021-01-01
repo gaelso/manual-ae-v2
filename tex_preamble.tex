@@ -120,6 +120,29 @@
                                    {3.25ex \@plus1ex \@minus .2ex}%
                                    {-1em}%
                                    {\sffamily\normalsize\bfseries}}
+
+%% (modification de la classe 'book.cls') -- Add content as bookmark to pdf
+\def\chapterannex#1{\chapter*{#1
+%        \@mkboth{\sc\small #1}{\sc\small #1}%% sans fancyhdr
+        \@mkboth{\sc #1}{\sc #1}%% avec fancyhdr
+        \addcontentsline{toc}{chapter}{\numberline {}#1}}%% ligne modifi?e
+    \thispagestyle{plain}}%% ligne ajout?e
+\renewcommand\tableofcontents{%
+    \if@twocolumn\@restonecoltrue\onecolumn\else\@restonecolfalse\fi
+    \chapterannex{\contentsname}
+    \@starttoc{toc}%
+    \if@restonecol\twocolumn\fi}
+\renewcommand\listoffigures{%
+    \if@twocolumn\@restonecoltrue\onecolumn\else\@restonecolfalse\fi
+    \chapterannex{\listfigurename}
+    \@starttoc{lof}%
+    \if@restonecol\twocolumn\fi}
+\renewcommand\listoftables{%
+    \if@twocolumn\@restonecoltrue\onecolumn\else\@restonecolfalse\fi
+    \chapterannex{\listtablename}
+    \@starttoc{lot}%
+    \if@restonecol\twocolumn\fi}
+
 \makeatother
 
                                    
@@ -128,10 +151,11 @@
 \AtBeginDocument{\let\maketitle\relax}
 
 %% Box 
-\usepackage[breakable]{tcolorbox}
+\usepackage[breakable, skins]{tcolorbox}
 \definecolor{boxcolor}{RGB}{255,255,255}
 \newtcolorbox{filrouge}{
   breakable,
+  enhanced,
   colback=boxcolor,
   colframe=red,
   %coltext=white,
