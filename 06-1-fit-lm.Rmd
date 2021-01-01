@@ -112,7 +112,7 @@ In the case of biological data such as tree volume or biomass, heteroscedasticit
 
 (@eq-rllnBvD) (ref:rllnBvD)
 
-:::{.exercise #rllnBvD name="(ref:rllnBvD)}
+:::{.exercise #rllnBvD name="(ref:rllnBvD)"}
 \  
 :::
 
@@ -780,7 +780,7 @@ with an estimated value of exponent $c=$ `r summary(m)$modelStruct$varStruct[[1]
 \  
 :::
 
-Pre-empting section \ref(nlm), we will fit a multiple regression of biomass against $D$ and $D^2$ by specifying a power model on the residual variance:
+Pre-empting section \@ref(nlm), we will fit a multiple regression of biomass against $D$ and $D^2$ by specifying a power model on the residual variance:
 \[
 B=a_0+a_1D+a_2D^2+\varepsilon
 \]
@@ -832,6 +832,7 @@ m <- nlme(
   )
 summary(m)$tTable
 ```
+
 with an estimated value of exponent $c=2.139967$. This value is very similar to that evaluated for the weighted polynomial regression ($c=2$ in red line \@ref(exr:fDpara)). The fitted model is therefore: $B=-3.319456\times10^{-3}D+1.067068\times10^{-3}D^2$, which is very similar to the model fitted by weighted polynomial regression (red line \@ref(exr:fDpara)).
 
 ::::::
@@ -1007,7 +1008,7 @@ display_fig("fHres")
 
 ::::::{.filrouge data-latex=""}
 
-(eq-finvD) (ref:finvD)
+(@eq-finvD) (ref:finvD)
 
 :::{.exercise #finvD name="(ref:finvD)"}
 \  

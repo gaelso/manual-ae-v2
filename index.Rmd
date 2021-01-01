@@ -4,6 +4,8 @@ subtitle: "From field measurement to prediction"
 #author: ""
 date: "August 2012"
 documentclass: book
+#lof: yes
+#lot: yes
 fontsize: 11pt
 classoption: a4paper
 geometry: "left=1.25in,right=1in,top=1.2in,bottom=1.2in"
