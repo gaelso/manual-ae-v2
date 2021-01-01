@@ -47,6 +47,6 @@ with the constraint $(\partial^2\mathrm{SSE}/\partial\theta^2)>0$ to ensure that
 
 #### *A priori* value for the exponent {-}
 
-The *a priori* value of exponent $c$ is obtained in the non-linear case in the same manner as for the linear case (see page \pageref{chx}): by trial and error, by dividing $X_1$ into classes and estimating the variance of $Y$ for each class, or by minimizing Furnival's index (see p.\pageref{furni}).
+The *a priori* value of exponent $c$ is obtained in the non-linear case in the same manner as for the linear case `r ifelse(book_format == "latex", "(see page \\pageref{chx})", "")`: by trial and error, by dividing $X_1$ into classes and estimating the variance of $Y$ for each class, or by minimizing Furnival's index `r ifelse(book_format == "latex", "(see p.\\pageref{furni})", "")`.
 
-`r ifelse(book_format == "latex", "This index is defined on page \\pageref{eq:furni}.", "")`
+

@@ -30,11 +30,13 @@ Here in this section we will focus on the graphical method used to determine the
 
 :::::: {.filrouge data-latex=""}
 
+(@eq-feBvD) (ref:feBvD)
+
 ::: {.exercise #feBvD name="(ref:feBvD)"}
 \  
 :::
 
-To visualize the form of the relation between total dry biomass and dbh, the biomass cluster of points should be plotted against dbh. As the dataset has already been read (see red line \@ref(exr:read)), the following command can be used to plot the cluster of points:
+To visualize the form of the relation between total dry biomass and dbh, the biomass cluster of points should be plotted against dbh. As the dataset has already been read (see red line \@ref(exr:read) or @eq-read), the following command can be used to plot the cluster of points:
 
 ```{r echo=T, eval=F}
 plot(dat$dbh, dat$Btot, xlab = "dbh (cm)", ylab = "Biomass (t)")
@@ -69,6 +71,8 @@ where $V$ is stand volume in m^3^\ ha^-1^, $G$ is basal area in m^2^\ ha^-1^, $H
 
 
 ::::::{.filrouge data-latex=""}
+
+(@eq-feBvD2H) (ref:feBvD2H)
 
 :::{.exercise #feBvD2H name="(ref:feBvD2H)"}
 \  
@@ -153,6 +157,8 @@ This reasoning may, in principle, be extended to any number of effect variables,
 The number of entries employed when fitting biomass or volume tables is in most cases limited to at most two or three, meaning that we generally are not faced with the problem of conducting the graphical exploration with a large number of effect variables. Otherwise, multivariate analyses such as the principal components analysis may be usefully employed [@philippeau86; @hardle03]. These analyses aim to project the observations made onto a reduced subspace (usually in two or three dimensions), constructed from linear combinations of effect variables and in such a manner to maximize the variability of the observations in this subspace. In other words, these multivariate analyses can be used to visualize relations between variables while losing as little information as possible, which is precisely the aim of graphical exploration.
 
 ::::::{.filrouge data-latex=""}
+
+(@eq-frho) (ref:frho)
 
 :::{.exercise #frho name="(ref:frho)"}
 \  
@@ -267,6 +273,8 @@ When no transformation of the variable is able to render the relation between $X
 
 ::::::{.filrouge data-latex=""}
 
+(@eq-feln) (ref:feln)
+
 :::{.exercise #feln name="(ref:feln)"}
 \ 
 :::
@@ -288,6 +296,8 @@ knitr::include_graphics(paste0(fig_path, "/flnBvlnD.png"), auto_pdf = TRUE)
 ```
 
 ::::::{.filrouge data-latex=""}
+
+(@eq-feln2) (ref:feln2)
 
 :::{.exercise #feln2 name="(ref:feln2)"}
 \ 

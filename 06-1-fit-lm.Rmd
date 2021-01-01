@@ -110,6 +110,8 @@ In the case of biological data such as tree volume or biomass, heteroscedasticit
 
 ::::::{.filrouge data-latex=""}
 
+(@eq-rllnBvD) (ref:rllnBvD)
+
 :::{.exercise #rllnBvD name="(ref:rllnBvD)}
 \  
 :::
@@ -154,6 +156,8 @@ display_fig("fBvDres")
 
 
 ::::::{.filrouge data-latex=""}
+
+(@eq-rllnBvD2H) (ref:rllnBvD2H)
 
 :::{.exercise #rllnBvD2H name="(ref:rllnBvD2H)"}
 \  
@@ -288,6 +292,8 @@ Like simple linear regression, multiple regression is based on three hypotheses:
 
 ::::::{.filrouge data-latex=""}
 
+(@eq-flnDpol) (ref:flnDpol)
+
 :::{.exercise #flnDpol name="(ref:flnDpol)"}
 \  
 :::
@@ -302,7 +308,7 @@ where
 \]
 The regression is fitted by the ordinary least squares method. As the log transformation stabilizes the residual variance, the hypotheses on which the multiple regression is based are in principle satisfied. For a second-order polynomial, the polynomial regression is fitted by the following code:
 
-```{r, echo=T, eval=F}
+```{r, echo=T, results='hide'}
 m2 <- lm(log(Btot) ~ I(log(dbh)) + I(log(dbh)^2), data=dat[dat$Btot>0,])
 print(summary(m2))
 ```
@@ -315,7 +321,7 @@ printCoefmat(summary(m2)$coef, digits = 4, signif.stars = TRUE, signif.legend = 
 
 with $R^2=$ ```r round(summary(m2)$r.squared, 4)```. And as for a third-order polynomial regression:
 
-```{r, echo=T, eval=F}
+```{r, echo=T, results='hide'}
 m3 <- lm(log(Btot) ~ I(log(dbh))+I(log(dbh)^2)+I(log(dbh)^3),
          data=dat[dat$Btot>0,])
 print(summary(m3))
@@ -329,7 +335,7 @@ printCoefmat(summary(m3)$coef, digits = 4, signif.stars = TRUE, signif.legend = 
 
 with $R^2=$ ```r round(summary(m3)$r.squared,4)```. Finally, a fourth-order polynomial regression:
 
-```{r, echo=T, eval=F}
+```{r, echo=T, results='hide'}
 m4 <- lm(log(Btot) ~ I(log(dbh))+I(log(dbh)^2)+I(log(dbh)^3)++I(log(dbh)^4),
          data=dat[dat$Btot>0,])
 print(summary(m4))
@@ -365,6 +371,8 @@ display_fig("fDpol")
 
 
 ::::::{.filrouge data-latex=""}
+
+(@eq-flnDlnH) (ref:flnDlnH)
 
 :::{.exercise #flnDlnH name="(ref:flnDlnH)"}
 \  
@@ -511,6 +519,8 @@ The third way of estimating $c$ consists in looking for the value of $c$ that mi
 
 ::::::{.filrouge data-latex=""}
 
+(@eq-frlpD2H) (ref:frlpD2H)
+
 :::{.exercise #frlpD2H name="(ref:frlpD2H)"}
 \  
 :::
@@ -616,6 +626,8 @@ display_fig("fD2Hpres")
 
 ::::::{.filrouge data-latex=""}
 
+(@eq-fDpara) (ref:fDpara)
+
 :::{.exercise #fDpara name="(ref:fDpara)"}
 \  
 :::
@@ -654,7 +666,7 @@ which yields:
 printCoefmat(summary(m)$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
 ```
 
-with a residual standard deviation $k=$ `r  print(summary(m)$sigma, digits = 4)`\ tonnes~cm^-2^ and $R^2=$ `r  print(summary(m)$r.squared, digits = 4)`. The model is highly significant (Fisher's test: $F_{2,40}=124.4$, p-value $< 2.2\times10^{-16}$) and is written: $B=-3.840\times10^{-3}D+1.124\times10^{-3}D^2$. Figure \@ref(fig:fDD2res) obtained by the command:
+with a residual standard deviation $k=$ `r  print(summary(m)$sigma, digits = 4)`\ tonnes~cm^-2^ and $R^2=$ `r  print(summary(m)$r.squared, digits = 4)`. The model is highly significant (Fisher's test: $F_{2,40}=124.4$, p-value $< 2.2\times10^{-16}$) and is written: $B=-3.840\times10^{-3}D+1.124\times10^{-3}D^2$. Figure \@ref(fig:fresDD2) obtained by the command:
 
 ```{r, echo=T, eval=F}
 plot(fitted(m),residuals(m)/dat$dbh^2,xlab="fitted values",
@@ -693,6 +705,8 @@ where:
 In its form the model is little different from the weighted regression. Regarding its content, it has one fundamental difference: the coefficients $k$ and $c$ are now model parameters that need to be estimated, in the same manner as coefficients $a_0$, $a_1$, \ldots, $a_p$. Because of these $k$ and $c$ parameters that need to be estimated, the least squares method can no longer be used to estimate model coefficients. Another estimation method has to be used, the maximum likelihood method. Strictly speaking, the model defined by \@ref(eq:modvar) and \@ref(eq:modmoy) is not a linear model. It is far closer conceptually to the non-linear model we will see in section \@ref(nlm). We will not go any further here in presenting the non-linear model: the model fitting method defined by \@ref(eq:modvar) and \@ref(eq:modmoy) will be presented as a special case of the non-linear model in section \@ref(nlm).
 
 ::::::{.filrouge data-latex=""}
+
+(@eq-fDD2var) (ref:fDD2var)
 
 :::{.exercise #fD2Hvar name="(ref:fD2Hvar)"}
 \  
@@ -759,6 +773,8 @@ with an estimated value of exponent $c=$ `r summary(m)$modelStruct$varStruct[[1]
 
 
 ::::::{.filrouge data-latex=""}
+
+(@eq-fDD2var) (ref:fDD2var)
 
 :::{.exercise #fDD2var name="(ref:fDD2var)"}
 \  
@@ -920,7 +936,7 @@ display_fig("transfo")
 
 ```
 
-As model \@refeq:rl3) was fitted by simple linear regression, its sum of squares corresponds to:
+As model \@ref(eq:rl3) was fitted by simple linear regression, its sum of squares corresponds to:
 \[
 \mathrm{SSE}(a,\ b)=\sum_{i=1}^n(Y'_i-aX'_i-b)^2
 =\sum_{i=1}^n(Y_i/X_i-a/X_i-b)^2=\sum_{i=1}^nX_i^{-2}(Y_i-a-bX_i)^2
@@ -929,9 +945,9 @@ Here we recognize the expression for the sum of squares for a weighted regressio
 
 ::::::{.filrouge data-latex=""}
 
-$\looparrowright$ (@eq-fH)
+(@eq-fH) (ref:fH)
 
-:::{.exercise #fH name="(fref:fH)"}
+:::{.exercise #fH name="(ref:fH)"}
 \  
 :::
 
@@ -955,9 +971,9 @@ yields:
 printCoefmat(summary(lm((Btot/dbh^2) ~ -1+I(1/dbh^2)+heig,data=dat))$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
 ```
 
-where it can be seen that the coefficient associated with $X_1=1/D^2$ is not significantly different from zero. If we now return to the starting data, this means simply that the y-intercept $a$ is not significantly different from zero, something we had already noted in red line \@ref(exr:frlpD2H) [or ref (@eq-frlpD2H)]. Therefore, $X_1$ may be withdrawn and a simple linear regression may be fitted of $Y=B/D^2$ against $X_2=H$:
+where it can be seen that the coefficient associated with $X_1=1/D^2$ is not significantly different from zero. If we now return to the starting data, this means simply that the y-intercept $a$ is not significantly different from zero, something we had already noted in red line \@ref(exr:frlpD2H). Therefore, $X_1$ may be withdrawn and a simple linear regression may be fitted of $Y=B/D^2$ against $X_2=H$:
 
-```{r, echo-=T, eval=F}
+```{r, echo=T, eval=F}
 with(dat,plot(heig,Btot/dbh^2,xlab="Height (m)",
               ylab="Biomass/square of dbh (t/cm2)"))
 m <- lm((Btot/dbh^2) ~ -1+heig,data=dat)
@@ -972,11 +988,11 @@ m <- lm((Btot/dbh^2) ~ -1+heig,data=dat)
 printCoefmat(summary(m)$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
 ```
 
-with $R^2=$ `r print(summary(m)$r.squared, digits = 4)` and a residual standard deviation of `r print(summary(m)$sigma, digits = 4`\ tonnes\ cm^-2^. The model is written: $B/D^2=2.747\times10^{-5}H$, or if we return to the starting variables: $B=2747\times10^{-5}D^2H$. We now need to check that this model is strictly identical to the weighted regression of $B$ against $D^2H$ shown in red line \@ref(exr:frlpD2H) with weighting proportional to $1/D^4$. The plot of the residuals against the fitted values and the quantile-quantile plot of the residuals are shown in  Figure \@ref(fig:fHres).
+with $R^2=$ `r print(summary(m)$r.squared, digits = 4)` and a residual standard deviation of `r print(summary(m)$sigma, digits = 4)`\ tonnes\ cm^-2^. The model is written: $B/D^2=2.747\times10^{-5}H$, or if we return to the starting variables: $B=2747\times10^{-5}D^2H$. We now need to check that this model is strictly identical to the weighted regression of $B$ against $D^2H$ shown in red line \@ref(exr:frlpD2H) with weighting proportional to $1/D^4$. The plot of the residuals against the fitted values and the quantile-quantile plot of the residuals are shown in  Figure \@ref(fig:fHres).
 
 ::::::
 
-```{r fBD2vH. fig.cap="(ref:fBD2vH)"}
+```{r fBD2vH, fig.cap="(ref:fBD2vH)"}
 
 display_fig("fBD2vH")
 
@@ -991,7 +1007,7 @@ display_fig("fHres")
 
 ::::::{.filrouge data-latex=""}
 
-$\looparrowright$ (eq-finvD)
+(eq-finvD) (ref:finvD)
 
 :::{.exercise #finvD name="(ref:finvD)"}
 \  
@@ -1034,7 +1050,7 @@ m <- lm((Btot/dbh^2) ~ I(1/dbh),data = dat)
 printCoefmat(summary(m)$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
 ```
 
-with $R^2=$ `r print(summary(m)$r.squared, digits = 4)` and a residual standard deviation of `r preint(summary(m))$sigma, digits = 4)` tonnes\ cm^-2^. The model is written: $B/D^2=1.124\times10^{-3}-3.84\times10^{-3}D^{-1}$, or if we return to the starting variables: $B=-3.84\times10^{-3}D+1.124\times10^{-3}D^2$. We now need to check that this model is strictly identical to the polynomial regression of $B$ against $D$ shown in red line \@ref(exr:fDpara) with weighting proportional to $1/D^4$. The plot of the residuals against the fitted values and the quantile-quantile plot of the residuals are shown in  Figure \@ref(fig:finvDres).
+with $R^2=$ `r print(summary(m)$r.squared, digits = 4)` and a residual standard deviation of `r print(summary(m)$sigma, digits = 4)`\ tonnes\ cm^-2^. The model is written: $B/D^2=1.124\times10^{-3}-3.84\times10^{-3}D^{-1}$, or if we return to the starting variables: $B=-3.84\times10^{-3}D+1.124\times10^{-3}D^2$. We now need to check that this model is strictly identical to the polynomial regression of $B$ against $D$ shown in red line \@ref(exr:fDpara) with weighting proportional to $1/D^4$. The plot of the residuals against the fitted values and the quantile-quantile plot of the residuals are shown in  Figure \@ref(fig:finvDres).
 
 ::::::
 

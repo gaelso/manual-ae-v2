@@ -22,7 +22,9 @@ bookdown::pdf_book:
     after_body: tex_after_body.tex
   latex_engine: xelatex
   citation_package: natbib
-  toc: false
+  #toc: false
+  lof: true
+  lot:true
   keep_tex: yes
   pandoc_args: ["--lua-filter=lua-redline-counter.lua"]
 

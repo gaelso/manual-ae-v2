@@ -100,10 +100,7 @@ This data formatting will be greatly facilitated if the data were initially ente
 
 ::::: {.filrouge data-latex=""}
 
-[**`RedLineCounter`**]{color="red"} (ref:read) *(simple counter: full red / 1 to n / no cross ref but list possible)*
-
-(@eq-read1) $\looparrowright$ [**Red line dataset**]{color="red"} *(\@eq- counter: not full red / 1 to n / cross ref no list)*
-
+(@eq-read) (ref:read) *(\@eq- counter: not full red / 1 to n / cross ref but no link and no list)*
 
 :::{.exercise #read name="(ref:read)"}
 \ 
