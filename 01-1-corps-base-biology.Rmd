@@ -25,7 +25,6 @@ This type of stand is characterized by a relatively homogeneous tree population:
 
 ```{r eucal, fig.align='center', fig.scap="Eucalyptus plantation in the Republic of the Congo", fig.cap="(ref:eucal)"}
 
-#knitr::include_graphics(c("images/photo_edited/eucalyptus1.jpg", "images/photo_edited/eucalyptus2.jpg"))
 euca
 
 ```
