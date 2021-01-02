@@ -44,6 +44,9 @@
 
 (ref:fH) [**$\looparrowright$\ Linear regression between $B/D^2$ and $H$**]{color="red"}
 
+(ref:fexpDpol) [**$\looparrowright$\ Non-linear regression between $B$ and a polynomial of $\ln(D)$**]{color="red"}
+
+
 (ref:finvD) [**$\looparrowright$\ Linear regression between $B/D^2$ and $1/D$**]{color="red"}
 
 
@@ -54,4 +57,13 @@
 (ref:fnlsD2H) [**$\looparrowright$\ Weighted non-linear regression between $B$ and $D^2H$**]{color="red"}
 
 (ref:fnlsDH) [**$\looparrowright$\ Weighted non-linear regression between $B$, $D$ and $H$**]{color="red"}
+
+(ref:fnlmD) [**$\looparrowright$\ Non-linear regression between $B$ and $D$ with variance model**]{color="red"}
+
+(ref:fnlmD2H) [**$\looparrowright$\ Non-linear regression between $B$ and $D^2H$ with variance model**]{color="red"}
+
+(ref:fnlmDH) [**$\looparrowright$\ Non-linear regression between $B$, $D$ and $H$ with variance model**]{color="red"}
+
+
+
 
