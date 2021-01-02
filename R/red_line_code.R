@@ -46,13 +46,13 @@ with(dat,plot(dbh^2*heig,Btot,log="xy",xlab="D2H (cm2.m)",ylab="Biomass (t)"))
 m <- lm(log(Btot) ~ I(log(dbh)),data = dat[dat$Btot>0,])
 summary(m)
 
-plot(m,which=1:2)
+#plot(m,which=1:2)
 
 ## RL08
 m <- lm(log(Btot) ~ I(log(dbh^2*heig)),data=dat[dat$Btot>0,])
 summary(m)
 
-plot(m,which=1:2)
+#plot(m,which=1:2)
 
 ## RL09
 m2 <- lm(log(Btot) ~ I(log(dbh)) + I(log(dbh)^2), data=dat[dat$Btot>0,])
@@ -67,6 +67,7 @@ print(summary(m4))
 with(dat,plot(dbh,Btot,xlab="Dbh (cm)",ylab="Biomass (t)",log="xy"))
 D <- 10^seq(par("usr")[1],par("usr")[2],length=200)
 D <- seq(0, max(dat$dbh), length=200)
+m <- lm(log(Btot) ~ I(log(dbh)),data = dat[dat$Btot>0,])
 lines(D,exp(predict(m,newdata=data.frame(dbh=D))))
 lines(D,exp(predict(m2,newdata=data.frame(dbh=D))))
 lines(D,exp(predict(m3,newdata=data.frame(dbh=D))))
