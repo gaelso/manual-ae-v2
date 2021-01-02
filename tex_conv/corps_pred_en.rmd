@@ -109,8 +109,8 @@ The third remark is that in order to calculate the confidence interval of a pred
 
 \begin{filrouge}{Confidence interval of $\ln(B)$ predicted by $\ln(D)$}{ficlnD}%
 Let us return to the simple linear regression between $\ln(B)$ and $\ln(D)$
-that was fitted in red line \ref{rllnBvD}. Let
-\texttt{m} be the object containing the fitted model (see red line \ref{rllnBvD}). The confidence intervals may be calculated using the \texttt{predict} command. For example, for a tree with a dbh of 20~cm, the 95\ \% confidence interval for the mean tree is obtained by the command:
+that was fitted in red line \@ref(exr:rllnBvD). Let
+`m` be the object containing the fitted model (see red line \@ref(exr:rllnBvD)). The confidence intervals may be calculated using the `predict` command. For example, for a tree with a dbh of 20~cm, the 95\ \% confidence interval for the mean tree is obtained by the command:
 \R{predict(m,newdata=data.frame(dbh=20),interval="confidence",level=0.95)}%
 which yields:
 \Rout{\begin{tabular}{rrrr}%
@@ -173,8 +173,8 @@ representing the variability induced by the estimation of the model's coefficien
 \begin{filrouge}{Confidence interval of $\ln(B)$ predicted by $\ln(D)$ and
 $\ln(H)$}{ficlnDH}%
 Let us return to the multiple linear regression between $\ln(B)$, $\ln(D)$
-and $\ln(H)$ that was fitted in red line \ref{flnDlnH}.
-Let \texttt{m} be the object containing the fitted model (see red line \ref{flnDlnH}). The confidence intervals may be calculated using the \texttt{predict} command. For example, for a tree with a dbh of 20~cm and a height of 20~m, the 95\ \% confidence interval for the mean tree is obtained by the command:
+and $\ln(H)$ that was fitted in red line \@ref(exr:flnDlnH).
+Let `m` be the object containing the fitted model (see red line \@ref(exr:flnDlnH)). The confidence intervals may be calculated using the `predict` command. For example, for a tree with a dbh of 20~cm and a height of 20~m, the 95\ \% confidence interval for the mean tree is obtained by the command:
 \R{predict(m,newdata=data.frame(dbh=20,haut=20),interval="confidence",level=0.95)}%
 which yields:
 \Rout{\begin{tabular}{rrrr}%
@@ -410,7 +410,7 @@ This confidence interval corresponds to the prediction for a tree selected at ra
 
 \subsection{Inverse variables transformation\label{invtra}}
 
-We saw in section \ref{trans} how a variable transformation can render linear a model that initially did not satisfy the hypotheses of the linear model. Variable transformation affects both the mean and the residual error. The same may be said of the inverse transformation, with implications on the calculation of prediction expectation. The log transformation is that most commonly used, but other types of transformation are also available.
+We saw in section \@ref(trans) how a variable transformation can render linear a model that initially did not satisfy the hypotheses of the linear model. Variable transformation affects both the mean and the residual error. The same may be said of the inverse transformation, with implications on the calculation of prediction expectation. The log transformation is that most commonly used, but other types of transformation are also available.
 
 #### Log transformation
 
@@ -445,14 +445,14 @@ If the decimal $\log_{10}$ has been used for variable transformation rather than
 \]
 
 \begin{filrouge}{Correction factor for predicted biomass}{CFB}%
-Let us return to the biomass model in red line \ref{fdens} fitted by multiple regression on log-transformed data:
+Let us return to the biomass model in red line \@ref(exr:fdens) fitted by multiple regression on log-transformed data:
 \[
 \ln(B)=-\decimal{8}{38900}+\decimal{0}{85715}\ln(D^2H)+\decimal{0}{72864}\ln(\rho)
 \]
 If we consider the starting data but use the exponential function (without taking account of the correction factor), we obtain an under-estimated prediction: 
 $B=\exp(-\decimal{8}{38900})\times
 (D^H)^{0.85715}\rho^{0.72864}=\decimal{2}{274}\times10^{-4}(D^2H)^{0.85715}\rho^{0.72864}$.
-Let \texttt{m} be the object containing the fitted model (red line 
+Let `m` be the object containing the fitted model (red line 
 \ref{fdens}). The adjustment factor 
 $\mathrm{CF}=\exp(\hat{\sigma}^2/2)$ is obtained by the command:
 \R{exp(summary(m)\$sigma\^{}2/2)}%
@@ -518,13 +518,13 @@ $\hat{\sigma}^2=(\sum_{i=1}^n\hat{\varepsilon}_i^2)/(n-p-1)$, the smearing corre
 $\hat{\sigma}\rightarrow0$, the two adjustment coefficients are equivalent.
 
 \begin{filrouge}{"Smearing" estimation of biomass}{smear}%
-Let us again return to the biomass model in red line \ref{fdens} fitted by multiple regression on log-transformed data:
+Let us again return to the biomass model in red line \@ref(exr:fdens) fitted by multiple regression on log-transformed data:
 \[
 \ln(B)=-\decimal{8}{38900}+\decimal{0}{85715}\ln(D^2H)+\decimal{0}{72864}\ln(\rho)
 \]
 The smearing correction factor may be obtained by the command:
 \R{mean(exp(residuals(m)))}%
-where \texttt{m} is the object containing the fitted model, and in this example is \decimal{1}{059859}. By way of a comparison, the previously calculated correction factor (red line \ref{CFB}) was \decimal{1}{061035}.
+where `m` is the object containing the fitted model, and in this example is \decimal{1}{059859}. By way of a comparison, the previously calculated correction factor (red line \@ref(exr:CFB)) was \decimal{1}{061035}.
 \end{filrouge}
 
 ## Predicting the volume or biomass of a stand
@@ -603,14 +603,14 @@ If we have a table that uses height as entry value, but do not have any height i
 \section{Arbitrating between different models\label{arbi}}
 
 If we want to predict the volume or biomass of given trees, we often have a choice between different models. For instance, several models may have been fitted in different places for a given species. Or we may have a local model and a pan-tropical model. Arbitrating between the different models available is not always an easy task [@henry11].
-For example, should we choose a specific, local model fitted using little data (and therefore unbiased *a priori* but with high prediction variability) or a pan-tropical, multispecific model fitted with a host of data (therefore potentially biased but with low prediction variability)? This shows how many criteria are potentially involved when making a choice: model quality (the range of its validity, its capacity to extrapolate predictions, etc.), its specificity (with local, monospecific models at one extreme and pan-tropical, multispecific models at the other), the size of the dataset used for model fitting (and therefore implicitly the variability of its predictions). Arbitrating between different models should not be confused with model selection, as described in section \ref{selmod} for when selecting models their coefficients are not yet known, and when we estimate these coefficients we are looking for the model that best fits the data. When arbitrating between models we are dealing with models already fitted and whose coefficients are known.
+For example, should we choose a specific, local model fitted using little data (and therefore unbiased *a priori* but with high prediction variability) or a pan-tropical, multispecific model fitted with a host of data (therefore potentially biased but with low prediction variability)? This shows how many criteria are potentially involved when making a choice: model quality (the range of its validity, its capacity to extrapolate predictions, etc.), its specificity (with local, monospecific models at one extreme and pan-tropical, multispecific models at the other), the size of the dataset used for model fitting (and therefore implicitly the variability of its predictions). Arbitrating between different models should not be confused with model selection, as described in section \@ref(selmod) for when selecting models their coefficients are not yet known, and when we estimate these coefficients we are looking for the model that best fits the data. When arbitrating between models we are dealing with models already fitted and whose coefficients are known.
 
 Arbitration between different models often takes place without any biomass or volume data. But the case we will focus on here is when we have a reference dataset $\mathcal{S}_n$, with $n$ observations of the response variable (volume of biomass) and the effect variables.
 
 ### Comparing using validation criteria
 
 When we have a dataset 
-$\mathcal{S}_n$, we can compare the different models available on the basis of the validation criteria described in section \ref{Ival}, by using $\mathcal{S}_n$ as the validation dataset. Given that the models do not necessarily have the same number $p$ of parameters, and in line with the parsimony principle, we should prefer the validation criteria that depend on $p$ in such a manner as to penalize those models with many parameters.
+$\mathcal{S}_n$, we can compare the different models available on the basis of the validation criteria described in section \@ref(Ival), by using $\mathcal{S}_n$ as the validation dataset. Given that the models do not necessarily have the same number $p$ of parameters, and in line with the parsimony principle, we should prefer the validation criteria that depend on $p$ in such a manner as to penalize those models with many parameters.
 
 When comparing a particular, supposedly "best" candidate model with different competitors, we can compare its predictions with those of its competitors. To do this we look to see whether or not the predictions made by its competitors are contained within the confidence interval at a significance level of $\alpha$ of the candidate model.
 

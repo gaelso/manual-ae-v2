@@ -51,10 +51,10 @@ forest  & area         & plot      & longitude & latitude & tree   & species & $
 \end{bigcenter}
 \end{table}
 
-Giving the data this structure minimizes the amount of information entered, and therefore minimizes data entry errors. An alternative consists in entering all the data in a single data table, as indicated for instance in Table \ref{one}.
-This is not recommended as data is unnecessarily repeated and therefore the risk of making data entry errors is greatly increased. For instance, in Table \ref{one} we have deliberately introduced a data entry error in the second line of the data table, where the area of forest 1, which should be 400 ha, here is 401 ha. By unnecessarily repeating the information, we find ourselves multiplying this type of inconsistency that must subsequently be corrected.
+Giving the data this structure minimizes the amount of information entered, and therefore minimizes data entry errors. An alternative consists in entering all the data in a single data table, as indicated for instance in Table \@ref(tab:one).
+This is not recommended as data is unnecessarily repeated and therefore the risk of making data entry errors is greatly increased. For instance, in Table \@ref(tab:one) we have deliberately introduced a data entry error in the second line of the data table, where the area of forest 1, which should be 400 ha, here is 401 ha. By unnecessarily repeating the information, we find ourselves multiplying this type of inconsistency that must subsequently be corrected.
 
-An effective method that can be used to resolve these nested level problems is to build a relational database. This type of database is specifically intended to manage different inter-related data tables. It removes all inconsistencies, such as that illustrated in Table \ref{one} by systematically checking relational integrity between the tables. But building a relational database requires technical knowledge, and a person with skills in this field may need to be called upon.
+An effective method that can be used to resolve these nested level problems is to build a relational database. This type of database is specifically intended to manage different inter-related data tables. It removes all inconsistencies, such as that illustrated in Table \@ref(tab:one) by systematically checking relational integrity between the tables. But building a relational database requires technical knowledge, and a person with skills in this field may need to be called upon.
 
 In brief, when entering data, it is advisable to:
 \begin{itemize}
@@ -96,25 +96,25 @@ This data formatting will be greatly facilitated if the data were initially ente
 \begin{filrouge}{Red line dataset}{read}
 To illustrate specific points in this guide we will be using a dataset collected in Ghana by @henry10. This dataset gives the dry biomass of 42 trees belonging to 16 different species in a wet tropical forest. The diameter at breast height of each tree was measured, together with its height, the diameter of its crown, the mean density of its wood, its volume, and its dry biomass in five compartments: branches, leaves, trunk, buttresses, and total biomass.
 
-Table \ref{data} gives the data @henry10
+Table \@ref(tab:data) gives the data @henry10
 as they should be presented in a spreadsheet. The data table in the spreadsheet takes the form of a data rectangle; it should not contain any empty lines or empty columns, and its layout must not deviate from this matrix-like format. Decorative effects, indentations, cells left empty to "lighten" its appearance are to be avoided as the statistical software will be unable to read a dataset that deviates from a matrix format. Column headings should be reduced to short words, or even abbreviations. Information on the significance of these variables, and their units, should be presented separately in the meta-information.
 
-If information needs to be entered about species, this should be entered in a second table as this involves two nested levels: the species level, with several trees per species, and the tree level nested in the species level. Thus, if we are looking to enter the ecological guild and the vernacular name of the species, this will generate a second Table \ref{datasp} specific to the species where the scientific name of the species is used to create the link between Table \ref{data} and Table \ref{datasp}.
+If information needs to be entered about species, this should be entered in a second table as this involves two nested levels: the species level, with several trees per species, and the tree level nested in the species level. Thus, if we are looking to enter the ecological guild and the vernacular name of the species, this will generate a second Table \@ref(tab:datasp) specific to the species where the scientific name of the species is used to create the link between Table \@ref(tab:data) and Table \@ref(tab:datasp).
 
 \paragraph{Data reading.}
 
 Let us suppose that the data formatted in the matrix format have been saved in the Excel file
-\texttt{Henry\_et\_al2010.xls}, the first worksheet of which, called 
-\texttt{biomass}, contains Table \ref{data}. In R software, these data are read using the commands:
+`Henry_et_al2010.xls`, the first worksheet of which, called 
+`biomass`, contains Table \@ref(tab:data). In R software, these data are read using the commands:
 \R{library(RODBC)%
 \\ ch <- odbcConnectExcel("Henry\_et\_al2010.xls")%
 \\ dat <- sqlFetch(ch,"biomass")%
 \\ odbcClose(ch)}%
-The data are then stored in the object \texttt{dat}.
+The data are then stored in the object `dat`.
 
 \paragraph{Data cleansing.}
 
-A few checks may be performed to verify data quality. In R, the command \texttt{summary} generates basic descriptive statistics for the variables in a data table:
+A few checks may be performed to verify data quality. In R, the command `summary` generates basic descriptive statistics for the variables in a data table:
 \R{summary(dat)}%
 In particular for diameter at breast height, the result is:
 \Rout{\begin{tabular}{l@{:}r}

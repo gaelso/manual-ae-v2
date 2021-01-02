@@ -91,9 +91,20 @@ conv_tex <- function(.file){
     )
   conv_emph
   
+  conv_texttt <- .file %>% 
+    str_extract_all(pattern = "\\\\texttt\\{[^{}]+\\}") %>%
+    unlist() %>% 
+    tibble(tex = .) %>% 
+    mutate(
+      conv = tex %>% 
+        str_replace("\\\\texttt\\{", "`") %>%
+        str_replace("\\}", "`")
+    )
+  conv_texttt
+  
   conv_ref <- .file %>% 
     str_extract_all(
-      pattern = "Figure \\\\ref\\{[^{}]+\\}|chapter \\\\ref\\{[^{}]+\\}|table \\\\ref\\{[^{}]+\\}"
+      pattern = "Figure \\\\ref\\{[^{}]+\\}|chapter \\\\ref\\{[^{}]+\\}|Table \\\\ref\\{[^{}]+\\}|section \\\\ref\\{[^{}]+\\}|red line \\\\ref\\{[^{}]+\\}"
     ) %>%
     unlist() %>% 
     tibble(tex = .) %>% 
@@ -102,8 +113,8 @@ conv_tex <- function(.file){
         str_replace("Figure \\\\ref\\{", "Figure \\\\\\\\@ref(fig:") %>%
         str_replace("Table \\\\ref\\{", "Table \\\\\\\\@ref(tab:") %>%
         str_replace("chapter \\\\ref\\{", "chapter \\\\\\\\@ref(") %>%
-        str_replace("Chapter \\\\ref\\{", "Chapter \\\\\\\\@ref(") %>%
         str_replace("section \\\\ref\\{", "section \\\\\\\\@ref(") %>%
+        str_replace("red line \\\\ref\\{", "red line \\\\\\\\@ref(exr:") %>%
         str_replace("\\}", ")")
     )
   conv_ref
@@ -137,6 +148,7 @@ conv_tex <- function(.file){
     conv_section,
     conv_textit,
     conv_emph,
+    conv_texttt,
     conv_ref,
     conv_uspace,
     conv_eqlabel
@@ -162,7 +174,7 @@ tex_list <- map(tex_files, read_file)
 names(tex_list) <- tex_names
 str(tex_list)
 
-dir.create("source/tex_conv", showWarnings = FALSE)
+dir.create("tex_conv", showWarnings = FALSE)
 
 for (i in seq_along(tex_list)){
   
@@ -182,7 +194,7 @@ for (i in seq_along(tex_list)){
   tex_conv <- str_replace_all(tex_conv, pattern = "\`\`", replacement = "\"")
   tex_conv <- str_replace_all(tex_conv, pattern = "\'\'", replacement = "\"")
   
-  write_file(tex_conv, file = paste0("source/tex_conv/", tex_names[i], ".rmd"))
+  write_file(tex_conv, file = paste0("tex_conv/", tex_names[i], ".rmd"))
   
 }
 
