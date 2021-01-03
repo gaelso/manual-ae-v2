@@ -127,20 +127,17 @@ anova(nest,comp)
 The test gives the following result:
 
 ```{r}
-
+res <- anova(nest, comp)
+attr(res, "heading") <- NULL
+res
 ```
-\Rout{\begin{tabular}{lrrrrrr}%
-  & Res.Df &    RSS & Df & Sum of Sq &      F & Pr(>F)\\ %
-1 &     38 & 6.0605 &    &           &        &       \\ %
-2 &     37 & 5.8964 &  1 &   0.16407 & 1.0295 & 0.3169\\ %
-\end{tabular}}%
-The p-value is  \decimal{0}{3169}, therefore greater than 5\ \%. The nested model (without $\ln(D)$) is therefore selected rather than the complete model.
+
+The p-value is  `r print(res[2, "Pr(>F)"], digits = 4)`, therefore greater than 5\ \%. The nested model (without $\ln(D)$) is therefore selected rather than the complete model.
 
 ::::::
 
-\begin{filrouge}{}{fboite}%
+::::::{.filrouge data-latex=""}
 
-\end{filrouge}
 
 \begin{filrouge}{Testing nested models: $\ln(H)$}{fboite2}%
 The model $\ln(B)=-\decimal{8}{42722}+\decimal{2}{36104}\ln(D)$ was obtained in red line \@ref(exr:rllnBvD) whereas red line \@ref(exr:flnDlnH) gave the model $\ln(B)=-\decimal{8}{9050}+\decimal{1}{8654}\ln(D)+\decimal{0}{7083}\ln(H)$. As the first is nested in the second, we can test for which is the best. The command 
