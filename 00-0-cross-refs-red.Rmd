@@ -65,5 +65,9 @@
 (ref:fnlmDH) [**$\looparrowright$\ Non-linear regression between $B$, $D$ and $H$ with variance model**]{color="red"}
 
 
+<!-- 6.3 -->
 
+(ref:selvar) [**$\looparrowright$\ Selecting variables**]{color="red"}
+
+(ref:fboite) [**$\looparrowright$\ Testing nested models: $\ln(D)$**]{color="red"}
 
