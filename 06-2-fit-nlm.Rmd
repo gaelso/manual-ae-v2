@@ -269,8 +269,14 @@ start <- coef(lm(log(Btot) ~ I(log(dbh^2*heig)),data=dat[dat$Btot>0,]))
 start[1] <- exp(start[1])
 names(start) <- c("a","b")
 library(nlme)
-m <- nlme(Btot ~ a * (dbh^2 * heig)^b, data = cbind(dat, g = "a"), fixed = a + b ~ 1,
-          start = start, groups = ~g, weights = varPower(form = ~dbh))
+m <- nlme(
+  model   = Btot ~ a * (dbh^2 * heig)^b, 
+  data    =  cbind(dat, g = "a"),
+  fixed   = a + b ~ 1, 
+  start   = start, 
+  groups  = ~g, 
+  weights = varPower(form = ~dbh)
+  )
 summary(m)
 ```
 
@@ -307,8 +313,14 @@ library(nlme)
 start <- coef(lm(log(Btot) ~ I(log(dbh)) + I(log(heig)), data = dat[dat$Btot>0,]))
 start[1] <- exp(start[1])
 names(start) <- c("a","b1","b2")
-m <- nlme(Btot ~ a * dbh^b1 * heig^b2, data=cbind(dat,g="a"), fixed = a + b1 + b2 ~ 1,
-          start = start, groups = ~g, weights = varPower(form = ~dbh))
+m <- nlme(
+  model   = Btot ~ a * dbh^b1 * heig^b2, 
+  data    = cbind(dat, g = "a"), 
+  fixed   = a + b1 + b2 ~ 1,
+  start   = start, 
+  groups  = ~g, 
+  weights = varPower(form = ~dbh)
+  )
 summary(m)
 ```
 
@@ -345,10 +357,15 @@ library(nlme)
 start <- coef(lm(log(Btot) ~ I(log(dbh)) + I(log(dbh)^2) + I(log(dbh)^3),
                  data=dat[dat$Btot>0,]))
 start[1] <- exp(start[1])
-names(start) <- paste("a",0:3,sep="")
-m <- nlme(Btot ~ exp(a0 + a1 * log(dbh) + a2 * log(dbh)^2 + a3 * log(dbh)^3),
-          data = cbind(dat, g = "a"), fixed = a0 + a1 + a2 + a3 ~ 1,
-          start = start, groups = ~g, weights = varPower(form = ~dbh))
+names(start) <- paste("a", 0:3, sep = "")
+m <- nlme(
+  model = Btot ~ exp(a0 + a1 * log(dbh) + a2 * log(dbh)^2 + a3 * log(dbh)^3),
+  data = cbind(dat, g = "a"), 
+  fixed = a0 + a1 + a2 + a3 ~ 1,
+  start = start, 
+  groups = ~g, 
+  weights = varPower(form = ~dbh)
+  )
 summary(m)
 ```
 
