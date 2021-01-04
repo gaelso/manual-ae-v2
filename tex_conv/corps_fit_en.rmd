@@ -2,24 +2,6 @@
 
 
 
-\begin{figure}[htbp]
-\begin{center}
-{\sffamily\bfseries A}\ifincludegraphics{height=6cm}{faicD1}%
-{\sffamily\bfseries B}\ifincludegraphics{height=6cm}{faicD2}\par\bigskip%
-{\sffamily\bfseries C}\includegraphics[width=0.49\textwidth]{faicD3}%
-{\sffamily\bfseries D}\includegraphics[width=0.49\textwidth]{faicD4}%
-\end{center}
-\caption[Biomass predictions by different tables fitted to data from 42 trees measured in Ghana by
-@henry10]{Biomass predictions by different tables fitted to data from 42 trees measured in Ghana by
-@henry10.The data are shown as points. (A)
-Tables with dbh as only entry, corresponding to red lines \ref{fDpara} (\ifelsecoul{red}{solid lines}), \ref{fDD2var} (\ifelsecoul{green}{dashed line}), \ref{fnlsD}
-(\ifelsecoul{blue}{dotted line}) and \ref{fnlmD}
-(\ifelsecoul{magenta}{dashes and dots}). (B) Tables with $D^2H$
-as the only effect variable, corresponding to red lines \ref{frlpD2H} (\ifelsecoul{red}{solid line}), \ref{fD2Hvar} (\ifelsecoul{green}{dashed line}), \ref{fnlsD2H}
-(\ifelsecoul{blue}{dotted line}) and \ref{fnlmD2H}
-(\ifelsecoul{magenta}{dashes and dots}). (C) Table corresponds to red line \@ref(exr:fnlsDH). (D) Table corresponds to red line \@ref(exr:fnlmDH).\label{fpredB}}
-\end{figure}
-
 \begin{table}
 \caption[AIC values for 10 biomass tables fitted to data from 42 trees measured in Ghana by @henry10]{AIC values for 10 biomass tables fitted to data from 42 trees measured in Ghana by @henry10. These 10 tables directly predict biomass.\label{fAICD}}
 

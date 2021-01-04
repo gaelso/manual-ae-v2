@@ -149,5 +149,6 @@ with $\mbox{E}(Y)=X_1+X_2$.
 
 (ref:sp) Representation of the target function (*i.e.* the quantity to be minimized) as a surface in parameter space. Each position in this space corresponds to a value of the parameters. The successive values $\theta_1$, $\theta_2$, \ldots, for the parameters are obtained from a start value $\theta_0$ by descending the surface along the line with the steepest slope.(A) The surface has a single watershed. (B) The surface has several watersheds.
 
-
+(ref:fpredB) Biomass predictions by different tables fitted to data from 42 trees measured in Ghana by @henry10. The data are shown as points. (A)
+Tables with dbh as only entry, corresponding to red lines \@ref(exr:fDpara) (`r ifelse(with_color, "red", "solid lines")`), \@ref(exr:fDD2var) (`r ifelse(with_color, "green","dashed line")`), \@ref(exr:fnlsD) (`r ifelse(with_color, "blue", "dotted line")`) and \@ref(exr:fnlmD) (`r ifelse(with_color, "magenta", "dashes and dots")`). (B) Tables with $D^2H$ as the only effect variable, corresponding to red lines \@ref(exr:frlpD2H) (`r ifelse(with_color, "red", "solid line")`), \@ref(exr:fD2Hvar) (`r ifelse(with_color, "green", "dashed line")`), \@ref(exr:fnlsD2H) (`r ifelse(with_color, "blue", "dotted line")`) and \@ref(exr:fnlmD2H) (`r ifelse(with_color, "magenta", "dashes and dots")`). (C) Table corresponds to red line \@ref(exr:fnlsDH). (D) Table corresponds to red line \@ref(exr:fnlmDH).
 

@@ -212,7 +212,7 @@ lines(D, predict(m, newdata = data.frame(dbh = D)), col = "red")
 For a model `m` that has dbh and height as entries, its predictions may be obtained as follows:
 
 ```{r, echo=T, eval=F}
-## Red line 22
+## model red line 22
 library(nlme)
 start <- coef(lm(log(Btot) ~ I(log(dbh)) + I(log(heig)), data = dat[dat$Btot>0,]))
 start[1] <- exp(start[1])
@@ -226,22 +226,11 @@ m <- nlme(
   weights = varPower(form = ~dbh)
   )
 
+## Predictions
 D <- seq(0,180,length=20)
 H <- seq(0,61,length=20)
-DH <- expand.grid(dbh=D, heig=H)
-B <- matrix(fixef(m)["a"] * DH$dbh^fixef(m)["b1"] * DH$heig^fixef(m)["b2"] , length(D))
-newdata <- 
-B <- matrix(predict(m, newdata = expand.grid(dbh = D, heig = H)), length(D))
-
-## red line 19
-start <- coef(lm(log(Btot) ~ I(log(dbh^2*heig)), data=dat[dat$Btot>0,]))
-start[1] <- exp(start[1])
-names(start) <- c("a","b")
-m <- nls(Btot ~ a*(dbh^2*heig)^b, data=dat, start=start, weights=1/dat$dbh^4)
-
-D <- seq(0,180,length=20)
-H <- seq(0,61,length=20)
-B <- matrix(predict(m, newdata = expand.grid(dbh = D, heig = H)), length(D))
+newdata <- data.frame(expand.grid(dbh=D, heig=H), g = "a")
+B <- matrix(predict(m, newdata), length(D))
 ```
 
 and a plot of the biomass response surface against diameter and height may be obtained by:
@@ -251,15 +240,30 @@ M <- persp(D,H,B,xlab="Dbh (cm)",ylab="Height (m)",
            zlab="Biomass (t)", ticktype="detailed", theta = -30, phi = 20)
 points(trans3d(dat$dbh,dat$heig,dat$Btot,M))
 ```
+
 Given a fitted model `m`, its AIC may be calculated by the command: 
-\R{AIC(m)}%
-AIC values for the 10 models listed above are given in Table \@ref(tab:fAICD). This table illustrates a problem that arises with several statistical software packages, including R: when we maximize the log-likelihood (\ref{ll}), the constants (such as $-n\ln(2\pi)/2$) no longer play any role. The constant we use to calculate the log-likelihood, and by consequence AIC, is therefore a matter of convention, and different constants are used depending on the calculation. Thus, in Table \@ref(tab:fAICD), we can see that the values of AIC in models fitted by the `nls` command are substantially higher than those in the other models: it is not that these models are substantially worse than the others, it is simply that the `nls` command uses a constant different from the others to calculate the log-likelihood. Therefore, with R, it should be remembered that the values of AIC should be compared only for models that have been fitted using the same command.
-In our present case, if we compare the two models that were fitted with the `lm` command, the best (i.e. that with the smallest AIC) is that which has $D^2H$ as effect variable (red line \@ref(exr:frlpD2H)). If we compare the five models fitted with the `nlme` command, the best is again that with $D^2H$ as effect variable (red line \@ref(exr:fD2Hvar)). And if we compare the three models fitted with the `nls` command, the best is yet again that with $D^2H$ as effect variable (red line \@ref(exr:fnlsD2H)). It may therefore be concluded that whatever fitting method is used, the biomass table that uses $D^2H$ as effect variable is the best.
+
+```{r, echo=T, results='hide'}
+AIC(m)
+```
+
+AIC values for the 10 models listed above are given in Table \@ref(tab:fAICD). This table illustrates a problem that arises with several statistical software packages, including R: when we maximize the log-likelihood \@ref(eq:ll), the constants (such as $-n\ln(2\pi)/2$) no longer play any role. The constant we use to calculate the log-likelihood, and by consequence AIC, is therefore a matter of convention, and different constants are used depending on the calculation. Thus, in Table \@ref(tab:fAICD), we can see that the values of AIC in models fitted by the `nls` command are substantially higher than those in the other models: it is not that these models are substantially worse than the others, it is simply that the `nls` command uses a constant different from the others to calculate the log-likelihood. Therefore, with R, it should be remembered that the values of AIC should be compared only for models that have been fitted using the same command. In our present case, if we compare the two models that were fitted with the `lm` command, the best (i.e. that with the smallest AIC) is that which has $D^2H$ as effect variable (red line \@ref(exr:frlpD2H)). If we compare the five models fitted with the `nlme` command, the best is again that with $D^2H$ as effect variable (red line \@ref(exr:fD2Hvar)). And if we compare the three models fitted with the `nls` command, the best is yet again that with $D^2H$ as effect variable (red line \@ref(exr:fnlsD2H)). It may therefore be concluded that whatever fitting method is used, the biomass table that uses $D^2H$ as effect variable is the best.
 
 ::::::
 
-\begin{filrouge}{}{selB}%
-\end{filrouge}
+```{r fpredB, fig.ncol=2, fig.subcap = c("", "", "", ""), out.extra="", fig.show='hold', fig.scap="Biomass predictions by different tables fitted to data from 42 trees measured in Ghana by @henry10", fig.cap="(ref:fpredB)"}
 
+knitr::include_graphics(c(paste0(fig_path, "/faicD1.png"), paste0(fig_path, "/faicD2.png"), paste0(fig_path, "/faicD3.png"), paste0(fig_path, "/faicD4.png")), auto_pdf = TRUE)
+
+```
+\begin{figure}[htbp]
+\begin{center}
+{\sffamily\bfseries A}\ifincludegraphics{height=6cm}{faicD1}%
+{\sffamily\bfseries B}\ifincludegraphics{height=6cm}{faicD2}\par\bigskip%
+{\sffamily\bfseries C}\includegraphics[width=0.49\textwidth]{faicD3}%
+{\sffamily\bfseries D}\includegraphics[width=0.49\textwidth]{faicD4}%
+\end{center}
+\caption[]{\label{fpredB}}
+\end{figure}
 
 

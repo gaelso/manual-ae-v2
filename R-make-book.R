@@ -17,6 +17,8 @@ img_path <- ifelse(img_res == "low", "source/photo_lowres", "source/photo_hires"
 
 fig_path <- "source/figures"
 
+with_color <- TRUE ## FALSE for black and white, not fully supported yet
+
 ## Source R scripts
 source("R/00-libs.R")
 
