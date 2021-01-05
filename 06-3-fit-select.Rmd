@@ -414,8 +414,19 @@ where
 \[
 \varepsilon\sim\mathcal{N}(0,\ \sigma)
 \]
-Here again, the structure of the errors is not the same in the three cases, but all can correctly reflect the heteroscedasticity of the biomass.
-In most cases, the different fitting methods give very similar results in terms of predictions. Should any doubt persist regarding the most appropriate fitting method, then model selection methods may be employed to decide. But in practice the choice of a particular fitting method results rather from the importance given to the respective advantages and drawbacks of each method. Multiple regression has the drawback of imposing constraints on the form of the residuals, and has less flexibility for the mean model. By contrast, it has the advantage of offering an explicit expression for the estimators of the model's coefficients: there is therefore no risk of having erroneous estimators for the coefficients. The non-linear model has the advantage of not imposing any constraints on the mean model or the variance model. Its drawback is that it does not have an explicit expression for parameter estimators: there is therefore the risk of having erroneous parameter estimators.
+Here again, the structure of the errors is not the same in the three cases, but all can correctly reflect the heteroscedasticity of the biomass. In most cases, the different fitting methods give very similar results in terms of predictions. Should any doubt persist regarding the most appropriate fitting method, then model selection methods may be employed to decide. But in practice the choice of a particular fitting method results rather from the importance given to the respective advantages and drawbacks of each method. Multiple regression has the drawback of imposing constraints on the form of the residuals, and has less flexibility for the mean model. By contrast, it has the advantage of offering an explicit expression for the estimators of the model's coefficients: there is therefore no risk of having erroneous estimators for the coefficients. The non-linear model has the advantage of not imposing any constraints on the mean model or the variance model. Its drawback is that it does not have an explicit expression for parameter estimators: there is therefore the risk of having erroneous parameter estimators.
+
+::::::{.filrouge data-latex=""}
+
+(@eq-fmeth) (ref:fmeth)
+
+:::{.exercise #fmeth name="(ref:fmeth)"}
+\  
+:::
+
+
+
+::::::
 
 \begin{filrouge}{Power model fitting methods}{fmeth}%
 We have already taken a look at three methods for fitting the power model $B=aD^b$:
