@@ -75,4 +75,4 @@
 
 (ref:selB) [**$\looparrowright$\ Selecting models with $B$ as response variable**]{color="red"}
 
-
+(ref:sellnB) [**$\looparrowright$\ Selecting models with $\ln(B)$ as response variable**]{color="red"}

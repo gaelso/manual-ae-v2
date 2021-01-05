@@ -171,4 +171,19 @@ kab_fAICD <- tibble(
 kab_fAICD 
 
 
-
+kab_fAIClnD <- tibble(
+  rl = c(
+    "(ref:col-rllnBvD)", "(ref:col-rllnBvD2H)", "(ref:col-flnDlnH)", "(ref:col-selvar)"
+  ),
+  entry = c(
+    "$D$", "$D^2H$", rep("$D$, $H$", 2)
+  ),
+  meth = rep("OLS", 4),
+  r = c(
+    rep("(ref:lm)", 4)
+  ),
+  AIC = c(
+    56.97923, 46.87780, 48.21367, 45.96998
+  )
+)
+kab_fAIClnD 
