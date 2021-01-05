@@ -147,3 +147,28 @@ kab_prim <- bind_rows(
 )
 kab_prim
 
+###
+### Tables Chapter 6 -----------------------------------------------------------
+
+kab_fAICD <- tibble(
+  rl = c(
+    "(ref:col-fDpara)", "(ref:col-fDD2var)", "(ref:col-fnlsD)", "(ref:col-fnlmD)",
+    "(ref:col-frlpD2H)", "(ref:col-fD2Hvar)", "(ref:col-fnlsD2H)", "(ref:col-fnlmD2H)",
+    "(ref:col-fnlsDH)", "(ref:col-fnlmDH)"
+  ),
+  entry = c(
+    rep("$D$", 4), rep("$D^2H$", 4), rep("$D$, $H$", 2)
+  ),
+  meth = rep(c("WLS", "ML"), 5),
+  r = c(
+    rep(c("(ref:lm)", "(ref:nlme)", "(ref:nls)", "(ref:nlme)"), 2), "(ref:nls)", "(ref:nlme)"
+  ),
+  AIC = c(
+    76.71133, 83.09157, 24809.75727, 75.00927, 65.15002, 
+    69.09644, 24797.53706, 69.24482, 24802.91248, 76.80204
+  )
+)
+kab_fAICD 
+
+
+

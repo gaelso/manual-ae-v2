@@ -2,29 +2,6 @@
 
 
 
-\begin{table}
-\caption[AIC values for 10 biomass tables fitted to data from 42 trees measured in Ghana by @henry10]{AIC values for 10 biomass tables fitted to data from 42 trees measured in Ghana by @henry10. These 10 tables directly predict biomass.\label{fAICD}}
-
-\begin{center}
-\begin{tabular}{|rlllr|}\hline
-Red           & Entry    & Fitting$^*$& Command       & AIC                     \\ %
-line          &          & method     & R             &                         \\\hline%
-\ref{fDpara}  & $D$      & WLS        & `lm`   & \decimal{76}{71133}     \\ %
-\ref{fDD2var} & $D$      & ML         & `nlme` & \decimal{83}{09157}     \\ %
-\ref{fnlsD}   & $D$      & WLS        & `nls`  & \decimal{24\ 809}{75727}\\ %
-\ref{fnlmD}   & $D$      & ML         & `nlme` & \decimal{75}{00927}     \\ %
-\ref{frlpD2H} & $D^2H$   & WLS        & `lm`   & \decimal{65}{15002}     \\ %
-\ref{fD2Hvar} & $D^2H$   & ML         & `nlme` & \decimal{69}{09644}     \\ %
-\ref{fnlsD2H} & $D^2H$   & WLS        & `nls`  & \decimal{24\ 797}{53706}\\ %
-\ref{fnlmD2H} & $D^2H$   & ML         & `nlme` & \decimal{69}{24482}     \\ %
-\ref{fnlsDH}  & $D$, $H$ & WLS        & `nls`  & \decimal{24\ 802}{91248}\\ %
-\ref{fnlmDH}  & $D$, $H$ & ML         & `nlme` & \decimal{76}{80204}     \\ %
-\hline
-\end{tabular}
-\end{center}
-{\footnotesize$^*$WLS = weighted least squares, ML = maximum likelihood}
-\end{table}
-
 \begin{filrouge}{Selecting models with $\ln(B)$ as response variable}{sellnB}%
 The following models with $\ln(B)$ as response variable were fitted:
 \begin{itemize}

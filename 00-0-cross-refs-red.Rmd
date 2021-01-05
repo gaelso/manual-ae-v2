@@ -71,7 +71,7 @@
 
 (ref:fboite) [**$\looparrowright$\ Testing nested models: $\ln(D)$**]{color="red"}
 
-(ref:boite2) [**$\looparrowright$\ Testing nested models: $\ln(H)$**]{color="red"}
+(ref:fboite2) [**$\looparrowright$\ Testing nested models: $\ln(H)$**]{color="red"}
 
 (ref:selB) [**$\looparrowright$\ Selecting models with $B$ as response variable**]{color="red"}
 
