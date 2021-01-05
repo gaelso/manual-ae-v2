@@ -341,8 +341,7 @@ display_table()
 ```
 
 
-
-\subsubsection{Models with different response variables\label{furni}}
+#### Models with different response variables {.unnumbered  #furni}
 
 The more general case is when we want to compare two models that do not have the same response variable because one is a transform of the other. For example, the models $B=aD^b+\varepsilon$ and $\ln(B)=a+b\ln(D)+\varepsilon$ both predict biomass, but the response variable is $B$ in one case and $\ln(B)$ in the other. In this case, we cannot use the AIC or BIC to compare the models. By contrast, @furnival61 index can in this case be used to compare the models. The model with the smallest Furnival's index is considered to be the best [@parresol99].
 
@@ -353,32 +352,31 @@ F=\frac{\hat{\sigma}}{\sqrt[n]{\prod_{i=1}^n\psi'(B_i)}}
 \]
 where $\hat{\sigma}$ if the estimation of the residual standard deviation of the fitted model and $B_i$ is the biomass of the $i$th tree measured. When there is no transformation of variables, $\psi$ is the identity function and Furnival's index $F$ is then equal to the residual standard deviation $\hat{\sigma}$. The most common variable transformation is the log transformation:
 $\psi(B)=\ln(B)$ and $\psi'(B)=1/B$, in which case Furnival's index is:
-
 \[
 F_{\ln}=\hat{\sigma}\sqrt[n]{\textstyle\prod_{i=1}^nB_i}
 =\exp\Big(\frac{1}{n}\sum_{i=1}^n\ln(B_i)\Big)\ \hat{\sigma}
 \]
-
 For linear regressions where the residual variance is assumed to be proportional to a power of an effect variable $X_1$, a trick can nevertheless be used to define Furnival's index. The linear regression:
 
 \begin{equation}
 Y=a_0+a_1X_1+a_2X_2+\ldots+a_pX_p+\varepsilon(\#eq:F1)
 \end{equation}
-where $\mbox{Var}(\varepsilon)=(kX_1^c)^2$; is strictly identical to the linear regression (see p.\pageref{apart}):
+
+where $\mbox{Var}(\varepsilon)=(kX_1^c)^2$; is strictly identical to the linear regression`r ifelse(book_format == "latex, " (see p. \\pageref{apart})", "")`:
+
 \begin{equation}
 Y'=a_0X_1^{-c}+a_1X_1^{1-c}+a_2X_2X_1^{-c}+\ldots+
 a_pX_pX_1^{-c}+\varepsilon'(\#eq:F2)
 \end{equation}
-where $Y'=YX_1^{-c}$, $\varepsilon'=\varepsilon X_1^{-c}$ and
-$\mbox{Var}(\varepsilon')=k^2$. As model (\ref{F2}) has constant residual variance, its Furnival's index is defined.
-By extension, we can define the Furnival index of model (\ref{F1}) as being the Furnival index of model (\ref{F2}). If $Y=\psi(B)$, then $Y'=X_1^{-c}\psi(B)$, such that Furnival's index is:
 
+where $Y'=YX_1^{-c}$, $\varepsilon'=\varepsilon X_1^{-c}$ and $\mbox{Var}(\varepsilon')=k^2$. As model \@ref(eq:F2) has constant residual variance, its Furnival's index is defined. By extension, we can define the Furnival index of model \@ref(eq:F1) as being the Furnival index of model \@ref(eq:F2). If $Y=\psi(B)$, then $Y'=X_1^{-c}\psi(B)$, such that Furnival's index is:
 \[
 F=\frac{\hat{k}}{\sqrt[n]{\prod_{i=1}^nX_{i1}^{-c}\psi'(B_i)}}
 =\exp\Big(\frac{1}{n}\sum_{i=1}^n\{c\ln(X_{i1})-\ln[\psi'(B_i)]\}
 \Big)\ \hat{k}
 \]
-Therefore, Furnival's index can be used to select the value of exponent $c$ in a weighted regression (see p.\pageref{chx}).
+Therefore, Furnival's index can be used to select the value of exponent $c$ in a weighted regression`r ifelse(book_format == "latex, " (see p. \\pageref{chx})", "")`.
+
 
 ### Choosing a fitting method
 
