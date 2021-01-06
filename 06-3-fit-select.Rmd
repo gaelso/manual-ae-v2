@@ -31,6 +31,7 @@ Several methods may be used to select the best combination of effect variables. 
 
 The so-called *stepwise* method is a further improvement upon the previous algorithm that consists in performing an additional Fisher's significance test at each step such as not to introduce a non-significant variable and possibly eliminate variables that have already been introduced but are no longer informative given the last variable selected. The algorithm stops when no more variables can be added or withdrawn. The different step-by-step selection methods do not necessarily give the same result, but the "stepwise" method would appear to be the best. They do not, however, safeguard from the untimely removal of variables that are actually significant, which may well bias the result. And in connection with this, it should be recalled that if we know (for biological reasons) why a variable should be included in a model (e.g. wood specific density), it is not because a statistical test declares it non-significant that it should be rejected (because of the test's type II error).
 
+
 :::::::{.filrouge data-latex=""}
 
 (@eq-selvar) (ref:selvar)
@@ -74,9 +75,12 @@ $\ln(B)=-6.50202+0.23756[\ln(D)]^2+1.01874\ln(H)$, with a residual standard devi
 ::::::
 
 
+
+
 ### Selecting models {#selmod}
 
 Given two competitor models that predict the same response variable to within one transformation of a variable, which should we choose? Let us look at a few different cases before answering this question.
+
 
 #### Nested models {-}
 
@@ -101,6 +105,7 @@ where $\theta_0=(a_0,\ \ldots,\ a_{p'})$ and $\theta_1=(a_{p'+1},\ \ldots,\ a_p)
 In the case of nested models, a statistical test can be used to test one of the models against the other. The null hypothesis of this test is that $\theta_1=\mathbf{0}$, i.e. the additional terms are not significant, which can also be expressed as: the nested model is better than the complete model. If the p-value of this test proves to be below the significance level (typically 5\ \%), then the null hypothesis is rejected, i.e. the complete model is best. Conversely, if the p-value is above the significance threshold, the nested model is considered to be the best.
 
 In the case of the linear model \@ref(eq:emblm), the test statistic is a ratio of the mean squares, which under the null hypothesis follows Fisher's distribution. This is the same type of test as that used to test the overall significance of a multiple regression, or that used in the "stepwise" method of selecting variables. In the general case of the non-linear model \@ref(eq:embnl), the test statistic is a likelihood ratio, such that $-2\log$(likelihood ratio) under the null hypothesis follows a $\chi^2$ distribution.
+
 
 ::::::{.filrouge data-latex=""}
 
@@ -179,6 +184,7 @@ The BIC is similar in expression to the AIC, but with a term that penalizes more
 \]
 where $n$ is the number of observations. Here again, the best model is that with the smallest value of BIC. When fitting volume or biomass tables, AIC is used rather than BIC as a model selection criterion.
 
+
 ::::::{.filrouge data-latex=""}
 
 (@eq-selB) (ref:selB)
@@ -203,7 +209,7 @@ The following models with B as response variable were fitted:
 The models in red lines \@ref(exr:fDpara), \@ref(exr:fDD2var), \@ref(exr:frlpD2H) and \@ref(exr:fD2Hvar) are fitted by linear regression while the others are fitted by non-linear regression. These models have five distinct forms, with two fitting methods for each: using a weighted regression by the weighted least squares method (red lines \@ref(exr:fDpar), \@ref(exr:fnlsD), \@ref(exr:frlpD2H), \@ref(exr:fnlsD2H) and \@ref(exr:fnlsDH)) or using a regression with variance model by the maximum likelihood method (red lines \@ref(exr:fDD2var), \@ref(exr:fnlmD), \@ref(exr:fD2Hvar), \@ref(exr:fnlmD2H) and \@ref(exr:fnlmDH)). The predictions made by these different models are shown in  Figure \@ref(fig:fpredB). Let `m` be one of the fitted models with dbh as the only entry. A plot of the predictions made by this model may be obtained as follows:
 
 ```{r, echo=T, eval=F}
-m <-  lm(Btot ∼ dbh + I(dbh^2), data = dat, weights = 1/dat$dbh^4) ## ex: red line 14
+m <-  lm(Btot ~ dbh + I(dbh^2), data = dat, weights = 1/dat$dbh^4) ## ex: red line 14
 with(dat, plot(dbh, Btot, xlab = "Dbh (cm)", ylab = "Biomass (t)"))
 D <- seq(par("usr")[1], par("usr")[2], length=200)
 lines(D, predict(m, newdata = data.frame(dbh = D)), col = "red")
@@ -247,11 +253,13 @@ Given a fitted model `m`, its AIC may be calculated by the command:
 AIC(m)
 ```
 
+
 AIC values for the 10 models listed above are given in Table \@ref(tab:fAICD). This table illustrates a problem that arises with several statistical software packages, including R: when we maximize the log-likelihood \@ref(eq:ll), the constants (such as $-n\ln(2\pi)/2$) no longer play any role. The constant we use to calculate the log-likelihood, and by consequence AIC, is therefore a matter of convention, and different constants are used depending on the calculation. Thus, in Table \@ref(tab:fAICD), we can see that the values of AIC in models fitted by the `nls` command are substantially higher than those in the other models: it is not that these models are substantially worse than the others, it is simply that the `nls` command uses a constant different from the others to calculate the log-likelihood. Therefore, with R, it should be remembered that the values of AIC should be compared only for models that have been fitted using the same command. In our present case, if we compare the two models that were fitted with the `lm` command, the best (i.e. that with the smallest AIC) is that which has $D^2H$ as effect variable (red line \@ref(exr:frlpD2H)). If we compare the five models fitted with the `nlme` command, the best is again that with $D^2H$ as effect variable (red line \@ref(exr:fD2Hvar)). And if we compare the three models fitted with the `nls` command, the best is yet again that with $D^2H$ as effect variable (red line \@ref(exr:fnlsD2H)). It may therefore be concluded that whatever fitting method is used, the biomass table that uses $D^2H$ as effect variable is the best.
 
 ::::::
 
-```{r fpredB, fig.ncol=2, fig.subcap = c('(A)', '(B)', '(C)', '(D)'), out.extra="", fig.show='hold', out.width="50%", out.height="50%", fig.scap="Biomass predictions by different tables fitted to data from 42 trees measured in Ghana by @henry10", fig.cap="(ref:fpredB)"}
+
+```{r fpredB, fig.ncol=2, fig.subcap = c('', '', '', ''), out.extra="", fig.show='hold', out.width="50%", out.height="50%", fig.scap="Biomass predictions by different tables fitted to data from 42 trees measured in Ghana by @henry10", fig.cap="(ref:fpredB)"}
 
 knitr::include_graphics(c(paste0(fig_path, "/faicD1.png"), paste0(fig_path, "/faicD2.png"), paste0(fig_path, "/faicD3.png"), paste0(fig_path, "/faicD4.png")), auto_pdf = TRUE)
 
@@ -264,15 +272,17 @@ kab_opt <- list(
   caption = "(ref:fAICD)",
   caption.short = "AIC values for 10 biomass tables fitted to data from 42 trees measured in Ghana by @henry10",
   col.names = linebreak(c("Red \nline", "Entry", "Fitting$^*$\nmethod", "R \ncommand", "AIC")),
-  #align = "ccccccccccccc",
+  align = "ccccccccccccc",
   booktabs = TRUE,
   escape = F
   )
 
+#do.call(kable, c(kab_opt, format = book_format, linesep = ""))
 display_table() %>%
   footnote(symbol = "WLS = weighted least squares, ML = maximum likelihood")
 
 ```
+
 
 ::::::{.filrouge data-latex=""}
 
@@ -287,20 +297,20 @@ The following models with $\ln(B)$ as response variable were fitted:
 - red line \@ref(exr:rllnBvD) or \@ref(exr:flnDpol): $\ln(B)=-8.42722+2.36104\ln(D)$
 - red line \@ref(exr:rllnBvD2H): $\ln(B)=-8.99427+0.87238\ln(D^2H)$
 - red line \@ref(exr:flnDlnH): $\ln(B)=-8.9050+1.8654\ln(D)+0.7083\ln(H)$
-- red line \@ref(exr:selvar): $\ln(B)=-6.50202+0.23756[\ln(D)]^2+1.01874\ln(H)$
+- red line \@ref(exr:selvar): $\ln(B)=-6.50202+0.23756[\ln(D)]^2+1.01874\ln(H)$ 
 
 All these models were fitted using linear regression by the ordinary least squares method. A plot of the predictions on a log scale for model `m` with dbh as only entry may be obtained by the following command:
 
-```{r, echo=T, results='hide'}
+```{r, echo=T, eval=FALSE}
 m <- lm(log(Btot) ~ I(log(dbh)),data=dat[dat$Btot>0,]) ## red line 7
-with(dat, plot(dbh, Btot, xlab="Dbh (cm)", ylab="Biomass (t)", log="xy"))
+with(dat[dat$Btot>0,], plot(dbh, Btot, xlab="Dbh (cm)", ylab="Biomass (t)", log="xy"))
 D <- 10^par("usr")[1:2]
 lines(D, exp(predict(m, newdata = data.frame(dbh = D))))
 ```
 
 For a model that uses both dbh and height as entries, a plot on a log scale may be obtained by the command:
 
-```{r, echo=T, results='hide'}
+```{r, echo=T, eval=FALSE}
 m <- lm(log(Btot) ~ I(log(dbh)) + I(log(heig)), data = dat[dat$Btot>0,]) ## red line 10
 D <- exp(seq(log(1), log(180), length = 20))
 H <- exp(seq(log(1), log(61), length=20))
@@ -312,12 +322,14 @@ points(trans3d(log(dat$dbh), log(dat$heig), log(dat$Btot), M))
 
 Predictions of $\ln(B)$ by the four models are given in  Figure \@ref(fig:fpredlnB). Given a fitted model `m`, its AIC may be calculated by the command:
 
-```{r, echo=T, results='hide'}
+```{r, echo=T, EVAL=FALSE}
 AIC(m)
 ```
 
 Table \@ref(tab:fAIClnD) gives AIC values for the four models. As all four models were fitted by the same `lm` command, the AIC values are directly comparable. The best model, i.e. that with the smallest AIC, is the fourth (red line \@ref(exr:selvar)). It should also be noted that an AIC-based classification of these models is entirely consistent with the results of the nested models tests performed previously (red lines \@ref(exr:fboite) and \@ref(exr:fboite2)).
+
 ::::::
+
 
 ```{r fpredlnB, fig.ncol=2, fig.subcap = c('', '', '', ''), out.extra="", fig.show='hold', out.width="50%", out.height="50%", fig.scap="Biomass predictions by different tables fitted to data from 42 trees measured in Ghana by Henry *et al.* (2010)", fig.cap="(ref:fpredlnB)"}
 
@@ -326,18 +338,20 @@ knitr::include_graphics(c(paste0(fig_path, "/faiclnD1.png"), paste0(fig_path, "/
 ```
 
 ```{r fAIClnD}
+
 kab_opt <- list(
   x = kab_fAIClnD,
   caption = "(ref:fAIClnD)",
-  caption.short = "AIC values for four biomass tables fitted to data from 42 trees measured in Ghana by 
-Henry et al. (2010)",
+  caption.short = "AIC values for four biomass tables fitted to data from 42 trees measured in Ghana by Henry et al. (2010)",
   col.names = linebreak(c("Red \nline", "Entry", "Fitting \nmethod", "R \ncommand", "AIC")),
   #align = "ccccccccccccc",
   booktabs = TRUE,
   escape = F
   )
 
+#do.call(kable, c(kab_opt, format = book_format, linesep = ""))
 display_table()
+
 ```
 
 
@@ -362,7 +376,7 @@ For linear regressions where the residual variance is assumed to be proportional
 Y=a_0+a_1X_1+a_2X_2+\ldots+a_pX_p+\varepsilon(\#eq:F1)
 \end{equation}
 
-where $\mbox{Var}(\varepsilon)=(kX_1^c)^2$; is strictly identical to the linear regression`r ifelse(book_format == "latex, " (see p. \\pageref{apart})", "")`:
+where $\mbox{Var}(\varepsilon)=(kX_1^c)^2$; is strictly identical to the linear regression`r ifelse(book_format == "latex", " (see p. \\pageref{apart})", "")`:
 
 \begin{equation}
 Y'=a_0X_1^{-c}+a_1X_1^{1-c}+a_2X_2X_1^{-c}+\ldots+
@@ -375,7 +389,9 @@ F=\frac{\hat{k}}{\sqrt[n]{\prod_{i=1}^nX_{i1}^{-c}\psi'(B_i)}}
 =\exp\Big(\frac{1}{n}\sum_{i=1}^n\{c\ln(X_{i1})-\ln[\psi'(B_i)]\}
 \Big)\ \hat{k}
 \]
-Therefore, Furnival's index can be used to select the value of exponent $c$ in a weighted regression`r ifelse(book_format == "latex, " (see p. \\pageref{chx})", "")`.
+Therefore, Furnival's index can be used to select the value of exponent $c$ in a weighted regression`r ifelse(book_format == "latex", " (see p. \\pageref{chx})", "")`.
+
+
 
 
 ### Choosing a fitting method
@@ -416,6 +432,7 @@ where
 \]
 Here again, the structure of the errors is not the same in the three cases, but all can correctly reflect the heteroscedasticity of the biomass. In most cases, the different fitting methods give very similar results in terms of predictions. Should any doubt persist regarding the most appropriate fitting method, then model selection methods may be employed to decide. But in practice the choice of a particular fitting method results rather from the importance given to the respective advantages and drawbacks of each method. Multiple regression has the drawback of imposing constraints on the form of the residuals, and has less flexibility for the mean model. By contrast, it has the advantage of offering an explicit expression for the estimators of the model's coefficients: there is therefore no risk of having erroneous estimators for the coefficients. The non-linear model has the advantage of not imposing any constraints on the mean model or the variance model. Its drawback is that it does not have an explicit expression for parameter estimators: there is therefore the risk of having erroneous parameter estimators.
 
+
 ::::::{.filrouge data-latex=""}
 
 (@eq-fmeth) (ref:fmeth)
@@ -434,10 +451,10 @@ The predictions given by these three fittings of the same model are illustrated 
 
 ::::::
 
+
 ```{r fselm, fig.scap="Biomass predictions by the same power table fitted in three different ways to data from 42 trees measured in Ghana by Henry et al. 2010", fig.cap="(ref:fselm)"}
 
 display_fig("fselm")
 
 ```
-
 

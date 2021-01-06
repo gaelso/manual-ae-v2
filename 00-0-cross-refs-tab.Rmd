@@ -34,11 +34,11 @@
 
 (ref:fAICD) AIC values for 10 biomass tables fitted to data from 42 trees measured in Ghana by @henry10. These 10 tables directly predict biomass.
 
-<!--for tab fAICD-->
-(ref:col-fDpara)  \@ref(exr:fDpara)
+<!--for tab fAICD -->
+(ref:col-fDpara) \@ref(exr:fDpara)
 (ref:col-fDD2var) \@ref(exr:fDD2var)
-(ref:col-fnlsD)   \@ref(exr:fnlsD)
-(ref:col-fnlmD)   \@ref(exr:fnlmD)
+(ref:col-fnlsD) \@ref(exr:fnlsD)
+(ref:col-fnlmD) \@ref(exr:fnlmD)
 (ref:col-frlpD2H) \@ref(exr:frlpD2H)
 (ref:col-fD2Hvar) \@ref(exr:fD2Hvar)
 (ref:col-fnlsD2H) \@ref(exr:fnlsD2H)
@@ -50,7 +50,6 @@
 (ref:nls) `nls`
 (ref:nlme) `nlme`
 <!-- -->
-
 
 (ref:fAIClnD) AIC values for four biomass tables fitted to data from 42 trees measured in Ghana by @henry10. These four tables predict the log of the biomass and are all fitted using linear regression by the ordinary least squares (OLS) method.
 
