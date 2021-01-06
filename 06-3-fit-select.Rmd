@@ -132,9 +132,7 @@ anova(nest,comp)
 The test gives the following result:
 
 ```{r}
-res <- anova(nest, comp)
-attr(res, "heading") <- NULL
-res
+printCoefmat(anova(nest, comp), na.print = "")
 ```
 
 The p-value is  `r print(res[2, "Pr(>F)"], digits = 4)`, therefore greater than 5\ \%. The nested model (without $\ln(D)$) is therefore selected rather than the complete model.
@@ -161,10 +159,9 @@ anova(nest,comp)
 yields:
 
 ```{r}
-res <- anova(nest, comp)
-attr(res, "heading") <- NULL
-res
+printCoefmat(anova(nest, comp), signif.legend = F, na.print = "")
 ```
+
 As the p-value is less than 5\ \%, the complete model (including $\ln(H)$ as effect variable) is selected rather than the nested model.
 
 ::::::

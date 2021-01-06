@@ -72,13 +72,11 @@ anova(m)
 ```
 
 which yields:
-\Rout{\begin{tabular}{lrrrrrl}%
-                             & Df &  Sum Sq & Mean Sq &   F value &    Pr(>F) &    \\ %
-species                      & 15 & 117.667 &   7.844 &   98.4396 & 1.647e-13 & ***\\ %
-I(log(dbh\^{}2*heig))        &  1 & 112.689 & 112.689 & 1414.1228 & < 2.2e-16 & ***\\ %
-species:I(log(dbh\^{}2*heig))&  7 &   0.942 &   0.135 &    1.6879 &    0.1785 &    \\ %
-Residuals                    & 17 &   1.355 &   0.080 &           &           &    \\ %
-\end{tabular}}%
+
+```{r}
+printCoefmat(anova(m), signif.legend = FALSE, na.print = "")
+```
+
 The first line in the table tests for a species effect, i.e. whether the y-intercept $a_s$ differs from one species to another. The null hypothesis of this test is that there is no difference between species: $a_1=a_2=\ldots=a_S$, where $S=16$ is the number of species. The test statistic is given in the "F value" column. As the p-value of the test is less than 5\ \%, it may be concluded that the y-intercept of the model is significantly different from one species to another. The second line in the table tests for an effect of the $D^2H$, variable, i.e. whether the mean slope associated with this variable is significantly different from zero. The third line in the table tests whether the slope-species interaction is significant, i.e. whether slope $b_s$ differs from one species to another. The null hypothesis is that there is no difference between species: $b_1=b_2=\ldots=b_S$. The p-value here is 0.1785, therefore greater than 5\ \%: there is therefore no significant slope difference between the species.
 
 This leads us to fit the following model:
@@ -86,75 +84,62 @@ This leads us to fit the following model:
 \begin{equation}
 \ln(B_s)=a_s+b\ln(D_s^2H_s)+\varepsilon(\#eq:mspe)
 \end{equation}
+
 which considers that slope $b$ is the same for all species. The relevant command is:
-\R{m <- lm(log(Btot)$\sim$species+I(log(dbh\^{}2*heig)),data=dat[dat\$Btot>0,])%
-\\ anova(m)}%
+
+```{r, echo=T, results='hide'}
+m <- lm(log(Btot) ~ species+I(log(dbh^2*heig)),data=dat[dat$Btot>0,])
+anova(m)
+```
+
 and yields:
-\Rout{\begin{tabular}{lrrrrrl}%
-                      & Df &  Sum Sq & Mean Sq & F value &    Pr(>F) &    \\ %
-species                & 15 & 117.667 &   7.844 &   81.99 & < 2.2e-16 & ***\\ %
-I(log(dbh\^{}2*heig)) &  1 & 112.689 & 112.689 & 1177.81 & < 2.2e-16 & ***\\ %
-Residuals             & 24 &   2.296 &   0.096 &         &           &    \\ %
-\end{tabular}}%
+
+```{r}
+printCoefmat(anova(m), signif.legend = F, na.print = "")
+```
+
 Model coefficients may be obtained by the command:
-\R{summary(m)}%
+
+```{r, echo=T, results='hide'}
+summary(m)
+```
+
 which yields:
-\Rout{\begin{tabular}{lrrrrl}%
-                                 & Estimate & Std. Error & t value & Pr(>|t|) &    \\ %
-(Intercept)                      & -9.00359 &    0.45144 & -19.944 &   <2e-16 & ***\\ %
-speciesAubrevillea kerstingii    & -0.54634 &    0.43784 &  -1.248 &   0.2241 &    \\ %
-speciesCecropia peltata          & -0.77688 &    0.36261 &  -2.142 &   0.0425 & *  \\ %
-speciesCeiba pentandra           & -0.70841 &    0.38048 &  -1.862 &   0.0749 & .  \\ %
-speciesCola nitida               & -0.46428 &    0.44476 &  -1.044 &   0.3069 &    \\ %
-speciesDaniellia thurifera       &  0.04685 &    0.46413 &   0.101 &   0.9204 &    \\ %
-speciesDialium aubrevilliei      & -0.15626 &    0.43757 &  -0.357 &   0.7241 &    \\ %
-speciesDrypetes chevalieri       &  0.04953 &    0.45395 &   0.109 &   0.9140 &    \\ %
-speciesGarcinia epunctata        &  1.09645 &    0.47318 &   2.317 &   0.0293 & *  \\ %
-speciesGuarea cedrata            & -0.45255 &    0.38460 &  -1.177 &   0.2509 &    \\ %
-speciesHeritiera utilis          & -0.26865 &    0.32663 &  -0.822 &   0.4189 &    \\ %
-speciesNauclea diderrichii       & -0.55464 &    0.35759 &  -1.551 &   0.1340 &    \\ %
-speciesNesogordonia papaverifera & -0.47817 &    0.44335 &  -1.079 &   0.2915 &    \\ %
-speciesPiptadeniastrum africanum & -0.17956 &    0.35718 &  -0.503 &   0.6197 &    \\ %
-speciesStrombosia glaucescens    &  0.06333 &    0.39597 &   0.160 &   0.8743 &    \\ %
-speciesTieghemella heckelii      & -0.09104 &    0.33908 &  -0.268 &   0.7906 &    \\ %
-I(log(dbh\^{}2*heig))            &  0.89985 &    0.02622 &  34.319 &   <2e-16 & ***\\ %
-\end{tabular}}%
-The last line in this table gives the value of the slope:
-$b=\decimal{0}{89985}$. The other lines give y-intercept values for the 16 species. By convention, R proceeds in the following manner when specifying these values: the first line in the table gives the y-intercept for the first species in alphabetical order. As the first species in alphabetical order is *Afzelia bella*, the y-intercept for *Afzelia bella* is therefore $a_1=-\decimal{9}{00359}$. The subsequent lines give the *difference* $a_s-a_1$ between the y-intercepts of the species indicated and the y-intercept of *Afzelia bella*. Thus, the y-intercept of *Aubrevillea kerstingii* is:
-$a_2=a_1-\decimal{0}{54634}=-\decimal{9}{00359}-\decimal{0}{54634}=
--\decimal{9}{54993}$. Finally, the expression for the specific table corresponds to:
+
+```{r}
+printCoefmat(summary(m)$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
+```
+
+The last line in this table gives the value of the slope: $b=0.89985$. The other lines give y-intercept values for the 16 species. By convention, R proceeds in the following manner when specifying these values: the first line in the table gives the y-intercept for the first species in alphabetical order. As the first species in alphabetical order is *Afzelia bella*, the y-intercept for *Afzelia bella* is therefore $a_1=-9.00359$. The subsequent lines give the *difference* $a_s-a_1$ between the y-intercepts of the species indicated and the y-intercept of *Afzelia bella*. Thus, the y-intercept of *Aubrevillea kerstingii* is: $a_2=a_1-0.54634=-9.00359-0.54634=-9.54993$. Finally, the expression for the specific table corresponds to:
 \[
-\ln(B)=\decimal{0}{89985}\ln(D^2H)-\left\{
+\ln(B)=0.89985\ln(D^2H)-\left\{
 \begin{array}{lcl}
-\decimal{9}{00359} && \mbox{for *Afzelia bella*}            \\ %
-\decimal{9}{54993} && \mbox{for *Aubrevillea kerstingii*}   \\ %
-\decimal{9}{78047} && \mbox{for *Cecropia peltata*}         \\ %
-\decimal{9}{71200} && \mbox{for *Ceiba pentandra*}          \\ %
-\decimal{9}{46786} && \mbox{for *Cola nitida*}              \\ %
-\decimal{8}{95674} && \mbox{for *Daniellia thurifera*}      \\ %
-\decimal{9}{15985} && \mbox{for *Dialium aubrevilliei*}     \\ %
-\decimal{8}{95406} && \mbox{for *Drypetes chevalieri*}      \\ %
-\decimal{7}{90713} && \mbox{for *Garcinia epunctata*}       \\ %
-\decimal{9}{45614} && \mbox{for *Guarea cedrata*}           \\ %
-\decimal{9}{27223} && \mbox{for *Heritiera utilis*}         \\ %
-\decimal{9}{55823} && \mbox{for *Nauclea diderrichii*}      \\ %
-\decimal{9}{48176} && \mbox{for *Nesogordonia papaverifera*}\\ %
-\decimal{9}{18315} && \mbox{for *Piptadeniastrum africanum*}\\ %
-\decimal{8}{94026} && \mbox{for *Strombosia glaucescens*}   \\ %
-\decimal{9}{09462} && \mbox{for *Tieghemella heckelii*}     \\ %
+9.00359 && \textrm{for } \textit{Afzelia bella}   \\ %
+9.54993 && \textrm{for } \textit{Aubrevillea kerstingii}   \\ %
+9.78047 && \textrm{for } \textit{Cecropia peltata}         \\ %
+9.71200 && \textrm{for } \textit{Ceiba pentandra}          \\ %
+9.46786 && \textrm{for } \textit{Cola nitida}              \\ %
+8.95674 && \textrm{for } \textit{Daniellia thurifera}      \\ %
+9.15985 && \textrm{for } \textit{Dialium aubrevilliei}     \\ %
+8.95406 && \textrm{for } \textit{Drypetes chevalieri}      \\ %
+7.90713 && \textrm{for } \textit{Garcinia epunctata}       \\ %
+9.45614 && \textrm{for } \textit{Guarea cedrata}           \\ %
+9.27223 && \textrm{for } \textit{Heritiera utilis}         \\ %
+9.55823 && \textrm{for } \textit{Nauclea diderrichii}      \\ %
+9.48176 && \textrm{for } \textit{Nesogordonia papaverifera}\\ %
+9.18315 && \textrm{for } \textit{Piptadeniastrum africanum}\\ %
+8.94026 && \textrm{for } \textit{Strombosia glaucescens}   \\ %
+9.09462 && \textrm{for } \textit{Tieghemella heckelii}     \\ %
 \end{array}
 \right.
 \]
-For a given diameter and height, the species with the highest biomass is *Garcinia epunctata* while that with the lowest biomass is *Cecropia peltata*. The model's residual standard deviation is $\hat{\sigma}=\decimal{0}{3093}$ and $R^2=\decimal{0}{9901}$.
+
+For a given diameter and height, the species with the highest biomass is *Garcinia epunctata* while that with the lowest biomass is *Cecropia peltata*. The model's residual standard deviation is $\hat{\sigma}=0.3093$ and $R^2=0.9901$.
 
 ::::::
 
 
-\begin{filrouge}{}{fmspe}
-
-\end{filrouge}
-
-#### Case of a numerical covariable
+#### Case of a numerical covariable {-}
 
 
 
