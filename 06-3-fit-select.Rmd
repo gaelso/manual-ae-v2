@@ -424,27 +424,20 @@ Here again, the structure of the errors is not the same in the three cases, but 
 \  
 :::
 
+We have already taken a look at three methods for fitting the power model $B=aD^b$:
 
+1. using a simple linear regression on log-transformed data (red line \@ref(exr:rllnBvD)): $\ln(B)=-8.42722+2.36104\ln(D)$, if we "naively" apply the exponential inverse transformation;
+2. using a weighted non-linear regression (red line \@ref(exr:fnlsD)): $B=2.492\times10^{-4}D^{2.346}$;
+3. using a non-linear regression with variance model (red line \@ref(exr:fnlmD)): $B=2.445\times10^{-4}D^{2.35105}$.
+
+The predictions given by these three fittings of the same model are illustrated in  Figure \@ref(fig:fselm). The differences can be seen to be minimal and well below prediction precision, as we will see later (\S\ \@ref(BVpred)).
 
 ::::::
 
-\begin{filrouge}{Power model fitting methods}{fmeth}%
-We have already taken a look at three methods for fitting the power model $B=aD^b$:
-\begin{enumerate}
-\item using a simple linear regression on log-transformed data (red line \@ref(exr:rllnBvD)):
-$\ln(B)=-\decimal{8}{42722}\bidouille{\newline}%
-+\decimal{2}{36104}\ln(D)$, if we "naively" apply the exponential inverse transformation;
-\item using a weighted non-linear regression (red line \@ref(exr:fnlsD)):
-$B=\decimal{2}{492}\times10^{-4}D^{2.346}$;
-\item using a non-linear regression with variance model (red line \@ref(exr:fnlmD)): $B=\decimal{2}{445}\bidouille{\newline}%
-\times10^{-4}D^{2.35105}$.
-\end{enumerate}
-The predictions given by these three fittings of the same model are illustrated in  Figure \@ref(fig:fselm). The differences can be seen to be minimal and well below prediction precision, as we will see later (\S\ \ref{BVpred}).
-\end{filrouge}
+```{r fselm, fig.scap="Biomass predictions by the same power table fitted in three different ways to data from 42 trees measured in Ghana by Henry et al. 2010", fig.cap="(ref:fselm)"}
 
-\begin{figure}[htb]
-\begin{center}
-\ifincludegraphics{width=\textwidth}{fselm}
-\end{center}
-\caption[Biomass predictions by the same power table fitted in three different ways to data from 42 trees measured in Ghana by @henry10]{Biomass predictions by the same power table fitted in three different ways to data from 42 trees measured in Ghana by @henry10. The data are shown as points. The \ifelsecoul{red}{solid} line is the linear regression on log-transformed data (red line \@ref(exr:rllnBvD)). The \ifelsecoul{green line}{dashed line} (practically superimposed by the \ifelsecoul{blue line}{dotted line}) is the fitting by weighted non-linear regression (red line \@ref(exr:fnlsD)). The \ifelsecoul{blue color}{dotted line} shows the fitting by non-linear regression with variance model (red line \@ref(exr:fnlmD)). (A) No data transformation. (B) On a log scale.\label{fselm}}
-\end{figure}%
+display_fig("fselm")
+
+```
+
+
