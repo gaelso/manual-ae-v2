@@ -80,3 +80,11 @@
 (ref:fmeth) [**$\looparrowright$\ Power model fitting methods**]{color="red"}
 
 (ref:mfspe) [**$\looparrowright$\ Specific biomass model**]{color="red"}
+
+
+<!-- 6.4 -->
+
+(ref:fdens) [**$\looparrowright$\ Specific wood density-dependent biomass model**]{color="red"}
+
+
+

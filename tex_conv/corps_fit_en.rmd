@@ -1,39 +1,5 @@
 
 
-
-
-
-
-
-
-
-
-
-
-
-Up until now we have considered that the covariables defining the stratification are qualitative factors. But in certain cases these covariables can also be interpreted as numerical variables. For instance, let us consider a biomass model for plantations [@saintandre05]. The year the plantation was set up (or, which comes to the same thing, the age of the trees), may be used as a stratification covariable. This year or age may be seen indifferently as a qualitative variable (cohort of trees of the same age) or as a numerical value. More generally, any numerical variable may be seen as a qualitative variable if it is divided into classes. In the case of age, we could also consider plantations aged 0 to 5 years as a stratum, plantations aged 5 to 10 years as another stratum, plantations aged 10 to 20 years as a third stratum, etc.. The advantage of dividing covariable $Z$ into classes and considering it as a qualitative variable is that this allows us to model the relation between $Z$ and response variable $Y$ without any *a priori* constraint on the form of this relation. By contrast, if we consider $Z$ to be a numerical variable, we are obliged *a priori* to set the form of the relation between $Y$ and $Z$ (linear relation, polynomial relation, exponential relation, power relation, etc.). The disadvantage of dividing $Z$ into classes and considering this covariable as being qualitative is that the division introduces an element of randomness. Also, the covariance model that uses classes of $Z$ (qualitative covariables) will generally have more parameters that need to be estimated than the model that considers $Z$ to be a numerical covariable.
-
-It is customary in modeling to play on this dual interpretation of numerical variables. When covariable $Z$ is numerical (e.g. tree age), it is advisable to proceed in two steps (as explained in \S\ \ref{plus}):
-\begin{enumerate}
-\item consider $Z$ as a qualitative variable (if necessary after division into classes) and fit a covariance model which will provide a picture of the form of the relation between Z and the model's coefficients;
-\item model this relation using an appropriate expression then return to the fitting of a linear or non-linear model, but considering $Z$ to be a numerical variable.
-\end{enumerate}
-If we return to the example of the age of the trees in a plantation: let us assume that age $Z$ has been divided into $S$ age classes. The first step consists typically of an analysis of covariance (assuming that the model has been rendered linear):
-\[
-Y_s=a_{0s}+a_{1s}X_{1s}+a_{2s}X_{2s}+\ldots+a_{ps}X_{ps}+\varepsilon
-\]
-where $s=1$, \ldots, $S$. Let $Z_s$ be the median age of age class $s$. We then draw scatter plots of $a_{0s}$ against $Z_s$, $a_{1s}$ against
-$Z_s$, \ldots, $a_{ps}$ against $Z_s$ and for each scatter plot we look for the form of the relation that fits the plot. Let us imagine that $a_{0s}$ varies in a linear manner with $Z_s$, that $a_{1s}$ varies in a exponential manner with $Z_s$, that $a_{2s}$ varies in a power manner with $Z_s$, and that the coefficients $a_{3s}$ to $a_{ps}$ do not vary in relation to $Z_s$ (which besides can be formally tested). In this particular case we will then, as the second step, fit the following non-linear model:
-\[
-Y=\underbrace{b_0+b_1Z}_{a_{0s}}+\underbrace{b_2\exp(-b_3Z)}_{a_{1s}}X_1
-+\underbrace{b_4Z^{b_5}}_{a_{2s}}X_2+a_3X_3+\ldots+a_pX_p+\varepsilon
-\]
-where age $Z$ is now considered as a numerical variable. Such a model involving a numerical effect covariable is called a *parameterized* model (here by age).
-
-*Ordinal* covariables warrant a special remark. An ordinal variable is a qualitative variable that establishes an order. For example, the month of the year is a qualitative variable that establishes a chronological order. The type of soil along a soil fertility gradient is also an ordinal variable. Ordinal variables are generally treated as fully fledged qualitative variables, but in this case the order information they contain is lost. An alternative consists in numbering the ordered modalities of the ordinal variable using integers, then considering the ordinal variable as a numerical variable. For example, in the case of the months of the year, we can set January = 1, February = 2, etc. This approach is meaningful only if the differences between the integers correctly reflect the differences between the modalities of the ordinal variable. For instance, if we set 1 = January 2011 up to 12 = December 2011, we will set 1 = January 2012 if the response is cyclically seasonal, whereas we will set 13 = January 2012 if the response presents as a continuous trend. In the case of three soil types along a fertility gradient, we will set 1 = poorest soil, 2 = soil of intermediate fertility, and 3 = richest soil if we consider the fertility difference between two soils induces a response that is proportional to this difference, but we will set 1 = poorest soil, 4 = soil of intermediate fertility, and 9 = richest soil if we consider that the response is proportional to the square of the fertility difference.
-
-#### Special case of the species
-
 In the case of multispecific datasets, the species is a stratification covariable that warrants special attention. If the dataset includes only a few species (less than about 10), and there are sufficient observations per species (see \S\ \ref{size}), then species may be considered to be a stratification covariable like any other. The model in this case would be divided into $S$ specific models, or the models could be grouped together based on the allometric resemblance of the species.
 
 If the dataset contains many species, or if only a few observations are available for certain species, it is difficult to treat the species as a stratification covariable. A solution in this case consists in using species *functional traits*. Functional traits are defined here, a little abusively, as the numerical variables that characterize the species [@diaz97; @rosch97; @lavorel02; see \citealp{violle07} for a more rigorous definition]. The most widely used trait in biomass models is wood density. If we decide to use functional traits to represent species, these traits intervene as effect variables in the model in the same way as the effect variables that characterize the tree, for example its dbh or height. The single-entry (dbh) monospecific biomass model of the power type, which in its linear form may be written:
