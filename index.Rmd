@@ -31,7 +31,7 @@ if (book_format %in% c("html", "latex")) {
   if (book_format == "latex") {
     knitr::opts_chunk$set(fig.align='center', out.width='100%', comment = "") ## NOT USED: fig.pos='H', 
   } else {
-    knitr::opts_chunk$set(fig.align='center', out.width='60%') ## NOT USED: fig.pos='H', 
+    knitr::opts_chunk$set(fig.align='center', out.width='60%', class.source="rchunk", class.output="rout") ## NOT USED: fig.pos='H', 
   }
 }
 
