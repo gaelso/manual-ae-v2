@@ -86,5 +86,6 @@
 
 (ref:fdens) [**$\looparrowright$\ Specific wood density-dependent biomass model**]{color="red"}
 
+(ref:fidens) [**$\looparrowright$\ Individual wood density-dependent biomass model**]{color="red"}
 
 
