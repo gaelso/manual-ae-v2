@@ -15,7 +15,9 @@ bibliography: [bib-jourabbr.bib, bib-trouves.bib, bib-recherch.bib, bib-rstudio.
 site: bookdown::bookdown_site
 biblio-style: bib-faouk.bst
 urlcolor: blue
-citecolor: RoyalBlue 
+citecolor: RoyalBlue
+linkcolor: black
+filecolor: red
 ---
 
 ```{r setup, include=FALSE}
@@ -27,7 +29,7 @@ book_format <- knitr::opts_knit$get('rmarkdown.pandoc.to')
 if (book_format %in% c("html", "latex")) {
   library(kableExtra)
   if (book_format == "latex") {
-    knitr::opts_chunk$set(fig.align='center', out.width='100%') ## NOT USED: fig.pos='H', 
+    knitr::opts_chunk$set(fig.align='center', out.width='100%', comment = "") ## NOT USED: fig.pos='H', 
   } else {
     knitr::opts_chunk$set(fig.align='center', out.width='60%') ## NOT USED: fig.pos='H', 
   }
