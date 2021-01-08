@@ -32,13 +32,17 @@ pre code {
   border: 2px solid red;
   border-radius: 10px;
   background: #FFFFFF 5px center/3em no-repeat;
-  
+  margin-bottom: 1.2em;
 }
 
-.rchunk {
-  background-color: lightpink;
+.Rchunk {
+  background-color: #f2dede;
+  font-weight: bolder;
+  color: red;
 }
 
-.rout {
-  background-color: lightblue;
+.Rout {
+  background-color: #d9edf7;
+  font-weight: bolder;
+  color: blue;
 }
