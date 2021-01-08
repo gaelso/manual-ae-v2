@@ -13,7 +13,23 @@ bookdown::gitbook:
     sharing: null
     info: null
   split_by: chapter+number
+
+bookdown::html_document2:
+  number_sections: TRUE
+  css: style.css
+  toc: true
+  toc_depth: 2
+  toc_float: true
+
+bookdown::html_book:
+  number_sections: TRUE
+  css: style.css
+  toc: true
+  toc_depth: 3
+  toc_float: true
+  split_by: chapter+number
   
+
 bookdown::pdf_book:
   #highlight: tango
   includes:

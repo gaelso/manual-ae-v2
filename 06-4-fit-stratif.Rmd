@@ -373,23 +373,3 @@ B_D=\int_0^{P^{-1}(\frac{\pi}{4}D^2)}\rho(h)\;P(h)\ \mathrm{d}h
 where $\rho(h)$ is wood density at height $h$. Stem volume to cross-cut diameter $D$ is calculated in the same manner, except that $\rho$ is replaced by 1. The stem profile approach has the advantage that model harmonization here is automatic. But it is an approach that is conceptually different from volume and biomass models, with specific fitting problems [@fang99; @parresol99], and is outside the scope of this guide. It should be noted that when dealing with very large trees, for which it is almost impossible to measure biomass directly, the stem profile approach is a relevant alternative [@vanpelt01; @dean03; @dean03b; @dean06; @sillett10].
 
 
-```{css, echo=TRUE}
-.watch-out {
-  background: lightpink;
-  border: 3px solid red;
-  font-weight: bold;
-}
-```
-
-Then we assign a class `watch-out` to the code chunk via the
-chunk option `class.source`.
-
-```{r, echo=T, class.source="watch-out", class.output="watch-out"}
-mtcars[1:5, "mpg"]
-```
-
-
-```{r, echo=T}
-mtcars[1:5, "mpg"]
-```
-

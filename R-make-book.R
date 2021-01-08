@@ -67,6 +67,20 @@ bookdown::render_book(
   output_dir = paste0("Manual-AE/Manual-AE-gitbook-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"))
 )
 
+## HTML - html_doc
+bookdown::render_book(
+  input = "index.Rmd",
+  output_format = "bookdown::html_document2",
+  output_dir = paste0("Manual-AE/Manual-AE-html-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"))
+)
+
+## HTML - html_book
+bookdown::render_book(
+  input = "index.Rmd",
+  output_format = "bookdown::html_book",
+  output_dir = paste0("Manual-AE/Manual-AE-html_book-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"))
+)
+
 ## Clean temp files
 file.remove(list.files(pattern = "Manual-AE-"))
 unlink(x = "_bookdown_files", recursive = T)
