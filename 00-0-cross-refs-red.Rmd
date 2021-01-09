@@ -89,3 +89,15 @@
 (ref:fidens) [**$\looparrowright$\ Individual wood density-dependent biomass model**]{color="red"}
 
 
+<!-- Red lines chapter 7 -->
+
+(ref:ficlnD) [**$\looparrowright$\ Confidence interval of $\ln(B)$ predicted by $\ln(D)$**]{color="red"}
+
+(ref:ficlnDH) [**$\looparrowright$\ Confidence interval of $\ln(B)$ predicted by $\ln(D)$ and $\ln(H)$**]{color="red"}
+
+(ref:CFB) [**$\looparrowright$\ Correction factor for predicted biomass**]{color="red"}
+
+(ref:smear) [**$\looparrowright$\ "Smearing" estimation of biomass**]{color="red"}
+
+
+
