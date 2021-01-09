@@ -1,0 +1,13 @@
+
+
+## Expanding and converting volume and biomass models {#BEF}
+
+It may happen that we have a model which predicts a variable that is not exactly the one we need, but is closely related to it. For example, we may have a model that predicts the dry biomass of the trunk, but we are looking to predict the total above-ground biomass of the tree. Or, we may have a model that predicts the volume of the trunk, but we are looking to predict its dry biomass. Rather than deciding not to use a model simply because it does not give us exactly what we want, we can use it by default and adjust it using a factor. We can use *conversion* factors to convert volume to biomass (and *vice versa*), *expansion* factors to extrapolate a part to the whole, or combinations of the two. Using this approach @henry11 put forward three methods to obtain the total biomass:
+
+- The biomass of the trunk is the product of its volume and specific wood density $\rho$;
+- above-ground biomass is the product of trunk biomass and a biomass expansion factor (BEF);
+- above-ground biomass is the product of trunk volume and a biomass expansion and conversion factor (BCEF = BEF$\times\rho$).
+
+Tables of these different conversion and expansion factors are available. These values are often very variable as they implicitly include difference sources of variability. Although the default table may be very precise, we often loose the benefit of this precision when using an expansion or correction factor as the prediction error cumulates all the sources of error involved in its calculation.
+
+If we have a table that uses height as entry value, but do not have any height information, we may use a corollary model that predicts height from the entry values we do have (typically a height-dbh relation). Like for conversion and expansion factors, this introduces an additional source of error.
