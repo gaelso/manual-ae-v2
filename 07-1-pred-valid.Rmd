@@ -47,7 +47,7 @@ the model being fitted on the $K-1$ subsets remaining. The "$K$ fold" cross vali
 1. Split the dataset $\mathcal{S}_n\equiv\{(Y_i,\ X_{i1},\ \ldots,\ X_{ip}): i=1,\ \ldots,\ n\}$ into $K$ data subsets $\mathcal{S}_n^{(1)},\ \ldots,\ \mathcal{S}_n^{(K)}$ of approximately equal size (i.e. with about $n/K$ observations in each data subset, totaling $n$).
 2. For $k$ from 1 to $K$:
     + 2.1. fit the model on the dataset deprived of its $k$th subset, i.e. on $\mathcal{S}_n\backslash\mathcal{S}_n^{(k)}=\mathcal{S}_n^{(1)}    \cup\ldots\cup\mathcal{S}_n^{(k-1)}\cup\mathcal{S}_n^{(k+1)}\cup\ldots\cup\mathcal{S}_n^{(K)}$;
-    + 2.2 calculate a validation criterion (see \S\ \ref{Ival}) for this fitted model by using the remaining dataset 		$\mathcal{S}_n^{(k)}$ as validation dataset; let $C_k$ be the value of this criterion calculated for $\mathcal{S}_n^{(k)}$.
+    + 2.2. calculate a validation criterion (see \S\ \@ref(Ival)) for this fitted model by using the remaining dataset 		$\mathcal{S}_n^{(k)}$ as validation dataset; let $C_k$ be the value of this criterion calculated for $\mathcal{S}_n^{(k)}$.
 3. Calculate the mean $(\sum_{k=1}^KC_k)/K$ of the $K$ validation criteria calculated.
 
 The fact that there is no overlap between the data used for model fitting and the data used to calculate the validation criterion means that the approach is valid. Cross validation needs more calculations than a simple validation, but has the advantage of making the most of all the observations available for model fitting.

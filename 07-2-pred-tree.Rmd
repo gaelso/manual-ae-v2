@@ -8,7 +8,7 @@ Making a prediction based on model $f$ consists in using the known values of the
 \]
 The estimator $\hat{\theta}$ of model parameters is a random vector whose distribution stems from the distribution of the observations used to fit the model. Any model prediction $\hat{Y}$ is therefore itself a random variable whose distribution stems from the distribution of the observations used to fit the model. If we are to express this intrinsic variability of the prediction, we must associate it with an uncertainty indicator such as the standard deviation of the prediction or its 95\ \% confidence interval.
 
-Several confidence intervals are available depending on whether we are predicting the volume or biomass of a tree selected at random in the stand, or the volume or biomass of the mean tree in the stand. We will now describe in detail the analytical expressions of these confidence intervals for a linear model (\S\ \@ref(plm)), then for a non-linear model (\S\ \@ref(pnls)). We will then present expressions for these confidence intervals that are similar but simpler to compute (\S\ \@ref(papp), before focusing on the case of transformed variables (\S\ \ref(invtra).
+Several confidence intervals are available depending on whether we are predicting the volume or biomass of a tree selected at random in the stand, or the volume or biomass of the mean tree in the stand. We will now describe in detail the analytical expressions of these confidence intervals for a linear model (\S\ \@ref(plm)), then for a non-linear model (\S\ \@ref(pnls)). We will then present expressions for these confidence intervals that are similar but simpler to compute (\S\ \@ref(papp), before focusing on the case of transformed variables (\S\ \@ref(invtra)).
 
 
 
@@ -60,7 +60,7 @@ The third remark is that in order to calculate the confidence interval of a pred
 
 (@eq-ficlnD) (ref:ficlnD)
 
-:::{.exercise #ficlnD name="(ref:fic:lnD)"}
+:::{.exercise #ficlnD name="(ref:ficlnD)"}
 \  
 :::
 
@@ -399,10 +399,10 @@ If the decimal $\log_{10}$ has been used for variable transformation rather than
 
 Let us return to the biomass model in red line \@ref(exr:fdens) fitted by multiple regression on log-transformed data:
 \[
-\ln(B)=-\decimal{8}{38900}+\decimal{0}{85715}\ln(D^2H)+\decimal{0}{72864}\ln(\rho)
+\ln(B)=-8.38900+0.85715\ln(D^2H)+0.72864\ln(\rho)
 \]
 If we consider the starting data but use the exponential function (without taking account of the correction factor), we obtain an under-estimated prediction: $B=\exp(-8.38900)\times(D^H)^{0.85715}\rho^{0.72864}=2.274\times10^{-4}(D^2H)^{0.85715}\rho^{0.72864}$.
-Let `m` be the object containing the fitted model (red line \ref{fdens}). The adjustment factor $\mathrm{CF}=\exp(\hat{\sigma}^2/2)$ is obtained by the command:
+Let `m` be the object containing the fitted model (red line \@ref(exr:fdens). The adjustment factor $\mathrm{CF}=\exp(\hat{\sigma}^2/2)$ is obtained by the command:
 
 ```{r, echo=T, results='hide'}
 dm <- tapply(dat$dens,dat$species,mean)
