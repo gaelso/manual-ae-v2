@@ -1,28 +1,237 @@
----
-title: "Untitled"
-output: html_document
----
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+# (APPENDIX) Appendix {-} 
+
+# Glossary {-}
+
+This glossary provides definitions for certain terms used in this guide that are either unusual or used to convey a meaning other than their usual meaning.
+
+**Additivity**    Property of a system of allometric equations fitted to different compartments of a tree and to a tree in its entirety such that the sum of the predictions for each of the compartments indeed corresponds to the prediction for the entire tree.
+
+**Aliquot**    Part extracted from a tree compartment, the measurement of which can be used to measure the compartment by a rule of three.
+
+**Allometry**    Statistical relation on a population scale between two size characteristics of the individuals in this population. This relation in most cases has a power form. Example: there is allometry in vertebrates between adult body mass and brain size.
+
+**Biomass**    Mass of living or dead organic matter in an organism, expressed as mass of dry matter. For a tree, this is expressed in kg. By extension, the biomass of an area is the sum of the biomasses of the organisms found in the area. This is measured in kg per unit area.
+
+**White noise**    In probabilities, a random process generating random variables that are all independent one of the other.
+
+**Compartment**    Part of a tree, generally determined such that the organs within a compartment have similar densities (ratio of dry biomass to fresh volume) (leaves, trunk, large branches, etc. are compartments).
+
+**Covariance**    Quantity that measures the simultaneous variation of two random variables, i.e. the covariance becomes increasingly positive for each pair of values that differ from their mean in this same direction, and increasingly negative for each pair of values that differ from their mean in opposite directions. The covariance of a random variable and of this same random variable gives the variance.
+
+**Doublet**    Collection of two numerical values.
+
+**Fractal**    Object whose structure does not change with scale changes.
+
+**Hart-Becking index**    In forest sciences, an index established by @hart28 and @becking53 that measures the storage of a stand based on the average distance between trees and the dominant height in the stand. This index is calculated as a ratio between the average distance between trees over dominant height, multiplied by 100.
+
+**Heteroscedasticity**    The opposite of homoscedasticity, i.e. when the variance of the residual error of a model is not constant (and typically varies with one of the model's effect variables).
+
+**Homoscedasticity**    Property by which the variance of the residual error of a model is constant. Homoscedasticity is one of the conditions required for fitting a linear model.
+
+**Eichhorn's rule**    In forest sciences, an empirical rule laid down by @eichhorn04 which stipules: the specific volume of an even-aged, single-species, closed-cover stand depends only on its dominant height. This is Eichhorn's second rule; Eichhorn's first rule stipules: the dominant height of an even-aged, single-species, closed-cover stand depends only on age, species and station conditions.
+
+**Pressler's rule**    In forest sciences, an empirical rule laid down by @pressler64 which stipules: the basal area increment is constant from the stump up to the base of the functional part of the crown.
+
+**Nutrient content**    Quantity of mineral elements in the biomass.
+
+**Dirac's function**    Distribution (in the statistical sense of the term) concentrated on a value $x_0$ of a continuous random variable (i.e. the probability of the random variable being $<x$ is 0 for $x<x_0$ and 1 for $x>x_0$).
+
+**Monte Carlo**    Said of a method that aims to calculate a numerical value by simulating a random process.
+
+**Social position**    For a tree, the position of its crown in the canopy, which determines its hierarchy with respect to competitors for light (we also speak of social status). The distinction is often made between dominant, co-dominant and dominated trees.
+
+**Reinecke Density Index (RDI)**    In forest sciences, an index established by @reinecke33 that measures the storage of a stand based on the number of stems per hectare (= stand density) and tree mean basal area (= mean quadratic diameter). This index is calculated as a ratio between stand density and maximal density such as determined from the mean quadratic diameter by the self-thinning line.
+
+**Ordinal variable**    Variable that takes discrete values such that the different modalities of these discrete values may be ordered. For example, the month of the year is an ordinal value (months may be arranged in chronological order).
+
+**Variance**    Quantity that measures the dispersion of a random variable around its mean value. It is calculated as the mean of the sum of squares.
+
+
+
+
+
+# Lexicon of mathematical symbols {-}
+
+## Latin symbols {-}
+
+```{r}
+latin <- rbind(
+  c("$a$"            , "estimated value of a coefficient in a predictive model"), 
+  c("$A$"            , "area of a sampling plot"),
+  c("$\\mathcal{A}$"  , "area of a stand"),
+  c("$b$"            , "estimated value of a coefficient in a predictive model"),
+  c("$B$"            , "biomass of an aliquot, a compartment (trunk, branches, leaves $\\ldots$), of a tree or stand"),
+  c("$\\mathrm{CV}_X$", "coefficient of variation of a variable $X$"),
+  c("$c$"            , "exponent of a power expression"),
+  c("$C$"            , "definition 1: circumference of a tree; definition 2: cost of sampling; definition 3: model validation criterion"),
+  c("$D$"            , "diameter of a tree at breast height (dbh)"),
+  c("$D_0$"          , "dbh of the dominant tree in a stand"),
+  c("$E$"            , "precision of the estimation of a variable"),
+  c("$f$"              , "a function linking a response variable to one or more effect variables"),
+  c("$F$"            , "Furnival's index"),
+  c("$g$"            , "a function"), 
+  c("$G$"            , "basal area of a tree or a stand"),
+  c("$h$"            , "a height between zero (the ground) and the height $H$ of the tree"),
+  c("$H$"            , "height of a tree"),
+  c("$H_0$"          , "height of the dominant tree in the stand"),
+  c("$\\mathbf{I}_n$" , "Fisher's information matrix for a sample of size $n$"),
+  c("$k$"            , "multiplier of a power expression"),
+  c("$K$"            , "number of subsets in a cross validation"),
+  c("$\\ell$"         , "likelihood of a sample"),
+  c("$\\mathcal{L}$"   , "log-likelihood of a sample"),
+  c("$L$"            , "length of a log"), 
+  c("$M$"            , "definition 1: number of biomass compartments in a tree; definition 2: number of competitor models for predicting the same response variable"),
+  c("$n$"            , "sample size"),
+  c("$N$"            , "definition 1: total number of sampling units (tree or plot) in a stand; definition 2: stand density (number of stems per hectare)"),
+  c("$\\mathcal{N}$"  , "the normal distribution (also called a Gaussian or Laplace-Gauss distribution)"),
+  c("$p$"            , "number of effect variables in a model (not including the y-intercept)"),
+  c("$P$", " stem profile (plot giving the area of a cross-cut through the trunk at different heights)"), 
+  c("$q$", "definition 1: number of estimated parameters in a model; definition 2: quantile of the standard normal distribution"), 
+  c("$Q$", "number of Monte Carlo iterations"), 
+  c("$R$", "definition 1: a model's determination coefficient; definition 2 (in the model selection theory): a risk; definition 3: radius of a log"), 
+  c("$S$", "number of strata in a stratification"), 
+  c("$S_X$", "empirical standard deviation of a variable $X$"), 
+  c("$\\mathcal{S}_n$", "dataset containing $n$ observations"), 
+  c("$t_{n}$", "quantile of a Student's distribution with $n$ degrees of freedom"), 
+  c("$T$", "age of a plantation"), 
+  c("$V$", "volume of a log, tree or stand"), 
+  c("$w$", "definition 1: weight of an observation in a weighted regression; definition 2: weight of a model in a mixture of models"), 
+  c("$X$", "a variable (generally the effect variable of a model)"), 
+  c("$\\mathbf{x}$", "a vector of effect variables"), 
+  c("$\\mathbf{X}$", "design matrix for a linear model"), 
+  c("$Y$", "a variable (generally the response variable of a model)"), 
+  c("$\\mathbf{Y}$", "response vector of a multivariate model"), 
+  c("$z$", "a latent variable for the EM algorithm"), 
+  c("$Z$", "a variable (generally a covariable defining the stratification of a dataset)")
+)
+
+kab_latin <- tibble(sym = latin[,1], txt = latin[,2])
+
+kab_opt <- list(
+  x = kab_latin, 
+  booktab = TRUE,
+  escape = F,
+  col.names = c("", ""), 
+  align = "rl"
+  )
+
+if (book_format == "latex") {
+  
+  display_table() %>% 
+    kableExtra::column_spec(column = 2, width = "10cm" ) 
+  
+} else if (book_format == "html") {
+  
+  display_table() %>%
+    kableExtra::column_spec(column = 2, width = "20cm")
+  
+} else {
+  
+  display_table()
+  
+}
+
+
 ```
 
-## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r cars}
-summary(cars)
+## Greek symbols {-}
+
+```{r}
+greek <- rbind(
+  c("$\\alpha$"                   , 'definition 1: (unknown) "true" value of a coefficient in a predictive model; definition 2: confidence threshold for a confidence interval (generally 5\\ \\%)'), 
+  c("$\\beta$"                    , "(unknown) ``true'' value of a coefficient in a predictive model"), 
+  c("$\\gamma$"                   , "loss function (in the model selection theory)"), 
+  c("$\\delta$"                   , "Dirac's function"), 
+  c("$\\Delta$"                   , "a difference in value for a given variable"), 
+  c("$\\varepsilon$"              , "residual error of a predictive model"), 
+  c("$\\boldsymbol{\\varepsilon}$", "vector of the residual errors of a multivariate model"), 
+  c("$\\zeta$"                    , "residual covariance between two compartments"), 
+  c("$\\eta$"                     , "volumetric shrinkage coefficient"), 
+  c("$\\theta$"                   , "a set of model parameters"), 
+  c("$\\boldsymbol{\\theta}$"     , "a vector of parameters in a multivariate model"), 
+  c("$\\vartheta$"                , "a set of parameters"), 
+  c("$\\mu$"                      , 'expectation of a random variable = (unknown) "true" mean of a variable to be estimated'), 
+  c("$\\xi$"                      , "Box-Cox transformation parameter"), 
+  c("$\\rho$"                     , "wood density"), 
+  c("$\\sigma$"                   , "standard deviation of the residual error of a predictive model"), 
+  c("$\\boldsymbol{\\Sigma}$"     , "variance-covariance matrix of a multinormal distribution"), 
+  c("$\\tau$"                     , "(unknown) ``true'' standard deviation of a variable to be estimated "), 
+  c("$\\phi$"                     , "probability density of a normal distribution"), 
+  c("$\\psi$"                     , "function defining a variable transformation"), 
+  c("$\\chi$"                     , "water content"), 
+  c("$\\chi_0$"                   , "fiber saturation point"), 
+  c("$\\omega$"                   , "a proportion (for example, the proportion of fresh biomass in a log)")
+)
+  
+kab_greek <- tibble(sym = greek[,1], txt = greek[,2])
+
+kab_opt <- list(
+  x = kab_greek, 
+  booktab = TRUE,
+  escape = F,
+  col.names = c("", ""), 
+  align = "rl"
+  )
+
+if (book_format == "latex") {
+  
+  display_table() %>% 
+    kableExtra::column_spec(column = 2, width = "10cm" ) 
+  
+} else if (book_format == "html") {
+  
+  display_table() %>%
+    kableExtra::column_spec(column = 2, width = "20cm")
+  
+} else {
+  
+  display_table()
+  
+}
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+
+
+## Non-alphabetical symbols {-}
+
+
+```{r}
+nalpha <- rbind(
+  c("$\\varnothing$", 'diameter of a tree, a log, a branch or a root')
+)
+  
+kab_nalpha <- tibble(sym = nalpha[,1], txt = nalpha[,2])
+
+kab_opt <- list(
+  x = kab_nalpha, 
+  booktab = TRUE,
+  escape = F,
+  col.names = c("", ""), 
+  align = "rl"
+  )
+
+if (book_format == "latex") {
+  
+  display_table() %>% 
+    kableExtra::column_spec(column = 2, width = "10cm" ) 
+  
+} else if (book_format == "html") {
+  
+  display_table() %>%
+    kableExtra::column_spec(column = 2, width = "20cm")
+  
+} else {
+  
+  display_table()
+  
+}
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+

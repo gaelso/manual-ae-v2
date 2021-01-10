@@ -15,9 +15,9 @@ bibliography: [bib-jourabbr.bib, bib-trouves.bib, bib-recherch.bib, bib-rstudio.
 site: bookdown::bookdown_site
 biblio-style: bib-faouk.bst
 urlcolor: blue
-citecolor: RoyalBlue
-linkcolor: black
-filecolor: red
+citecolor: blue
+linkcolor: RoyalBlue
+filecolor: RoyalBlue
 ---
 
 ```{r setup, include=FALSE}

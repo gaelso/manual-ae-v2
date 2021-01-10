@@ -40,6 +40,8 @@ source("R/red_line_code.R")
 
 
 ## Make report
+
+
 ## PDF -- For pdf install webshot and webshot::install_phantomjs() 
 # bookdown::render_book(
 #   input = "index.Rmd",
@@ -49,7 +51,7 @@ source("R/red_line_code.R")
 #   ) ## >> NOT WORKING WITH THEOREM AND PROOF HACK
 
 bookdown::preview_chapter(
-  input = c("index.Rmd", "07-3-pred-stand.Rmd"),
+  input = c("index.Rmd", "02-1-samp-lm.Rmd"),
   output_format = "bookdown::pdf_book",
   output_dir = paste0("Manual-AE/Manual-AE-pdf-sections-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"))
 )
