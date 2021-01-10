@@ -29,10 +29,14 @@ book_format <- knitr::opts_knit$get('rmarkdown.pandoc.to')
 if (book_format %in% c("html", "latex")) {
   library(kableExtra)
   if (book_format == "latex") {
-    knitr::opts_chunk$set(fig.align='center', out.width='100%', comment = "") ## NOT USED: fig.pos='H', 
+    knitr::opts_chunk$set(fig.align='center', out.width='100%', comment = "") ## NOT USED: fig.pos='H',
+    one_col <- '60%'
+    two_col <- '100%' 
   } else {
     #knitr::opts_chunk$set(fig.align='center', out.width='60%')
     knitr::opts_chunk$set(fig.align='center', out.width='60%', class.source="Rchunk", class.output="Rout") ## NOT USED: fig.pos='H', 
+    one_col <- '40%'
+    two_col <- '80%'
   }
 }
 

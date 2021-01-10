@@ -41,6 +41,7 @@ tsp
 ```
 
 
+
 ### Computer-entering field data
 
 - Pocket PC (with battery charger and cables) or field record forms on waterproof paper or cardboard, if possible bound in notebooks with plasticized covers front and back.
@@ -51,6 +52,7 @@ tsp
 - Tree calipers and girth tape to measure circumference.
 - Tree marking paint gun (for marking standing trees and the main stem in highly developed crowns).
 - Logger's mark to indicate where disks should be cut (or marked with the paint gun).
+
 
 
 ### Laboratory equipment

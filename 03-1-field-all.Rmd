@@ -40,9 +40,13 @@ Full advantage may be made of existing felling operations to sample the trees ne
 Therefore, in the field, there is no standard method as operators must adapt to each situation. But, here in this guide, we will nevertheless describe three typical cases that can be employed subsequently as the basis for conducting any type of field campaign. The first concerns regular forest (derived from regeneration or planted), the second dry forest and the third wet tropical forest. In the first case, all the compartments are weighed directly in the field. In the second, as the trees cannot be felled, the measurements made are semi-destructive. The third case concerns trees that are too large to be weighed in their entirety in the field. Measurements are therefore obtained in three phases: in the field, in the laboratory, then by computation. As the field measurements and computations are specific to each method, they are presented for each individual case. The laboratory procedures are generally the same in all cases.
 
 
+
+
 ## Weighing all compartments directly in the field {#pese}
 
+
 The first case we will tackle is the most common and involves directly weighing all the compartments in the field. The operating procedure suggested is the fruit of several field campaigns conducted both in temperate and tropical climates. We will illustrate the case by examples taken from a variety of regular stands: plantations of eucalyptus in Congo [@saintandre05], rubber tree in Thailand, and high forests of beech and oak in France [@genet11]. An example of this methodology, with additional measurements on the tapering of large branches, and sampling for nutrient content, is given by @rivoire09.
+
 
 
 ### In the field
@@ -123,6 +127,7 @@ Once the bundles have been weighed, aliquots are taken from each to estimate bra
 To avoid sampling bias, the same person must take all the samples and work in a systematic manner that is representative of the variability in each branch size class. To minimize bias when measuring moisture content, all the samples should be taken to the weighing area (same place as the disks) and should be weighed in their paper bag before being processed in the laboratory. Although it is best to weigh the samples in the field, if this proves impossible then any loss of moisture should be avoided. For instance the use of a cool box is very highly recommended. When sampling leaves, they should first be mixed together and the sample should be taken randomly from the middle of the heap. This mixing-sampling operation should be conducted five or six times for each tree (photo \@ref(fig:thai)). The samples from each tree should then be placed in the same bag (the amount taken should be adapted to leaf size and heterogeneity, and particularly the proportion of green to senescent leaves --- one standard plastic bag is generally perfectly adequate).
 
 
+
 ### In the laboratory {#lab1}
 
 If the trunk disks cannot be measured immediately they should be stocked in the fresh air on wooden battens so that air can circulate freely between them (to avoid mould). They can now be left to dry provided that fresh biomass was measured in the field. But if they were not weighed in the field, they must be weighed immediately on arrival.
@@ -146,17 +151,17 @@ mlab
 ```
 
 
+
 ### Calculations
+
 
 #### Calculating the biomass of the trunk {-}
 
 For each log $i$, measure the circumference at the two extremities: circumference $C_{1i}$ at the small end is the circumference of the disk taken at the small end and circumference $C_{2i}$ at the large end is the circumference of the disk taken at the large end. This can be employed to calculate the volume of the fresh log using the truncated cone volume formula (or Newton's formula):
-
 \begin{equation}
 V_{\text{fresh},i}=L_i\times\frac{\pi}{3}\times(R_{1i}^2+R_{1i}R_{2i}
 +R_{2i}^2)(\#eq:cone)
 \end{equation}
-
 where $L_i$ is the length of log $i$, and $R_{1i}=C_{1i}/(2\pi)$
 and $R_{2i}=C_{2i}/(2\pi)$ are the radii of log $i$ at its two extremities. This volume may be measured with bark (circumferences being measured in the field) or without bark (circumferences being measured on the disks after debarking in the laboratory). Fresh volume with bark is widely employed when selling timber whereas the second measurement is used to check data consistency for it is used to calculate wood density in the tree.
 
@@ -171,17 +176,16 @@ Also, for each sample taken of log $i$ we calculate:
 where $B^{\text{aliquot}}_{\text{fresh wood},i}$ is the fresh biomass of the wood (without the bark) in the sample of log $i$, and $B^{\text{aliquot}}_{\text{fresh bark},i}$ is the fresh biomass of the bark in the sample of log $i$;
 
 - the moisture content of the wood (without the bark):
-
 \begin{equation}
 \chi_{\text{wood},i}=\frac{B^{\text{aliquot}}_{\text{dry wood},i}}{B^{\text{aliquot}}_{\text{fresh wood},i}}(\#eq:qbois)
 \end{equation}
-
 where $B^{\text{aliquot}}_{\text{dry wood},i}$ is the oven-dried biomass of the wood (without the bark) in the sample of log $i$;
 
 - the proportion of fresh biomass in the bark:
 \[
 \omega_{\text{fresh bark},i}=1-\omega_{\text{fresh wood},i}
 \]
+
 - the moisture content of the bark:
 \[
 \chi_{\text{bark},i}=\frac{B^{\text{aliquot}}_{\text{dry bark},i}}{B^{\text{aliquot}}_{\text{fresh bark},i}}
@@ -201,6 +205,7 @@ where $B_{\text{fresh},i}$ is the fresh biomass (including the bark) of log $i$;
 B_{\text{dry bark},i}=B_{\text{fresh},i}\times
 \omega_{\text{fresh bark},i}\times\chi_{\text{bark},i}
 \]
+
 - the density of the wood in log $i$ is:
 \[
 \rho_i=\frac{B_{\text{dry wood},i}}{V_{\text{fresh},i}}
@@ -219,6 +224,7 @@ where the sum concerns all logs $i$ that make up the trunk;
 \[
 B_{\text{trunk dry bark}}=\sum_iB_{\text{dry bark},i}
 \]
+
 The wood density $\rho_i$ used in the calculation of dry biomass must be the oven-dry wood density, i.e. the ratio of dry biomass (dried in the oven to constant dry weight) to the volume of fresh wood. Care should be taken not to confuse this wood density value with that calculated using the same moisture content for the mass and the volume (i.e. dry mass over dry volume or fresh mass over fresh volume). The @afnor85 standard, however, defines wood density differently, as the ratio of the biomass of the wood dried in the fresh air to the volume of the wood containing 12\ \% water [@fournier98c]. But the oven-dry wood density can be calculated from the density of wood containing 12\ \% water using the expression [@gourlet11]:
 \[
 \rho_{\chi}=\frac{\rho\ (1+\chi)}{1-\eta\ (\chi_0-\chi)}

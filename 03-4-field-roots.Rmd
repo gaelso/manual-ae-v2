@@ -10,9 +10,9 @@ A=\sqrt{p(p-2a)(p-2b)(p-2c)}
 \]
 where $p=a+b+c$ is the triangle perimeter and $A$ its area. Figure \@ref(fig:vanu) illustrates this procedure for coconut plantations in Vanuatu [@navarro08].
 
-```{r voro, fig.cap="(ref:voro)"}
+```{r voro, out.width=two_col, fig.cap="(ref:voro)"}
 
-knitr::include_graphics(paste0(fig_path, "/voronoi.png"), auto_pdf = TRUE)
+display_fig("voronoi")
 
 ```
 
@@ -21,7 +21,6 @@ knitr::include_graphics(paste0(fig_path, "/voronoi.png"), auto_pdf = TRUE)
 invisible(plot.new())
 grid.picture(vanu)
 grid.raster(photo_list$cocoteraie, x = 0.25, y = 0.28, w = 0.28)
-
 
 ```
 

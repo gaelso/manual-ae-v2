@@ -2,6 +2,7 @@
 
 ## Direct weighing for certain compartments and volume and density measurements for others
 
+
 The second case we consider here is that where felling constraints mean that only semi-destructive measurements are taken. These combine direct measurements for certain parts of the tree, and volume and density measurements for the others. We will illustrate this by developing an allometric equation for the dry northern forests of Cameroon. The biomass of dry forests is particularly difficult to determine given the architectural complexity of the trees they contain. Human intervention is also particularly significant in dry areas because of the rarity of forest resources and the magnitude of the demand for bioenergy. This is reflected by the trimming, pruning and maintenance practices often employed for trees located in deciduous forests, agro-forest parks and hedges (photo \@ref(fig:ka)).
 
 ```{r ka, fig.scap="Trimming shea trees (*Vitellaria paradoxa*) in north Cameroon", fig.cap="(ref:ka)"}
@@ -11,6 +12,7 @@ ka
 ```
 
 The trees in most dry areas are protected as this woody resource regenerates particularly slowly and is endangered by human activities. Biomass measurements are therefore non-destructive and take full advantage of this trimming to measure the biomass of the trimmed compartments. Grazing activities limit regeneration and small trees are often few in number. This part of the guide will therefore consider only mature trees.
+
 
 
 ### In the field: case of semi-destructive measurements
@@ -54,10 +56,10 @@ grid.text("Fresh biomass of the trimmed",
 grid.text("branches, measured by weighing",
           x = 0.01, y = 0.12, just = 'left')
 
-grid.text("(A)",
-          x = 0.4, y = 0.85, just = 'left')
-grid.text("(B)",
-          x = 0.8, y = 0.85, just = 'left')
+# grid.text("(A)",
+#           x = 0.4, y = 0.85, just = 'left')
+# grid.text("(B)",
+#           x = 0.8, y = 0.85, just = 'left')
 
 ```
 
@@ -80,9 +82,9 @@ The biomass of the trunk and the large branches is estimated from measurements o
 
 First, measure the volume ($V_{\text{fresh wood}}^{\text{aliquot}}$) of the wood aliquot taken from the trimmed compartments. This volume may be measured in different manners [@maniatis11]. That most commonly employed measures the volume of water displaced when the sample is immersed in water. The volume of water displaced may be measured using a graduated tube of suitable dimensions for the sample (Figure \@ref(fig:archim)). Another method consists in cutting the sample into shapes whose volume may be accurately measured. This method requires precision tools and personnel trained in cutting wood.
 
-```{r archim, out.width='60%', fig.cap="(ref:archim)"}
+```{r archim, out.width=one_col, fig.cap="(ref:archim)"}
 
-knitr::include_graphics(paste0(fig_path, "/archim.png"), auto_pdf = TRUE)
+display_fig("archim")
 
 ```
 
@@ -122,19 +124,15 @@ B_{\text{untrimmed dry}}=B_{\text{untrimmed dry branch}}
 +B_{\text{dry section}}
 \]
 Each section $i$ of the trunk and the large branches may be considered to be a cylinder of volume (Smalian's formula):
-
 \begin{equation}
 V_i=\frac{\pi}{8}\ L_i\ (D_{1i}^2+D_{2i}^2)(\#eq:cyl)
 \end{equation}
-
 where $V_i$ is the volume of the section $i$, $L_i$ its lenght, and $D_{1i}$ and $D_{2i}$ are the diameters of the two extremities of section $i$. The truncated cone volume formula (see equation \@ref(eq:cone)) can also be used instead of the cylinder formula (\@ref(eq:cyl)), but the difference between the results will be slight as the tapering over one meter is not very pronounced in trees.
 
 The dry biomass of the large branches and trunk is the product of mean wood density and total volume of the large branches and trunk:
-
 \begin{equation}
 B_{\text{dry section}}=\bar{\rho}\times\sum_iV_i(\#eq:Btr)
 \end{equation}
-
 where the sum corresponds to all the sections in the large branches and the trunk (Figure \@ref(fig:emond)B), and where mean wood density is calculated by:
 \[
 \bar{\rho}=\frac{B_{\text{dry wood}}^{\text{aliquot}}}
