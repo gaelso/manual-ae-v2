@@ -1,4 +1,0 @@
-
-`r if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("docx", "html")) '
-# Bibliography {-}
-'`
