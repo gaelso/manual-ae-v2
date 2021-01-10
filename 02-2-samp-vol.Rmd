@@ -6,7 +6,7 @@ As a first step, let us consider the problem of predicting the volume or biomass
 
 ### Number of trees {#size}
 
-Given the limitations of the sampling theory, the number of measured trees for volume or biomass (in other terms, the sample size) is generally selected empirically, based on rules established by experience. A general principle is that, for any given precision, the more variable the material, the larger the sample size: smaller sample sizes are required for a plantation of clones than for a natural tropical forest, for a given species than for a group of species, for a 10 ha plot than for a natural area. In certain cases, such as for root biomass, it is the cost of the measurements that determines the sample size rather than the desired precision of the predictions: the number of trees selected corresponds to an acceptable amount of work to obtain the measurements. As a rough guide, when constructing volume tables, the Forester's Memento [@ctft89 p.256] recommends measuring about 100 trees "for one or more stands of recent plantation over a small surface area (e.g. silviculture research plots)". Pardé \& Bouchon [-@parde88, p.108] recommended the sample sizes given in Table \@ref(tab:eff), that depend on the surface area of the zone in which the volume tables are to be used. Different volume and biomass tables have been compiled by @zianis05 for Europe and by @henry11 for sub-Saharan Africa. The sample sizes reported for the volume and biomass tables listed in these literature reviews give some idea of the sampling effort required. @chave04 showed that when 300 trees were used to construct a biomass table, the resulting biomass estimation for a wet tropical stand (Barro Colorado Island in Panama) had a coefficient of variation of barely 3.1\ \%. This coefficient of variation rose above 10\ \% when the number of trees used to construct the biomass table fell below 50, with the coefficient of variation increasing approximately in proportion to $1/\sqrt{n}$ [Figure 3 @chave04]. @vanbreugel11 noted the same type of decrease in estimation precision with the sample size used to construct the biomass table, for $n$ between 49 and 195 trees.
+Given the limitations of the sampling theory, the number of measured trees for volume or biomass (in other terms, the sample size) is generally selected empirically, based on rules established by experience. A general principle is that, for any given precision, the more variable the material, the larger the sample size: smaller sample sizes are required for a plantation of clones than for a natural tropical forest, for a given species than for a group of species, for a 10 ha plot than for a natural area. In certain cases, such as for root biomass, it is the cost of the measurements that determines the sample size rather than the desired precision of the predictions: the number of trees selected corresponds to an acceptable amount of work to obtain the measurements. As a rough guide, when constructing volume tables, the Forester's Memento [@ctft89, p.256] recommends measuring about 100 trees "for one or more stands of recent plantation over a small surface area (e.g. silviculture research plots)". Pardé & Bouchon [-@parde88, p.108] recommended the sample sizes given in Table \@ref(tab:eff), that depend on the surface area of the zone in which the volume tables are to be used. Different volume and biomass tables have been compiled by @zianis05 for Europe and by @henry11 for sub-Saharan Africa. The sample sizes reported for the volume and biomass tables listed in these literature reviews give some idea of the sampling effort required. @chave04 showed that when 300 trees were used to construct a biomass table, the resulting biomass estimation for a wet tropical stand (Barro Colorado Island in Panama) had a coefficient of variation of barely 3.1\ \%. This coefficient of variation rose above 10\ \% when the number of trees used to construct the biomass table fell below 50, with the coefficient of variation increasing approximately in proportion to $1/\sqrt{n}$ [Figure 3 @chave04]. @vanbreugel11 noted the same type of decrease in estimation precision with the sample size used to construct the biomass table, for $n$ between 49 and 195 trees.
 
 ```{r eff}
 
@@ -25,7 +25,7 @@ display_table()
 
 
 The costlier an observation, in terms of measurement time and effort, the more the sampling plan tends to be determined by the sampling effort that workers are willing to make rather than by the desired precision of the estimation. As the above-ground biomass of a tree is more difficult to measure than the volume of its stem, biomass tables tend to be constructed using fewer observations than volume tables. Certain biomass tables are constructed from measurements in only a few trees [8 trees for @brown95 in Brazil; 12 trees for @ebuy11 in the Democratic Republic of Congo; 14 trees for @deans96; 15 trees for @russell83 in Brazil].
-Root tables, that require an even greater measurement effort, are often based on even smaller sample sizes. Tables constructed using such small samples are generally unreliable, and in any case are valid only very locally. However, these small datasets can subsequently be grouped together into more impressive datasets that have advantages for model fitting (on condition that the variability induced by the merging of these datasets can be controlled by effect covariables: age, wood density, etc. or by stratification factors: species, type of plant formation\ldots).
+Root tables, that require an even greater measurement effort, are often based on even smaller sample sizes. Tables constructed using such small samples are generally unreliable, and in any case are valid only very locally. However, these small datasets can subsequently be grouped together into more impressive datasets that have advantages for model fitting (on condition that the variability induced by the merging of these datasets can be controlled by effect covariables: age, wood density, etc. or by stratification factors: species, type of plant formation $\ldots$).
 
 
 ### Sorting trees {#vent}
@@ -43,15 +43,15 @@ Therefore, the higher the value of $S_X$ the more precise the estimation of the 
 
 The theory of response surfaces [@box87; @goupy99; @myers02] can be used to optimize tree sorting on the basis of dbh (and more generally on the basis of table entry variables). We will not enter into the details of this theory here, but will simply sketch a few general principles. The first principle is to spread the tree size gradient of the sample as broadly as possible.
 
-If the volume (or mass) variance is constant for all tree sizes, the rule is to measure the same number of trees in each size category [@parde88 p.108; @ctft89 p.256]. It would be a mistake to form a sample by selecting in each size class a number of trees proportional to the magnitude of that class in the stand (in other words select the trees at random). But volume variance is rarely constant; generally it increases with tree size (heteroscedasticity of the residuals). The rule is therefore to increase sampling intensity in the most variable classes, thereby improving precision. In theory, the ideal approach is to measure a number of trees in a given size class proportional to the standard deviation of the tree volume in this class [@ctft89 p.256]. In practice, when the entry variable is dbh, an empirical rule consists in selecting the same number of trees per basal area growth class and thus better represent large diameter trees [@ctft89, p.256--257].
+If the volume (or mass) variance is constant for all tree sizes, the rule is to measure the same number of trees in each size category [@parde88, p.108; @ctft89, p.256]. It would be a mistake to form a sample by selecting in each size class a number of trees proportional to the magnitude of that class in the stand (in other words select the trees at random). But volume variance is rarely constant; generally it increases with tree size (heteroscedasticity of the residuals). The rule is therefore to increase sampling intensity in the most variable classes, thereby improving precision. In theory, the ideal approach is to measure a number of trees in a given size class proportional to the standard deviation of the tree volume in this class [@ctft89, p.256]. In practice, when the entry variable is dbh, an empirical rule consists in selecting the same number of trees per basal area growth class and thus better represent large diameter trees [@ctft89, p.256--257].
 
 This reasoning may be extended to other effect variables. If the table entry variable is $D^2H$, the trees may be sorted by $D^2H$. For multispecific biomass tables, wood density $\rho$ is often used as the entry variable (with the specificity that it concerns the species not the tree). For multispecific tables using diameter $D$ and specific wood density $\rho$ as entry variable, adequate sorting of the trees in the sample consists in dividing them evenly by dbh class and wood density class.
+
 
 
 ### Stratification {#stratif}
 
 We have already seen for the sorting of trees into size classes that selecting trees at random, and thereby giving all trees and equal *inclusion probability* is a suboptimal sampling plan. Stratification aims to take account of exogenous information to establish homogeneous sampling *strata* and thus improve the precision of our estimations. The principle, in the same manner as previously, is to increase the sampling intensity of the most variable strata (relative to the other strata). Again using the example given in section \@ref(simple), the variance of the regression estimator $\bar{V}$ in the case of a stratified sampling approach becomes [@cochran77, p.202]:
-
 \begin{eqnarray}
 \widehat{\mbox{Var}}(\bar{V}) &=&
 \sum_h\left(\frac{N_h}{N}\right)^2
@@ -62,10 +62,7 @@ We have already seen for the sorting of trees into size classes that selecting t
 {\sum_{i=1}^{n_h} (D_{hi}^2H_{hi}-
 \overline{D^2H}_{eh})^2}\right\}(\#eq:VVh)
 \end{eqnarray}
-
-where $h$ is the stratum, $N_h$ the number of individuals in the stand that belong to stratum $h$, $n_h$ is the number of individuals in the sample that belong to stratum $h$, $V_{ih}$
-is the volume of the $i$th individual in stratum $h$ in the sample, $\bar{V}_{eh}$ is the empirical mean volume in stratum $h$ of the sample, etc.
-This formula replaces (\@ref(eq:VV)). Let us now illustrate the precision gained by the stratification using a simple numerical example. Let us suppose, to simplify, that we have two strata, each corresponding to 50\ \% of the stand (such that $N_1/N=N_2/N=0.5$), and that the sampling in each stratum is such that the second term between brackets in (\@ref(eq:VVh)) is negligible. Let us also assume that $n_1\ll N_1$ and $n_2\ll N_2$. The variance of the regression estimator in this case is approximately proportional to:
+where $h$ is the stratum, $N_h$ the number of individuals in the stand that belong to stratum $h$, $n_h$ is the number of individuals in the sample that belong to stratum $h$, $V_{ih}$ is the volume of the $i$th individual in stratum $h$ in the sample, $\bar{V}_{eh}$ is the empirical mean volume in stratum $h$ of the sample, etc. This formula replaces (\@ref(eq:VV)). Let us now illustrate the precision gained by the stratification using a simple numerical example. Let us suppose, to simplify, that we have two strata, each corresponding to 50\ \% of the stand (such that $N_1/N=N_2/N=0.5$), and that the sampling in each stratum is such that the second term between brackets in (\@ref(eq:VVh)) is negligible. Let us also assume that $n_1\ll N_1$ and $n_2\ll N_2$. The variance of the regression estimator in this case is approximately proportional to:
 \[
 \widehat{\mbox{Var}}(\bar{V})\propto \frac{1}{n_1-2}\left\{
 \frac{1}{n_1}\sum_{i=1}^{n_1}(V_{1i}-\bar{V}_{e1})^2\right\}
@@ -87,7 +84,6 @@ From the standpoint of sampling theory, stratification aims to increase the prec
 
 In short, stratification aims to explore the variability of the study area to (*i*) if necessary vary the form of the tables in accordance with the strata, and
 (*ii*) fit the sampling plan to the variability in the strata. Often when constructing volume tables, point (*i*) is predominant over point (*ii*), whereas the reverse is true in sampling theory. Figure \@ref(fig:mel) illustrated these two aims.
-
 
 ```{r mel, fig.scap="Predicting volume from tree size in two strata", fig.cap="(ref:mel)"}
 
@@ -121,6 +117,7 @@ where $D$ is the dbh and $B$ biomass of different trees of different species at 
 \[
 B=r\rho D^{2+c}
 \]
+
 
 
 ### Selecting trees {#sel}

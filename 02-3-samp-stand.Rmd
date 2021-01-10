@@ -1,17 +1,19 @@
 
 ## Sampling for stand estimations {#sampeup}
 
-Let us now consider the problem of predicting the volume or biomass of a stand. In a rigorously statistical manner, we need to consider the entire error propagation chain as described in Figure \@ref(fig:cha) [@parresol99]. This raises questions of double sampling and regression estimator, as described in section \ref{peup}. @cunia87c; @cunia87; @cunia87d, @chave04 and @vanbreugel11 are rare examples where the entire error propagation chain was indeed taken into account, and where the biomass estimation error for a stand was related to the sample size used to construct the biomass table necessary for this estimation. In practice the problem is generally simplified by considering the table as exact and not suffering from any prediction error. This approximation --- which disconnects the sampling of the stand used to predict its volume or biomass, from the sampling of the trees used to construct the model --- reduces the sampling to a conventional forest inventory problem.
+Let us now consider the problem of predicting the volume or biomass of a stand. In a rigorously statistical manner, we need to consider the entire error propagation chain as described in Figure \@ref(fig:cha) [@parresol99]. This raises questions of double sampling and regression estimator, as described in section \@ref(peup). @cunia87c; @cunia87; @cunia87d, @chave04 and @vanbreugel11 are rare examples where the entire error propagation chain was indeed taken into account, and where the biomass estimation error for a stand was related to the sample size used to construct the biomass table necessary for this estimation. In practice the problem is generally simplified by considering the table as exact and not suffering from any prediction error. This approximation --- which disconnects the sampling of the stand used to predict its volume or biomass, from the sampling of the trees used to construct the model --- reduces the sampling to a conventional forest inventory problem.
 
 We will not dwell here on this question of forest inventory, first because it is not central to this guide's purpose, and second because entire books have already been devoted to the subject [@loetsch73; @lanly81; @vries86; @schreuder93; @shiver96; @west09]. We will nevertheless describe a few developments relating to the estimation of stand biomass.
+
 
 
 ### Sampling unit
 
 Whereas it is entirely suitable, when constructing a biomass model, to select trees for the sample in an individual manner, this sampling strategy is unrealistic when estimating the biomass of a stand.
-We should rather in this case opt for a strategy consisting in measuring all the trees within a given area, and if necessary repeating this approach on another area to increase sample size. This area, or plot, thus becomes the sampling unit. Let $n$ be the number of plots inventoried, $N_i$ be the number of trees found in the $i$th plot ($i=1$, \ldots, $n$), and $B_{ij}$ be the biomass of the $j$th tree in the $i$th plot ($j=1$, \ldots, $N_i$), calculated using the biomass model and the measured characteristics of the tree. The number $N_i$ is random, but for a given tree the prediction of $B_{ij}$ is considered as deterministic. The biomass of the $i$th plot is therefore: $B_i=\sum_{j=1}^{N_i}B_{ij}$.
+We should rather in this case opt for a strategy consisting in measuring all the trees within a given area, and if necessary repeating this approach on another area to increase sample size. This area, or plot, thus becomes the sampling unit. Let $n$ be the number of plots inventoried, $N_i$ be the number of trees found in the $i$th plot ($i=1,\ \ldots,\ n$), and $B_{ij}$ be the biomass of the $j$th tree in the $i$th plot ($j=1,\ \ldots,\ N_i$), calculated using the biomass model and the measured characteristics of the tree. The number $N_i$ is random, but for a given tree the prediction of $B_{ij}$ is considered as deterministic. The biomass of the $i$th plot is therefore: $B_i=\sum_{j=1}^{N_i}B_{ij}$.
 
 Let $A$ be the area of a sampling plot and $\mathcal{A}$ be the area of the stand. In the super-population model the biomass of the stand is therefore estimated by: $(\mathcal{A}/A)\ \bar{B}$, where $\bar{B}=(\sum_{i=1}^nB_i)/n$ is the mean biomass of a plot. It is generally considered that $A$ and $\mathcal{A}$ are accurately known parameters. The stand biomass estimation error therefore stems from that of mean biomass $\bar{B}$.
+
 
 
 ### Relation between coefficient of variation and plot size
@@ -25,11 +27,9 @@ where $t_{n-1}$ is the quantile $1-\alpha/2$ of a Student distribution with $n-1
 S_B^2=\frac{1}{n-1}\sum_{i=1}^n(B_i-\bar{B})^2
 \]
 By definition, the precision of the estimation $E$ at the threshold $\alpha$ is the ratio of the semi-amplitude of the confidence interval at the threshold $\alpha$ to the mean biomass:
-
 \begin{equation}
 E=t_{n-1}\frac{S_B}{\bar{B}\sqrt{n-1}}=t_{n-1}\frac{\mathrm{CV}_B}{\sqrt{n-1}}(\#eq:E)
 \end{equation}
-
 where $\mathrm{CV}_B=S_B/\bar{B}$ is the biomass coefficient of variation. By rounding $t_{n-1}$ to 2, the sample size $n$ required to reach a given estimation precision $E$ is therefore:
 \[
 n\simeq\bigg(\frac{2\mathrm{CV}_B}{E}\bigg)^2+1
@@ -38,7 +38,6 @@ The biomass coefficient of variation for a plot of area $A$ is therefore the ess
 
 The exact derivation of this relation between $A$ and $\mathrm{CV}_B$
 needs a model capable of describing the spatial distribution of the trees. The theory of point processes meets this need [@cressie93; @stoyan94]. It is feasible, in a point process, to calculate exactly the relationship between $A$ and $\mathrm{CV}_B$ but this is rather complex [@picard04d; @picard07d]. The exact calculation brings two things to our notice:
-
 
 1. although plot *shape* has an effect on the coefficient of variation [as already demonstrated empirically, see @johnson52; @bormann53], it has a negligible effect compared to plot size;
 2. the relation between $A$ and $\mathrm{CV}_B$ can be approached by a power relation [@fairfield38; @picard11b]:
@@ -89,6 +88,7 @@ kab_opt <- list(
 display_table()
 
 ```
+
 
 
 ### Selecting plot size
