@@ -51,7 +51,7 @@ source("R/red_line_code.R")
 #   ) ## >> NOT WORKING WITH THEOREM AND PROOF HACK
 
 bookdown::preview_chapter(
-  input = c("index.Rmd", "02-1-samp-lm.Rmd"),
+  input = c("index.Rmd", "01-1-base-biology.Rmd"),
   output_format = "bookdown::pdf_book",
   output_dir = paste0("Manual-AE/Manual-AE-pdf-sections-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"))
 )

@@ -18,6 +18,7 @@ urlcolor: blue
 citecolor: blue
 linkcolor: RoyalBlue
 filecolor: RoyalBlue
+indent: true
 ---
 
 ```{r setup, include=FALSE}
