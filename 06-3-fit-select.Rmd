@@ -132,7 +132,9 @@ anova(nest,comp)
 The test gives the following result:
 
 ```{r}
-printCoefmat(anova(nest, comp), na.print = "")
+res <- anova(nest, comp)
+attr(res, "heading") <- NULL
+print(res, signif.legend = FALSE)
 ```
 
 The p-value is  `r print(res[2, "Pr(>F)"], digits = 4)`, therefore greater than 5\ \%. The nested model (without $\ln(D)$) is therefore selected rather than the complete model.
@@ -153,13 +155,15 @@ The model $\ln(B)=-8.42722+2.36104\ln(D)$ was obtained in red line \@ref(exr:rll
 ```{r, echo=T, results='hide'}
 comp <- lm(log(Btot) ~ I(log(dbh)) + I(log(heig)), data = dat[dat$Btot>0,])
 nest <- lm(log(Btot) ~ I(log(dbh)), data = dat[dat$Btot>0,])
-anova(nest,comp)
+anova(nest, comp)
 ```
 
 yields:
 
 ```{r}
-printCoefmat(anova(nest, comp), signif.legend = F, na.print = "")
+res <- anova(nest, comp)
+attr(res, "heading") <- NULL
+print(res, signif.legend = FALSE)
 ```
 
 As the p-value is less than 5\ \%, the complete model (including $\ln(H)$ as effect variable) is selected rather than the nested model.
