@@ -1,8 +1,10 @@
 ---
 title: "Manual for building tree volume and biomass allometric equations"
 subtitle: "From field measurement to prediction"
-#author: ""
+author: "Nicolas Picard, Laurent Saint-André, Matieu Henry"
 date: "August 2012"
+subject: "copyright FAO et CIRAD"
+eywords: "allometric equation, biomass table, volume table"
 documentclass: book
 #lof: yes
 #lot: yes
@@ -18,6 +20,8 @@ urlcolor: blue
 citecolor: blue
 linkcolor: RoyalBlue
 filecolor: RoyalBlue
+hyperrefoptions: 
+- pagebackref
 indent: true
 ---
 

@@ -6,7 +6,10 @@
 ## This script sources R scripts and makes the report with bookdown::render_book()
 ## ++++++
 
-## Figures settings
+
+
+## Figures settings ------
+
 img_hires <- list(height = 2500, width = 4000, density = "300x300")
 img_lowres <- list(height = 600, width = 1200, density = "72x72")
 
@@ -19,7 +22,10 @@ fig_path <- "source/figures"
 
 with_color <- TRUE ## FALSE for black and white, not fully supported yet
 
-## Source R scripts
+
+
+## Source R scripts ------
+
 source("R/00-libs.R")
 
 source("R/00-functions.R")
@@ -39,10 +45,12 @@ source("R/red_line_code.R")
 #source("R/conv_tex_rmd.R") ## Run one time
 
 
-## Make report
+
+## Make report ------
 
 
 ## PDF -- For pdf install webshot and webshot::install_phantomjs() 
+
 # bookdown::render_book(
 #   input = "index.Rmd",
 #   output_format = "bookdown::pdf_book",
@@ -50,12 +58,14 @@ source("R/red_line_code.R")
 #   output_dir = "Manual-AE"
 #   ) ## >> NOT WORKING WITH THEOREM AND PROOF HACK
 
+## preview one chapter
 bookdown::preview_chapter(
   input = c("index.Rmd", "01-1-base-biology.Rmd"),
   output_format = "bookdown::pdf_book",
   output_dir = paste0("Manual-AE/Manual-AE-pdf-sections-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"))
 )
 
+## Make the whole book
 bookdown::render_book(
   input = "index.Rmd",
   output_format = "bookdown::pdf_book",
