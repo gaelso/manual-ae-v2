@@ -81,8 +81,7 @@
 
 (ref:badex) Plots of variable $Y$ against each of the effect variables $X_1$ and $X_2$ such that $\mbox{E}(Y)=X_1+X_2$.
 
-(ref:cX1) Plots of a response variable against an effect variable $X_2$ for each of the data subsets defined by the value classes of another effect variable $X_1$,
-with $\mbox{E}(Y)=X_1+X_2$.
+(ref:cX1) Plots of a response variable against an effect variable $X_2$ for each of the data subsets defined by the value classes of another effect variable $X_1$, with $\mbox{E}(Y)=X_1+X_2$.
 
 (ref:y0X1) Plot of the y-intercepts of linear regressions between $Y$ and $X_2$ for data subsets corresponding to classes of $X_1$ values against the middle of these classes, for data simulated in accordance with the model $Y=X_1+X_2+\varepsilon$.
 

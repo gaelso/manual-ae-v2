@@ -1,32 +1,34 @@
 
 # Graphical exploration of the data {#explo}
 
-A graphic exploration of the data is the first step in their analysis. It consists in visually assessing relations between variables in order to gain an idea of the type of model to be fitted. In practice, points are plotted on a graph as a cluster, the coordinates of which correspond to two variables: effect variable on the $x$ axis and response variable on the $y$ axis. A graph can be plotted only for at most two variables simultaneously (three-dimensional graphs cannot in practice be assessed visually). To explore graphically the relations between $p$ variables (where $p>1$), a total of $p(p-1)/2$ graphs should be plotted of one variable against the other and/or efforts should be made to construct combined effect variables from several effect variables (we will return to this point in \S\ \@ref(plus)).
+A graphic exploration of the data is the first step in their analysis. It consists in visually assessing relations between variables in order to gain an idea of the type of model to be fitted. In practice, points are plotted on a graph as a cluster, the coordinates of which correspond to two variables: effect variable on the $x$ axis and response variable on the $y$ axis. A graph can be plotted only for at most two variables simultaneously (three-dimensional graphs cannot in practice be assessed visually). To explore graphically the relations between $p$ variables (where $p>1$), a total of $p(p-1)/2$ graphs should be plotted of one variable against the other and/or efforts should be made to construct combined effect variables from several effect variables (we will return to this point in `r ifelse(book_format == "latex", "\\S", "&sect;")`\ \@ref(plus)).
 
-Let us now suppose that we have one response variable $Y$ (volume, biomass\ldots) and $p$ effect variables $X_1$, $X_2$, \ldots, $X_p$ (dbh, height\ldots). The aim of the graphical exploration is not to select from among the $p$ effect variables those that will in fact be used for the model: when we select variables we need to be able to test the significant nature of a variable, which only comes later in the next phase of model fitting. The $p$ effect variables are therefore considered as fixed, and we look to determine the form of model that best links variable $Y$ to variables $X_1$ to $X_p$. A model is made up of two terms: the mean and the error (or residual). The graphical exploration aims to specify both the form of the mean relation and the form of the error, without any concern for the value of model parameters (dealt with in the next model-fitting step). The mean relation may be linear or non linear, linearizable or not; the residual error may be additive or multiplicative, of constant variance (homoscedasticity) or not (heteroscedasticity). By way of an illustration, Figure \@ref(fig:exgr) shows four examples where the relation is linear or not, and the variance of the residuals is constant or not.
+Let us now suppose that we have one response variable $Y$ (volume, biomass$\ldots$) and $p$ effect variables $X_1$, $X_2$, $\ldots$, $X_p$ (dbh, height$\ldots$). The aim of the graphical exploration is not to select from among the $p$ effect variables those that will in fact be used for the model: when we select variables we need to be able to test the significant nature of a variable, which only comes later in the next phase of model fitting. The $p$ effect variables are therefore considered as fixed, and we look to determine the form of model that best links variable $Y$ to variables $X_1$ to $X_p$. A model is made up of two terms: the mean and the error (or residual). The graphical exploration aims to specify both the form of the mean relation and the form of the error, without any concern for the value of model parameters (dealt with in the next model-fitting step). The mean relation may be linear or non linear, linearizable or not; the residual error may be additive or multiplicative, of constant variance (homoscedasticity) or not (heteroscedasticity). By way of an illustration, Figure \@ref(fig:exgr) shows four examples where the relation is linear or not, and the variance of the residuals is constant or not.
 
-```{r exgr, fig.scap="Example of relations between two variables $X$ and $Y$", fig.cap="(ref:exgr)"}
+```{r exgr, out.width=two_col, fig.scap="Example of relations between two variables $X$ and $Y$", fig.cap="(ref:exgr)"}
 
-knitr::include_graphics(paste0(fig_path, "/explogr.png"), auto_pdf = TRUE)
+display_fig("explogr")
 
 ``` 
 
-The graphical exploration of the data phase is also necessary to avoid falling into the traps of 
-"blind" fitting: the impression can be gained that the model accurately fits the data, whereas in fact this result is an artifact. This is illustrated in Figure \@ref(fig:badR2) for a linear relation. In all four cases shown in this figure the $R^2$ of the linear regression of $Y$ against $X$ is high, while in actual fact the linear relation $Y=a+bX+\varepsilon$ does not fit the data. In Figure \@ref(fig:badR2)A, the cluster of points is split into three subsets, each of which shows a linear relation between $Y$ and $X$ with a negative correlation coefficient. But the three subsets are located along a line that has a positive slope, i.e. that reflecting the linear regression. In \@ref(fig:badR2)B, the cluster of points, except one outlier (very likely an aberrant value), does not show any relation between $Y$ and $X$.
-But the outlier is sufficient to make it look as though there is a positive relation between $Y$ and $X$. In \@ref(fig:badR2)C, the relation between $Y$ and $X$ is parabolic. Finally, in \@ref(fig:badR2)D, the cluster of points, except one outlier, is located along a line with a positive slope. In this case, a linear relation between $Y$ and $X$ is well suited to describing the data, once the outlier has been removed. This outlier artificially reduces the value of $R^2$ (contrary to the situation in Figure \@ref(fig:badR2)B where the outlier artificially increases $R^2$).
+The graphical exploration of the data phase is also necessary to avoid falling into the traps of "blind" fitting: the impression can be gained that the model accurately fits the data, whereas in fact this result is an artifact. This is illustrated in Figure \@ref(fig:badR2) for a linear relation. In all four cases shown in this figure the $R^2$ of the linear regression of $Y$ against $X$ is high, while in actual fact the linear relation $Y=a+bX+\varepsilon$ does not fit the data. In Figure \@ref(fig:badR2)A, the cluster of points is split into three subsets, each of which shows a linear relation between $Y$ and $X$ with a negative correlation coefficient. But the three subsets are located along a line that has a positive slope, i.e. that reflecting the linear regression. In \@ref(fig:badR2)B, the cluster of points, except one outlier (very likely an aberrant value), does not show any relation between $Y$ and $X$. But the outlier is sufficient to make it look as though there is a positive relation between $Y$ and $X$. In \@ref(fig:badR2)C, the relation between $Y$ and $X$ is parabolic. Finally, in \@ref(fig:badR2)D, the cluster of points, except one outlier, is located along a line with a positive slope. In this case, a linear relation between $Y$ and $X$ is well suited to describing the data, once the outlier has been removed. This outlier artificially reduces the value of $R^2$ (contrary to the situation in Figure \@ref(fig:badR2)B where the outlier artificially increases $R^2$).
 
-```{r badR2, fig.scap="", fig.cap="(ref:badR2)"}
+```{r badR2, out.width=two_col, fig.cap="(ref:badR2)"}
 
-knitr::include_graphics(paste0(fig_path, "/badR2.png"), auto_pdf = TRUE)
+display_fig("badR2")
 
 ```
 
 As indicated by its name, this graphical exploration phase is more an exploration than a systematic method. Although some advice can be given in matters of finding the right model, the process requires both experience and intuition.
 
 
+
+
 ## Exploring the mean relation
 
+
 Here in this section we will focus on the graphical method used to determine the nature of the mean relation between two variables $X$ and $Y$, i.e. on how to find the form of the function $f$ (if it exists!) such that $\mbox{E}(Y)=f(X)$. When there is only one effect variable $X$, the graphical exploration consists in plotting the cluster of points $Y$ against $X$.
+
 
 :::::: {.filrouge data-latex=""}
 
@@ -49,17 +51,17 @@ The resulting scatter plot is shown in Figure \@ref(fig:fBvD). This cluster of p
 
 As the scatter plot graphical method is applicable only to one effect variable, we should attempt to achieve this when there are several effect variables. Let us first explain this point.
 
-```{r fBvD, fig.cap="(ref:fBvD)"}
+```{r fBvD, out.width=one_col, fig.cap="(ref:fBvD)"}
 
-knitr::include_graphics(paste0(fig_path, "/fBvD.png"), auto_pdf = TRUE)
+display_fig("fBvD")
 
 ```
 
 
+
 ### When there is more than one effect variable {#plus}
 
-The first step is to determine whether it is possible to form a single combined effect variable out of the several effect variables considered. For example, if we are looking to predict trunk volume from its dbh $D$ and its height $H$,
-we can be sure that the new variable $D^2H$ will be an effective predictor. We have therefore taken two effect variables, $D$ and $H$ and used them to form a new (single!) effect variable, $D^2H$. As an illustration of this, @louppe94 created the following individual volume model for *Afzelia africana* in the Badénou forest reserve in Côte d'Ivoire:
+The first step is to determine whether it is possible to form a single combined effect variable out of the several effect variables considered. For example, if we are looking to predict trunk volume from its dbh $D$ and its height $H$, we can be sure that the new variable $D^2H$ will be an effective predictor. We have therefore taken two effect variables, $D$ and $H$ and used them to form a new (single!) effect variable, $D^2H$. As an illustration of this, @louppe94 created the following individual volume model for *Afzelia africana* in the Badénou forest reserve in Côte d'Ivoire:
 \[
 V=-0.0019+0.04846C^2H
 \]
@@ -91,24 +93,21 @@ and the result is shown in Figure \@ref(fig:fBvD2H). This cluster of points is o
 ::::::
 
 
-```{r fBvD2H, fig.cap="(ref:fBvD2H)"}
+```{r fBvD2H, out.width=one_col, fig.cap="(ref:fBvD2H)"}
 
-knitr::include_graphics(paste0(fig_path, "/fBvD2H.png"), auto_pdf = TRUE)
+display_fig("fBvD2H")
 
 ```
 
-Assume that, once the effect variables have been aggregated, we are still left with $p$ effect variables $X_1$,
-\ldots, $X_p$ (with $p>1$). We could first explore the $p$ relations between $Y$ and each of the $p$ effect variables. As these take the form of relations between two variables, the graphical methods presented hereafter are perfectly suitable. However, this approach often yields little information as the relation between $Y$ and $p$ variables does not boil down to the $p$ relations between $Y$ and each of the $p$ variables separately. A simple example can clearly illustrate this: let us suppose that variable $Y$ is (to within the errors) the sum of two effect variables:
-
+Assume that, once the effect variables have been aggregated, we are still left with $p$ effect variables $X_1$, $\ldots$, $X_p$ (with $p>1$). We could first explore the $p$ relations between $Y$ and each of the $p$ effect variables. As these take the form of relations between two variables, the graphical methods presented hereafter are perfectly suitable. However, this approach often yields little information as the relation between $Y$ and $p$ variables does not boil down to the $p$ relations between $Y$ and each of the $p$ variables separately. A simple example can clearly illustrate this: let us suppose that variable $Y$ is (to within the errors) the sum of two effect variables:
 \begin{equation}
 Y=X_1+X_2+\varepsilon(\#eq:truem)
 \end{equation}
-
 where $\varepsilon$ is a zero expectation error, and variables $X_1$ and $X_2$ are related such that $X_1$ varies between 0 and $-X_{\max}$ and, for a given $X_1$, $X_2$ varies between $\max(0,-X1)$ and $\min(X_{\max},1-X_1)$. Figure \@ref(fig:badex) shows the two plots of $Y$ against each of the effect variables $X_1$ and $X_2$ using simulated data for this model (with $X_{\max}=5$). The cluster of points does not appear to have any particular structure, and no model is therefore detected that generates $\mbox{E}(Y)=X_1+X_2$.
 
-```{r badex, fig.cap="(ref:badex)"}
+```{r badex, out.width=two_col, fig.cap="(ref:badex)"}
 
-knitr::include_graphics(paste0(fig_path, "/badexplo.png"), auto_pdf=TRUE)
+display_fig("badexplo")
 
 ```
 
@@ -118,9 +117,9 @@ When we have two effect variables, one way to solve the problem is by conditioni
 \]
 where $a$ is a constant coefficient (in this case it has a value of 1, but the graphical exploration is not concerned with parameter values), and $f(X_1)$ is the y-intercept of the line generated by plotting $Y$ against $X_2$ for a given value of $X_1$. This y-intercept potentially varies with $X_1$, in accordance with function $f$ that remains to be determined.
 
-```{r cX1, fig.cap="(ref:cX1)"}
+```{r cX1, out.width=two_col, fig.cap="(ref:cX1)"}
 
-knitr::include_graphics(paste0(fig_path, "/conditioX1.png"), auto_pdf = TRUE)
+display_fig("conditioX1")
 
 ```
 
@@ -129,9 +128,9 @@ In order to explore the form of function $f$, we can plot a linear regression fo
 \mbox{E}(Y)=aX_2+bX_1+c
 \]
 
-```{r y0X1, fig.cap="(ref:y0X1)"}
+```{r y0X1, out.width=one_col, fig.cap="(ref:y0X1)"}
 
-knitr::include_graphics(paste0(fig_path, "/ordonX1.png"), auto_pdf = TRUE)
+display_fig("ordonX1")
 
 ```
 
@@ -139,8 +138,7 @@ Given that the variables $X_1$ and $X_2$ play symmetrical roles in the model (\@
 
 In this example, the relation between $Y$ and $X_2$ for a given $X_1$ is a line whose slope is independent of $X_2$: it may be said that there is no interaction between $X_1$ and $X_2$. A model with an interaction would, for example, correspond to: $\mbox{E}(Y)=X_1+X_2+X_1X_2$. In this case, the relation between $Y$ and $X_2$ at a given $X_1$ is a line whose slope, which is $1+X_1$, is indeed dependent on $X_1$. The conditioning used means that we can without additional difficulty explore the form of models that include interactions between effect variables.
 
-This conditioning can, in principle, be extended to any number of effect variables.For three effect variables $X_1$,
-$X_2$, $X_3$ for example, we could explore the relation between $Y$ and $X_3$ with $X_1$ and $X_2$ fixed and note $f$ the function defining this relation and $\theta(X_1,\ X_2)$ the parameters of $f$ (that potentially depend on $X_1$ and $X_2$):
+This conditioning can, in principle, be extended to any number of effect variables.For three effect variables $X_1$, $X_2$, $X_3$ for example, we could explore the relation between $Y$ and $X_3$ with $X_1$ and $X_2$ fixed and note $f$ the function defining this relation and $\theta(X_1,\ X_2)$ the parameters of $f$ (that potentially depend on $X_1$ and $X_2$):
 \[
 \mbox{E}(Y)=f[X_3;\ \theta(X_1,\ X_2)]
 \]
@@ -155,6 +153,7 @@ Finally, we would explore the relation between $\phi$ and $X_1$; i.e. $h$ the fu
 This reasoning may, in principle, be extended to any number of effect variables, but it is obvious, in practice, that it becomes difficult to implement for $p>3$. This conditioning requires a great deal of data as each data subset, established by the value classes of the conditional variables, must include sufficient data to allow a valid graphical exploration of the relations between variables. When using three effect variables, the data subsets are established by crossing classes of $X_1$ and $X_2$ values (for example). If the full dataset includes $n$ observations, if $X_1$ and $X_2$ are divided into 10 value classes, and if the data are evenly distributed between these classes, then each data subset will contain only $n/100$ observations! Therefore, in practice, and unless the dataset is particularly huge, it is difficult to use the conditioning method for more than two effect variables.
 
 The number of entries employed when fitting biomass or volume tables is in most cases limited to at most two or three, meaning that we generally are not faced with the problem of conducting the graphical exploration with a large number of effect variables. Otherwise, multivariate analyses such as the principal components analysis may be usefully employed [@philippeau86; @hardle03]. These analyses aim to project the observations made onto a reduced subspace (usually in two or three dimensions), constructed from linear combinations of effect variables and in such a manner to maximize the variability of the observations in this subspace. In other words, these multivariate analyses can be used to visualize relations between variables while losing as little information as possible, which is precisely the aim of graphical exploration.
+
 
 ::::::{.filrouge data-latex=""}
 
@@ -198,17 +197,19 @@ this at first sight does not appear to yield any particular relation (Figure \@r
 
 :::::::
 
-```{r fcond, fig.scap="(ref:fcond-short)", fig.cap="(ref:fcond)"}
 
-knitr::include_graphics(paste0(fig_path, "/fcondi.png"), auto_pdf = TRUE)
+```{r fcond, out.width=one_col, fig.scap="(ref:fcond-short)", fig.cap="(ref:fcond)"}
+
+display_fig("fcondi")
 
 ``` 
 
-```{r flmcond, fig.scap="(ref:flmcond-short)", fig.cap="(ref:flmcond)"}
+```{r flmcond, out.width=two_col, fig.scap="(ref:flmcond-short)", fig.cap="(ref:flmcond)"}
 
-knitr::include_graphics(paste0(fig_path, "/flmcond.png"), auto_pdf = TRUE)
+display_fig("flmcond")
 
 ```
+
 
 
 ### Determining whether or not a relation is adequate
@@ -223,16 +224,13 @@ Henceforth, we will assume that we have a single effect variable $X$ and that we
 \]
 The three scatter plots look fairly similar, and it would be no mean feat to sort out which one corresponds to which model.
 
-```{r wii1, fig.cap="(ref:wii1)"}
+```{r wii1, out.width=two_col, fig.cap="(ref:wii1)"}
 
-knitr::include_graphics(paste0(fig_path, "/whoisit1.png"), auto_pdf = TRUE)
+display_fig("whoisit1")
 
 ```
 
-By contrast, the human eye is very good at detecting whether a relation is linear or not. To detect visually whether or not the shape of a cluster of points fits a function, it is therefore greatly in our interests when possible to use a variables transformation
-that renders the relation linear. For instance, in the case of the power model, $Y=aX^b$ yields $\ln Y=\ln a+b\ln X$,
-and this variables transformation:
-
+By contrast, the human eye is very good at detecting whether a relation is linear or not. To detect visually whether or not the shape of a cluster of points fits a function, it is therefore greatly in our interests when possible to use a variables transformation that renders the relation linear. For instance, in the case of the power model, $Y=aX^b$ yields $\ln Y=\ln a+b\ln X$, and this variables transformation:
 \begin{equation}
 \left\{
 \begin{array}{l}
@@ -240,9 +238,7 @@ X'=\ln X\\ Y'=\ln Y
 \end{array}
 \right.(\#eq:lXlY)
 \end{equation}
-
 renders the relation linear. In the case of the exponential model, $Y=a\exp(bX)$ yields $\ln Y=\ln a+bX$, and this variables transformation:
-
 \begin{equation}
 \left\{
 \begin{array}{l}
@@ -250,26 +246,26 @@ X'=X\\ Y'=\ln Y
 \end{array}
 \right.(\#eq:XlY)
 \end{equation}
-
 renders the relation linear. By contrast, neither of these two transformation is able to render the polynomial relation linear. If we apply these transformations to the data presented in Figure \@ref(fig:wii1), we should be able to detect which of the scatter plots corresponds to which model. Figure \@ref(fig:wii2) shows the three scatter plots after transforming the variables as in (\@ref(eq:XlY)). The first scatter plot takes the form of a straight line while the two others are still curves. The scatter plot on the left of Figure \@ref(fig:wii1) therefore corresponds to the exponential model.
 
-```{r wii2, fig.cap="(ref:wii2)"}
+```{r wii2, out.width=two_col, fig.cap="(ref:wii2)"}
 
-knitr::include_graphics(paste0(fig_path, "/whoisit2.png"), auto_pdf = TRUE)
+display_fig("whoisit2")
 
 ```
 
 Figure \@ref(fig:wii3) shows the three scatter plots after transforming the variables as in (\@ref(eq:lXlY)).The second scatter plot takes the form of a straight line while the two others are still curves. The scatter plot in the center of Figure \@ref(fig:wii1) therefore corresponds to the power model. By deduction, the scatter plot on the right of Figure  \@ref(fig:wii1) corresponds to the polynomial model.
 
-```{r wii3, fig.cap="(ref:wii3)"}
+```{r wii3, out.width=two_col, fig.cap="(ref:wii3)"}
 
-knitr::include_graphics(paste0(fig_path, "/whoisit3.png"), auto_pdf = TRUE)
+display_fig("whoisit3")
 
 ```
 
 It is not always possible to find a variable transformation that renders the relation linear. This, for instance, is precisely the case of the polynomial model $Y=a+bX+cX^2+dX^3$: no transformation of $X$ into $X'$ and of $Y$ into $Y'$ was found such that the relation between $Y'$ and $X'$ is a straight line, whatever the coefficients $a$, $b$, $c$ et $d$. It must also be clearly understood that the linearity we are talking about here is that of the relation between the response variable $Y$ and the effect variable $X$. It is not linearity in the sense of the linear model, which describes linearity with regards to model coefficients (thus, the model $Y=a+bX^2$ is linear in the sense of the linear model whereas it describes a non-linear relation between $X$ and $Y$).
 
 When no transformation of the variable is able to render the relation between $X$ and $Y$ linear, the best approach is to fit the model and determine visually whether the fitted model passes through the middle of the cluster of points and follows its shape. Also, in this case, we have much to gain by examining the plot of the residuals against the fitted values.
+
 
 ::::::{.filrouge data-latex=""}
 
@@ -289,11 +285,13 @@ The resulting scatter plot is shown in Figure \@ref(fig:flnBvlnD). The log trans
 
 ::::::
 
-```{r flnBvlnD, fig.cap="(ref:flnBvlnD)"}
 
-knitr::include_graphics(paste0(fig_path, "/flnBvlnD.png"), auto_pdf = TRUE)
+```{r flnBvlnD, out.width=one_col, fig.cap="(ref:flnBvlnD)"}
+
+display_fig("flnBvlnD")
 
 ```
+
 
 ::::::{.filrouge data-latex=""}
 
@@ -313,16 +311,18 @@ The resulting scatter plot is shown in Figure \@ref(fig:flnBvD2H). The log trans
 
 ::::::
 
-```{r flnBvD2H, fig.cap="(ref:flnBvD2H)"}
 
-knitr::include_graphics(paste0(fig_path, "/flnBvD2H.png"), auto_pdf = TRUE)
+```{r flnBvD2H, out.width=one_col, fig.cap="(ref:flnBvD2H)"}
+
+display_fig("flnBvD2H")
 
 ```
 
 
+
 ### Catalog of primitives
 
-If we consider the tables calculated by @zianis05 for Europe, by @henry11 for sub-Saharan Africa, or more specifically by @hofstad05 for southern Africa, this gives an idea as to the form of the models most commonly found in the literature on biomass and volume tables. This shows that two models are often used: the power model and the (second, or at most, third order) polynomial model. These two models are therefore useful starting points for the graphical exploration of data when looking to construct a volume or biomass model. The power model $Y=aX^b$ is also known as an allometric relation and the literature contains a number of biological interpretations of this model [@gould79; @franc00b\S\ 1.1.5]. In particular, the "metabolic scaling theory" [@enquist98; @enquist99; @west97; @west99] predicts in a theoretical manner, and based on a fractal description of the internal structure of trees, that the biomass of a tree is related to its dbh by a power relation where the exponent is $8/3\approx2.67$:
+If we consider the tables calculated by @zianis05 for Europe, by @henry11 for sub-Saharan Africa, or more specifically by @hofstad05 for southern Africa, this gives an idea as to the form of the models most commonly found in the literature on biomass and volume tables. This shows that two models are often used: the power model and the (second, or at most, third order) polynomial model. These two models are therefore useful starting points for the graphical exploration of data when looking to construct a volume or biomass model. The power model $Y=aX^b$ is also known as an allometric relation and the literature contains a number of biological interpretations of this model [@gould79; @franc00b, `r ifelse(book_format == "latex", "\\S", "&sect;")`\ 1.1.5]. In particular, the "metabolic scaling theory" [@enquist98; @enquist99; @west97; @west99] predicts in a theoretical manner, and based on a fractal description of the internal structure of trees, that the biomass of a tree is related to its dbh by a power relation where the exponent is $8/3\approx2.67$:
 \[
 B\propto\rho D^{8/3}
 \]
@@ -332,7 +332,9 @@ where $\rho$ is specific wood density. Although metabolic scaling theory has bee
 In addition to this power model $B=aD^b$ and the second-order polynomial model $B=a_0+a_1D+a_2D^2$, and without pretending in any way to be exhaustive, the following biomass tables are also often found [@yamakura86; @brown89; @brown97; @martinez92; @araujo99; @nelson99; @ketterings01; @chave01b; @chave05; @nogueira08; @basuki09; @navar09; @djomo10; @henry10]:
 
 1. double-entry model of the power form in relation to the variable $D^2H$: $B=a(\rho D^2H)^b$
+
 2. double-entry model: $\ln(B)=a_0+a_1\ln(D)+a_2\ln(H)+a_3\ln(\rho)$
+
 3. single-entry model: $\ln(B)=a_0+a_1\ln(D)+a_2[\ln(D)]^2+a_3[\ln(D)]^3+a_4\ln(\rho)$,
 
 where $\rho$ is specific wood density. To within the form factor, the variable $D^2H$ corresponds to the volume of the trunk, which explains why it is so often used as effect variable. The second equation may be considered to be a generalization of the first for if we apply the log transformation, the first equation is equivalent to: 
@@ -366,13 +368,17 @@ More generally, Table \@ref(tab:prim) gives a number of functions that are able 
 The $p$ order polynomial model should be used with caution as polynomials are able to fit any form provided the $p$ order is sufficiently high (the usual functions can all be decomposed in a polynomials database: this is the principle of limited development). In practice, we may have a polynomial that very closely follows the form of the cluster of points across the range of values available, but which assumes a very unlikely form outside this range. In other words, the polynomial model may present a risk when extrapolating, and the higher the $p$ order, the greater the risk. In practice, therefore, fitting greater than 3rd order polynomials should be avoided.
 
 
+
+
 ## Exploring variance
+
 
 Let us now consider the model's error term $\varepsilon$ that links the response variable $Y$ to an effect variable 
 $X$. Exploring the form of the variance corresponds basically to answering the question: is the variance of the residuals constant (homoscedasticity) or not (heteroscedasticity)? The reply to this question depends implicitly on the precise form of the relation that will be used to fit the model. For example, for the power relation $Y=aX^b$, we can
 
 - either fit the non-linear model $Y=aX^b+\varepsilon$, which corresponds to estimating
 parameters $a$ and $b$ directly;
+
 - or fit the linear model $Y'=a'+bX'+\varepsilon$ to the transformed data $Y'=\ln Y$ and $X'=\ln X$, which corresponds to estimating parameters $a'=\ln a$ and $b$.
 
 These two options are obviously not interchangeable as the error term $\varepsilon$ (which we assume follows a normal distribution of constant standard deviation) does not play the same role in the two cases. In the first case the error is additive with respect to the power model. In the second case the error is additive with respect to the linearized model. Therefore, if we return to the power model:
@@ -382,9 +388,9 @@ Y=\exp(Y')=aX^b\ \exp(\varepsilon)=aX^b\ \varepsilon'
 which corresponds to a multiplicative error with respect to the power model, where $\varepsilon'$ follows a lognormal distribution. The difference between these two options is illustrated in Figure \@ref(fig:adml). The additive error is expressed by a constant variance in the plot (a) of $Y$ against $X$ and by a variance that decreases with $X$ in the plot (c) of the same, but log-transformed, data. The multiplicative error is expressed by a variance that increases with $X$
 in the plot (b) of $Y$ against $X$ and by a constant variance in the plot (d) of the same, but log-transformed, data.
 
-```{r adml, fig.scap="Power model with additive or multiplicative error", fig.cap="(ref:adml)"}
+```{r adml, out.width=two_col, fig.scap="Power model with additive or multiplicative error", fig.cap="(ref:adml)"}
 
-knitr::include_graphics(paste0(fig_path, "/addmult.png"), auto_pdf = TRUE)
+display_fig("addmult")
 
 ```
 
@@ -392,21 +398,23 @@ Thus, when the model linking $Y$ to $X$ is linearized by a variables transformat
 
 As the form of the mean relation $\mbox{E}(Y)=f(X)$ has already been determined graphically, a simple visual examination of the plot of $Y$ against $X$ will show whether the points are evenly distributed on each side of the curve $f$ for all values of $X$. Plots (a) and (b) in Figure \@ref(fig:exgr), for example, illustrate the case of residuals of constant variance at all values of $X$, whereas plots (c) and (d) in the same figure show the case of residuals that increase in variance with $X$. More complex relations, like that illustrated in Figure \@ref(fig:sin), may also be imagined. In the particular case illustrated by Figure \@ref(fig:sin), the variance of the residuals fluctuates periodically with $X$.
 
-```{r sin, fig.cap="(ref:sin)"}
+```{r sin, out.width=one_col, fig.cap="(ref:sin)"}
 
 display_fig("sinvar")
 
 ```
 
-However, there is little risk of encountering such situations in practice in the context of biomass or volume tables. In almost all cases we need to choose between two situations: the variance of the residuals is constant or increases with $X$.
-In the first case, nothing further needs to be done. In the second case, there is no need to investigate the exact form of the relation between $X$ and the variance of the residuals, but simply from the outset adopt a power model to link the variance of the residuals $\varepsilon$ to $X$:
+However, there is little risk of encountering such situations in practice in the context of biomass or volume tables. In almost all cases we need to choose between two situations: the variance of the residuals is constant or increases with $X$. In the first case, nothing further needs to be done. In the second case, there is no need to investigate the exact form of the relation between $X$ and the variance of the residuals, but simply from the outset adopt a power model to link the variance of the residuals $\varepsilon$ to $X$:
 \[
 \mbox{Var}(\varepsilon)=\alpha X^{\beta}
 \]
 The values of the coefficients $\alpha$ and $\beta$ can be estimated at the same time as those of the model's other coefficients during the model fitting phase, which will be considered in the next chapter.
 
 
+
+
 ## Exploring doesn't mean selecting
+
 
 By way of a conclusion, it should be underlined that this graphical exploration does not aim to select a single type of model, but rather to sort between models that are able to describe the dataset and those that are not. Far from seeking to select THE model assumed to be the best at describing the data, efforts should be made to select three or four candidate models likely to be able to describe the data. The final choice between these three or four models selected during the graphical exploration phase can then be made after the data fitting phase that is described in the next chapter.
 

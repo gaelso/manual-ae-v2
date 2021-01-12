@@ -1,7 +1,7 @@
 
 ## Sampling to construct volume tables
 
-As a first step, let us consider the problem of predicting the volume or biomass of a particular tree using volume or biomass tables. How many trees need to be measured to construct the tables (\S\ \@ref(size))? Which trees in the stand should be selected for measurement? This second question begs another: how should we sort the trees in the sample in relation to volume table entry variables, starting with the tree size (\S\ \@ref(vent))? How, if necessary, should we stratify the sample (\S\ \@ref(stratif))? Is it best to select individuals far apart in the forest, or on the contrary inventory all the trees in a given plot (\S\ \@ref(sel))?
+As a first step, let us consider the problem of predicting the volume or biomass of a particular tree using volume or biomass tables. How many trees need to be measured to construct the tables (`r ifelse(book_format == "latex", "\\S", "&sect;")`\ \@ref(size))? Which trees in the stand should be selected for measurement? This second question begs another: how should we sort the trees in the sample in relation to volume table entry variables, starting with the tree size (`r ifelse(book_format == "latex", "\\S", "&sect;")`\ \@ref(vent))? How, if necessary, should we stratify the sample (`r ifelse(book_format == "latex", "\\S", "&sect;")`\ \@ref(stratif))? Is it best to select individuals far apart in the forest, or on the contrary inventory all the trees in a given plot (`r ifelse(book_format == "latex", "\\S", "&sect;")`\ \@ref(sel))?
 
 
 ### Number of trees {#size}
