@@ -1,0 +1,17 @@
+
+\ldots
+
+`` ''
+
+(\@ref(eq
+
+\S\
+
+\ref{
+
+Check if \& and other special character for tex are working in gitbook
+
+Check failed cross refs 
+
+Add out.width to figures
+
