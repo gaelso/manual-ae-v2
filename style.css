@@ -36,13 +36,13 @@ pre code {
 }
 
 .Rchunk {
-  background-color: #f2dede;
-  font-weight: bolder;
-  color: red;
+  background-color: #f2dede !important;
+  font-weight: bold;
+  /*color: red;*/
 }
 
 .Rout {
-  background-color: #d9edf7;
-  font-weight: bolder;
-  color: blue;
+  background-color: #d9edf7 !important;
+  font-weight: bold;
+  /*color: blue;*/
 }
