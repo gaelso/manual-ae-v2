@@ -100,7 +100,7 @@ These two points of view are dual one to the other and lead to the same optimum.
 #### Fixed sampling rate {-}
 
 At a constant sampling rate, the area $A$ and the number $n$ of sampling plots are linked by an inversely proportional relation: $n\propto1/A$. Choosing appropriate plot size boils down to the following question: "is it better to select a few large plots or many small plots?", also called the SLOSS compromise [for "single large or several small";
-@lahti85]. If we calculate the relation $n\propto1/A$ in (\@ref(eq:E)) (and considering that $t_{n-1}/\sqrt{n-1}$ is little different from $2/\sqrt{n}$):
+@lahti85]. If we calculate the relation $n\propto1/A$ in \@ref(eq:E) (and considering that $t_{n-1}/\sqrt{n-1}$ is little different from $2/\sqrt{n}$):
 \[
 E\propto2\;\mathrm{CV}_B\;\sqrt{A}
 \]

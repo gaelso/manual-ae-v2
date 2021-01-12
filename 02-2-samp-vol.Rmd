@@ -62,7 +62,7 @@ We have already seen for the sorting of trees into size classes that selecting t
 {\sum_{i=1}^{n_h} (D_{hi}^2H_{hi}-
 \overline{D^2H}_{eh})^2}\right\}(\#eq:VVh)
 \end{eqnarray}
-where $h$ is the stratum, $N_h$ the number of individuals in the stand that belong to stratum $h$, $n_h$ is the number of individuals in the sample that belong to stratum $h$, $V_{ih}$ is the volume of the $i$th individual in stratum $h$ in the sample, $\bar{V}_{eh}$ is the empirical mean volume in stratum $h$ of the sample, etc. This formula replaces (\@ref(eq:VV)). Let us now illustrate the precision gained by the stratification using a simple numerical example. Let us suppose, to simplify, that we have two strata, each corresponding to 50\ \% of the stand (such that $N_1/N=N_2/N=0.5$), and that the sampling in each stratum is such that the second term between brackets in (\@ref(eq:VVh)) is negligible. Let us also assume that $n_1\ll N_1$ and $n_2\ll N_2$. The variance of the regression estimator in this case is approximately proportional to:
+where $h$ is the stratum, $N_h$ the number of individuals in the stand that belong to stratum $h$, $n_h$ is the number of individuals in the sample that belong to stratum $h$, $V_{ih}$ is the volume of the $i$th individual in stratum $h$ in the sample, $\bar{V}_{eh}$ is the empirical mean volume in stratum $h$ of the sample, etc. This formula replaces \@ref(eq:VV). Let us now illustrate the precision gained by the stratification using a simple numerical example. Let us suppose, to simplify, that we have two strata, each corresponding to 50\ \% of the stand (such that $N_1/N=N_2/N=0.5$), and that the sampling in each stratum is such that the second term between brackets in \@ref(eq:VVh) is negligible. Let us also assume that $n_1\ll N_1$ and $n_2\ll N_2$. The variance of the regression estimator in this case is approximately proportional to:
 \[
 \widehat{\mbox{Var}}(\bar{V})\propto \frac{1}{n_1-2}\left\{
 \frac{1}{n_1}\sum_{i=1}^{n_1}(V_{1i}-\bar{V}_{e1})^2\right\}
@@ -80,14 +80,14 @@ By contrast, if we set the number of trees in each stratum in proportion to the 
 \]
 It can thus be seen that from the standpoint of estimator variance, $30+30$ does not equal $40+20$. We can also check that the minimum of the function that at $n_1$ associates $16/(n_1-2)+4/(58-n_1)$ is obtained for $n_1=39.333$.
 
-From the standpoint of sampling theory, stratification aims to increase the precision of the estimation by fitting the sampling plan to the variability in each stratum. But from the standpoint of constructing volume tables, stratification has a second aim that is just as important as the first: check that the relationship between tree volume (or biomass) and size is the same in each stratum and, if needed, break down the tables into as many relations as necessary. This second point is implicit in equation (\@ref(eq:VVh)) that is based on the fitting of a different slope $b$ (see equation \@ref(eq:reg)) in each stratum.
+From the standpoint of sampling theory, stratification aims to increase the precision of the estimation by fitting the sampling plan to the variability in each stratum. But from the standpoint of constructing volume tables, stratification has a second aim that is just as important as the first: check that the relationship between tree volume (or biomass) and size is the same in each stratum and, if needed, break down the tables into as many relations as necessary. This second point is implicit in equation \@ref(eq:VVh) that is based on the fitting of a different slope $b$ (see equation \@ref(eq:reg)) in each stratum.
 
 In short, stratification aims to explore the variability of the study area to (*i*) if necessary vary the form of the tables in accordance with the strata, and
 (*ii*) fit the sampling plan to the variability in the strata. Often when constructing volume tables, point (*i*) is predominant over point (*ii*), whereas the reverse is true in sampling theory. Figure \@ref(fig:mel) illustrated these two aims.
 
-```{r mel, fig.scap="Predicting volume from tree size in two strata", fig.cap="(ref:mel)"}
+```{r mel, out.width=two_col, fig.scap="Predicting volume from tree size in two strata", fig.cap="(ref:mel)"}
 
-knitr::include_graphics(paste0(fig_path, "/badmel.png"), auto_pdf = TRUE)
+display_fig("badmel")
 
 ```
 
