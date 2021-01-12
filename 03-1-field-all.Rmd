@@ -210,7 +210,7 @@ B_{\text{dry bark},i}=B_{\text{fresh},i}\times
 \[
 \rho_i=\frac{B_{\text{dry wood},i}}{V_{\text{fresh},i}}
 \]
-where $V_{\text{fresh},i}$ is the fresh volume (without the bark) given by equation (\@ref(eq:cone)).
+where $V_{\text{fresh},i}$ is the fresh volume (without the bark) given by equation \@ref(eq:cone).
 
 The weights of all the logs should then be summed to obtain the dry weight of the trunk:
 

@@ -134,7 +134,7 @@ display_fig("ordonX1")
 
 ```
 
-Given that the variables $X_1$ and $X_2$ play symmetrical roles in the model (\@ref(eq:truem)), the conditioning is also symmetrical with regard to these two variables. Here we have studied the relation between $Y$ and $X_2$ conditionally on $X_1$, but would have arrived, in the same manner, at the same model had we explored the relation between $Y$ and $X_1$ conditionally on $X_2$.
+Given that the variables $X_1$ and $X_2$ play symmetrical roles in the model \@ref(eq:truem), the conditioning is also symmetrical with regard to these two variables. Here we have studied the relation between $Y$ and $X_2$ conditionally on $X_1$, but would have arrived, in the same manner, at the same model had we explored the relation between $Y$ and $X_1$ conditionally on $X_2$.
 
 In this example, the relation between $Y$ and $X_2$ for a given $X_1$ is a line whose slope is independent of $X_2$: it may be said that there is no interaction between $X_1$ and $X_2$. A model with an interaction would, for example, correspond to: $\mbox{E}(Y)=X_1+X_2+X_1X_2$. In this case, the relation between $Y$ and $X_2$ at a given $X_1$ is a line whose slope, which is $1+X_1$, is indeed dependent on $X_1$. The conditioning used means that we can without additional difficulty explore the form of models that include interactions between effect variables.
 
@@ -246,7 +246,7 @@ X'=X\\ Y'=\ln Y
 \end{array}
 \right.(\#eq:XlY)
 \end{equation}
-renders the relation linear. By contrast, neither of these two transformation is able to render the polynomial relation linear. If we apply these transformations to the data presented in Figure \@ref(fig:wii1), we should be able to detect which of the scatter plots corresponds to which model. Figure \@ref(fig:wii2) shows the three scatter plots after transforming the variables as in (\@ref(eq:XlY)). The first scatter plot takes the form of a straight line while the two others are still curves. The scatter plot on the left of Figure \@ref(fig:wii1) therefore corresponds to the exponential model.
+renders the relation linear. By contrast, neither of these two transformation is able to render the polynomial relation linear. If we apply these transformations to the data presented in Figure \@ref(fig:wii1), we should be able to detect which of the scatter plots corresponds to which model. Figure \@ref(fig:wii2) shows the three scatter plots after transforming the variables as in \@ref(eq:XlY). The first scatter plot takes the form of a straight line while the two others are still curves. The scatter plot on the left of Figure \@ref(fig:wii1) therefore corresponds to the exponential model.
 
 ```{r wii2, out.width=two_col, fig.cap="(ref:wii2)"}
 
@@ -254,7 +254,7 @@ display_fig("whoisit2")
 
 ```
 
-Figure \@ref(fig:wii3) shows the three scatter plots after transforming the variables as in (\@ref(eq:lXlY)).The second scatter plot takes the form of a straight line while the two others are still curves. The scatter plot in the center of Figure \@ref(fig:wii1) therefore corresponds to the power model. By deduction, the scatter plot on the right of Figure  \@ref(fig:wii1) corresponds to the polynomial model.
+Figure \@ref(fig:wii3) shows the three scatter plots after transforming the variables as in \@ref(eq:lXlY).The second scatter plot takes the form of a straight line while the two others are still curves. The scatter plot in the center of Figure \@ref(fig:wii1) therefore corresponds to the power model. By deduction, the scatter plot on the right of Figure  \@ref(fig:wii1) corresponds to the polynomial model.
 
 ```{r wii3, out.width=two_col, fig.cap="(ref:wii3)"}
 
