@@ -42,6 +42,8 @@ bookdown::pdf_book:
   toc: false
   keep_tex: yes
   pandoc_args: ["--lua-filter=lua-redline-counter.lua"]
+ # extra_dependencies:
+ #  hyperref: ["backref=page"]
 
 #bookdown::epub_book: default
 
