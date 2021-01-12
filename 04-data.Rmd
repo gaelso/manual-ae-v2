@@ -194,6 +194,8 @@ kab_opt <- list(
 
 display_table(.latex_scaling = "scale_down")
 
+scroll_box(width = "500px", height = "200px")
+
 ```
 
 \  
