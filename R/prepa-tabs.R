@@ -152,7 +152,7 @@ kab_prim
 
 kab_fAICD <- tibble(
   rl = c(
-    "(ref:col-fDpara)", "(ref:col-fDD2var)", "(ref:col-fnlsD)", "(ref:col-fnlmD)",
+    "(\\@ref(exr:fDpara))", "(ref:col-fDD2var)", "(ref:col-fnlsD)", "(ref:col-fnlmD)",
     "(ref:col-frlpD2H)", "(ref:col-fD2Hvar)", "(ref:col-fnlsD2H)", "(ref:col-fnlmD2H)",
     "(ref:col-fnlsDH)", "(ref:col-fnlmDH)"
   ),
