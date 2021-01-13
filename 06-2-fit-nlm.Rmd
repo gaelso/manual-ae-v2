@@ -1,11 +1,13 @@
 
+
 ## Fitting a non-linear model {#nlm}
+
 
 Let us now address the more general case of fitting a non-linear model. This model is written:
 \[
 Y=f(X_1,\ \ldots,\ X_p;\theta)+\varepsilon
 \]
-where $Y$ is the response variable, $X_1$, \ldots, $X_p$ are the effect variables, $\theta$ is the vector of all the model coefficients, $\varepsilon$ is the residual error, and $f$ is a function. If $f$ is linear in relation to the coefficients $\theta$, this brings us back to the previously studied linear model. We will henceforth no longer make any a priori hypotheses concerning the linearity of $f$ in relation to coefficients $\theta$. As previously, we assume that the residuals are independent and that they follow a centered normal distribution. By contrast, we do not make any a priori hypothesis concerning their variance. $\mathrm{E}(\varepsilon)=0$ means that $\mathrm{E}(Y)=f(X_1,\ \ldots,\ X_p;\theta)$. This is why we can say that $f$ defines the mean model (i.e. for $Y$). Let us write:
+where $Y$ is the response variable, $X_1$, $\ldots$, $X_p$ are the effect variables, $\theta$ is the vector of all the model coefficients, $\varepsilon$ is the residual error, and $f$ is a function. If $f$ is linear in relation to the coefficients $\theta$, this brings us back to the previously studied linear model. We will henceforth no longer make any a priori hypotheses concerning the linearity of $f$ in relation to coefficients $\theta$. As previously, we assume that the residuals are independent and that they follow a centered normal distribution. By contrast, we do not make any a priori hypothesis concerning their variance. $\mathrm{E}(\varepsilon)=0$ means that $\mathrm{E}(Y)=f(X_1,\ \ldots,\ X_p;\theta)$. This is why we can say that $f$ defines the mean model (i.e. for $Y$). Let us write:
 \[
 \mathrm{Var}(\varepsilon)=g(X_1,\ \ldots,\ X_p;\vartheta)
 \]
@@ -16,6 +18,7 @@ g(X_1,\ \ldots,\ X_p;\vartheta)\equiv(kX_1^c)^2
 where $\vartheta\equiv(k,\ c)$, $k>0$ and $c\geq0$.
 
 Interpreting the results of fitting a non-linear model is fundamentally the same as for the linear model. The difference between the linear model and the non-linear model, in addition to their properties, lies in the manner by which model coefficients are estimated. Two particular approaches are used: (*i*) exponent $c$ is fixed in advance; (*ii*) exponent $c$ is a parameter to be estimated in the same manner as the model's other parameters.
+
 
 
 ### Exponent known
@@ -36,18 +39,17 @@ As previously, the estimator of the model's coefficients corresponds to the valu
 [Y_i-f(X_{i1},\ \ldots,\ X_{ip};\theta)]^2\bigg\}
 \]
 In the particular case where the residuals have a constant variance (i.e. $c=0$), the weighted least squares method is simplified to the ordinary least squares method (all weights $w_i$ are 1), but the principle behind the calculations remains the same. The estimator $\theta$ is obtained by resolving
-
 \begin{equation}
 \frac{\partial\mathrm{SSE}}{\partial\theta}(\hat{\theta})=0
 (\#eq:der)
 \end{equation}
-
 with the constraint $(\partial^2\mathrm{SSE}/\partial\theta^2)>0$ to ensure that this is indeed a minimum, not a maximum. In the previous case of the linear model, resolving \@ref(eq:der) yielded an explicit expression for the estimator $\hat{\theta}$. This is not the case for the general case of the non-linear model: there is no explicit expression for $\hat{\theta}$. The sum of squares must therefore be minimized using a numerical algorithm. We will examine this point in depth in section \@ref(algo).
 
 
 #### *A priori* value for the exponent {-}
 
 The *a priori* value of exponent $c$ is obtained in the non-linear case in the same manner as for the linear case `r ifelse(book_format == "latex", "(see page \\pageref{chx})", "")`: by trial and error, by dividing $X_1$ into classes and estimating the variance of $Y$ for each class, or by minimizing Furnival's index `r ifelse(book_format == "latex", "(see p.\\pageref{furni})", "")`.
+
 
 ::::::{.filrouge data-latex=""}
 
@@ -68,10 +70,10 @@ where
 We saw in red line \@ref(exr:frlpD2H) that the conditional standard deviation of the biomass derived from the dbh was proportional to the square of the dbh: $c=2$. We can therefore fit a non-linear regression by the weighted least squares method using a weighting that is inversely proportional to $D^4$:
 
 ```{r, echo=T, results='hide'} 
-start <- coef(lm(log(Btot) ~ I(log(dbh)),data=dat[dat$Btot>0,]))
+start <- coef(lm(log(Btot) ~ I(log(dbh)), data =  dat[dat$Btot > 0,]))
 start[1] <- exp(start[1])
-names(start) <- c("a","b")
-m <- nls(Btot ~ a*dbh^b, data=dat, start=start, weights=1/dat$dbh^4)
+names(start) <- c("a", "b")
+m <- nls(Btot ~ a * dbh^b, data = dat, start = start, weights = 1 / dat$dbh^4)
 summary(m)
 ```
 
@@ -81,7 +83,7 @@ The non-linear regression is fitted using the `nls` command which calls on the s
 printCoefmat(summary(m)$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
 ```
 
-with a residual standard deviation $k=$ ``r print(summary(m)$sigma, digits = 4)` tonnes\ cm^-2^. The model is therefore written: $B=2.492\times10^{-4}D^{2.346}$. Let us now return to the linear regression fitted to log-transformed data (red line \@ref(exr:rllnBvD)) which was written: $\ln(B)=-8.42722+2.36104\ln(D)$. If we return naively to the starting data by applying the exponential function (we will see in \S\ \@ref(invtra) why this is naive), the model becomes: $B=\exp(-8.42722)\times D^{2.36104}=2.188\times10^{-4}D^{2.36104}$. The model fitted by non-linear regression and the model fitted by linear regression on log-transformed data are therefore very similar.
+with a residual standard deviation $k=$ ``r print(summary(m)$sigma, digits = 4)` tonnes\ cm^-2^. The model is therefore written: $B=2.492\times10^{-4}D^{2.346}$. Let us now return to the linear regression fitted to log-transformed data (red line \@ref(exr:rllnBvD)) which was written: $\ln(B)=-8.42722+2.36104\ln(D)$. If we return naively to the starting data by applying the exponential function (we will see in `r ifelse(book_format == "latex", "\\S", "&sect;")`\ \@ref(invtra) why this is naive), the model becomes: $B=\exp(-8.42722)\times D^{2.36104}=2.188\times10^{-4}D^{2.36104}$. The model fitted by non-linear regression and the model fitted by linear regression on log-transformed data are therefore very similar.
 
 ::::::
 
@@ -105,10 +107,12 @@ where
 In order to take account of the heteroscedasticity, and considering that the conditional standard deviation of the biomass derived from the diameter is proportional to $D^2$ (red line \@ref(exr:frlpD2H)), we can fit this non-linear model by the weighted least squares method using a weighting inversely proportional to $D^4$:
 
 ```{r, echo=T, results='hide'}
-start <- coef(lm(log(Btot) ~ I(log(dbh^2*heig)), data=dat[dat$Btot>0,]))
+start <- coef(lm(log(Btot) ~ I(log(dbh^2 * heig)), data = dat[dat$Btot > 0,]))
 start[1] <- exp(start[1])
-names(start) <- c("a","b")
-m <- nls(Btot ~ a*(dbh^2*heig)^b, data=dat, start=start, weights=1/dat$dbh^4)
+names(start) <- c("a", "b")
+m <- nls(
+  Btot ~ a*(dbh^2 * heig)^b, data = dat, start = start, weights = 1 / dat$dbh^4
+  )
 summary(m)
 ```
 
@@ -142,10 +146,17 @@ where
 In order to take account of the heteroscedasticity, and considering that the conditional standard deviation of the biomass derived from dbh is proportional to $D^2$ (red line \@ref(exr:frlpD2H)), we can fit this non-linear model by the weighted least squares method using a weighting inversely proportional to $D^4$:
 
 ```{r, echo=T, results='hide'}
-start <- coef(lm(log(Btot) ~ I(log(dbh))+I(log(heig)),data=dat[dat$Btot>0,]))
+start <- coef(lm(
+  log(Btot) ~ I(log(dbh)) + I(log(heig)), data = dat[dat$Btot > 0,]
+  ))
 start[1] <- exp(start[1])
-names(start) <- c("a","b1","b2")
-m <- nls(Btot ~ a*dbh^b1*heig^b2,data=dat,start=start,weights=1/dat$dbh^4)
+names(start) <- c("a", "b1", "b2")
+m <- nls(
+  formula = Btot ~ a * dbh^b1 * heig^b2, 
+  data = dat, 
+  start = start, 
+  weights = 1 / dat$dbh^4
+  )
 summary(m)
 ```
 
@@ -160,9 +171,10 @@ with a residual standard deviation $k=$ `r print(summary(m)$sigma, digits = 4)` 
 ::::::
 
 
+
 ### Estimating the exponent
 
-Let us now consider the case where the exponent $c$ needs to be estimated at the same time as the model's other parameters. This case includes the linear regression with variance model that we mentioned in section \@ref(lme). In this case the least squares method is no longer valid. We are therefore obliged to use another fitting method: the maximum likelihood method. The likelihood of an observation ($X_{i1}$, \ldots, $X_{ip}$, $Y_i$) is the probability density of observing ($X_{i1}$, \ldots, $X_{ip}$, $Y_i$) in the specified model. The probability density of a normal distribution of expectation $\mu$ and standard deviation $\sigma$ is:
+Let us now consider the case where the exponent $c$ needs to be estimated at the same time as the model's other parameters. This case includes the linear regression with variance model that we mentioned in section \@ref(lme). In this case the least squares method is no longer valid. We are therefore obliged to use another fitting method: the maximum likelihood method. The likelihood of an observation ($X_{i1}$, $\ldots$, $X_{ip}$, $Y_i$) is the probability density of observing ($X_{i1}$, $\ldots$, $X_{ip}$, $Y_i$) in the specified model. The probability density of a normal distribution of expectation $\mu$ and standard deviation $\sigma$ is:
 \[
 \phi(x)=\frac{1}{\sigma\sqrt{2\pi}}\exp\bigg[-\frac{1}{2}\bigg(
 \frac{x-\mu}{\sigma}\bigg)^2\bigg]
@@ -173,7 +185,6 @@ As $Y_i$ follows a normal distribution of expectation $f(X_{i1},\ \ldots,\ X_{ip
 \frac{Y_i-f(X_1,\ \ldots,\ X_p;\theta)}{kX_{i1}^c}\bigg)^2\bigg]
 \]
 As the observations are independent, their joint likelihood is the product of the likelihoods of each observation. The likelihood of the sample of $n$ observations is therefore:
-
 \begin{eqnarray}
 \ell(\theta,\ k,\ c) &=& \prod_{i=1}^n
 \frac{1}{kX_{i1}^c\sqrt{2\pi}}\exp\bigg[-\frac{1}{2}\bigg(
@@ -184,7 +195,6 @@ As the observations are independent, their joint likelihood is the product of th
 \frac{Y_i-f(X_1,\ \ldots,\ X_p;\theta)}{kX_{i1}^c}\bigg)^2\bigg]
 \nonumber
 \end{eqnarray}
-
 This likelihood is considered to be a function of parameters $\theta$, $k$ and $c$.
 
 The better the values of parameters $\theta$, $k$ and $c$ the higher the probability of the observations being obtained in the model corresponding to these parameter values. In other words, the best values for parameters $\theta$, $k$ and $c$ are those that maximize the likelihood of the observations. The corresponding estimator is by definition the maximum likelihood estimator, and is written:
@@ -194,7 +204,6 @@ The better the values of parameters $\theta$, $k$ and $c$ the higher the probabi
 \ln[\ell(\theta,\ k,\ c)]
 \]
 where the last equality stems from the fact that a function and its logarithm reach their maximum for the same values of their argument. The logarithm of the likelihood, which we call the log-likelihood and which we write $\mathcal{L}$, is easier to calculate than the likelihood, and therefore, for our calculations, it is the log-likelihood we will be seeking to maximize. In the present case, the log-likelihood is written:
-
 \begin{eqnarray}
 \mathcal{L}(\theta,\ k,\ c) &=&
 \ln[\ell(\theta,\ k,\ c)]
@@ -205,8 +214,8 @@ where the last equality stems from the fact that a function and its logarithm re
 \frac{Y_i-f(X_1,\ \ldots,\ X_p;\theta)}{kX_{i1}^c}\bigg)^2
 +\ln(2\pi)+\ln(k^2X_i^{2c})\bigg]\nonumber
 \end{eqnarray}
-
 To obtain the maximum likelihood estimators of the parameters, we would need to calculate the partial derivatives of the log-likelihood with respect to these parameters, and look for the values where they cancel each other out (while ensuring that the second derivatives are indeed negative). In the general case, there is no analytical solution to this problem. In the same manner as previously for the sum of squares, we will need to use a numerical algorithm to maximize the log-likelihood. We can show that the maximum likelihood method yields a coefficients estimator that is asymptotically (i.e. when the number $n$ of observations tends toward infinity) the best. We can also show that in the case of the linear model, the least squares estimator and the maximum likelihood estimator are the same.
+
 
 ::::::{.filrouge data-latex=""}
 
@@ -227,12 +236,18 @@ where
 but is fitted by the maximum likelihood method:
 
 ```{r, echo=T, results='hide'}
-start <- coef(lm(log(Btot) ~ I(log(dbh)),data=dat[dat$Btot>0,]))
+start <- coef(lm(log(Btot) ~ I(log(dbh)), data = dat[dat$Btot > 0,]))
 start[1] <- exp(start[1])
-names(start) <- c("a","b")
+names(start) <- c("a", "b")
 library(nlme)
-m <- nlme(Btot ~ a*dbh^b, data = cbind(dat, g = "a"), fixed = a + b ~ 1, 
-          start = start, groups = ~g, weights = varPower(form = ~dbh))
+m <- nlme(
+  model = Btot ~ a * dbh^b, 
+  data = cbind(dat, g = "a"), 
+  fixed = a + b ~ 1,
+  start = start, 
+  groups = ~g, 
+  weights = varPower(form = ~dbh)
+  )
 summary(m)
 ```
 
@@ -245,6 +260,7 @@ summary(m)$tTable
 with an estimated value of exponent $c=2.090814$. This estimated value is very similar to that evaluated for the weighted non-linear regression ($c=2$, see in red line \@ref(exr:frlpD2H)). The fitted model is therefore: $B=2.445\times10^{-4}D^{2.35105}$, which is very similar to the model fitted by weighted non-linear regression (red line \@ref(exr:fnlsD)).
 
 ::::::
+
 
 ::::::{.filrouge data-latex=""}
 
@@ -265,9 +281,9 @@ where
 but is fitted by the maximum likelihood method:
 
 ```{r, echo=T, results='hide'}
-start <- coef(lm(log(Btot) ~ I(log(dbh^2*heig)),data=dat[dat$Btot>0,]))
+start <- coef(lm(log(Btot) ~ I(log(dbh^2 * heig)), data = dat[dat$Btot > 0,]))
 start[1] <- exp(start[1])
-names(start) <- c("a","b")
+names(start) <- c("a", "b")
 library(nlme)
 m <- nlme(
   model   = Btot ~ a * (dbh^2 * heig)^b, 
@@ -290,6 +306,7 @@ with an estimated value of exponent $c=2.042586$. This estimated value is very s
 
 ::::::
 
+
 ::::::{.filrouge data-latex=""}
 
 (@eq-fnlmDH) (ref:fnlmDH)
@@ -310,9 +327,11 @@ but this time consider that exponent $c$ in the variance model is a parameter th
 
 ```{r, echo=T, results='hide'}
 library(nlme)
-start <- coef(lm(log(Btot) ~ I(log(dbh)) + I(log(heig)), data = dat[dat$Btot>0,]))
+start <- coef(lm(
+  log(Btot) ~ I(log(dbh)) + I(log(heig)), data = dat[dat$Btot > 0,]
+  ))
 start[1] <- exp(start[1])
-names(start) <- c("a","b1","b2")
+names(start) <- c("a", "b1", "b2")
 m <- nlme(
   model   = Btot ~ a * dbh^b1 * heig^b2, 
   data    = cbind(dat, g = "a"), 
@@ -334,6 +353,7 @@ with an estimated value of exponent $c=$ `r summary(m)$modelStruct$varStruct[1]`
 
 ::::::
 
+
 ::::::{.filrouge data-latex=""}
 
 (@eq-fexpDpol) (ref:fexpDpol)
@@ -354,8 +374,10 @@ We will now directly fit this non-linear model by maximum likelihood (such that 
 
 ```{r, echo=T, results='hide'}
 library(nlme)
-start <- coef(lm(log(Btot) ~ I(log(dbh)) + I(log(dbh)^2) + I(log(dbh)^3),
-                 data=dat[dat$Btot>0,]))
+start <- coef(lm(
+  log(Btot) ~ I(log(dbh)) + I(log(dbh)^2) + I(log(dbh)^3), 
+  data = dat[dat$Btot > 0,]
+  ))
 start[1] <- exp(start[1])
 names(start) <- paste("a", 0:3, sep = "")
 m <- nlme(
@@ -378,6 +400,7 @@ summary(m)$tTable
 with an estimated value of exponent $c=$ `r summary(m)$modelStruct$varStruct[1]`. This result is very similar to that obtained by multiple regression on log-transformed data (red line \@ref(exr:flnDpol)).
 
 ::::::
+
 
 
 ### Numerical optimization {#algo}
@@ -405,22 +428,18 @@ If we now return to the issue at hand, this means (*i*) fitting a non-linear mod
 
 #### Selecting parameter start values {-}
 
-When mean model $f$ can be transformed into a linear relation between the response variable $Y$ and the effect variables $X_1$, \ldots, $X_p$, a start value for the coefficients may be obtained by fitting a linear regression on the transformed variables without considering the possible heteroscedasticity of the residuals. Let us for example consider a power type biomass table:
-
+When mean model $f$ can be transformed into a linear relation between the response variable $Y$ and the effect variables $X_1$, $\ldots$, $X_p$, a start value for the coefficients may be obtained by fitting a linear regression on the transformed variables without considering the possible heteroscedasticity of the residuals. Let us for example consider a power type biomass table:
 \begin{equation}
 B=aD^{b_1}H^{b_2}\rho^{b_3}+\varepsilon(\#eq:powea)
 \end{equation}
-
 where
 \[
 \varepsilon\mathop{\sim}_{\mathrm{i.i.d.}}\mathcal{N}(0,\;kD^c)
 \]
 The power model for the expectation of $B$ can be rendered linear by log-transforming the variables: $\ln(B)=a'+b_1\ln(D)+b_2\ln(H)+b_3\ln(\rho)$. But this transformation is incompatible with the additivity of the errors in the model \@ref(eq:powea). In other words, the multiple regression of the response variable $\ln(B)$ against the effect variables $\ln(D)$, $\ln(H)$ and $\ln(\rho)$:
-
 \begin{equation}
 \ln(B)=a'+b_1\ln(D)+b_2\ln(H)+b_3\ln(\rho)+\varepsilon'(\#eq:poweb)
 \end{equation}
-
 where $\varepsilon'\sim\mathcal{N}(0,\ \sigma)$, is not a model equivalent to \@ref(eq:powea), even when the residuals $\varepsilon'$ of this model have a constant variance. Even though models \@ref(eq:powea) and \@ref(eq:poweb) are not mathematically equivalent, the coefficients of \@ref(eq:poweb) --- estimated by multiple regression --- may serve as start values for the numerical algorithm that estimates the coefficients of \@ref(eq:powea). If we write as $x^{(0)}$ the start value of parameter $x$ for the numerical optimization algorithm, we thus obtain:
 \[
 a^{(0)}=\exp(\hat{a}'),\quad b_i^{(0)}=\hat{b}_i,\quad

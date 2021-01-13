@@ -38,7 +38,7 @@ display_table <- function(.list_opts=kab_opt, .format=book_format, .latex_scalin
     tt <- do.call(kable, c(.list_opts, format = .format)) %>%
       kableExtra::kable_styling(full_width = F)
     
-    if (.scroll) tt <- tt %>% scroll_box(height = "500px", box_css = "margin-bottom: 1.2em;")
+    if (.scroll) tt <- tt %>% scroll_box(height = "500px", extra_css = "margin-bottom: 1.2em;")
     
   } else {
     

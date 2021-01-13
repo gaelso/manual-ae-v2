@@ -367,7 +367,7 @@ kab <- display_table(.latex_scaling = "scale_down") %>%
       )
     )
 
-if (book_format == "html") kab %>% scroll_box(height = "500px", box_css = "margin-bottom: 1.2em;") else kab
+if (book_format == "html") kab %>% scroll_box(height = "500px", extra_css = "margin-bottom: 1.2em;") else kab
 
 
 ```
