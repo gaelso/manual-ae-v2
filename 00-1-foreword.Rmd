@@ -9,21 +9,16 @@ Also, the allometric equations used to predict the biomass of a tree from easier
 
 \  
 
-This *Manual for building tree volume and biomass allometric equations* therefore takes the form of a guide intended for all students, technicians or researchers working to assess forest resources such as volume, biomass and carbon stocks for commercial, bioenergy or climate change mitigation purposes. The methods described herein apply to most forests and ecological areas, but special emphasis has been placed on tropical forest that, more than the others, today require efforts from the international community to measure carbon stocks. The manual includes a red line to guide the reader. This describes concrete cases illustrating the different questions that arise when constructing allometric equations, taking samples, making field measurements, entering data, graphically exploring the data, fitting models and using them for predictions. The data employed in these illustrations are derived from three sites which are very different in terms of forest structure and resources available. The practical advice included in these illustrations should allow readers to tackle most of the problems customarily encountered. This manual may also interest forest biometricians to the extent that it contains not only exhaustive reminders on the mathematical theory of regressions and recent developments therein, but also a great deal of advice on selecting and handling linear regression models.
+This *Manual for building tree volume and biomass allometric equations* therefore takes the form of a guide intended for all students, technicians or researchers working to assess forest resources such as volume, biomass and carbon stocks for commercial, bioenergy or climate change mitigation purposes. The methods described herein apply to most forests and ecological areas, but special emphasis has been placed on tropical forest that, more than the others, today require efforts from the international community to measure carbon stocks. The manual includes a red line to guide the reader. This describes concrete cases illustrating the different questions that arise when constructing allometric equations, taking samples, making field measurements, entering data, graphically exploring the data, fitting models and using them for predictions. The data employed in these illustrations are derived from three sites which are very different in terms of forest structure and resources available. The practical advice included in these illustrations should allow readers to tackle most of the problems customarily encountered. This manual may also interest forest biometricians to the extent that it contains not only exhaustive reminders on the mathematical theory of regressions and recent developments therein, but also a great deal of advice on selecting and handling linear regression models. `r ifelse(book_format == "latex", "\\nopagebreak", "")`
 
-\  
+`r ifelse(book_format == "latex", "\\bigskip\\noindent\\pageref{LastPage}", "215")` pages. Numerous illustrations. Bibliography comprising 255 publications `r ifelse(book_format == "latex", "\\nopagebreak", "")`
 
-215 pages. Numerous illustrations. Bibliography comprising 255 publications
+`r ifelse(book_format == "latex", "\\vskip1cm\\noindent", "")`Francis Cailliez
 
-\  
-
-Francis Cailliez
-
-August 2012
+`r ifelse(book_format == "latex", "\\bigskip\\noindent", "")`August 2012
 
 ```{r signcaill, fig.align='left', fig.pos='H', out.width='15%'}
 
 knitr::include_graphics(path = "source/signature/signcaill.png")
 
 ```
-
