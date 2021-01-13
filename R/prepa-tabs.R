@@ -152,7 +152,7 @@ kab_prim
 
 kab_fAICD <- tibble(
   rl = c(
-    "(\\@ref(exr:fDpara))", "(ref:col-fDD2var)", "(ref:col-fnlsD)", "(ref:col-fnlmD)",
+    "(ref:col-fDpara))", "(ref:col-fDD2var)", "(ref:col-fnlsD)", "(ref:col-fnlmD)",
     "(ref:col-frlpD2H)", "(ref:col-fD2Hvar)", "(ref:col-fnlsD2H)", "(ref:col-fnlmD2H)",
     "(ref:col-fnlsDH)", "(ref:col-fnlmDH)"
   ),
@@ -161,7 +161,7 @@ kab_fAICD <- tibble(
   ),
   meth = rep(c("WLS", "ML"), 5),
   r = c(
-    rep(c("(ref:lm)", "(ref:nlme)", "(ref:nls)", "(ref:nlme)"), 2), "(ref:nls)", "(ref:nlme)"
+    rep(c("(ref:lm)", "(ref:nlme)", "(ref:nls)","(ref:nlme)"), 2), "(ref:nls)", "(ref:nlme)"
   ),
   AIC = c(
     76.71133, 83.09157, 24809.75727, 75.00927, 65.15002, 
@@ -169,6 +169,26 @@ kab_fAICD <- tibble(
   )
 )
 kab_fAICD 
+
+kab_fAICD_html <- tibble(
+  rl = c(
+    "\\@ref(exr:fDpara)", "\\@ref(exr:fDD2var)", "\\@ref(exr:fnlsD)", "\\@ref(exr:fnlmD)",
+    "\\@ref(exr:frlpD2H)", "\\@ref(exr:fD2Hvar)", "\\@ref(exr:fnlsD2H)", "\\@ref(exr:fnlmD2H)",
+    "\\@ref(exr:fnlsDH)", "\\@ref(exr:fnlmDH)"
+  ),
+  entry = c(
+    rep("$D$", 4), rep("$D^2H$", 4), rep("$D$, $H$", 2)
+  ),
+  meth = rep(c("WLS", "ML"), 5),
+  r = c(
+    rep(c("`lm`", "`nlme`", "`nls`", "`nlme`"), 2), "`nls`", "`nlme`"
+  ),
+  AIC = c(
+    76.71133, 83.09157, 24809.75727, 75.00927, 65.15002, 
+    69.09644, 24797.53706, 69.24482, 24802.91248, 76.80204
+  )
+)
+kab_fAICD_html
 
 
 kab_fAIClnD <- tibble(
@@ -186,4 +206,21 @@ kab_fAIClnD <- tibble(
     56.97923, 46.87780, 48.21367, 45.96998
   )
 )
-kab_fAIClnD 
+kab_fAIClnD
+
+kab_fAIClnD_html <- tibble(
+  rl = c(
+    "\\@ref(exr:rllnBvD)", "\\@ref(exr:rllnBvD2H)", "\\@ref(exr:flnDlnH)", "\\@ref(exr:selvar)"
+  ),
+  entry = c(
+    "$D$", "$D^2H$", rep("$D$, $H$", 2)
+  ),
+  meth = rep("OLS", 4),
+  r = c(
+    rep("`lm`", 4)
+  ),
+  AIC = c(
+    56.97923, 46.87780, 48.21367, 45.96998
+  )
+)
+kab_fAIClnD_html

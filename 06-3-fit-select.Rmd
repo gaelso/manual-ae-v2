@@ -20,7 +20,7 @@ Let us take the example of a biomass table we are looking to construct from a da
 \end{eqnarray*}
 The *complete* model (the last in the above list) is that which includes all the effect variables available. All the other models may be considered to be subsets of the complete model, but where certain effect variables have been employed and other set aside. Selecting the variables aims to choose --- from among the effect variables of the complete model --- those that should be kept and those that may be set aside as they contribute little to the prediction of the response variable. In other words, in this example, selecting the variables would consist in choosing the best model from among the seven models envisaged for $\ln(B)$.
 
-Given that there are $p$ effect variables $X_1$, $X_2$, \ldots, $X_p$, there are $2^p-1$ models that include all or some of these effect variables. Selecting the variables consists in choosing the "best" combination of effect variables from all those available. This means firstly that we must have criterion that can be used to evaluate the quality of a model. We have already seen `r ifelse(book_format == "latex", "(p.\\pageref{irm}) ", "")`that $R^2$ is a poor criterion for evaluating the quality of one model in comparison with that of another as it increases automatically with the number of effect variables, and this regardless of whether these provide information useful for predicting the response variable or not. A better criterion for selecting effect variables is the residual variance estimator, which is linked to $R^2$ by the relation:
+Given that there are $p$ effect variables $X_1$, $X_2$, $\ldots$, $X_p$, there are $2^p-1$ models that include all or some of these effect variables. Selecting the variables consists in choosing the "best" combination of effect variables from all those available. This means firstly that we must have criterion that can be used to evaluate the quality of a model. We have already seen `r ifelse(book_format == "latex", "(p.\\pageref{irm}) ", "")`that $R^2$ is a poor criterion for evaluating the quality of one model in comparison with that of another as it increases automatically with the number of effect variables, and this regardless of whether these provide information useful for predicting the response variable or not. A better criterion for selecting effect variables is the residual variance estimator, which is linked to $R^2$ by the relation:
 \[
 \hat{\sigma}^2=\frac{n}{n-p-1}(1-R^2)\ S_Y^2
 \]
@@ -271,21 +271,30 @@ knitr::include_graphics(c(paste0(fig_path, "/faicD1.png"), paste0(fig_path, "/fa
 
 ```{r fAICD}
 
+if (book_format == "latex") kab <- kab_fAICD else kab <- kab_fAICD_html
+
 kab_opt <- list(
-  x = kab_fAICD,
+  x = kab,
   caption = "(ref:fAICD)",
-  caption.short = "AIC values for 10 biomass tables fitted to data from 42 trees measured in Ghana by @henry10",
-  col.names = linebreak(c("Red \nline", "Entry", "Fitting$^*$\nmethod", "R \ncommand", "AIC")),
-  align = "ccccccccccccc",
+  caption.short = "AIC values for 10 biomass tables fitted to data from 42 trees measured in Ghana by Henry et al. 2010",
+  col.names = ifelse(
+    book_format == "latex", 
+    list(linebreak(c("Red \nline", "Entry", "Fitting$^*$\nmethod", "R \ncommand", "AIC"))),
+    list(c("Red line", "Entry", "Fitting$^*$ method", "R command", "AIC"))
+    )[[1]],
+  #align = "clllr",
   booktabs = TRUE,
   escape = F
   )
+
 
 #do.call(kable, c(kab_opt, format = book_format, linesep = ""))
 display_table() %>%
   footnote(symbol = "WLS = weighted least squares, ML = maximum likelihood")
 
 ```
+
+
 
 
 ::::::{.filrouge data-latex=""}
@@ -306,8 +315,10 @@ The following models with $\ln(B)$ as response variable were fitted:
 All these models were fitted using linear regression by the ordinary least squares method. A plot of the predictions on a log scale for model `m` with dbh as only entry may be obtained by the following command:
 
 ```{r, echo=T, eval=FALSE}
-m <- lm(log(Btot) ~ I(log(dbh)),data=dat[dat$Btot>0,]) ## red line 7
-with(dat[dat$Btot>0,], plot(dbh, Btot, xlab="Dbh (cm)", ylab="Biomass (t)", log="xy"))
+m <- lm(log(Btot) ~ I(log(dbh)), data = dat[dat$Btot > 0,]) ## red line 7
+with(dat[dat$Btot > 0,], plot(
+  dbh, Btot, xlab = "Dbh (cm)", ylab = "Biomass (t)", log = "xy"
+  ))
 D <- 10^par("usr")[1:2]
 lines(D, exp(predict(m, newdata = data.frame(dbh = D))))
 ```
@@ -315,12 +326,14 @@ lines(D, exp(predict(m, newdata = data.frame(dbh = D))))
 For a model that uses both dbh and height as entries, a plot on a log scale may be obtained by the command:
 
 ```{r, echo=T, eval=FALSE}
-m <- lm(log(Btot) ~ I(log(dbh)) + I(log(heig)), data = dat[dat$Btot>0,]) ## red line 10
+m <- lm(log(Btot) ~ I(log(dbh)) + I(log(heig)), data = dat[dat$Btot > 0,]) ## red line 10
 D <- exp(seq(log(1), log(180), length = 20))
-H <- exp(seq(log(1), log(61), length=20))
-B <- matrix(predict(m, newdata=expand.grid(dbh=D,heig=H)), length(D))
-M <- persp(log(D), log(H), B, xlab="log(Diameter) (cm)",ylab="log(height) (m)",
-           zlab="log(Biomass) (t)", ticktype = "detailed", theta = -30, phi = 20)
+H <- exp(seq(log(1), log(61), length = 20))
+B <- matrix(predict(m, newdata = expand.grid(dbh = D, heig = H)), length(D))
+M <- persp(
+  log(D), log(H), B, xlab="log(Diameter) (cm)",ylab="log(height) (m)",
+  zlab="log(Biomass) (t)", ticktype = "detailed", theta = -30, phi = 20
+  )
 points(trans3d(log(dat$dbh), log(dat$heig), log(dat$Btot), M))
 ```
 
@@ -343,17 +356,22 @@ knitr::include_graphics(c(paste0(fig_path, "/faiclnD1.png"), paste0(fig_path, "/
 
 ```{r fAIClnD}
 
+if (book_format == "latex") kab <- kab_fAIClnD else kab <- kab_fAIClnD_html
+
 kab_opt <- list(
-  x = kab_fAIClnD,
+  x = kab,
   caption = "(ref:fAIClnD)",
   caption.short = "AIC values for four biomass tables fitted to data from 42 trees measured in Ghana by Henry et al. (2010)",
-  col.names = linebreak(c("Red \nline", "Entry", "Fitting \nmethod", "R \ncommand", "AIC")),
+  col.names = ifelse(
+    book_format == "latex", 
+    list(linebreak(c("Red \nline", "Entry", "Fitting \nmethod", "R \ncommand", "AIC"))),
+    list(c("Red line", "Entry", "Fitting method", "R command", "AIC"))
+    )[[1]],
   #align = "ccccccccccccc",
   booktabs = TRUE,
   escape = F
   )
 
-#do.call(kable, c(kab_opt, format = book_format, linesep = ""))
 display_table()
 
 ```
@@ -375,18 +393,14 @@ F_{\ln}=\hat{\sigma}\sqrt[n]{\textstyle\prod_{i=1}^nB_i}
 =\exp\Big(\frac{1}{n}\sum_{i=1}^n\ln(B_i)\Big)\ \hat{\sigma}
 \]
 For linear regressions where the residual variance is assumed to be proportional to a power of an effect variable $X_1$, a trick can nevertheless be used to define Furnival's index. The linear regression:
-
 \begin{equation}
 Y=a_0+a_1X_1+a_2X_2+\ldots+a_pX_p+\varepsilon(\#eq:F1)
 \end{equation}
-
 where $\mbox{Var}(\varepsilon)=(kX_1^c)^2$; is strictly identical to the linear regression`r ifelse(book_format == "latex", " (see p. \\pageref{apart})", "")`:
-
 \begin{equation}
 Y'=a_0X_1^{-c}+a_1X_1^{1-c}+a_2X_2X_1^{-c}+\ldots+
 a_pX_pX_1^{-c}+\varepsilon'(\#eq:F2)
 \end{equation}
-
 where $Y'=YX_1^{-c}$, $\varepsilon'=\varepsilon X_1^{-c}$ and $\mbox{Var}(\varepsilon')=k^2$. As model \@ref(eq:F2) has constant residual variance, its Furnival's index is defined. By extension, we can define the Furnival index of model \@ref(eq:F1) as being the Furnival index of model \@ref(eq:F2). If $Y=\psi(B)$, then $Y'=X_1^{-c}\psi(B)$, such that Furnival's index is:
 \[
 F=\frac{\hat{k}}{\sqrt[n]{\prod_{i=1}^nX_{i1}^{-c}\psi'(B_i)}}
@@ -394,7 +408,6 @@ F=\frac{\hat{k}}{\sqrt[n]{\prod_{i=1}^nX_{i1}^{-c}\psi'(B_i)}}
 \Big)\ \hat{k}
 \]
 Therefore, Furnival's index can be used to select the value of exponent $c$ in a weighted regression`r ifelse(book_format == "latex", " (see p. \\pageref{chx})", "")`.
-
 
 
 
@@ -448,7 +461,9 @@ Here again, the structure of the errors is not the same in the three cases, but 
 We have already taken a look at three methods for fitting the power model $B=aD^b$:
 
 1. using a simple linear regression on log-transformed data (red line \@ref(exr:rllnBvD)): $\ln(B)=-8.42722+2.36104\ln(D)$, if we "naively" apply the exponential inverse transformation;
+
 2. using a weighted non-linear regression (red line \@ref(exr:fnlsD)): $B=2.492\times10^{-4}D^{2.346}$;
+
 3. using a non-linear regression with variance model (red line \@ref(exr:fnlmD)): $B=2.445\times10^{-4}D^{2.35105}$.
 
 The predictions given by these three fittings of the same model are illustrated in  Figure \@ref(fig:fselm). The differences can be seen to be minimal and well below prediction precision, as we will see later (\S\ \@ref(BVpred)).
