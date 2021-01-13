@@ -1,5 +1,7 @@
 
+
 # Sampling and stratification {#samp}
+
 
 Sampling consists in predicting the characteristics of a set from one part (a sample) of this set. Typically, we want to estimate the volume of wood in a forest, but it is impossible to measure the volume of all the trees one by one. We therefore measure the volume of a sample of trees in the forest, then extrapolate to obtain an estimate for all the trees in the entire forest [p.252 @ctft89]. As volume is measured only in a sample of trees, the estimated total volume we obtain suffers from a *sampling error*^[The terms in italics are those used in sampling theory; a definition of these terms may be found, for example, in appendix 2 of @bellefontaine01.].
 Sampling in the strict sense consists in:

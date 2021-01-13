@@ -1,5 +1,7 @@
 
+
 ## Sampling for stand estimations {#sampeup}
+
 
 Let us now consider the problem of predicting the volume or biomass of a stand. In a rigorously statistical manner, we need to consider the entire error propagation chain as described in Figure \@ref(fig:cha) [@parresol99]. This raises questions of double sampling and regression estimator, as described in section \@ref(peup). @cunia87c; @cunia87; @cunia87d, @chave04 and @vanbreugel11 are rare examples where the entire error propagation chain was indeed taken into account, and where the biomass estimation error for a stand was related to the sample size used to construct the biomass table necessary for this estimation. In practice the problem is generally simplified by considering the table as exact and not suffering from any prediction error. This approximation --- which disconnects the sampling of the stand used to predict its volume or biomass, from the sampling of the trees used to construct the model --- reduces the sampling to a conventional forest inventory problem.
 

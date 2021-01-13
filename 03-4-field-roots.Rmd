@@ -1,10 +1,11 @@
 
+
 ## Measuring roots
+
 
 It is far more difficult to determine root biomass than above-ground biomass. The methods we propose here are the results of campaigns conducted in different ecosystems and were compared in a study conducted in Congo [@levillain11].
 
-The first step, whatever the ecosystem, consists in drawing a Voronoi^[A Voronoi diagram (also called a Voronoi decomposition, a Voronoi partition or Voronoi polygons) is a special kind of decomposition of a metric space determined by distances to a specified family of objects, generally a set of points.] 
-diagram around the selected tree. Figure \@ref(fig:voro) indicates the procedure employed: *(i)* draw the segments that link the selected tree to each of its neighbors; *(ii)* draw the bisectors for each segment, *(iii)* connect the bisectors one to another to bound a space around the tree; *(iv)* this space can then be divided into joined triangles, the area of each zone being easy to calculate when the length of all three sides ($a$, $b$ and $c$) is known:
+The first step, whatever the ecosystem, consists in drawing a Voronoi^[A Voronoi diagram (also called a Voronoi decomposition, a Voronoi partition or Voronoi polygons) is a special kind of decomposition of a metric space determined by distances to a specified family of objects, generally a set of points.] diagram around the selected tree. Figure \@ref(fig:voro) indicates the procedure employed: *(i)* draw the segments that link the selected tree to each of its neighbors; *(ii)* draw the bisectors for each segment, *(iii)* connect the bisectors one to another to bound a space around the tree; *(iv)* this space can then be divided into joined triangles, the area of each zone being easy to calculate when the length of all three sides ($a$, $b$ and $c$) is known:
 \[
 A=\sqrt{p(p-2a)(p-2b)(p-2c)}
 \]

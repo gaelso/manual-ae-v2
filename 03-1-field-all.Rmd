@@ -2,6 +2,7 @@
 
 # In the field {#ter}
 
+
 The field step is the most crucial as it may generate measurement errors that cannot be corrected. This phase must be governed by three key principles: (*i*) it is better to weigh everything in the field rather than calculate a volume and multiply it later by a density measurement (see chapter \@ref(biol) and variations in stem shape and wood density); (*ii*) if wood aliquots are taken, it is best to weigh the whole then the aliquot to follow moisture loss; finally (*iii*) as a biomass campaign requires a great deal of work and is very costly to undertake, other measurements may be taken at the same time to avoid a subsequent return to the field (e.g. stem profile, sampling for nutrient content).
 
 Selecting trees to be measured in the field (see chapter \@ref(samp)), whether as individuals or exhaustively over a given area, means that the trees must be marked with paint, measured for circumference if possible at breast height (by circling the trunk with paint at this point) and measured for height. This procedure is used to check that the tree selected indeed corresponds to the sampling plan chosen (case of a selection by individual) and provides for control measures once the tree has been felled. It is also very practical to take a photo of the individual selected and draw a schematic diagram of the tree on the field form. This makes it easier to interpret the data and check the results obtained. In general, trees that are too unusual (crown broken, stem knotty or sinuous) should not be selected unless these stems account for a significant proportion of the stand, or if the aim is to quantify an accident (e.g. crown breaking subsequent to frost). Likewise, trees located in an unrepresentative environment should be excluded (forest edge, clearing, degraded forest, etc.) as their architecture often differs from the other trees in the stand. Finally, field constraints (slope, access, stand non compliant with the stratum, etc.) may well call the original sampling into question.
@@ -55,7 +56,7 @@ Logging is a complex business and must be smoothly organized such that all the v
 
 ```{r post, fig.scap="Organization of a biomass measurement site with 7 different operations", fig.cap="(ref:post)"}
 
-knitr::include_graphics(paste0(fig_path, "/postes.png"), auto_pdf = TRUE)
+display_fig("postes")
 
 ```
 
@@ -140,7 +141,7 @@ Figure \@ref(fig:mop) shows the operating procedure to be adopted for measuring 
 
 ```{r mop, fig.cap="(ref:mop)"}
 
-knitr::include_graphics(paste0(fig_path, "/modop.png"), auto_pdf = TRUE)
+display_fig("modop")
 
 ```
 

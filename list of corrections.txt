@@ -16,3 +16,5 @@ Check failed cross refs
 Add out.width to figures
 
 R code spacing and length 
+
+list item spacing

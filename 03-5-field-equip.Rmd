@@ -4,21 +4,32 @@
 ### Heavy machinery and vehicles
 
 - Cars, trucks, trailer: for transporting personnel, equipment and samples to/from the laboratory.
+
 - Quad bike (if possible): for transporting bulky equipment and samples in the field.
+
 - Digger for weighing brushwood bundles.
 
 
 ### General equipment
 
 - Tool box with basic tools.
+
 - Plastic boxes (for storing and transporting materials --- about 10).
+
 - Plastic bags (count one or two large bags per tree) to hold all the samples from a given tree and avoid water losses. Paper bags (count one per compartment and per tree) to hold samples immediately after they are taken. Ideally, these bags should be pre-labeled with tree and compartment number (which saves time in the field). But plan also to take a number of unmarked bags and a black, felt-tip pen (indelible ink) to make up for any mistakes made, or so that extra samples may be taken.
+
 - Large tarpaulins for the crown (either cut up for the branch bundles, or spread on the ground to recover leaves torn off the trees).
+
 - Labels (stapled onto the disks), staples and stapler; or fuschine pencil (but, if the samples are to be stored for later measurements of nutrient content, fuchsine should be avoided) (photo \@ref(fig:mats)).
+
 - Cutters, machetes, axes, shears, saws (photo \@ref(fig:mats)).
+
 - Iron frames for making bundling branches (photo \@ref(fig:cad)) or alternatively bins of different sizes.
+
 - Power saws (ideally one power saw suitable for felling trees and another smaller more maneuverable power saw for limbing --- photo \@ref(fig:mats)).
+
 - Strong string for bundling the branches (given that this will be reused throughout the campaign, the knots should be undoable).
+
 - Very strong large bags (such as grain or sand bags --- photo \@ref(fig:tsp)) for transporting the disks and field samples to vehicles (if these are parked some distance from the felling site).
 
 ```{r mats, fig.scap="Field equipement", fig.cap="(ref:mats)"}
@@ -45,12 +56,19 @@ tsp
 ### Computer-entering field data
 
 - Pocket PC (with battery charger and cables) or field record forms on waterproof paper or cardboard, if possible bound in notebooks with plasticized covers front and back.
+
 - Tree identification guide or key for wet tropical forest sites.
+
 - 2B pencils, eraser, pencil sharpener.
+
 - Field scales (with 2 batteries and charger) for weighing samples (precise to within 1\ g), ideally a full range of scales for different sample weights (a 1 or 2\ m log may weigh several hundred kg, whereas the wood disks weigh from a few dozen g to several dozen kg). A digger will facilitate the field weighing of large logs. Straps should therefore be taken into the field to attach two scales to the bucket and self-blocking claws to attach the log.
+
 - Decameter to measure lengths along the trunk (stem profiles).
+
 - Tree calipers and girth tape to measure circumference.
+
 - Tree marking paint gun (for marking standing trees and the main stem in highly developed crowns).
+
 - Logger's mark to indicate where disks should be cut (or marked with the paint gun).
 
 
@@ -58,11 +76,17 @@ tsp
 ### Laboratory equipment
 
 - Ovens.
+
 - Graduated tubes of at least 500 ml.
+
 - Bark knife.
+
 - Secateurs.
+
 - Scales of a 2 to 2000\ g capacity (precise to within 0.1 to 1\ g).
+
 - Band saw.
+
 
 <!--------------------->
 <!-- END SECTION 3.5 -->
