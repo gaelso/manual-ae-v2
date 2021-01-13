@@ -86,7 +86,7 @@ Compared with a double-entry biomass model using dbh $D$ and height $H$, the $D^
 
 ```{r, eval=F, echo=T}
 
-with(dat,plot(dbh^2*heig,Btot,xlab="D2H (cm2.m)",ylab="Biomass (t)"))
+with(dat, plot(dbh^2 * heig, Btot, xlab = "D2H (cm2.m)", ylab = "Biomass (t)"))
 
 ```
 
@@ -169,30 +169,32 @@ Let us now explore the relation between biomass, $D^2H$ and wood density $\rho$.
 
 ```{r, eval=F, echo=T}
 n <- 4
-d <- quantile(dat$dens,(0:n)/n)
-i <- findInterval(dat$dens,d,rightmost.closed=TRUE)
+d <- quantile(dat$dens, (0:n) / n)
+i <- findInterval(dat$dens, d, rightmost.closed = TRUE)
 ```
 
 The object `d` defines the limits of the density classes while object `i` contains the number of the density class to which each observation belongs. The plot of biomass against $D^2H$ on a log scale, with different symbols and colors for the different density classes, may be obtained by the command:
 
 ```{r, eval=F, echo=T}
-with(dat,plot(dbh^2*heig,Btot,xlab="D2H (cm2m)",ylab="Biomass (t)",log="xy",
-              pch=i, col=i))
+with(dat,plot(
+  dbh^2 * heig, Btot, xlab = "D2H (cm2m)", ylab = "Biomass (t)", log = "xy", 
+  pch = i, col = i
+  ))
 ```
 
 and is shown in Figure \@ref(fig:fcond) for `n=4` wood density classes. Pre-empting chapter \@ref(fit), we will now plot the linear regression between $\ln(B)$ and $\ln(D^2H)$ for each subset of observations corresponding to each wood density class:
 
 ```{r, eval=F, echo=T}
-m <- as.data.frame(lapply(split(dat,i), function(x) 
-  coef(lm(log(Btot) ~ I(log(dbh^2*heig)),data=x[x$Btot>0,]))))
+m <- as.data.frame(lapply(split(dat, i), function(x) 
+  coef(lm(log(Btot) ~ I(log(dbh^2 * heig)), data = x[x$Btot > 0,]))))
 ```
 
 When we plot the y-intercepts of the regression and its slopes against median wood density for the class:
 
 ```{r, eval=F, echo=T}
-dmid <- (d[-1]+d[-n])/2
-plot(dmid,m[1,],xlab="Wood density (g/cm3)",ylab="y-Intercept")
-plot(dmid,m[2,],xlab="Wood density (g/cm3)",ylab="Slope")
+dmid <- (d[-1] + d[-n]) / 2
+plot(dmid, m[1,], xlab = "Wood density (g/cm3)", ylab = "y-Intercept")
+plot(dmid, m[2,], xlab = "Wood density (g/cm3)", ylab = "Slope")
 ```
 
 this at first sight does not appear to yield any particular relation (Figure \@ref(fig:flmcond).
@@ -280,7 +282,7 @@ When no transformation of the variable is able to render the relation between $X
 Let us use the log transformation to transform simultaneously both dbh and biomass. The scatter plot of the log-transformed data is obtained as follows:
 
 ```{r, echo=T, eval=F}
-plot(dat$dbh,dat$Btot,xlab="Diameter (cm)",ylab="Biomass (t)",log="xy")
+plot(dat$dbh, dat$Btot, xlab = "Diameter (cm)", ylab = "Biomass (t)", log = "xy")
 ```
 
 The resulting scatter plot is shown in Figure \@ref(fig:flnBvlnD). The log transformation has rendered linear the relation between biomass and dbh: the relation between $\ln(D)$ and $\ln(B)$ is a straight line and the variance of $\ln(B)$ does not vary with diameter (like in Figure \@ref(fig:exgr)A).
@@ -306,7 +308,9 @@ display_fig("flnBvlnD")
 Let us use the log transformation to transform simultaneously both $D^2H$ and biomass. The scatter plot of the log-transformed data is obtained as follows:
 
 ```{r, echo=T, eval=F}
-with(dat,plot(dbh^2*heig,Btot,log="xy",xlab="D2H (cm2.m)",ylab="Biomass (t)"))
+with(dat, plot(
+  dbh^2 * heig, Btot, log = "xy", xlab = "D2H (cm2.m)", ylab = "Biomass (t)"
+  ))
 ```
 
 The resulting scatter plot is shown in Figure \@ref(fig:flnBvD2H). The log transformation has rendered linear the relation between biomass and $D^2H$: the relation between $\ln(D^2H)$ and $\ln(B)$ is a straight line and the variance of $\ln(B)$ does not vary with $D^2H$ (like in Figure \@ref(fig:exgr)A).

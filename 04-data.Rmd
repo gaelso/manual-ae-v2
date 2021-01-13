@@ -135,9 +135,9 @@ Let us suppose that the data formatted in the matrix format have been saved in t
 `Henry_et_al2010.xls`, the first worksheet of which, called `biomass`, contains Table \@ref(tab:data). In R software, these data are read using the commands:
 
 ```{r, eval=FALSE, echo=TRUE}
-library(RODBC)%
+library(RODBC)
 ch <- odbcConnectExcel("Henry_et_al2010.xls")
-dat <- sqlFetch(ch,"biomass")
+dat <- sqlFetch(ch, "biomass")
 odbcClose(ch)
 ```
 
@@ -175,7 +175,7 @@ The total dry biomass of the largest tree is 70.24\ tonnes. The dry biomass of t
 Finally, we can check that the total dry biomass is indeed the sum of the biomasses of the four other compartments:
 
 ```{r, echo=T, eval=F}
-max(abs(dat$Btot-rowSums(dat[,c("Bbran","Bfol","Btronc","Bctf")])))
+max(abs(dat$Btot - rowSums(dat[,c("Bbran", "Bfol", "Btronc", "Bctf")])))
 ```
 
 The greatest difference in absolute value is 0.01\ tonnes, which indeed corresponds to the precision of the data (two significant figures). The dataset therefore does not contain any inconsistencies at this level.
