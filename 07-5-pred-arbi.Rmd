@@ -2,9 +2,11 @@
 
 ## Arbitrating between different models {#arbi}
 
+
 If we want to predict the volume or biomass of given trees, we often have a choice between different models. For instance, several models may have been fitted in different places for a given species. Or we may have a local model and a pan-tropical model. Arbitrating between the different models available is not always an easy task [@henry11]. For example, should we choose a specific, local model fitted using little data (and therefore unbiased *a priori* but with high prediction variability) or a pan-tropical, multispecific model fitted with a host of data (therefore potentially biased but with low prediction variability)? This shows how many criteria are potentially involved when making a choice: model quality (the range of its validity, its capacity to extrapolate predictions, etc.), its specificity (with local, monospecific models at one extreme and pan-tropical, multispecific models at the other), the size of the dataset used for model fitting (and therefore implicitly the variability of its predictions). Arbitrating between different models should not be confused with model selection, as described in section \@ref(selmod) for when selecting models their coefficients are not yet known, and when we estimate these coefficients we are looking for the model that best fits the data. When arbitrating between models we are dealing with models already fitted and whose coefficients are known.
 
 Arbitration between different models often takes place without any biomass or volume data. But the case we will focus on here is when we have a reference dataset $\mathcal{S}_n$, with $n$ observations of the response variable (volume of biomass) and the effect variables.
+
 
 
 ### Comparing using validation criteria
@@ -12,6 +14,7 @@ Arbitration between different models often takes place without any biomass or vo
 When we have a dataset $\mathcal{S}_n$, we can compare the different models available on the basis of the validation criteria described in section \@ref(Ival), by using $\mathcal{S}_n$ as the validation dataset. Given that the models do not necessarily have the same number $p$ of parameters, and in line with the parsimony principle, we should prefer the validation criteria that depend on $p$ in such a manner as to penalize those models with many parameters.
 
 When comparing a particular, supposedly "best" candidate model with different competitors, we can compare its predictions with those of its competitors. To do this we look to see whether or not the predictions made by its competitors are contained within the confidence interval at a significance level of $\alpha$ of the candidate model.
+
 
 
 ### Choosing a model
@@ -29,6 +32,7 @@ The expectation of the loss with respect to the distribution of $\hat{f}_m$ is c
 R=\mathrm{E}[\gamma(f,\ \hat{f}_m)]
 \]
 The best of the $M$ models available is that which minimizes the risk. The problem is that we do not know the true relation $f$, therefore, this "best" model is also unknown. In the models selection theory this best model is called an *oracle*. The model finally chosen will be that such that the risk of the oracle is bounded for a vast family of functions $f$. Intuitively, the model chosen is that where the difference between it and the "true" relation is limited whatever this "true" relation may be (within the limits of a range of realistic possibilities). We will not go into further detail here concerning this topic as it is outside the scope of this guide.
+
 
 
 ### Bayesian model averaging
@@ -50,19 +54,18 @@ f_{\mathrm{mean}}(X_1,\ \ldots,\ X_p)=\mbox{E}(Y|X_1,\ \ldots,\ X_p)=\sum_{m=1}^
 f_m(X_1,\ \ldots,\ X_p)
 \]
 Thus, the model resulting from the combination of the $M$ competitor models is a weighted mean of these $M$ models, with the weight of model $m$ being the *a posteriori* probability that model $m$ is the best. We can also calculate the variance of the predictions made by model $f_{\mathrm{mean}}$ that is a combination of the $M$ competitor models:
-
 \begin{eqnarray*}
 \mbox{Var}(Y|X_1,\ \ldots,\ X_p) &=& \sum_{m=1}^Mw_m\Big[
 f_m(X_1,\ \ldots,\ X_p)-\sum_{l=1}^Mw_l\ f_l(X_1,\ \ldots,\ X_p)\Big]^2
 \\ && +\sum_{m=1}^Mw_m\ \sigma_m^2
 \end{eqnarray*}
-
 The first term corresponds to between-model variance and expresses prediction variability from one model to another; the second term corresponds to within-model variance, and expresses the conditional error of the prediction, with this model being the best.
 
 If we want to use model $f_{\mathrm{mean}}$ instead of the $M$ models $f_1,\ \ldots,\ f_M$, we now have to estimate the weights
 $w_1,\ \ldots,\ w_M$ and the within-model standard deviations $\sigma_1,\ \ldots,\ \sigma_M$. These $2M$ parameters are estimated from reference dataset $\mathcal{S}_n$ using an EM algorithm [@dempster77; @mclachlan08]. The EM algorithm introduces latent variables $z_{im}$ such that $z_{im}$ is the *a posteriori* probability that model $m$ is the best model for observation $i$ of $\mathcal{S}_n$. The latent variables $z_{im}$ take values of between 0 and 1. The EM algorithm is iterative and alternates between two steps at each iteration: step E (as in "expectation") and step M (as "maximisation"). The EM algorithms is as follows:
 
 1. Choose start values $w^{(0)}_1,\ \ldots,\ w^{(0)}_M$, $\sigma^{(0)}_1,\ \ldots,\ \sigma^{(0)}_M$ for the $2M$ parameters to be estimated.
+
 2. Alternate the two steps:
     + 2.1. step E: calculate the value of $z_{im}$ at iteration 
     $j$ sbased on the values of the parameters at iteration $j-1$:
@@ -78,7 +81,8 @@ $w_1,\ \ldots,\ w_M$ and the within-model standard deviations $\sigma_1,\ \ldots
     \frac{\sum_{i=1}^nz_{im}^{(j)}[Y_i-f_m(X_{i1},\ \ldots,\ X_{ip})]^2}
     {\sum_{i=1}^nz_{im}^{(j)}}
     \end{eqnarray*}
-
     such as $\sum_{m=1}^M|w_m^{(j)}-w_m^{(j-1)}|+\sum_{m=1}^M|\sigma_m^{(j)}-\sigma_m^{(j-1)}|$ is larger than a fixed infitesimal threshold (for example $10^{-6}$).
 
 3. The estimated value of $w_m$ is $w_m^{(j)}$ and the estimated value of $\sigma_m$ is $\sigma_m^{(j)}$.
+
+

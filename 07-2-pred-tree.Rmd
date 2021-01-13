@@ -2,14 +2,14 @@
 
 ## Predicting the volume or biomass of a tree {#BVpred}
 
+
 Making a prediction based on model $f$ consists in using the known values of the effect variables $X_1,\ \ldots,\ X_p$, to calculate the predicted value $\hat{Y}$. A prediction does not end with the calculation of
 \[
 \hat{Y}=f(X_1,\ \ldots,\ X_p;\hat{\theta})
 \]
 The estimator $\hat{\theta}$ of model parameters is a random vector whose distribution stems from the distribution of the observations used to fit the model. Any model prediction $\hat{Y}$ is therefore itself a random variable whose distribution stems from the distribution of the observations used to fit the model. If we are to express this intrinsic variability of the prediction, we must associate it with an uncertainty indicator such as the standard deviation of the prediction or its 95\ \% confidence interval.
 
-Several confidence intervals are available depending on whether we are predicting the volume or biomass of a tree selected at random in the stand, or the volume or biomass of the mean tree in the stand. We will now describe in detail the analytical expressions of these confidence intervals for a linear model (\S\ \@ref(plm)), then for a non-linear model (\S\ \@ref(pnls)). We will then present expressions for these confidence intervals that are similar but simpler to compute (\S\ \@ref(papp), before focusing on the case of transformed variables (\S\ \@ref(invtra)).
-
+Several confidence intervals are available depending on whether we are predicting the volume or biomass of a tree selected at random in the stand, or the volume or biomass of the mean tree in the stand. We will now describe in detail the analytical expressions of these confidence intervals for a linear model (`r ifelse(book_format == "latex", "\\S", "&sect;")`\ \@ref(plm)), then for a non-linear model (`r ifelse(book_format == "latex", "\\S", "&sect;")`\ \@ref(pnls)). We will then present expressions for these confidence intervals that are similar but simpler to compute (`r ifelse(book_format == "latex", "\\S", "&sect;")`\ \@ref(papp), before focusing on the case of transformed variables (`r ifelse(book_format == "latex", "\\S", "&sect;")`\ \@ref(invtra)).
 
 
 
@@ -19,37 +19,30 @@ Several confidence intervals are available depending on whether we are predictin
 #### Prediction by simple linear regression {-}
 
 Let $\hat{a}$ be the estimated y-intercept of a linear regression, and $\hat{b}$ be its estimated slope. The prediction of $\hat{Y}$ the response variable may be written in two different ways:
-
 \begin{eqnarray}
 \hat{Y}&=&\hat{a}+\hat{b}X(\#eq:Ypeup)\\ %
 \hat{Y}&=&\hat{a}+\hat{b}X+\varepsilon(\#eq:Yind)
 \end{eqnarray}
-
 In both cases the expectation of $\hat{Y}$ is the same as $\mathrm{E}(\varepsilon)=0$. By contrast, the variance of $\hat{Y}$
 is not the same: it is higher in the second than in the first. These two equations may be interpreted as follows. Let us assume that effect variable $X$ is dbh and that the response variable $Y$ is the biomass. The number of trees in the whole forest with a given dbh $X$ (to within measurements errors) is immeasurably huge. If we were able to measure the biomass of all these trees with the same dbh, we would obtain variable values oscillating around a certain mean value. If we seek to predict this mean biomass (i.e. the mean of all the trees with dbh $X$), then equation \@ref(eq:Ypeup) of the prediction is valid. By contrast, if we seek to predict the biomass of a tree selected at random from all the trees with dbh $X$, then equation \@ref(eq:Yind) of the prediction is valid. The variability of the prediction is greater for \@ref(eq:Yind) than for \@ref(eq:Ypeup) because here the variability of the mean biomass prediction is supplemented by the differences in biomass between the trees.
 
 This means that two methods can be used to calculate a confidence interval for a prediction. There is a confidence interval for the prediction of the mean of $Y$, and a confidence interval for the prediction of an individual selected at random from the population in which the mean of $Y$ was calculated. The second confidence interval is wider than the first.
 
 In the case of a simple linear regression, it can be shown [@saporta90, p.373--374] that the confidence interval at a significance level of $\alpha$ for predicting the mean \@ref(eq:Ypeup) is:
-
 \begin{equation}
 \hat{a}+\hat{b}X\pm
 t_{n-2}\ \hat{\sigma}\sqrt{\frac{1}{n}+\frac{(X-\bar{X})^2}{nS_X^2}}
 (\#eq:icpeup)
 \end{equation}
-
 while the confidence interval at a significance level of $\alpha$ for predicting a tree selected at random \@ref(eq:Yind) is:
-
 \begin{equation}
 \hat{a}+\hat{b}X\pm
 t_{n-2}\ \hat{\sigma}\sqrt{1+\frac{1}{n}+\frac{(X-\bar{X})^2}{nS_X^2}}
 (\#eq:icind)
 \end{equation}
-
 where $t_{n-2}$ is the quantile $1-\alpha/2$ of a Student's distribution with $n-2$ degrees of freedom, $\bar{X}=(\sum_{i=1}^nX_i)/n$ is the mean of the observed values of $X$ in the dataset that served to fit the model, and $S_X^2=[\sum_{i=1}^n(X_i-\bar{X})^2]/n$ is the empirical variance of the observed values of $X$ in the dataset that served to fit the model.
 
-These expressions call for several remarks. The first is that the difference between the bounds of confidence interval 
-\@ref(eq:icind) for a tree selected at random and the bounds of confidence interval \@ref(eq:icpeup) for the mean tree is approximately $t_{n-2}\hat{\sigma}$. This difference reflects the difference between equations \@ref(eq:Yind) and \@ref(eq:Ypeup), which is due to the residual term $\varepsilon$ whose estimated standard deviation is $\hat{\sigma}$.
+These expressions call for several remarks. The first is that the difference between the bounds of confidence interval \@ref(eq:icind) for a tree selected at random and the bounds of confidence interval \@ref(eq:icpeup) for the mean tree is approximately $t_{n-2}\hat{\sigma}$. This difference reflects the difference between equations \@ref(eq:Yind) and \@ref(eq:Ypeup), which is due to the residual term $\varepsilon$ whose estimated standard deviation is $\hat{\sigma}$.
 
 The second is that the width of the confidence interval is not constant, but varies with $X$. The confidence interval is narrowest when $X=\bar{X}$ but widens as $X$ moves away from $\bar{X}$.
 
@@ -68,7 +61,7 @@ Let us return to the simple linear regression between $\ln(B)$ and $\ln(D)$ that
 `m` be the object containing the fitted model (see red line \@ref(exr:rllnBvD)). The confidence intervals may be calculated using the `predict` command. For example, for a tree with a dbh of 20~cm, the 95\ \% confidence interval for the mean tree is obtained by the command:
 
 ```{r, echo=T, results='hide'}
-m <- lm(log(Btot) ~ I(log(dbh)), data = dat[dat$Btot>0,]) ## red line 7
+m <- lm(log(Btot) ~ I(log(dbh)), data = dat[dat$Btot > 0,]) ## red line 7
 predict(m, newdata = data.frame(dbh = 20), interval = "confidence", level = 0.95)
 ```
 
@@ -82,8 +75,11 @@ conf
 Thus, the fitted model is $\ln(B)=$ `r conf[1]` with a 95\ \% confidence interval of `r conf[2]` to `r conf[3]`. For a tree with a dbh of 20\ cm selected at random, the confidence interval may be obtained by the command:
 
 ```{r, echo=T, results='hide'}
-predict(m,newdata=data.frame(dbh=20),interval="prediction",level=0.95)
+predict(
+    m, newdata = data.frame(dbh = 20), interval = "prediction", level = 0.95
+    )
 ```
+
 which yields:
 
 ```{r}
@@ -96,7 +92,7 @@ Figure \@ref(fig:icD) shows the confidence intervals for the entire range of the
 ::::::
 
 
-```{r icD, fig.cap="(ref:icd)"}
+```{r icD, out.width=one_col, fig.cap="(ref:icd)"}
 
 display_fig("iclnD")
 
@@ -114,7 +110,6 @@ In the case of a multiple regression with estimated coefficients $\hat{\mathbf{a
 and the confidence interval (with a significance level of $\alpha$) of this prediction is [@saporta90, p.387]:
 
 - for the prediction of the mean tree:
-
 \begin{equation}
 {}^{\mathrm{t}}{\mathbf{x}}\ \hat{\mathbf{a}}\pm t_{n-p-1}\ \hat{\sigma}
 \sqrt{{}^{\mathrm{t}}{\mathbf{x}}({}^{\mathrm{t}}{\mathbf{X}}\mathbf{X})^{-1}\mathbf{x}}
@@ -122,7 +117,6 @@ and the confidence interval (with a significance level of $\alpha$) of this pred
 \end{equation}
 
 - for the prediction of a tree selected at random:
-
 \begin{equation}
 {}^{\mathrm{t}}{\mathbf{x}}\ \hat{\mathbf{a}}\pm t_{n-p-1}\ \hat{\sigma}
 \sqrt{1+{}^{\mathrm{t}}{\mathbf{x}}({}^{\mathrm{t}}{\mathbf{X}}\mathbf{X})^{-1}\mathbf{x}}
@@ -143,8 +137,11 @@ where $\mathbf{X}$ is is the design matrix constructed using the data that serve
 Let us return to the multiple linear regression between $\ln(B)$, $\ln(D)$ and $\ln(H)$ that was fitted in red line \@ref(exr:flnDlnH). Let `m` be the object containing the fitted model (see red line \@ref(exr:flnDlnH)). The confidence intervals may be calculated using the `predict` command. For example, for a tree with a dbh of 20~cm and a height of 20\ m, the 95\ \% confidence interval for the mean tree is obtained by the command:
 
 ```{r, echo=T, results='hide'}
-m <- lm(log(Btot) ~ I(log(dbh)) + I(log(heig)), data = dat[dat$Btot>0,])
-predict(m,newdata=data.frame(dbh=20,heig=20),interval="confidence",level=0.95)
+m <- lm(log(Btot) ~ I(log(dbh)) + I(log(heig)), data = dat[dat$Btot > 0,])
+predict(
+    m, newdata = data.frame(dbh = 20, heig = 20), 
+    interval = "confidence", level = 0.95
+    )
 ```
 
 which yields:
@@ -157,7 +154,10 @@ conf
 Thus, the model predicts $\ln(B)=$ `r conf[1]` with a 95\ \% confidence interval of `r conf[2]` to `r conf[3]`. For a tree with a dbh of 20\ cm  and a height of 20\ m selected at random, the confidence interval is obtained by the command:
 
 ```{r, echo=T, results='hide'}
-predict(m,newdata=data.frame(dbh=20,heig=20),interval="prediction",level=0.95)
+predict(
+    m, newdata = data.frame(dbh = 20, heig = 20), 
+    interval = "prediction", level = 0.95
+    )
 ```
 
 which yields:
@@ -168,7 +168,6 @@ pred
 ```
 
 ::::::
-
 
 
 
@@ -199,8 +198,7 @@ f(X_1,\ \ldots,\ X_p;\hat{\theta})\pm t_{n-q}
 [\mathrm{d}_{\theta}f(\hat{\theta})]}(\#eq:icnl1)
 \end{equation}
 
-where $q$ is the number of coefficients in the model (i.e. the length of vector $\theta$), $\mathrm{d}_{\theta}f(\hat{\theta})$ is the value in $\theta=\hat{\theta}$ of the differential of $f$ respect to model coefficients, and $\hat{\boldsymbol{\Sigma}}_{\hat{\theta}}$ is an estimation in $\theta=\hat{\theta}$ of the variance-covariance matrix 
-$\boldsymbol{\Sigma}_{\theta}$ of the estimator of $\theta$. The differential of $f$ with respect to model coefficients is the vector of length $q$:
+where $q$ is the number of coefficients in the model (i.e. the length of vector $\theta$), $\mathrm{d}_{\theta}f(\hat{\theta})$ is the value in $\theta=\hat{\theta}$ of the differential of $f$ respect to model coefficients, and $\hat{\boldsymbol{\Sigma}}_{\hat{\theta}}$ is an estimation in $\theta=\hat{\theta}$ of the variance-covariance matrix $\boldsymbol{\Sigma}_{\theta}$ of the estimator of $\theta$. The differential of $f$ with respect to model coefficients is the vector of length $q$:
 \[
 \mathrm{d}_{\theta}f(\theta)={}^{\mathrm{t}}{\bigg[\bigg(\frac{\partial
 f(X_1,\ \ldots,\ X_p;\theta)}{\partial\theta_1}\bigg),\; \ldots,\;
@@ -229,7 +227,6 @@ ${}^{\mathrm{t}}{[\mathrm{d}_{\theta}f(\hat{\theta})]}\;\hat{\boldsymbol{\Sigma}
 
 
 
-
 ### Approximated confidence intervals {#papp}
 
 The exact calculation of prediction confidence intervals requires information (matrix $\mathbf{X}$ for a linear model, variance-covariance matrix $\hat{\boldsymbol{\Sigma}}_{\hat{\theta}}$ for a non-linear model) that is only rarely given in papers on volume or biomass tables. Generally, these papers provide only the number $n$ of observations used to fit the model and the residual standard deviation $\hat{\sigma}$ (linear model) or $\hat{k}$ and $\hat{c}$ (non-linear model). Sometimes, even this basic information about the fitting is missing. If $\mathbf{X}$ (linear model) or 
@@ -238,8 +235,7 @@ $\hat{\boldsymbol{\Sigma}}_{\hat{\theta}}$ (non-linear model) is not provided, i
 
 #### Residual error alone {-}
 
-Very often, only the residual standard deviation $\hat{\sigma}$ (linear model) or $\hat{k}$ and $\hat{c}$ (non-linear model) is given. In this case, an approximate confidence interval with a significance level of $\alpha$
-may be determined:
+Very often, only the residual standard deviation $\hat{\sigma}$ (linear model) or $\hat{k}$ and $\hat{c}$ (non-linear model) is given. In this case, an approximate confidence interval with a significance level of $\alpha$ may be determined:
 
 - in the case of a linear regression:
 \begin{equation}
@@ -351,7 +347,6 @@ This confidence interval corresponds to the prediction for a tree selected at ra
 
 
 
-
 ### Inverse variables transformation {#invtra}
 
 We saw in section \@ref(trans) how a variable transformation can render linear a model that initially did not satisfy the hypotheses of the linear model. Variable transformation affects both the mean and the residual error. The same may be said of the inverse transformation, with implications on the calculation of prediction expectation. The log transformation is that most commonly used, but other types of transformation are also available.
@@ -360,11 +355,9 @@ We saw in section \@ref(trans) how a variable transformation can render linear a
 #### Log transformation {-}
 
 Let us first consider the case of the log transformation of volume or biomass values, which is by far the most common case for volume and biomass models. Let us assume that a log transformation has been applied to biomass $B$ to fit a linear model using effect variables $X_1,\ \ldots,\ X_p$:
-
 \begin{equation}
 Y=\ln(B)=a_0+a_1X_1+\ldots+a_pX_p+\varepsilon(\#eq:pre)
 \end{equation}
-
 where
 \[
 \varepsilon\mathop{\sim}_{\mathrm{i.i.d.}}\mathcal{N}(0,\ \sigma)
@@ -375,11 +368,9 @@ This is equivalent to saying that $\ln(B)$ follows a normal distribution of mean
 \]
 Compared to the inverse model of \@ref(eq:pre) which corresponds to $B=\exp(a_0+a_1X_1+\ldots+a_pX_p)$, the inverse transformation of the residual error introduces bias into the prediction which can be corrected by multiplying the prediction 
 $\exp(a_0+a_1X_1+\ldots+a_pX_p)$ by an correction factor [@parresol99]:
-
 \begin{equation}
 \mathrm{CF}=\exp\Big(\frac{\hat{\sigma}^2}{2}\Big)(\#eq:CF)
 \end{equation}
-
 We must however take care as the biomass models reported in the literature, and fitted after log transformation of the biomass, sometimes include this factor and sometimes do not.
 
 If the decimal $\log_{10}$ has been used for variable transformation rather than the natural log, the correction factor is:
@@ -405,10 +396,13 @@ If we consider the starting data but use the exponential function (without takin
 Let `m` be the object containing the fitted model (red line \@ref(exr:fdens). The adjustment factor $\mathrm{CF}=\exp(\hat{\sigma}^2/2)$ is obtained by the command:
 
 ```{r, echo=T, results='hide'}
-dm <- tapply(dat$dens,dat$species,mean)
-dat <- cbind(dat,dmoy=dm[as.character(dat$species)])
-m <- lm(log(Btot) ~ I(log(dbh^2 * heig)) + I(log(dmoy)), data = dat[dat$Btot> 0 ,])
-exp(summary(m)$sigma^2/2)
+dm <- tapply(dat$dens, dat$species, mean)
+dat <- cbind(dat, dmoy = dm[as.character(dat$species)])
+m <- lm(
+    formula = log(Btot) ~ I(log(dbh^2 * heig)) + I(log(dmoy)), 
+    data = dat[dat$Btot> 0 ,]
+    )
+exp(summary(m)$sigma^2 / 2)
 ```
 
 and here is `r exp(summary(m)$sigma^2/2)`. The correct model is therefore: $B=2.412\times10^{-4}(D^2H)^{0.85715}\rho^{0.72864}$.
@@ -419,15 +413,12 @@ and here is `r exp(summary(m)$sigma^2/2)`. The correct model is therefore: $B=2.
 #### Any transformation {-}
 
 In the general case, let $\psi$ be a variable transformation of the biomass (or volume) such that the response variable $Y=\psi(B)$ may be predicted by a linear regression against the effect variables $X_1,\ \ldots,\ X_p$. We shall assume that $\psi$ is derivable and invertible. As $\psi(B)$ follows a normal distribution of mean $a_0+a_1X_1+\ldots+a_pX_p$ and standard deviation $\sigma$, $B=\psi^{-1}[\psi(B)]$ has an expectation of [@saporta90, p.26]:
-
 \begin{equation}
 \mathrm{E}(B)=\int\psi^{-1}(x)\;\phi(x)\;\mathrm{d}x(\#eq:EB)
 \end{equation}
-
 where $\phi$ is the probability density of the normal distribution of mean $a_0+a_1X_1+\ldots+a_pX_p$ and standard deviation $\sigma$. This expectation is generally different from $\psi^{-1}(a_0+a_1X_1+\ldots +a_pX_p)$: the variable transformation induces prediction bias when we return to the starting variable by inverse transformation. The drawback of formula \@ref(eq:EB) is that it requires the calculation of an integral.
 
 When the residual standard deviation $\sigma$ is small, the $\delta$-method [@serfling80] provides an approximate expression of this prediction bias:
-
 \begin{eqnarray*}
 \mathrm{E}(\mathrm{B}) &\simeq&
 \psi^{-1}[\mathrm{E}(Y)]+\frac{1}{2}\mathrm{Var}(Y)\;
@@ -440,16 +431,13 @@ When the residual standard deviation $\sigma$ is small, the $\delta$-method [@se
 #### "Smearing" estimation {-}
 
 The "smearing" estimation method is a nonparametric method used to correct prediction bias when an inverse transformation is used on the response variable of a linear model [@duan83; @taylor86; @manning01]. Given that we can rewrite biomass (or volume) expectation equation \@ref(eq:EB) as:
-
 \begin{eqnarray*}
 \mathrm{E}(B) &=&
 \int\psi^{-1}(x)\;\phi_0(x-a_0-a_1X1-\ldots-a_pX_p)\;\mathrm{d}x
 \\ &=&
 \int\psi^{-1}(x+a_0+a_1X1+\ldots+a_pX_p)\;\mathrm{d}\Phi_0(x)
 \end{eqnarray*}
-
 where $\phi_0$ (respectively $\Phi_0$) is the probability density (respectively the distribution function) of the centered normal distribution of standard deviation $\sigma$, the smearing method consists in replacing $\Phi_0$ by the empirical distribution function of the residuals from model fitting, i.e.:
-
 \begin{eqnarray*}
 B_{\mathrm{smearing}} &=&
 \int\psi^{-1}(x+a_0+a_1X_1+\ldots+a_pX_p)\times\frac{1}{n}\sum_{i=1}^n\delta
@@ -457,7 +445,6 @@ B_{\mathrm{smearing}} &=&
 \\ &=& \frac{1}{n}\sum_{i=1}^n\psi^{-1}(a_0+a_1X_1+\ldots+a_pX_p+
 \hat{\varepsilon}_i)
 \end{eqnarray*}
-
 where $\delta$ is Dirac's function with zero mass and $\hat{\varepsilon}_i$ is the residual of the fitted model for the $i$th
 observation. This method of correcting the prediction bias has the advantage of being both very general and easy to calculate. It has the drawback that the residuals $\hat{\varepsilon}_i$ of model fitting need to be known. This is not a problem when you yourself fit a model to the data, but is a problem when using published volume or biomass tables that are not accompanied by the residuals.
 
@@ -485,6 +472,7 @@ The smearing correction factor may be obtained by the command:
 ```{r, echo=T, results='hide'}
 mean(exp(residuals(m)))
 ```
+
 where `m` is the object containing the fitted model, and in this example is `r mean(exp(residuals(m)))`. By way of a comparison, the previously calculated correction factor (red line \@ref(exr:CFB)) was 1.061035.
 
 ::::::

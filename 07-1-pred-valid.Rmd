@@ -1,9 +1,8 @@
 
 # Uses and prediction {#util}
 
-Once a volume or biomass model has been fitted, several uses may be made of its predictions. Most commonly, it is used to predict the volume or biomass of trees whose volume or biomass has not been measured. This is *prediction* in the strictest sense 
-(\S\ \@ref(BVpred)--\@ref(BEF)). Sometimes, tree volume or biomass will also have been measured in addition to table entry variables. In this case, when a dataset is available *independently* of that used to fit the model, and which contains both the model's response variable and its effect variables, this can be used to 
-*validate* the model (\S\ \@ref(val)). When validation criteria are applied to the same dataset that served to calibrate the model, we speak of model *verification* We will not dwell here on model verification as this is already implicit in the analysis of the fitted model's residuals. Finally, if we are in possession of models that were developed prior to a new fitted model, we may also wish to compare or combine the models (\S\ \@ref(arbi)).
+Once a volume or biomass model has been fitted, several uses may be made of its predictions. Most commonly, it is used to predict the volume or biomass of trees whose volume or biomass has not been measured. This is *prediction* in the strictest sense (`r ifelse(book_format == "latex", "\\S", "&sect;")`\ \@ref(BVpred)--\@ref(BEF)). Sometimes, tree volume or biomass will also have been measured in addition to table entry variables. In this case, when a dataset is available *independently* of that used to fit the model, and which contains both the model's response variable and its effect variables, this can be used to 
+*validate* the model (`r ifelse(book_format == "latex", "\\S", "&sect;")`\ \@ref(val)). When validation criteria are applied to the same dataset that served to calibrate the model, we speak of model *verification* We will not dwell here on model verification as this is already implicit in the analysis of the fitted model's residuals. Finally, if we are in possession of models that were developed prior to a new fitted model, we may also wish to compare or combine the models (`r ifelse(book_format == "latex", "\\S", "&sect;")`\ \@ref(arbi)).
 
 
 #### Model valid range {-}
@@ -15,11 +14,13 @@ Before using a model, we must check that the characteristics of the tree whose v
 
 ## Validating a model {#val}
 
-Validating a model consists in comparing its predictions with observations independent of those used for its fitting [@rykiel96]. Let ($Y'_i$, $X'_{i1}$, \ldots, $X'_{ip}$) with $i=1$, \ldots, $n'$ be a dataset of observations independent of that used to fit a model $f$, where $X'_{i1}$, \ldots, $X'_{ip}$ are the effect variables and $Y'_i$ is the response variable, i.e. the volume, biomass or a transform of one of these quantities. Let 
+
+Validating a model consists in comparing its predictions with observations independent of those used for its fitting [@rykiel96]. Let ($Y'_i$, $X'_{i1}$, $\ldots$, $X'_{ip}$) with $i=1$, $\ldots$, $n'$ be a dataset of observations independent of that used to fit a model $f$, where $X'_{i1}$, $\ldots$, $X'_{ip}$ are the effect variables and $Y'_i$ is the response variable, i.e. the volume, biomass or a transform of one of these quantities. Let 
 \[
 \hat{Y}'_i=f(X'_{i1},\ \ldots,\ X'_{ip};\hat{\theta})
 \]
 be the predicted value of the response variable for the $i$th observation, where $\hat{\theta}$ are the estimated values of the model's parameters. The validation consists in comparing the predicted values $\hat{Y}'_i$ with the observed values $Y'_i$.
+
 
 
 ### Validation criteria {#Ival}
@@ -27,14 +28,19 @@ be the predicted value of the response variable for the $i$th observation, where
 Several criteria, which are the counterparts of the criteria used to evaluate the quality of model fitting, may be used to compare predictions with observations [@schlaegel82; @parresol99; @tedeschi06], in particular:
 
 - bias: $\sum_{i=1}^{n'}|Y'_i-\hat{Y}'_i|$
-- sum of squares of the residuals:
-$\mathrm{SSE}=\sum_{i=1}^{n'}(Y'_i-\hat{Y}'_i)^2$
+
+- sum of squares of the residuals: $\mathrm{SSE}=\sum_{i=1}^{n'}(Y'_i-\hat{Y}'_i)^2$
+
 - residual variance: $s^2=\mathrm{SSE}/(n'-p)$
+
 - fitted residual error: $\mathrm{SSE}/(n'-2p)$
+
 - $R^2$ of the regression: $R^2=1-s^2/\mathrm{Var}(Y')$
+
 - Akaike information criterion: $\mathrm{AIC}=n'\ln(s^2)+n'\ln(1-p/n')+2p$
 
 where $\mathrm{Var}(Y')$ is the empirical variance of $Y'$ and $p$ is the number of freely estimated parameters in the model. The first two criteria correspond to two distinct norms of the difference between the vector ($Y'_1,\ \ldots,\ Y'_{n'}$) of the observations and the vector ($\hat{Y}'_1,\ \ldots,\ \hat{Y}'_{n'}$) of the predictions: norm $L^1$ for the bias and norm $L^2$ for the sum of squares. Any other norm is also valid. The last three criteria involve the number of parameters used in the model, and are therefore more appropriate for comparing different models.
+
 
 
 ### Cross validation
@@ -45,15 +51,15 @@ A "$K$ fold" cross validation consists in dividing the dataset into $K$ subsets 
 the model being fitted on the $K-1$ subsets remaining. The "$K$ fold" cross validation pseudo-algorithm is as follows:
 
 1. Split the dataset $\mathcal{S}_n\equiv\{(Y_i,\ X_{i1},\ \ldots,\ X_{ip}): i=1,\ \ldots,\ n\}$ into $K$ data subsets $\mathcal{S}_n^{(1)},\ \ldots,\ \mathcal{S}_n^{(K)}$ of approximately equal size (i.e. with about $n/K$ observations in each data subset, totaling $n$).
+
 2. For $k$ from 1 to $K$:
     + 2.1. fit the model on the dataset deprived of its $k$th subset, i.e. on $\mathcal{S}_n\backslash\mathcal{S}_n^{(k)}=\mathcal{S}_n^{(1)}    \cup\ldots\cup\mathcal{S}_n^{(k-1)}\cup\mathcal{S}_n^{(k+1)}\cup\ldots\cup\mathcal{S}_n^{(K)}$;
     + 2.2. calculate a validation criterion (see \S\ \@ref(Ival)) for this fitted model by using the remaining dataset 		$\mathcal{S}_n^{(k)}$ as validation dataset; let $C_k$ be the value of this criterion calculated for $\mathcal{S}_n^{(k)}$.
+
 3. Calculate the mean $(\sum_{k=1}^KC_k)/K$ of the $K$ validation criteria calculated.
 
 The fact that there is no overlap between the data used for model fitting and the data used to calculate the validation criterion means that the approach is valid. Cross validation needs more calculations than a simple validation, but has the advantage of making the most of all the observations available for model fitting.
 
 A special case of a "$K$ fold" cross validation is when $K$ is equal to the number $n$ of observations available in the dataset. This method is also called "leave-one-out" cross validation and is conceptually similar to the Jack-knife technique [@efron93]. The principle consists in fitting the model on $n-1$ observations and calculating the residual error for the observation that was left out. It is used when analyzing the residuals to quantify the influence of the observations [and in particular is the basis of the calculation of Cook's distance, see @saporta90].
-
-
 
 

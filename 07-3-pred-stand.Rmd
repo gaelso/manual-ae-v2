@@ -2,10 +2,10 @@
 
 ## Predicting the volume or biomass of a stand
 
+
 If we want to predict the volume or biomass of a stand using biomass tables, we cannot measure model entries for all the trees in the stand, only for a sample. The volume or biomass of the trees in this sample will be calculated using the model, then extrapolated to the entire stand. Predicting the volume or biomass of a stand therefore includes two sources of variability: one related to the model's individual prediction, the other to the sampling of the trees in the stand. If we rigorously take account of these two sources of variability when making predictions on a stand scale, this will cause complex double sampling problems as mentioned in sections \@ref(peup) and \@ref(sampeup) [@parresol99].
 
 The problem is slightly less complex when the sample of trees used to construct the model is independent of the sample of trees in which the entries were measured. In this case we can consider that the prediction error stemming from the model is independent of the sampling error. Let us assume that $n$ sampling plots of unit area $A$ were selected in a stand whose total area is $\mathcal{A}$. Let $N_i$ be the number of trees found in the $i$th plot ($i=1,\ \ldots,\ n$) and let $X_{ij1},\ \ldots,\ X_{ijp}$ be the $p$ effect variables measured on the $j$th tree of the $i$th plot ($j=1,\ \ldots,\ N_i$). @cunia65; @cunia87c considered the particular case where biomass is predicted by multiple regression based on the $p$ effect variables. The estimation of stand biomass is in this case:
-
 \begin{eqnarray*}
 \hat{B} &=&
 \frac{\mathcal{A}}{n}\sum_{i=1}^n\frac{1}{A}\sum_{j=1}^{N_i}
@@ -14,7 +14,6 @@ The problem is slightly less complex when the sample of trees used to construct 
 +\hat{a}_1\Big(\frac{\mathcal{A}}{nA}\sum_{i=1}^n\sum_{j=1}^{N_i}X_{ij1}\Big)
 +\ldots+\hat{a}_p\Big(\frac{\mathcal{A}}{nA}\sum_{i=1}^n\sum_{j=1}^{N_i}X_{ijp}\Big)
 \end{eqnarray*}
-
 where $\hat{a}_0,\ \ldots,\ \hat{a}_p$ are the estimated coefficients of the regression. If $X^{\star}_0=(\mathcal{A}/nA)\sum_{i=1}^nN_i$ and for each $k=1,\ \ldots,\ p$,
 \[
 X^{\star}_k=\frac{\mathcal{A}}{nA}\sum_{i=1}^n\sum_{j=1}^{N_i}X_{ijk}
@@ -40,7 +39,7 @@ More generally, the principle is exactly the same as when we considered `r ifels
     + 1.1. for $i$ from 1 to $p$, draw $\hat{X}_i^{(k)}$ following a distribution corresponding to the variability of the stand sample (this distribution depends on the type of sampling conducted, the size and number of plots inventoried, etc.);
     + 1.2. draw a vector $\hat{\theta}^{(k)}$ following a multinormal distribution of mean $\hat{\theta}$ and variance-covariance matrix $\hat{\boldsymbol{\Sigma}}$;
     + 1.3. calculate the prediction $\hat{Y}^{(k)}=f(\hat{X}_1^{(k)},\ \ldots,\ \hat{X}_p^{(k)};\hat{\theta}^{(k)})$.
-2. The confidence interval of the prediction is the empirical confidence interval of the $Q$ values $\hat{Y}^{(1)}$, \ldots,
-$\hat{Y}^{(Q)}$.
+    
+2. The confidence interval of the prediction is the empirical confidence interval of the $Q$ values $\hat{Y}^{(1)}$, $\ldots$, $\hat{Y}^{(Q)}$.
 
 
