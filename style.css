@@ -35,6 +35,17 @@ pre code {
   margin-bottom: 1.2em;
 }
 
+.fr-counter {
+  /*padding: 1em; */
+  border: 2px solid red;
+  border-radius: 10px;
+  background: #FFFFFF 5px center/3em no-repeat;
+  text-align: center;
+  color: red;
+  margin-bottom: 1em;
+  width: 100px;
+}
+
 .Rchunk {
   background-color: #f2dede !important;
   font-weight: bold;
