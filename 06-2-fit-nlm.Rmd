@@ -53,10 +53,10 @@ The *a priori* value of exponent $c$ is obtained in the non-linear case in the s
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-fnlsD) (ref:fnlsD)
+(@eq-fnlsD)
 
-:::{.exercise #fnlsD name="(ref:fnlsD)"}
-\  
+:::{.exercise #fnlsD}
+(ref:fnlsD)
 :::
 
 The graphical exploration (red lines \@ref(exr:feBvD) and \@ref(exr:feln)) showed that the relation between biomass $B$ and dbh $D$ was of the power type, with the variance of the biomass increasing with dbh:
@@ -95,10 +95,10 @@ with a residual standard deviation $k=$ ``r print(summary(m)$sigma, digits = 4)`
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-pfnlsD2H) (ref:fnlsD2H)
+(@eq-pfnlsD2H)
 
-:::{.exercise #fnlsD2H name="(ref:fnlsD2H)"}
-\  
+:::{.exercise #fnlsD2H}
+(ref:fnlsD2H)
 :::
 
 We have already fitted a power model $B=a(D^2H)^b$ by simple linear regression on log-transformed data (red line \@ref(exr:rllnBvD2H)). Let us now fit this model directly by non-linear regression:
@@ -140,10 +140,10 @@ with a residual standard deviation $k=$ `r print(summary(m)$sigma, digits = 4)` 
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-fnlsDH) (ref:fnlsDH)
+(@eq-fnlsDH)
 
-:::{.exercise #fnlsDH name="(ref:fnlsDH)"}
-\  
+:::{.exercise #fnlsDH}
+(ref:fnlsDH)
 :::
 
 We have already fitted a power model $B=aD^{b_1}H^{b_2}$ by multiple linear regression on log-transformed data (red line \@ref(exr:flnDlnH)). Let us now fit this model directly by non-linear regression:
@@ -230,10 +230,10 @@ To obtain the maximum likelihood estimators of the parameters, we would need to 
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-fnlmD) (ref:fnlmD)
+(@eq-fnlmD)
 
-:::{.exercise #fnlmD name="(ref:fnlmD)"}
-\  
+:::{.exercise #fnlmD}
+(ref:fnlmD)
 :::
 
 Let us look again at the non-linear regression between biomass and dbh (see red line \@ref(exr:fnlsD)), but this time consider that exponent $c$ in the variance model is a parameter that needs to be estimated like the others. The model is written in the same fashion as before (red line \@ref(exr:fnlsD)):
@@ -275,10 +275,10 @@ with an estimated value of exponent $c=2.090814$. This estimated value is very s
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-fnlmD2H) (ref:fnlmD2H)
+(@eq-fnlmD2H)
 
-:::{.exercise #fnlmD2H name="(ref:fnlmD2H)"}
-\  
+:::{.exercise #fnlmD2H}
+(ref:fnlmD2H)
 :::
 
 Let us look again at the non-linear regression between biomass and $D^2H$ (see red line \@ref(exr:fnlsD2H)), but this time consider that exponent $c$ in the variance model is a parameter that needs to be estimated like the others. The model is written in the same fashion as before (red line \@ref(exr:fnlsD2H)):
@@ -324,10 +324,10 @@ with an estimated value of exponent $c=2.042586$. This estimated value is very s
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-fnlmDH) (ref:fnlmDH)
+(@eq-fnlmDH)
 
-:::{.exercise #fnlmDH name="(ref:fnlmDH)"}
-\  
+:::{.exercise #fnlmDH}
+(ref:fnlmDH)
 :::
 
 Let us look again at the non-linear regression between biomass, dbh and height (see red line \@ref(exr:fnlsDH)):
@@ -371,10 +371,10 @@ with an estimated value of exponent $c=$ `r summary(m)$modelStruct$varStruct[1]`
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-fexpDpol) (ref:fexpDpol)
+(@eq-fexpDpol)
 
-:::{.exercise #fexpDpol name="(ref:fexpDpol)"}
-\  
+:::{.exercise #fexpDpol}
+(ref:fexpDpol)
 :::
 
 Previously (red line \@ref(exr:flnDpol)), we used multiple regression to fit a model between $\ln(B)$ and a polynomial of $\ln(D)$. If we look again at the start variable, the model is written:

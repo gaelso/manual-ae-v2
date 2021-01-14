@@ -113,10 +113,10 @@ In the case of biological data such as tree volume or biomass, heteroscedasticit
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-rllnBvD) (ref:rllnBvD)
+(@eq-rllnBvD)
 
-:::{.exercise #rllnBvD name="(ref:rllnBvD)"}
-\  
+:::{.exercise #rllnBvD}
+(ref:rllnBvD)
 :::
 
 The exploratory analysis (red line \@ref(exr:feln)) showed that the relation between the log of the biomass and the log of the dbh was linear, with a variance of $\ln(B)$ that was approximately constant. A simple linear regression may therefore be fitted to predict $\ln(B)$from $\ln(D)$:
@@ -160,10 +160,10 @@ display_fig("fBvDres")
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-rllnBvD2H) (ref:rllnBvD2H)
+(@eq-rllnBvD2H)
 
-:::{.exercise #rllnBvD2H name="(ref:rllnBvD2H)"}
-\  
+:::{.exercise #rllnBvD2H}
+(ref:rllnBvD2H)
 :::
 
 The exploratory analysis (red line \@ref(exr:feln2)) showed that the relation between the log of the biomass and the log of $D^2H$ was linear, with a variance of $\ln(B)$ that was approximately constant. We can therefore fit a simple linear regression to predict $\ln(B)$ from $\ln(D^2H)$:
@@ -293,10 +293,10 @@ Like simple linear regression, multiple regression is based on three hypotheses:
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-flnDpol) (ref:flnDpol)
+(@eq-flnDpol)
 
-:::{.exercise #flnDpol name="(ref:flnDpol)"}
-\  
+:::{.exercise #flnDpol}
+(ref:flnDpol)
 :::
 
 The exploratory analysis (red line \@ref(exr:feln)) showed that the relation between the log of the biomass and the log of the dbh was linear. We can ask ourselves the question of whether this relation is truly linear, or has a more complex shape. To do this, we must construct a polynomial regression with $p$ orders, i.e. a multiple regression of $\ln(B)$ against $\ln(D)$, $[\ln(D)]^2$, $\ldots$, $[\ln(D)]^p$:
@@ -381,10 +381,10 @@ display_fig("fDpol")
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-flnDlnH) (ref:flnDlnH)
+(@eq-flnDlnH)
 
-:::{.exercise #flnDlnH name="(ref:flnDlnH)"}
-\  
+:::{.exercise #flnDlnH}
+(ref:flnDlnH)
 :::
 
 The graphical exploration (red lines \@ref(exr:feBvD2H) and \@ref(exr:feln2)) showed that the combined variable $D^2H$ was linked to biomass by a power relation (i.e. a linear relation on a log scale): $B=a(D^2H)^b$. We can, however, wonder whether the variables $D^2$ and $H$ have the same exponent $b$, or whether they have different exponents: $B=a\times(D^2)^{b_1}H^{b_2}$. Working on the log-transformed data (which in passing stabilizes the residual variance), means fitting a multiple regression of $\ln(B)$ against $\ln(D)$ and $\ln(H)$:
@@ -525,10 +525,10 @@ The third way of estimating $c$ consists in looking for the value of $c$ that mi
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-frlpD2H) (ref:frlpD2H)
+(@eq-frlpD2H)
 
-:::{.exercise #frlpD2H name="(ref:frlpD2H)"}
-\  
+:::{.exercise #frlpD2H}
+(ref:frlpD2H)
 :::
 
 The exploratory analysis of the relation between biomass and $D^2H$ showed (red line \@ref(exr:feBvD2H)) that this relation is linear, but that the variance of the biomass increases with $D^2H$. We can therefore fit a weighted linear regression of biomass $B$ against $D^2H$:
@@ -653,10 +653,10 @@ display_fig("fD2Hpres")
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-fDpara) (ref:fDpara)
+(@eq-fDpara)
 
-:::{.exercise #fDpara name="(ref:fDpara)"}
-\  
+:::{.exercise #fDpara}
+(ref:fDpara)
 :::
 
 The exploratory analysis (red line \@ref(exr:feBvD)) showed that the relation between biomass and dbh was parabolic, with the variance of the biomass increasing with dbh. Log-transformation rendered the relation between biomass and dbh linear, but we can also model the relation between biomass and dbh directly by a parabolic relation:
@@ -736,10 +736,10 @@ In its form the model is little different from the weighted regression. Regardin
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-fDD2var) (ref:fDD2var)
+(@eq-fDD2var)
 
-:::{.exercise #fD2Hvar name="(ref:fD2Hvar)"}
-\  
+:::{.exercise #fD2Hvar}
+(ref:fDD2var)
 :::
 
 Pre-empting section \@ref(nlm), we will fit a linear regression of biomass against $D^2H$ by specifying a power model on the residual variance:
@@ -816,10 +816,10 @@ with an estimated value of exponent $c=$ `r summary(m)$modelStruct$varStruct[[1]
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-fDD2var) (ref:fDD2var)
+(@eq-fDD2var)
 
-:::{.exercise #fDD2var name="(ref:fDD2var)"}
-\  
+:::{.exercise #fDD2var}
+(ref:fDD2var)
 :::
 
 Pre-empting section \@ref(nlm), we will fit a multiple regression of biomass against $D$ and $D^2$ by specifying a power model on the residual variance:
@@ -989,10 +989,10 @@ Here we recognize the expression for the sum of squares for a weighted regressio
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-fH) (ref:fH)
+(@eq-fH)
 
-:::{.exercise #fH name="(ref:fH)"}
-\  
+:::{.exercise #fH}
+(ref:fH)
 :::
 
 We saw in red line \@ref(exr:frlpD2H) that a double-entry biomass model using dbh and height corresponds to: $B=a+bD^2H+\varepsilon$ where $\mathrm{Var}(\varepsilon)\propto D^4$. By dividing each member of the equation by $D^2$, we obtain:
@@ -1058,10 +1058,10 @@ display_fig("fHres")
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-finvD) (ref:finvD)
+(@eq-finvD) 
 
-:::{.exercise #finvD name="(ref:finvD)"}
-\  
+:::{.exercise #finvD}
+(ref:finvD)
 :::
 
 We saw in red line \@ref(ref:fDpara) that a polynomial biomass model against dbh corresponded to: $B=a_0+a_1D+a_2D^2+\varepsilon$ where $\mathrm{Var}(\varepsilon)\propto D^4$. By dividing each member of the equation by $D^2$, we obtain:

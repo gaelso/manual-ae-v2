@@ -51,10 +51,10 @@ The third remark is that in order to calculate the confidence interval of a pred
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-ficlnD) (ref:ficlnD)
+(@eq-ficlnD)
 
-:::{.exercise #ficlnD name="(ref:ficlnD)"}
-\  
+:::{.exercise #ficlnD}
+(ref:ficlnD)
 :::
 
 Let us return to the simple linear regression between $\ln(B)$ and $\ln(D)$ that was fitted in red line \@ref(exr:rllnBvD). Let
@@ -128,10 +128,10 @@ where $\mathbf{X}$ is is the design matrix constructed using the data that serve
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-ficlnDH) (ref:ficlnDH)
+(@eq-ficlnDH)
 
-:::{.exercise #ficlnDH name="(ref:ficlnDH)"}
-\  
+:::{.exercise #ficlnDH}
+(ref:ficlnDH)
 :::
 
 Let us return to the multiple linear regression between $\ln(B)$, $\ln(D)$ and $\ln(H)$ that was fitted in red line \@ref(exr:flnDlnH). Let `m` be the object containing the fitted model (see red line \@ref(exr:flnDlnH)). The confidence intervals may be calculated using the `predict` command. For example, for a tree with a dbh of 20~cm and a height of 20\ m, the 95\ \% confidence interval for the mean tree is obtained by the command:
@@ -382,10 +382,10 @@ If the decimal $\log_{10}$ has been used for variable transformation rather than
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-CFB) (ref:CFB)
+(@eq-CFB)
 
-:::{.exercise #CFB name="(ref:CFB)"}
-\  
+:::{.exercise #CFB}
+(ref:CFB)
 :::
 
 Let us return to the biomass model in red line \@ref(exr:fdens) fitted by multiple regression on log-transformed data:
@@ -457,10 +457,10 @@ Given that $\hat{\sigma}^2=(\sum_{i=1}^n\hat{\varepsilon}_i^2)/(n-p-1)$, the sme
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-smear) (ref:smear)
+(@eq-smear)
 
-:::{.exercise #smear name="(ref:smear)"}
-\ 
+:::{.exercise #smear}
+(ref:smear)
 :::
 
 Let us again return to the biomass model in red line \@ref(exr:fdens) fitted by multiple regression on log-transformed data:

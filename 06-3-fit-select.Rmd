@@ -31,7 +31,7 @@ Several methods may be used to select the best combination of effect variables. 
 The so-called *stepwise* method is a further improvement upon the previous algorithm that consists in performing an additional Fisher's significance test at each step such as not to introduce a non-significant variable and possibly eliminate variables that have already been introduced but are no longer informative given the last variable selected. The algorithm stops when no more variables can be added or withdrawn. The different step-by-step selection methods do not necessarily give the same result, but the "stepwise" method would appear to be the best. They do not, however, safeguard from the untimely removal of variables that are actually significant, which may well bias the result. And in connection with this, it should be recalled that if we know (for biological reasons) why a variable should be included in a model (e.g. wood specific density), it is not because a statistical test declares it non-significant that it should be rejected (because of the test's type II error).
 
 
-:::::::{.filrouge data-latex=""}
+::::::{.filrouge data-latex=""}
 
 (@eq-selvar)
 
@@ -105,8 +105,8 @@ In the case of the linear model \@ref(eq:emblm), the test statistic is a ratio o
 
 (@eq-fboite)
 
-:::{.exercise #fboite name="(ref:fboite)"}
-\  
+:::{.exercise #fboite}
+(ref:fboite)
 :::
 
 In red line \@ref(exr:selvar) the variable $[\ln(D)]^2$ was selected with $\ln(H)$ as effect variable of $\ln(B)$ but not $\ln(D)$. Model $\ln(B)=a_0+a_1\ln(D)+a_2[\ln(D)]^2+a_4\ln(H)$, which includes the additional term $\ln(D)$, can be compared with the model $\ln(B)=a_0+a_2[\ln(D)]^2+a_4\ln(H)$ using the nested models test. In R, the `anova` command can be used to test a nested model, with the first argument being the nested model and the second being the complete model:
@@ -140,8 +140,8 @@ The p-value is  `r print(res[2, "Pr(>F)"], digits = 4)`, therefore greater than 
 
 (@eq-fboite2)
 
-:::{.exercise #fboite2 name="(ref:fboite2)"}
-\  
+:::{.exercise #fboite2}
+(ref:fboite2)
 :::
 
 The model $\ln(B)=-8.42722+2.36104\ln(D)$ was obtained in red line \@ref(exr:rllnBvD) whereas red line \@ref(exr:flnDlnH) gave the model $\ln(B)=-8.9050+1.8654\ln(D)+0.7083\ln(H)$. As the first is nested in the second, we can test for which is the best. The command 
@@ -190,8 +190,8 @@ where $n$ is the number of observations. Here again, the best model is that with
 
 (@eq-selB)
 
-:::{.exercise #selB name="(ref:selB)"}
-\  
+:::{.exercise #selB}
+(ref:selB)
 :::
 
 The following models with B as response variable were fitted:
@@ -309,8 +309,8 @@ display_table() %>%
 
 (@eq-sellnB)
 
-:::{.exercise #sellnB name="(ref:sellnB)"}
-\  
+:::{.exercise #sellnB}
+(ref:sellnB)
 :::
 
 The following models with $\ln(B)$ as response variable were fitted:
@@ -467,8 +467,8 @@ Here again, the structure of the errors is not the same in the three cases, but 
 
 (@eq-fmeth)
 
-:::{.exercise #fmeth name="(ref:fmeth)"}
-\  
+:::{.exercise #fmeth}
+(ref:fmeth)
 :::
 
 We have already taken a look at three methods for fitting the power model $B=aD^b$:

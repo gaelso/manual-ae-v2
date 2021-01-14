@@ -43,10 +43,10 @@ This principle of an analysis of covariance can be immediately extended to the c
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-fmspe) (ref:mfspe)
+(@eq-fmspe)
 
-:::{.exercise #mfspe name="(ref:mfspe)"}
-\  
+:::{.exercise #mfspe}
+(ref:mfspe)
 :::
 
 In red line \@ref(exr:rllnBvD2H), we used simple linear regression to fit a power model with $D^2H$ as effect variable to log-transformed data: $\ln(B)=a+b\ln(D^2H)$. We can now include species-related information in this model to test whether the coefficients $a$ and $b$ differ from one species to another. The model corresponds to an analysis of covariance:
@@ -187,10 +187,10 @@ if we decide to use wood density $\rho$ to represent the specific effect.
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-fdens) (ref:fdens)
+(@eq-fdens)
 
-:::{.exercise #fdens name="(ref:fdens)"}
-\  
+:::{.exercise #fdens}
+(ref:fdens)
 :::
 
 In red line \@ref(exr:fmspe), species-related information was taken into account in the model $\ln(B)=a+b\ln(D^2H)$ through a qualitative covariable. We can now capture this information through specific wood density $\rho$. The fitted model is therefore:
@@ -239,10 +239,10 @@ To better take account of wood density variations within a tree, it is possible 
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-fidens) (ref:fidens)
+(@eq-fidens)
 
-:::{.exercise #fidens name="(ref:fidens)"}
-\  
+:::{.exercise #fidens}
+(ref:fidens)
 :::
 
 In red line \@ref(exr:fdens), wood density $\rho$ was defined for the species by calculating the mean of individual densities for trees in the same species. Let us now fit a biomass model based on individual wood density measurements in order to take account of inter-individual variations in wood density in a given species. The fitted model is:
