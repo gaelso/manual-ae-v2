@@ -35,31 +35,8 @@ pre code {
   margin-bottom: 1.2em;
 }
 
-.red {
-  background: #ddd;
-  font-weight: bold;
+.exercise{
   color: red;
-  margin-bottom: 1em;
-}
-
-/*.numberCircle {
-    width: 100px !important;
-    line-height: 100px !important;
-    border-radius: 50%;
-    text-align: center !important;
-    border: 2px solid red;
-    background: blue;
-}*/
-
-.numberCircle {
-    border-radius: 50%;
-    width: 1.1em;
-    height: 1.1em;
-    padding: 0.25em;
-    background: #fff;
-    border: 2px solid red;
-    color: red;
-    text-align: center;
 }
 
 .Rchunk {
