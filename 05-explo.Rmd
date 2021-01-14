@@ -86,7 +86,9 @@ Compared with a double-entry biomass model using dbh $D$ and height $H$, the $D^
 
 ```{r, eval=F, echo=T}
 
-with(dat, plot(dbh^2 * heig, Btot, xlab = "D2H (cm2.m)", ylab = "Biomass (t)"))
+with(dat, plot(
+  x = dbh^2 * heig, y = Btot, xlab = "D2H (cm2.m)", ylab = "Biomass (t)"
+  ))
 
 ```
 
@@ -197,7 +199,7 @@ plot(dmid, m[1,], xlab = "Wood density (g/cm3)", ylab = "y-Intercept")
 plot(dmid, m[2,], xlab = "Wood density (g/cm3)", ylab = "Slope")
 ```
 
-this at first sight does not appear to yield any particular relation (Figure \@ref(fig:flmcond).
+this at first sight does not appear to yield any particular relation (Figure \@ref(fig:flmcond)).
 
 :::::::
 
@@ -282,7 +284,10 @@ When no transformation of the variable is able to render the relation between $X
 Let us use the log transformation to transform simultaneously both dbh and biomass. The scatter plot of the log-transformed data is obtained as follows:
 
 ```{r, echo=T, eval=F}
-plot(dat$dbh, dat$Btot, xlab = "Diameter (cm)", ylab = "Biomass (t)", log = "xy")
+plot(
+  x = dat$dbh, y = dat$Btot, xlab = "Diameter (cm)", ylab = "Biomass (t)", 
+  log = "xy"
+  )
 ```
 
 The resulting scatter plot is shown in Figure \@ref(fig:flnBvlnD). The log transformation has rendered linear the relation between biomass and dbh: the relation between $\ln(D)$ and $\ln(B)$ is a straight line and the variance of $\ln(B)$ does not vary with diameter (like in Figure \@ref(fig:exgr)A).
@@ -309,7 +314,8 @@ Let us use the log transformation to transform simultaneously both $D^2H$ and bi
 
 ```{r, echo=T, eval=F}
 with(dat, plot(
-  dbh^2 * heig, Btot, log = "xy", xlab = "D2H (cm2.m)", ylab = "Biomass (t)"
+  x = dbh^2 * heig, y = Btot, xlab = "D2H (cm2.m)", ylab = "Biomass (t)",
+  log = "xy"
   ))
 ```
 
@@ -357,18 +363,17 @@ kab_opt <- list(
   escape = F
   )
 
-kab <- display_table(.latex_scaling = "scale_down") %>%
+display_table(.latex_scaling = "scale_down") %>%
   pack_rows(
     index = c(
       "Polynomial models" = 3, "Exponential models" = 5, 
       "Power law models" = 8, "Production-density models" = 4,
       "Growth models" = 2, "Sigmoidal models" = 12,
       "Miscellaneous models" = 5
-      )
+      ),
+    latex_gap_space = "1em",
+    label_row_css = "background-color: #ddd;"
     )
-
-if (book_format == "html") kab %>% scroll_box(height = "500px", extra_css = "margin-bottom: 1.2em;") else kab
-
 
 ```
 

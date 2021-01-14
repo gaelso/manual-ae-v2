@@ -13,9 +13,9 @@ This *Manual for building tree volume and biomass allometric equations* therefor
 
 `r ifelse(book_format == "latex", "\\bigskip\\noindent\\pageref{LastPage}", "215")` pages. Numerous illustrations. Bibliography comprising 255 publications `r ifelse(book_format == "latex", "\\nopagebreak", "")`
 
-`r ifelse(book_format == "latex", "\\vskip1cm\\noindent", "")`Francis Cailliez
+`r ifelse(book_format == "latex", "\\vskip1cm\\noindent", "")` Francis Cailliez
 
-`r ifelse(book_format == "latex", "\\bigskip\\noindent", "")`August 2012
+`r ifelse(book_format == "latex", "\\bigskip\\noindent", "")` August 2012
 
 ```{r signcaill, fig.align='left', fig.pos='H', out.width='15%'}
 

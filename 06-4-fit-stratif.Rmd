@@ -60,7 +60,10 @@ where
 where index $s$ designates the species. This model is fitted by the command:
 
 ```{r, echo=T, results='hide'}
-m <- lm(log(Btot) ~ species * I(log(dbh^2 * heig)), data = dat[dat$Btot > 0,])
+m <- lm(
+  formula = log(Btot) ~ species * I(log(dbh^2 * heig)), 
+  data = dat[dat$Btot > 0,]
+  )
 ```
 
 To test whether the coefficients $a$ and $b$ differ from one species to another, we can use the command:
@@ -86,7 +89,10 @@ This leads us to fit the following model:
 which considers that slope $b$ is the same for all species. The relevant command is:
 
 ```{r, echo=T, results='hide'}
-m <- lm(log(Btot) ~ species + I(log(dbh^2 * heig)),data = dat[dat$Btot > 0,])
+m <- lm(
+  formula = log(Btot) ~ species + I(log(dbh^2 * heig)),
+  data = dat[dat$Btot > 0,]
+  )
 anova(m)
 ```
 

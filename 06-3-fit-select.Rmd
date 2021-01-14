@@ -33,7 +33,11 @@ The so-called *stepwise* method is a further improvement upon the previous algor
 
 :::::::{.filrouge data-latex=""}
 
-(@eq-selvar) (ref:selvar)
+:::{.fr-counter data-latex=""}
+
+(@eq-selvar)
+
+:::
 
 :::{.exercise #selvar name="(ref:selvar)"}
 \  
@@ -52,7 +56,7 @@ Variables are selected in R using the `step` command applied to the fitted compl
 
 ```{r, echo=T, results='hide'}
 m <- lm(
-  formula = log(Btot) ~ I(log(dbh)) + I(log(dbh)^2) + I(log(dbh)^3) + I(log(heig)),
+  formula = log(Btot) ~ I(log(dbh))+I(log(dbh)^2)+I(log(dbh)^3)+I(log(heig)),
   data = dat[dat$Btot>0,]
   )
 summary(step(m))
@@ -103,7 +107,7 @@ In the case of the linear model \@ref(eq:emblm), the test statistic is a ratio o
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-fboite) (ref:fboite)
+(@eq-fboite)
 
 :::{.exercise #fboite name="(ref:fboite)"}
 \  
@@ -138,7 +142,7 @@ The p-value is  `r print(res[2, "Pr(>F)"], digits = 4)`, therefore greater than 
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-fboite2) (ref:fboite2)
+(@eq-fboite2)
 
 :::{.exercise #fboite2 name="(ref:fboite2)"}
 \  
@@ -147,8 +151,14 @@ The p-value is  `r print(res[2, "Pr(>F)"], digits = 4)`, therefore greater than 
 The model $\ln(B)=-8.42722+2.36104\ln(D)$ was obtained in red line \@ref(exr:rllnBvD) whereas red line \@ref(exr:flnDlnH) gave the model $\ln(B)=-8.9050+1.8654\ln(D)+0.7083\ln(H)$. As the first is nested in the second, we can test for which is the best. The command 
 
 ```{r, echo=T, results='hide'}
-comp <- lm(log(Btot) ~ I(log(dbh)) + I(log(heig)), data = dat[dat$Btot > 0,])
-nest <- lm(log(Btot) ~ I(log(dbh)), data = dat[dat$Btot > 0,])
+comp <- lm(
+  formula = log(Btot) ~ I(log(dbh)) + I(log(heig)), 
+  data = dat[dat$Btot > 0,]
+  )
+nest <- lm(
+  formula = log(Btot) ~ I(log(dbh)), 
+  data = dat[dat$Btot > 0,]
+  )
 anova(nest, comp)
 ```
 
@@ -182,7 +192,7 @@ where $n$ is the number of observations. Here again, the best model is that with
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-selB) (ref:selB)
+(@eq-selB)
 
 :::{.exercise #selB name="(ref:selB)"}
 \  
@@ -201,15 +211,16 @@ The following models with B as response variable were fitted:
 - red line \@ref(exr:fnlsDH): $B=1.003\times10^{-4}D^{1.923}H^{0.7435}$
 - red line \@ref(exr:fnlmDH): $B=1.109\times10^{-4}D^{1.9434876}H^{0.6926256}$
 
-The models in red lines \@ref(exr:fDpara), \@ref(exr:fDD2var), \@ref(exr:frlpD2H) and \@ref(exr:fD2Hvar) are fitted by linear regression while the others are fitted by non-linear regression. These models have five distinct forms, with two fitting methods for each: using a weighted regression by the weighted least squares method (red lines \@ref(exr:fDpar), \@ref(exr:fnlsD), \@ref(exr:frlpD2H), \@ref(exr:fnlsD2H) and \@ref(exr:fnlsDH)) or using a regression with variance model by the maximum likelihood method (red lines \@ref(exr:fDD2var), \@ref(exr:fnlmD), \@ref(exr:fD2Hvar), \@ref(exr:fnlmD2H) and \@ref(exr:fnlmDH)). The predictions made by these different models are shown in  Figure \@ref(fig:fpredB). Let `m` be one of the fitted models with dbh as the only entry. A plot of the predictions made by this model may be obtained as follows:
+The models in red lines \@ref(exr:fDpara), \@ref(exr:fDD2var), \@ref(exr:frlpD2H) and \@ref(exr:fD2Hvar) are fitted by linear regression while the others are fitted by non-linear regression. These models have five distinct forms, with two fitting methods for each: using a weighted regression by the weighted least squares method (red lines \@ref(exr:fDpara), \@ref(exr:fnlsD), \@ref(exr:frlpD2H), \@ref(exr:fnlsD2H) and \@ref(exr:fnlsDH)) or using a regression with variance model by the maximum likelihood method (red lines \@ref(exr:fDD2var), \@ref(exr:fnlmD), \@ref(exr:fD2Hvar), \@ref(exr:fnlmD2H) and \@ref(exr:fnlmDH)). The predictions made by these different models are shown in  Figure \@ref(fig:fpredB). Let `m` be one of the fitted models with dbh as the only entry. A plot of the predictions made by this model may be obtained as follows:
 
 ```{r, echo=T, eval=F}
+## model (red line 14)
 m <-  lm(
   formula = Btot ~ dbh + I(dbh^2), 
   data = dat, 
   weights = 1/dat$dbh^4
-  ) ## ex: red line 14
-with(dat, plot(dbh, Btot, xlab = "Dbh (cm)", ylab = "Biomass (t)"))
+  )
+with(dat, plot(x = dbh, y = Btot, xlab = "Dbh (cm)", ylab = "Biomass (t)"))
 D <- seq(par("usr")[1], par("usr")[2], length=200)
 lines(D, predict(m, newdata = data.frame(dbh = D)), col = "red")
 ```
@@ -217,10 +228,10 @@ lines(D, predict(m, newdata = data.frame(dbh = D)), col = "red")
 For a model `m` that has dbh and height as entries, its predictions may be obtained as follows:
 
 ```{r, echo=T, eval=F}
-## model red line 22
+## model (red line 22)
 library(nlme)
 start <- coef(lm(
-  log(Btot) ~ I(log(dbh)) + I(log(heig)), data = dat[dat$Btot>0,]
+  log(Btot) ~ I(log(dbh)) + I(log(heig)), data = dat[dat$Btot > 0,]
   ))
 start[1] <- exp(start[1])
 names(start) <- c("a", "b1", "b2")
@@ -243,9 +254,12 @@ B <- matrix(predict(m, newdata), length(D))
 and a plot of the biomass response surface against diameter and height may be obtained by:
 
 ```{r, echo=T, eval=F}
-M <- persp(D,H,B,xlab="Dbh (cm)",ylab="Height (m)",
-           zlab="Biomass (t)", ticktype="detailed", theta = -30, phi = 20)
-points(trans3d(dat$dbh,dat$heig,dat$Btot,M))
+M <- persp(
+  x = D, y = H, z = B, 
+  xlab = "Dbh (cm)", ylab = "Height (m)", zlab="Biomass (t)", 
+  ticktype = "detailed", theta = -30, phi = 20
+  )
+points(trans3d(x = dat$dbh, y = dat$heig, z = dat$Btot, pmat = M))
 ```
 
 Given a fitted model `m`, its AIC may be calculated by the command: 
@@ -295,11 +309,9 @@ display_table() %>%
 ```
 
 
-
-
 ::::::{.filrouge data-latex=""}
 
-(@eq-sellnB) (ref:sellnB)
+(@eq-sellnB)
 
 :::{.exercise #sellnB name="(ref:sellnB)"}
 \  
@@ -315,9 +327,11 @@ The following models with $\ln(B)$ as response variable were fitted:
 All these models were fitted using linear regression by the ordinary least squares method. A plot of the predictions on a log scale for model `m` with dbh as only entry may be obtained by the following command:
 
 ```{r, echo=T, eval=FALSE}
-m <- lm(log(Btot) ~ I(log(dbh)), data = dat[dat$Btot > 0,]) ## red line 7
+## Model (red line 7)
+m <- lm(log(Btot) ~ I(log(dbh)), data = dat[dat$Btot > 0,])
+
 with(dat[dat$Btot > 0,], plot(
-  dbh, Btot, xlab = "Dbh (cm)", ylab = "Biomass (t)", log = "xy"
+  x = dbh, y = Btot, xlab = "Dbh (cm)", ylab = "Biomass (t)", log = "xy"
   ))
 D <- 10^par("usr")[1:2]
 lines(D, exp(predict(m, newdata = data.frame(dbh = D))))
@@ -326,13 +340,16 @@ lines(D, exp(predict(m, newdata = data.frame(dbh = D))))
 For a model that uses both dbh and height as entries, a plot on a log scale may be obtained by the command:
 
 ```{r, echo=T, eval=FALSE}
-m <- lm(log(Btot) ~ I(log(dbh)) + I(log(heig)), data = dat[dat$Btot > 0,]) ## red line 10
+## Model (red line 10)
+m <- lm(log(Btot) ~ I(log(dbh)) + I(log(heig)), data = dat[dat$Btot > 0,]) 
+
 D <- exp(seq(log(1), log(180), length = 20))
 H <- exp(seq(log(1), log(61), length = 20))
 B <- matrix(predict(m, newdata = expand.grid(dbh = D, heig = H)), length(D))
 M <- persp(
-  log(D), log(H), B, xlab="log(Diameter) (cm)",ylab="log(height) (m)",
-  zlab="log(Biomass) (t)", ticktype = "detailed", theta = -30, phi = 20
+  x = log(D), y = log(H), z = B, 
+  xlab="log(Diameter) (cm)",ylab="log(height) (m)", zlab="log(Biomass) (t)", 
+  ticktype = "detailed", theta = -30, phi = 20
   )
 points(trans3d(log(dat$dbh), log(dat$heig), log(dat$Btot), M))
 ```
@@ -452,7 +469,7 @@ Here again, the structure of the errors is not the same in the three cases, but 
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-fmeth) (ref:fmeth)
+(@eq-fmeth)
 
 :::{.exercise #fmeth name="(ref:fmeth)"}
 \  

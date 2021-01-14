@@ -73,7 +73,12 @@ We saw in red line \@ref(exr:frlpD2H) that the conditional standard deviation of
 start <- coef(lm(log(Btot) ~ I(log(dbh)), data =  dat[dat$Btot > 0,]))
 start[1] <- exp(start[1])
 names(start) <- c("a", "b")
-m <- nls(Btot ~ a * dbh^b, data = dat, start = start, weights = 1 / dat$dbh^4)
+m <- nls(
+  formula = Btot ~ a * dbh^b, 
+  data = dat, 
+  start = start, 
+  weights = 1 / dat$dbh^4
+  )
 summary(m)
 ```
 
@@ -107,11 +112,17 @@ where
 In order to take account of the heteroscedasticity, and considering that the conditional standard deviation of the biomass derived from the diameter is proportional to $D^2$ (red line \@ref(exr:frlpD2H)), we can fit this non-linear model by the weighted least squares method using a weighting inversely proportional to $D^4$:
 
 ```{r, echo=T, results='hide'}
-start <- coef(lm(log(Btot) ~ I(log(dbh^2 * heig)), data = dat[dat$Btot > 0,]))
+start <- coef(lm(
+  formula = log(Btot) ~ I(log(dbh^2 * heig)),
+  data = dat[dat$Btot > 0,]
+  ))
 start[1] <- exp(start[1])
 names(start) <- c("a", "b")
 m <- nls(
-  Btot ~ a*(dbh^2 * heig)^b, data = dat, start = start, weights = 1 / dat$dbh^4
+  formula = Btot ~ a*(dbh^2 * heig)^b, 
+  data = dat, 
+  start = start, 
+  weights = 1 / dat$dbh^4
   )
 summary(m)
 ```
@@ -281,9 +292,13 @@ where
 but is fitted by the maximum likelihood method:
 
 ```{r, echo=T, results='hide'}
-start <- coef(lm(log(Btot) ~ I(log(dbh^2 * heig)), data = dat[dat$Btot > 0,]))
+start <- coef(lm(
+  formula = log(Btot) ~ I(log(dbh^2 * heig)), 
+  data = dat[dat$Btot > 0,]
+  ))
 start[1] <- exp(start[1])
 names(start) <- c("a", "b")
+
 library(nlme)
 m <- nlme(
   model   = Btot ~ a * (dbh^2 * heig)^b, 

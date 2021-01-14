@@ -357,7 +357,9 @@ with $R^2=$ `r round(summary(m3)$r.squared,4)`. Adding higher order terms above 
 ```{r, echo=T, eval=F}
 m <- lm(log(Btot) ~ I(log(dbh)), data = dat[dat$Btot > 0,]) ## Red line 7
 
-with(dat, plot(dbh, Btot, xlab = "Dbh (cm)", ylab = "Biomass (t)", log = "xy"))
+with(dat, plot(
+  x = dbh, y = Btot, xlab = "Dbh (cm)", ylab = "Biomass (t)", log = "xy"
+  ))
 D <- 10^seq(par("usr")[1], par("usr")[2], length = 200)
 lines(D, exp(predict(m , newdata = data.frame(dbh = D))))
 lines(D, exp(predict(m2, newdata = data.frame(dbh = D))))
@@ -406,7 +408,7 @@ yields:
 printCoefmat(summary(m)$coef, digits = 4, signif.stars = TRUE, signif.legend = FALSE)
 ```
 
-with a residual standard deviation of (0.4104) `r round(summary(m)$sigma, 4)`  and $R^2=$ `r round(summary(m)$r.squared, 4)` (0.971). The model is highly significant (Fisher's test: $F_{2,38}=671.5$, p-value $<2.2\times10^{-16}$). The model, all of whose coefficients are significantly different from zero, is written: $\ln(B)=-8.9050+1.8654\ln(D)+0.7083\ln(H)$. By applying the exponential function to return to the starting data, the model becomes: $B=1.357\times10^{-4}D^{1.8654}H^{0.7083}$. The exponent associated with height is a little less than half that associated with dbh, and is a little less than the exponent of 0.87238 found for the combined variable $D^2H$ (see red line \@ref(exr:rllnBvD2H)). An examination of the residuals:
+with a residual standard deviation of `r round(summary(m)$sigma, 4)`  and $R^2=$ `r round(summary(m)$r.squared, 4)` (0.971). The model is highly significant (Fisher's test: $F_{2,38}=671.5$, p-value $<2.2\times10^{-16}$). The model, all of whose coefficients are significantly different from zero, is written: $\ln(B)=-8.9050+1.8654\ln(D)+0.7083\ln(H)$. By applying the exponential function to return to the starting data, the model becomes: $B=1.357\times10^{-4}D^{1.8654}H^{0.7083}$. The exponent associated with height is a little less than half that associated with dbh, and is a little less than the exponent of 0.87238 found for the combined variable $D^2H$ (see red line \@ref(exr:rllnBvD2H)). An examination of the residuals:
 
 ```{r, echo=T, eval=F}
 plot(m, which = 1:2)
@@ -549,7 +551,11 @@ Object `D` contains the bounds of the dbh classes that are calculated such to ha
 
 ```{r, echo=T, eval=F}
 with(sdB, plot(
-  D, sdB, log="xy", xlab="Diameter (cm)", ylab="Biomass standard deviation (t)"
+  x = D, 
+  y = sdB, 
+  log = "xy", 
+  xlab = "Diameter (cm)", 
+  ylab = "Biomass standard deviation (t)"
   ))
 ```
 
@@ -595,8 +601,10 @@ The model is therefore: $B=2.747\times10^{-5}D^2H$, with $R^2$ = 0.8897 and a re
 
 ```{r, echo=T, eval=F}
 plot(
-  fitted(m), residuals(m) / dat$dbh^2, 
-  xlab = "Fitted values", ylab = "Weighted residuals"
+  x = fitted(m),  
+  y = residuals(m) / dat$dbh^2, 
+  xlab = "Fitted values", 
+  ylab = "Weighted residuals"
   )
 ```
 
@@ -605,8 +613,10 @@ gives a plot of the weighted residuals against the fitted values. By way of a co
 ```{r, echo=T, eval=F}
 m <- lm(Btot ~ -1 + I(dbh^2 * heig), data = dat, weights = 1 / dat$dbh^2)
 plot(
-  fitted(m), residuals(m) / dat$dbh, 
-  xlab = "Fitted values", ylab = "Weighted residuals"
+  x = fitted(m), 
+  y = residuals(m) / dat$dbh, 
+  xlab = "Fitted values", 
+  ylab = "Weighted residuals"
   )
 ```
 
@@ -615,8 +625,10 @@ whereas \@ref(fig:fD2Hpres)C shows a plot of the weighted residuals against the 
 ```{r, echo=T, eval=F}
 m <- lm(Btot ~ -1 + I(dbh^2 * heig), data = dat, weights = 1 / dat$dbh^5)
 plot(
-  fitted(m), residuals(m) / dat$dbh^2.5, 
-  xlab="Fitted values", ylab="Weighted residuals"
+  x = fitted(m), 
+  y = residuals(m) / dat$dbh^2.5, 
+  xlab = "Fitted values", 
+  ylab = "Weighted residuals"
   )
 ```
 
@@ -685,8 +697,10 @@ with a residual standard deviation $k=$ `r  print(summary(m)$sigma, digits = 4)`
 
 ```{r, echo=T, eval=F}
 plot(
-  fitted(m), residuals(m) / dat$dbh^2,
-  xlab="fitted values", ylab="Weighted residuals"
+  x = fitted(m), 
+  y = residuals(m) / dat$dbh^2,
+  xlab = "fitted values", 
+  ylab = "Weighted residuals"
   )
 ``` 
 
@@ -1004,11 +1018,16 @@ printCoefmat(summary(lm((Btot/dbh^2) ~ -1+I(1/dbh^2)+heig,data=dat))$coef, digit
 where it can be seen that the coefficient associated with $X_1=1/D^2$ is not significantly different from zero. If we now return to the starting data, this means simply that the y-intercept $a$ is not significantly different from zero, something we had already noted in red line \@ref(exr:frlpD2H). Therefore, $X_1$ may be withdrawn and a simple linear regression may be fitted of $Y=B/D^2$ against $X_2=H$:
 
 ```{r, echo=T, eval=F}
-with(dat,plot(
-  heig, Btot / dbh^2, xlab = "Height (m)", ylab = "Biomass/square of dbh (t/cm2)"
+with(dat, plot(
+  x = heig, 
+  y = Btot / dbh^2, 
+  xlab = "Height (m)", 
+  ylab = "Biomass/square of dbh (t/cm2)"
   ))
+
 m <- lm((Btot / dbh^2) ~ -1 + heig, data = dat)
 summary(m)
+
 plot(m, which = 1:2)
 ```
 
@@ -1069,11 +1088,15 @@ where it can be seen that the coefficient associated with $X_1=1/D^2$ is not sig
 
 ```{r, echo=T, eval=F}
 with(dat, plot(
-  1 / dbh, Btot / dbh^2, 
-  xlab = "1/Diameter (/cm)", ylab = "Biomass/square of dbh (t/cm2)"
+  x = 1 / dbh, 
+  y = Btot / dbh^2, 
+  xlab = "1/Diameter (/cm)", 
+  ylab = "Biomass/square of dbh (t/cm2)"
   ))
+
 m <- lm((Btot / dbh^2) ~ I(1 / dbh), data = dat)
 summary(m)
+
 plot(m, which=1:2)
 ```
 
