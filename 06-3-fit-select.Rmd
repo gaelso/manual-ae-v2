@@ -33,15 +33,19 @@ The so-called *stepwise* method is a further improvement upon the previous algor
 
 :::::::{.filrouge data-latex=""}
 
-:::{.fr-counter data-latex=""}
+:::{.numberCircle data-latex=""} 
 
 (@eq-selvar)
 
 :::
 
-:::{.exercise #selvar name="(ref:selvar)"}
-\  
+::::{.red}
+
+:::{.exercise #selvar}
+(ref:selvar)
 :::
+
+::::
 
 Let us select the variables $\ln(D)$, $[\ln(D)]^2$, $[\ln(D)]^3$, $\ln(H)$ to predict the log of the biomass. The complete model is therefore:
 \[
