@@ -34,10 +34,10 @@ Here in this section we will focus on the graphical method used to determine the
 
 :::::: {.filrouge data-latex=""}
 
-(@eq-feBvD) (ref:feBvD)
+(@eq-feBvD)
 
-::: {.exercise #feBvD name="(ref:feBvD)"}
-\  
+::: {.exercise #feBvD}
+(ref:feBvD)
 :::
 
 To visualize the form of the relation between total dry biomass and dbh, the biomass cluster of points should be plotted against dbh. As the dataset has already been read (see red line \@ref(exr:read) or @eq-read), the following command can be used to plot the cluster of points:
@@ -76,10 +76,10 @@ where $V$ is stand volume in m^3^\ ha^-1^, $G$ is basal area in m^2^\ ha^-1^, $H
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-feBvD2H) (ref:feBvD2H)
+(@eq-feBvD2H)
 
-:::{.exercise #feBvD2H name="(ref:feBvD2H)"}
-\  
+:::{.exercise #feBvD2H}
+(ref:feBvD2H)
 :::
 
 Compared with a double-entry biomass model using dbh $D$ and height $H$, the $D^2H$ data item constitutes an approximation of trunk volume (to within the form factor) and can therefore be used as a combined effect variable. The scatter plot of biomass points against $D^2H$ is obtained by the command:
@@ -161,10 +161,10 @@ The number of entries employed when fitting biomass or volume tables is in most 
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-frho) (ref:frho)
+(@eq-frho)
 
-:::{.exercise #frho name="(ref:frho)"}
-\  
+:::{.exercise #frho}
+(ref:frho)
 :::
 
 Let us now explore the relation between biomass, $D^2H$ and wood density $\rho$. Let us define `n` classes of wood density such that each class contains approximately the same number of observations:
@@ -275,10 +275,10 @@ When no transformation of the variable is able to render the relation between $X
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-feln) (ref:feln)
+(@eq-feln)
 
-:::{.exercise #feln name="(ref:feln)"}
-\ 
+:::{.exercise #feln}
+(ref:feln)
 :::
 
 Let us use the log transformation to transform simultaneously both dbh and biomass. The scatter plot of the log-transformed data is obtained as follows:
@@ -304,10 +304,10 @@ display_fig("flnBvlnD")
 
 ::::::{.filrouge data-latex=""}
 
-(@eq-feln2) (ref:feln2)
+(@eq-feln2)
 
-:::{.exercise #feln2 name="(ref:feln2)"}
-\ 
+:::{.exercise #feln2}
+(ref:feln2)
 :::
 
 Let us use the log transformation to transform simultaneously both $D^2H$ and biomass. The scatter plot of the log-transformed data is obtained as follows:

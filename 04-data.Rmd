@@ -113,12 +113,12 @@ This formatting consists in organizing the data into a format suitable for the c
 This data formatting will be greatly facilitated if the data were initially entered in an appropriate format. In this matter, relational databases have the advantage of offering a search language that can be used to construct the appropriate tables easily. In Microsoft Excel, the notion of "pivot table" can also usefully be employed to format data.
 
 
-::::: {.filrouge data-latex=""}
+:::::: {.filrouge data-latex=""}
 
-(@eq-read) (ref:read) *(\@eq- counter: not full red / 1 to n / cross ref but no link and no list)*
+(@eq-read) *(\@eq- counter: not full red / 1 to n / cross ref but no link and no list)*
 
-:::{.exercise #read name="(ref:read)"}
-\ 
+:::{.exercise #read}
+(ref:read)
 *(hacking exercise environmment:not full red / section based number / cross ref and listing available)* 
 :::
 
