@@ -1,6 +1,6 @@
 
 # Glossary {-}
-\markboth{Glossary}
+\markboth{Glossary}{}
 
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 <!-- HIDE THIS SECTION FOR NON LATEX FORMAT              -->

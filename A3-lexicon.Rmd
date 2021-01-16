@@ -1,7 +1,9 @@
 
 
 # Lexicon of mathematical symbols {-}
-`r ifelse(book_format == "latex", "\\markboth{Lexicon of mathematical symbols}", "")`
+
+`r ifelse(book_format == "latex", "\\markboth{Lexicon of mathematical symbols}{}", "")`
+
 
 ## Latin symbols {-}
 

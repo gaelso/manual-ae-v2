@@ -278,9 +278,9 @@ In the case of a linear model, we can show that the variance-covariance matrix o
 In the non-linear case \@ref(eq:icnl3), if we want to avoid calculating the partial derivatives of $f$, we could use the Monte Carlo method. This method is based on a simulation that consists in making $Q$ samplings of coefficients $\theta$ in accordance with a multinormal distribution of mean $\hat{\theta}$ and variance-covariance matrix $\hat{\boldsymbol{\Sigma}}$, calculating the prediction for each of the simulated values, then calculating the empirical confidence interval of these $Q$ predictions. This method is known in the literature as providing "population prediction intervals" [@bolker08; @paine12]. The pseudo-algorithm is as follows:
 
 1. For $k$ of $1$ to $Q$:
-    + 1.1 draw a vector $\hat{\theta}^{(k)}$ following a multinormal distribution of mean $\hat{\theta}$ and variance-covariance matrix $\hat{\boldsymbol{\Sigma}}$;
-    + 1.2 calculate the prediction $\hat{Y}^{(k)}=f(X_1,\ \ldots,\ X_p;\hat{\theta}^{(k)})$.
-2. The confidence interval of the prediction is the empirical confidence interval of the $Q$ values $\hat{Y}^{(1)},\ \ldots,\ \hat{Y}^{(Q)}$.
+        a. draw a vector $\hat{\theta}^{(k)}$ following a multinormal distribution of mean $\hat{\theta}$ and variance-covariance matrix $\hat{\boldsymbol{\Sigma}}$;
+        b. calculate the prediction $\hat{Y}^{(k)}=f(X_1,\ \ldots,\ X_p;\hat{\theta}^{(k)})$.
+1. The confidence interval of the prediction is the empirical confidence interval of the $Q$ values $\hat{Y}^{(1)},\ \ldots,\ \hat{Y}^{(Q)}$.
 
 Very often we do not know the variance-covariance matrix $\hat{\boldsymbol{\Sigma}}$, but we do have an estimation of the standard deviations of the coefficients. Let $\mathrm{Var}(\hat{a}_i)=\Sigma_i$ (linear case) or $\mathrm{Var}(\hat{\theta}_i)=\Sigma_i$ (non-linear case) be the variance of the model's $i$th coefficient. In this case we will ignore the correlation between the model's coefficients and will approximate the variance-covariance matrix of the coefficients by a diagonal matrix:
 \[
@@ -316,11 +316,11 @@ which is an approximation of \@ref(eq:icnl1).
 As before, if we want to avoid a great many calculations, we could employ the Monte Carlo method, using the following pseudo-algorithm:
 
 1. For $k$ of $1$ to $Q$:
-    + 1.1. draw a vector $\hat{\theta}^{(k)}$ following a multinormal distribution of mean $\hat{\theta}$ and variance-covariance matrix $\hat{\boldsymbol{\Sigma}}$;
-    + 1.2. draw a residual $\hat{\varepsilon}^{(k)}$ following a centered normal distribution of standard deviation $\hat{\sigma}$ (linear case) or $\hat{k}X_1^{\hat{c}}$ (non-linear case);
-    + 1.3. calculate the prediction $\hat{Y}^{(k)}=f(X_1,\ \ldots,\ X_p;\hat{\theta}^{(k)})+\hat{\varepsilon}^{(k)}$.
+        a. draw a vector $\hat{\theta}^{(k)}$ following a multinormal distribution of mean $\hat{\theta}$ and variance-covariance matrix $\hat{\boldsymbol{\Sigma}}$;
+        a. draw a residual $\hat{\varepsilon}^{(k)}$ following a centered normal distribution of standard deviation $\hat{\sigma}$ (linear case) or $\hat{k}X_1^{\hat{c}}$ (non-linear case);
+        a. calculate the prediction $\hat{Y}^{(k)}=f(X_1,\ \ldots,\ X_p;\hat{\theta}^{(k)})+\hat{\varepsilon}^{(k)}$.
 
-2. The confidence interval of the prediction is the empirical confidence interval of the $Q$ values $\hat{Y}^{(1)},\ \ldots,\ \hat{Y}^{(Q)}$.
+1. The confidence interval of the prediction is the empirical confidence interval of the $Q$ values $\hat{Y}^{(1)},\ \ldots,\ \hat{Y}^{(Q)}$.
 
 
 #### Confidence interval with measurement uncertainties {.unnumbered #errmes}
@@ -331,19 +331,20 @@ are no longer considered as fixed, but as being contained within a distribution.
 It is difficult to calculate an explicit expression for the prediction confidence interval when the effect variables are considered to be random since this means we must calculate the variances of the products of these random variables, some of which are correlated one with the other. The $\delta$-method offers an approximate analytical solution [@serfling80]. Or, more simply, we can again use a Monte Carlo method. In this case, the pseudo-algorithm becomes:`r ifelse(book_format == "latex", " \\label{psa}", "")`
 
 1. For $k$ of $1$ to $Q$:
-    + 1.1. for $i$ of 1 to $p$, draw $\hat{X}_i^{(k)}$ following a normal distribution of mean $X_i$ and standard deviation  $\tau_i$;
-    + 1.2. draw a vector $\hat{\theta}^{(k)}$ following a multinormal distribution of mean $\hat{\theta}$ and variance-covariance matrix $\hat{\boldsymbol{\Sigma}}$;
-    + 1.3. draw a residual $\hat{\varepsilon}^{(k)}$ following a centered normal distribution of standard deviation $\hat{\sigma}$ (linear case) or $\hat{k}X_1^{\hat{c}}$ (non-linear case);
-    + 1.4. calculate the prediction $\hat{Y}^{(k)}=f(\hat{X}_1^{(k)},\ \ldots,\ \hat{X}_p^{(k)}; \hat{\theta}^{(k)})+\hat{\varepsilon}^{(k)}$.
+        a. for $i$ of 1 to $p$, draw $\hat{X}_i^{(k)}$ following a normal distribution of mean $X_i$ and standard deviation  $\tau_i$;
+        a. draw a vector $\hat{\theta}^{(k)}$ following a multinormal distribution of mean $\hat{\theta}$ and variance-covariance matrix $\hat{\boldsymbol{\Sigma}}$;
+        a. draw a residual $\hat{\varepsilon}^{(k)}$ following a centered normal distribution of standard deviation $\hat{\sigma}$ (linear case) or $\hat{k}X_1^{\hat{c}}$ (non-linear case);
+        a. calculate the prediction $\hat{Y}^{(k)}=f(\hat{X}_1^{(k)},\ \ldots,\ \hat{X}_p^{(k)}; \hat{\theta}^{(k)})+\hat{\varepsilon}^{(k)}$.
 
-2. The confidence interval of the prediction is the empirical confidence interval of the $Q$ values $\hat{Y}^{(1)},\ \ldots,\ \hat{Y}^{(Q)}$.
+1. The confidence interval of the prediction is the empirical confidence interval of the $Q$ values $\hat{Y}^{(1)},\ \ldots,\ \hat{Y}^{(Q)}$.
 
 This confidence interval corresponds to the prediction for a tree selected at random. To obtain the confidence interval for the mean tree, simply apply the same pseudo-algorithm but replaced step (c) by:
 
-- 
-    + ($\ldots$)
-    + 1.3. with $\hat{\varepsilon}^{(k)}=0$;
-    + ($\ldots$)
+1. \  
+        a. ($\ldots$)
+        a. ($\ldots$)
+        a. with $\hat{\varepsilon}^{(k)}=0$;
+        a. ($\ldots$)
 
 
 
