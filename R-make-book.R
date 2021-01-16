@@ -60,7 +60,7 @@ source("R/red_line_code.R")
 
 ## preview one chapter
 bookdown::preview_chapter(
-  input = c("index.Rmd", "01-1-base-biology.Rmd"),
+  input = c("index.Rmd", "00-1-foreword.Rmd", "01-1-base-biology.Rmd", "99-appendix.Rmd"),
   output_format = "bookdown::pdf_book",
   output_dir = paste0("Manual-AE/Manual-AE-pdf-sections-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"))
 )
@@ -77,20 +77,6 @@ bookdown::render_book(
   input = "index.Rmd",
   output_format = "bookdown::gitbook",
   output_dir = paste0("Manual-AE/Manual-AE-gitbook-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"))
-)
-
-## HTML - html_doc
-bookdown::render_book(
-  input = "index.Rmd",
-  output_format = "bookdown::html_document2",
-  output_dir = paste0("Manual-AE/Manual-AE-html-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"))
-)
-
-## HTML - html_book
-bookdown::render_book(
-  input = "index.Rmd",
-  output_format = "bookdown::html_book",
-  output_dir = paste0("Manual-AE/Manual-AE-html_book-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"))
 )
 
 ## Clean temp files

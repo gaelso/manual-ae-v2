@@ -24,9 +24,9 @@
 \usepackage{multirow}
 
 
-%% -------------------------------------------------------------%%
-%%    Commands kept from the Book Original layout TeX file
-%% -------------------------------------------------------------%%
+%% -------
+%% Commands kept from the Book Original layout TeX file
+%% ------
 
 %% Setup from the original TeX layout preserved
 \usepackage{pdfpages}
@@ -90,6 +90,12 @@
         \@mkboth{\sc #1}{\sc #1}%% avec fancyhdr
         \addcontentsline{toc}{chapter}{\numberline {}#1}}%% ligne modifi?e
     \thispagestyle{plain}}%% ligne ajout?e
+% \renewcommand\chapter*{
+% %        \@mkboth{\sc\small #1}{\sc\small #1}%% sans fancyhdr
+%         \@mkboth{}{}%% avec fancyhdr
+%         %\addcontentsline{toc}{chapter}{\numberline {}#1}
+%         }%% ligne modifi?e
+%     %\thispagestyle{plain}}%% ligne ajout?e
 \renewcommand\tableofcontents{%
     \if@twocolumn\@restonecoltrue\onecolumn\else\@restonecolfalse\fi
     \chapterannex{\contentsname}
@@ -108,7 +114,14 @@
 
 \makeatother
 
-                                   
+%% Define glos for the glossary items
+\newcommand{\gloss}[2]{\paragraph{#1.} #2}
+
+%% ------
+%% END of book original layout.tex
+%% ------
+
+                     
 %% Stop make title from placing YAML title before the cover page
 \let\oldmaketitle\maketitle
 \AtBeginDocument{\let\maketitle\relax}

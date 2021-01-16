@@ -1,5 +1,7 @@
 
+
 # The foundations of biomass estimations {#biol}
+
 
 If we consider trees on a population scale, we see that the different dimensions of an individual are statistically related one with another [@gould66]. This relation stems from the ontogenic development of individuals which is the same for all to within life history-related variability. For instance, the proportions between height and diameter, between crown height and diameter, between biomass and diameter follow rules that are the same for all trees, big or small, as long as they are growing under the same conditions [@king96; @archibald03; @bohlman06; @dietze08]. This is the basic principle of allometry and can be used to predict a tree variable (typically its biomass) from another dimension (e.g. its diameter). An allometric equation is a formula that quantitatively formalizes this relationship. We will speak in this guide of volume, biomass and nutrient content models, respectively. Allometry also has another more restrictive definition: the proportionality relationship between relative increases in dimensions [@huxley24; @gayon00]. If we call biomass $B$ and diameter $D$, this second definition means that there is a coefficient $a$ such that:
 \[
