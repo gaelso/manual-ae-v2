@@ -54,7 +54,11 @@ knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown', 'Hmisc'), 'bib
 
 <!-- ADD COVER PAGE TO HTML OUTPUT -->
 
+
 <!-- `r if (book_format == "html") ' -->
+
+<div class="watermark">DRAFT</div>
+
 # Cover page {-}
 <!-- '` -->
 
