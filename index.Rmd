@@ -4,7 +4,7 @@ subtitle: "From field measurement to prediction"
 author: "Nicolas Picard, Laurent Saint-André, Matieu Henry"
 date: "August 2012"
 subject: "copyright FAO et CIRAD"
-eywords: "allometric equation, biomass table, volume table"
+keywords: "allometric equation, biomass table, volume table"
 documentclass: book
 #lof: yes
 #lot: yes
@@ -22,7 +22,7 @@ linkcolor: RoyalBlue
 filecolor: RoyalBlue
 hyperrefoptions: 
 - pagebackref
-indent: true
+#indent: true
 ---
 
 ```{r setup, include=FALSE}
@@ -56,9 +56,6 @@ knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown', 'Hmisc'), 'bib
 
 
 <!-- `r if (book_format == "html") ' -->
-
-<div class="watermark">DRAFT</div>
-
 # Cover page {-}
 <!-- '` -->
 
@@ -79,6 +76,8 @@ knitr::include_graphics(path = "source/cover_web/vitruvian_EN_WEB_GS_front.png")
 ```{r results='asis', echo=FALSE}
 if (knitr::is_latex_output()) {cat("<!---")}
 ```
+
+<div class="watermark">DRAFT</div>
 
 **Manual for building tree volume and biomass allometric equations**
 **from field measurement to prediction**
@@ -126,15 +125,24 @@ The book was originally developed in TeX in 2012 and shared as a pdf and printed
 
 The code is available on GitHub at: XXX. 
 
-**ADD LICENSE LOGO**
 
-The online version of this book is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License** (TO BE DECIDED). 
+**Possibility to add license**
+
+Example:
+
+**ADD LICENSE LOGO** The online version of this book is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License** (TO BE DECIDED). 
 
 **List of changes:**
+
 - photo considered as figures. placing several photos next to each other using knitr::include_graphics(c("img1", "img2")) and magick package for borders
-- differential noted "$d$" instead of d (no \\d operator in Rmarkdown)
-- \\emph converted to \\textit (no class emph in Rrmarkdown)
-- few typos correction from auto-corrections
+
+- `\\emph{}` converted to `\\textit{}` (no class emph in Rrmarkdown)
+
+- Typos correction
+
+- Red lines noted by section number (hacking exercise environment)
+
+- List of Red lines as appendix instead of following lot, lof
 
 ---
 
