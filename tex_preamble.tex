@@ -112,6 +112,15 @@
     \@starttoc{lot}%
     \if@restonecol\twocolumn\fi}
 
+%% Modif bibliography too
+% \renewcommand\bibsection{%
+%     \if@twocolumn\@restonecoltrue\onecolumn\else\@restonecolfalse\fi
+%     \chapterannex{\bibname}
+%     \if@restonecol\twocolumn\fi}
+% %% red?finit les espaces entre r?f?rences
+% \setlength{\bibhang}{0cm}\setlength{\bibsep}{11pt}
+\usepackage[nottoc]{tocbibind} %% add bib to toc
+
 \makeatother
 
 %% Define glos for the glossary items
