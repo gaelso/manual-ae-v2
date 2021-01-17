@@ -45,8 +45,8 @@ This principle of an analysis of covariance can be immediately extended to the c
 
 (@eq-fmspe)
 
-:::{.exercise #mfspe}
-(ref:mfspe)
+:::{.exercise #fmspe}
+(ref:fmspe)
 :::
 
 In red line \@ref(exr:rllnBvD2H), we used simple linear regression to fit a power model with $D^2H$ as effect variable to log-transformed data: $\ln(B)=a+b\ln(D^2H)$. We can now include species-related information in this model to test whether the coefficients $a$ and $b$ differ from one species to another. The model corresponds to an analysis of covariance:

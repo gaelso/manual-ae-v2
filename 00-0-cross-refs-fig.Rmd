@@ -54,7 +54,7 @@
 
 (ref:vanu) Typical Voronoi diagram used for root sampling in a coconut plantation in Vanuatu (photo: C. Jourdan). (A) Drawing the Voronoi space and choosing to work on $1/12$th of this space; (B) section through the pits dug; (C) protocol simplification given the variability observed in the first sample; (D) tracing the pit on the ground.
 
-(ref:evor) Left, superimposition of different sampling methods (cores, excavations by cubes, partial Voronoi excavation, total Voronoi excavation), from @levillain11 (photo: C. Jourdan). Right, manual excavation of large roots in a rubber tree plantation in Thailand (photo: L. Saint-André).\
+(ref:evor) Left, superimposition of different sampling methods (cores, excavations by cubes, partial Voronoi excavation, total Voronoi excavation), from @levillain11 (photo: C. Jourdan). Right, manual excavation of large roots in a rubber tree plantation in Thailand (photo: L. Saint-André).
 
 (ref:air) Air knife being used in Congo to extract the root systems (large and medium-size roots) of eucalyptus. Left, operator with protective equipment (dust, noise); middle, compressor and close up of the air pressure gauge (about 8 bars); right, the result (photos: C. Jourdan).
 
@@ -148,8 +148,7 @@
 
 (ref:sp) Representation of the target function (*i.e.* the quantity to be minimized) as a surface in parameter space. Each position in this space corresponds to a value of the parameters. The successive values $\theta_1$, $\theta_2$, \ldots, for the parameters are obtained from a start value $\theta_0$ by descending the surface along the line with the steepest slope.(A) The surface has a single watershed. (B) The surface has several watersheds.
 
-(ref:fpredB) Biomass predictions by different tables fitted to data from 42 trees measured in Ghana by @henry10. The data are shown as points. (A)
-Tables with dbh as only entry, corresponding to red lines \@ref(exr:fDpara) (`r ifelse(with_color, "red", "solid lines")`), \@ref(exr:fDD2var) (`r ifelse(with_color, "green","dashed line")`), \@ref(exr:fnlsD) (`r ifelse(with_color, "blue", "dotted line")`) and \@ref(exr:fnlmD) (`r ifelse(with_color, "magenta", "dashes and dots")`). (B) Tables with $D^2H$ as the only effect variable, corresponding to red lines \@ref(exr:frlpD2H) (`r ifelse(with_color, "red", "solid line")`), \@ref(exr:fD2Hvar) (`r ifelse(with_color, "green", "dashed line")`), \@ref(exr:fnlsD2H) (`r ifelse(with_color, "blue", "dotted line")`) and \@ref(exr:fnlmD2H) (`r ifelse(with_color, "magenta", "dashes and dots")`). (C) Table corresponds to red line \@ref(exr:fnlsDH). (D) Table corresponds to red line \@ref(exr:fnlmDH).
+(ref:fpredB) Biomass predictions by different tables fitted to data from 42 trees measured in Ghana by @henry10. The data are shown as points. (A) Tables with dbh as only entry, corresponding to red lines \@ref(exr:fDpara) (`r ifelse(with_color, "red", "solid lines")`), \@ref(exr:fDD2var) (`r ifelse(with_color, "green","dashed line")`), \@ref(exr:fnlsD) (`r ifelse(with_color, "blue", "dotted line")`) and \@ref(exr:fnlmD) (`r ifelse(with_color, "magenta", "dashes and dots")`). (B) Tables with $D^2H$ as the only effect variable, corresponding to red lines \@ref(exr:frlpD2H) (`r ifelse(with_color, "red", "solid line")`), \@ref(exr:fD2Hvar) (`r ifelse(with_color, "green", "dashed line")`), \@ref(exr:fnlsD2H) (`r ifelse(with_color, "blue", "dotted line")`) and \@ref(exr:fnlmD2H) (`r ifelse(with_color, "magenta", "dashes and dots")`). (C) Table corresponds to red line \@ref(exr:fnlsDH). (D) Table corresponds to red line \@ref(exr:fnlmDH).
 
 (ref:fpredlnB) Biomass predictions by different tables fitted to data from 42 trees measured in Ghana by @henry10. The data are shown as points. (A) Model in red line \@ref(exr:rllnBvD). (B) Model in red line \@ref(exr:rllnBvD2H). (C) Model in red line \@ref(exr:flnDlnH). (D) Model in red line \@ref(exr:selvar).
 
@@ -158,6 +157,5 @@ Tables with dbh as only entry, corresponding to red lines \@ref(exr:fDpara) (`r 
 
 <!-- Figure chapter 7 -->
 
-(ref:icD) Biomass against dbh (on a log scale) for 42 trees measured in Ghana by
-@henry10 (points), prediction (solid line) of the simple linear regression of $\ln(B)$ against $\ln(D)$, and confidence intervals of this prediction for a tree selected at random (`r ifelse(with_color, "green line", "dotted line")`) and for the mean tree (`r ifelse(with_color, "red line", "dashed line")`).
+(ref:icD) Biomass against dbh (on a log scale) for 42 trees measured in Ghana by @henry10 (points), prediction (solid line) of the simple linear regression of $\ln(B)$ against $\ln(D)$, and confidence intervals of this prediction for a tree selected at random (`r ifelse(with_color, "green line", "dotted line")`) and for the mean tree (`r ifelse(with_color, "red line", "dashed line")`).
 
