@@ -120,6 +120,8 @@ Campus international de Baillarguet
 
 ---
 
+::::::{.filrouge data-latex=""}
+
 **Note:**  
 The book was originally developed in TeX in 2012 and shared as a pdf and printed copies. It has been converted to gitbook and pdf book in 2020 with Rstudio [@Rstudio] and the excellent bookdown R package [@R-bookdown].
 
@@ -143,6 +145,12 @@ Example:
 - Red lines noted by section number (hacking exercise environment)
 
 - List of Red lines as appendix instead of following lot, lof
+
+- No paragraph indentation in pdf (can be added back in YAML header)
+
+- bibiography after appendices
+
+::::::
 
 ---
 
