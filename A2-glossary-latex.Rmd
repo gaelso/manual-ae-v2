@@ -8,8 +8,6 @@
 if (book_format != "latex") {cat("<!---")}
 ```
 
-
-# Glossary {-}
 \markboth{Glossary}{}
 
 

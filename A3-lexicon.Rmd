@@ -65,14 +65,14 @@ kab_opt <- list(
   booktab = TRUE,
   escape = F,
   col.names = c("", ""), 
-  align = "rl"
+  align = "rl",
+  longtable = TRUE
   )
 
 if (book_format == "latex") {
   
   display_table() %>% 
     kableExtra::column_spec(column = 2, width = "10cm" )  %>%
-    kableExtra::kable_styling(latex_options =c("repeat_header")) %>%
     sub("\\\\toprule", "", .) %>%
     sub("\\\\midrule", "", .) %>%
     sub("\\\\bottomrule", "", .)
@@ -135,7 +135,6 @@ if (book_format == "latex") {
   
   display_table() %>% 
     kableExtra::column_spec(column = 2, width = "10cm" )  %>%
-    kableExtra::kable_styling(latex_options =c("repeat_header")) %>%
     sub("\\\\toprule", "", .) %>%
     sub("\\\\midrule", "", .) %>%
     sub("\\\\bottomrule", "", .)
@@ -175,7 +174,6 @@ if (book_format == "latex") {
   
   display_table() %>% 
     kableExtra::column_spec(column = 2, width = "10cm" )  %>%
-    kableExtra::kable_styling(latex_options =c("repeat_header")) %>%
     sub("\\\\toprule", "", .) %>%
     sub("\\\\midrule", "", .) %>%
     sub("\\\\bottomrule", "", .)

@@ -1,14 +1,15 @@
 
+# Glossary {-}
 
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 <!-- HIDE THIS SECTION FOR PDF (see tex_before_body.tex) -->
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 ```{r results='asis', echo=FALSE}
-if (knitr::is_latex_output()) {cat("<!---")}
+if (book_format == "latex") {cat("<!---")}
 ```
 
-# Glossary {-}
+
 
 This glossary provides definitions for certain terms used in this guide that are either unusual or used to convey a meaning other than their usual meaning.
 
