@@ -73,7 +73,7 @@ Take a random sample of the leaves from the trimmed branches. At least three sam
 
 #### Untrimmed fresh biomass {-}
 
-Untrimmed biomass is measured indirectly as non-destructive. The different branches in the trimmed tree must first be numbered (Figure \@ref(fig:emond)B). The small untrimmed branches must be processed differently from the large branches and the trunk (Figure \@ref(fig:emond)A). For the small branches, only basal diameter needs to be measured. The biomass of these small untrimmed branches is estimated from the relationship between their basal diameter and their mass, as explained in section \@ref(calBsp).
+Untrimmed biomass is measured indirectly as non-destructive. The different branches in the trimmed tree must first be numbered (Figure \@ref(fig:emond)B). The small untrimmed branches must be processed differently from the large branches and the trunk (Figure \@ref(fig:emond)A). For the small branches, only basal diameter needs to be measured. The biomass of these small untrimmed branches is estimated from the relationship between their basal diameter and their mass, as explained in section `r ifelse(book_format == "latex", "\\@ref(calBsp)", "[Calculating untrimmed biomass](#calBsp)")`.
 
 The biomass of the trunk and the large branches is estimated from measurements of volumes ($V_i$ in cm^3^) and mean wood density ($\bar{\rho}$ in g\ cm^-3^). The large branches and trunk should be divided virtually into sections that are then materialized by marking the tree. The volume $V_i$ of each section $i$ is obtained by measuring its diameter (or its circumference) and its length. Sections about one meter in length are preferable in order to consider diameter variations along the length of the trunk and branches.
 

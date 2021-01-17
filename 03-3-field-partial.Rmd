@@ -116,7 +116,7 @@ B_{\text{dry leaf},i}^{\text{sample}} &=&
 B_{\text{fresh wood},i}^{\text{sample}}
 \\ B_{\text{dry branch},i}^{\text{sample}} &=& B_{\text{dry leaf},i}^{\text{sample}}+B_{\text{dry wood},i}^{\text{sample}}
 \end{eqnarray*}
-In the same manner as in section \@ref(calBsp), a biomass table for the branches can then be fitted to the data ($B_{\text{dry branch},i}^{\text{sample}}$, $D_i^{\text{sample}}$), where $D_i^{\text{sample}}$ is the basal diameter of the branch $i$ of the sample. The biomass model for the branches may be established by following the same procedure as for the development of an allometric equation (see chapter \@ref(don) to \@ref(util) herein). To increase sample size, the model can be established based on all the branches measured for all the trees of the same species or by species functional group [@hawthorne95b].
+In the same manner as in section `r ifelse(book_format == "latex", "\\@ref(calBsp)", "[Calculating untrimmed biomass](#calBsp)")`, a biomass table for the branches can then be fitted to the data ($B_{\text{dry branch},i}^{\text{sample}}$, $D_i^{\text{sample}}$), where $D_i^{\text{sample}}$ is the basal diameter of the branch $i$ of the sample. The biomass model for the branches may be established by following the same procedure as for the development of an allometric equation (see chapter \@ref(don) to \@ref(util) herein). To increase sample size, the model can be established based on all the branches measured for all the trees of the same species or by species functional group [@hawthorne95b].
 
 The branch biomass model established in this way can then be used to calculate the dry biomass of all branches of basal diameter $\leq10$\ cm:
 \[
