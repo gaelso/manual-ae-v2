@@ -17,10 +17,8 @@ display_table <- function(.list_opts=kab_opt, .format=book_format, .latex_scalin
   
   if (book_format == "latex") {
     
-    tt <- do.call(kable, c(.list_opts, format = .format, linesep = "", longtable = TRUE)) %>%
-      kableExtra::kable_styling(
-        position = 'center', latex_options = c("repeat_header")  ## removed for this book: "HOLD_position",
-      )
+    tt <- do.call(kable, c(.list_opts, format = .format, linesep = "")) %>%
+      kableExtra::kable_styling(position = 'center') ## removed for this book: "HOLD_position",
     
     if (.latex_scaling == "scale_down") {
       
