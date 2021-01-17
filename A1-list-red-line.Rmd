@@ -61,9 +61,9 @@
 
 1. \@ref(exr:sellnB) (ref:sellnB)
 
-1. \@ref(exr:fmeth) (ref:fmeth)
+1. \@ref(exr:fmeth) (ref:fmeth) <!-- 6.3 -->
 
-1. \@ref(exr:mfspe) (ref:mfspe) <!-- 6.3 -->
+1. \@ref(exr:fmspe) (ref:fmspe)
 
 1. \@ref(exr:fdens) (ref:fdens)
 
