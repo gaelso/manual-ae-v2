@@ -2,6 +2,8 @@
 
 # Entering and formatting data {#don}
 
+`r ifelse(book_format == "html" & with_watermark, "<div class='watermark'>DRAFT</div>", "")`
+
 Once the field measurements phase has been completed, and before any analysis, the data collected need to be given structure, which includes data entry, cleansing and formatting.
 
 

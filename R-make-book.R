@@ -22,7 +22,7 @@ fig_path <- "source/figures"
 
 with_color <- TRUE ## FALSE for black and white, not fully supported yet
 
-
+with_watermark <- TRUE ## also need to activate in tex_preamble
 
 ## Source R scripts ------
 

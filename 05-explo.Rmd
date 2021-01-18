@@ -2,6 +2,7 @@
 
 # Graphical exploration of the data {#explo}
 
+`r ifelse(book_format == "html" & with_watermark, "<div class='watermark'>DRAFT</div>", "")`
 
 A graphic exploration of the data is the first step in their analysis. It consists in visually assessing relations between variables in order to gain an idea of the type of model to be fitted. In practice, points are plotted on a graph as a cluster, the coordinates of which correspond to two variables: effect variable on the $x$ axis and response variable on the $y$ axis. A graph can be plotted only for at most two variables simultaneously (three-dimensional graphs cannot in practice be assessed visually). To explore graphically the relations between $p$ variables (where $p>1$), a total of $p(p-1)/2$ graphs should be plotted of one variable against the other and/or efforts should be made to construct combined effect variables from several effect variables (we will return to this point in `r ifelse(book_format == "latex", "\\S", "&sect;")`\ \@ref(plus)).
 

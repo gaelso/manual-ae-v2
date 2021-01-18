@@ -1,6 +1,8 @@
 
 # Glossary {-}
 
+`r ifelse(book_format == "html" & with_watermark, "<div class='watermark'>DRAFT</div>", "")`
+
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 <!-- HIDE THIS SECTION FOR PDF (see tex_before_body.tex) -->
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->

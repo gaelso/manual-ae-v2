@@ -2,3 +2,5 @@
 `r if (knitr::opts_knit$get("rmarkdown.pandoc.to") %in% c("docx", "html")) '
 # Bibliography {-}
 '`
+
+`r ifelse(book_format == "html" & with_watermark, "<div class='watermark'>DRAFT</div>", "")`

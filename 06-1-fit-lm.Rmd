@@ -2,6 +2,7 @@
 
 # Model fitting {#fit}
 
+`r ifelse(book_format == "html" & with_watermark, "<div class='watermark'>DRAFT</div>", "")`
 
 Fitting a model consists in estimating its parameters from data. This assumes, therefore, that data are already available and formatted, and that the mathematical expression of the model to be fitted is known. For example, fitting the power model $B=aD^b$ consists in estimating coefficients $a$ and $b$ from a dataset that gives the values of $B_i$ and $D_i$ from the biomass and dbh of $n$ trees ($i=1$, $\ldots$, $n$). The response variable (also in the literature called the output variable or the dependent variable) is the variable fitted by the model. There is only one. In this guide, the response variable is always a volume or a biomass. Effect variables are the variables used to predict the response variable. There may be several, and their number is denoted by $p$. Care must be taken not to confuse effect variables and model entry data. The model $B=a(D^2H)^b$ possesses a single effect variable ($D^2H$) but two entries (dbh $D$ and height $H$). Conversely, the model $B=a_0+a_1D+a_2D^2$ possesses two effect variables ($D$ and $D^2$) but only a single entry (dbh $D$). Each effect variable is associated with a coefficient to be calculated. To this must be added, if necessary, the y-intercept or a multiplier such that the total number of coefficients to be calculated in a model with $p$ effect variables is $p$ or $p+1$.
 

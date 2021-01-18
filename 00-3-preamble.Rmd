@@ -1,6 +1,8 @@
 
 # Preamble {-}
 
+`r ifelse(book_format == "html" & with_watermark, "<div class='watermark'>DRAFT</div>", "")`
+
 This guide is intended for students, researchers and engineers who wish to acquire the methodology necessary to construct tree volume, biomass or nutrient content tables. The various models used for this purposes have been grouped together here as they all call upon the same principle: they estimate a variable that is difficult to measure in trees (e.g. volume) using simpler characteristics such as tree diameter 
 at breast height ($1.30$ m), or tree height or age.
 

@@ -74,7 +74,7 @@ knitr::include_graphics(path = "source/cover_web/vitruvian_EN_WEB_GS_front.png")
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 ```{r results='asis', echo=FALSE}
-if (knitr::is_latex_output()) {cat("<!---")}
+if (book_format == "latex") {cat("<!---")}
 ```
 
 <div class="watermark">DRAFT</div>
@@ -137,7 +137,7 @@ Recommended citation: Picard N., Saint-André L., Henry M. 2012. Manual for buil
 &copy; CIRAD et FAO, 2012
 
 ```{r results='asis', echo=FALSE}
-if (knitr::is_latex_output()) {cat("-->")}
+if (book_format == "latex") {cat("-->")}
 ```
 
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -147,6 +147,8 @@ if (knitr::is_latex_output()) {cat("-->")}
 # Note on the version 2 {-}
 
 `r ifelse(book_format == "latex", "\\markboth{Note on the version 2}{}", "")`
+
+`r ifelse(book_format == "html" & with_watermark, "<div class='watermark'>DRAFT</div>", "")`
 
 ::::::{.filrouge data-latex=""}
 
@@ -164,7 +166,6 @@ Example:
 **ADD LICENSE LOGO** The online version of this book is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License** (TO BE DECIDED). 
 
 \  
-
 
 **List of changes:**
 

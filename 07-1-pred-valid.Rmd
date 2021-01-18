@@ -1,5 +1,8 @@
 
+
 # Uses and prediction {#util}
+
+`r ifelse(book_format == "html" & with_watermark, "<div class='watermark'>DRAFT</div>", "")`
 
 Once a volume or biomass model has been fitted, several uses may be made of its predictions. Most commonly, it is used to predict the volume or biomass of trees whose volume or biomass has not been measured. This is *prediction* in the strictest sense (`r ifelse(book_format == "latex", "\\S", "&sect;")`\ \@ref(BVpred)--\@ref(BEF)). Sometimes, tree volume or biomass will also have been measured in addition to table entry variables. In this case, when a dataset is available *independently* of that used to fit the model, and which contains both the model's response variable and its effect variables, this can be used to 
 *validate* the model (`r ifelse(book_format == "latex", "\\S", "&sect;")`\ \@ref(val)). When validation criteria are applied to the same dataset that served to calibrate the model, we speak of model *verification* We will not dwell here on model verification as this is already implicit in the analysis of the fitted model's residuals. Finally, if we are in possession of models that were developed prior to a new fitted model, we may also wish to compare or combine the models (`r ifelse(book_format == "latex", "\\S", "&sect;")`\ \@ref(arbi)).

@@ -2,6 +2,7 @@
 
 # In the field {#ter}
 
+`r ifelse(book_format == "html" & with_watermark, "<div class='watermark'>DRAFT</div>", "")`
 
 The field step is the most crucial as it may generate measurement errors that cannot be corrected. This phase must be governed by three key principles: (*i*) it is better to weigh everything in the field rather than calculate a volume and multiply it later by a density measurement (see chapter \@ref(biol) and variations in stem shape and wood density); (*ii*) if wood aliquots are taken, it is best to weigh the whole then the aliquot to follow moisture loss; finally (*iii*) as a biomass campaign requires a great deal of work and is very costly to undertake, other measurements may be taken at the same time to avoid a subsequent return to the field (e.g. stem profile, sampling for nutrient content).
 

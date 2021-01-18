@@ -1,7 +1,10 @@
 
 
 # Conclusions and recommendations {-}
+
 `r ifelse(book_format == "latex", "\\markboth{Conclusions and recommendations}{}", "")`
+
+`r ifelse(book_format == "html" & with_watermark, "<div class='watermark'>DRAFT</div>", "")`
 
 The methods used to estimate tree volume and biomass are constantly evolving as the search is always on for estimations that are as close as possible to reality. Volume and biomass estimation models have undergone different changes in different ecological areas. In dry tropical areas, the problem of obtaining sufficient supplies of firewood dates backs to ancient times, and here primarily allometric equations have been developed to quantify fuelwood. In wet tropical areas, where felling is mainly for timber, equations have been developed primarily to estimate volume. Today, climate change is of increasing concern and interest is being shown in biomass models in both wet and dry forests.
 

@@ -4,6 +4,7 @@
 
 `r ifelse(book_format == "latex", "\\markboth{Lexicon of mathematical symbols}{}", "")`
 
+`r ifelse(book_format == "html" & with_watermark, "<div class='watermark'>DRAFT</div>", "")`
 
 ## Latin symbols {-}
 

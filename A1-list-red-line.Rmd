@@ -7,6 +7,8 @@
 
 `r ifelse(book_format == "latex", "\\markboth{List of red lines}{}", "")`
 
+`r ifelse(book_format == "html" & with_watermark, "<div class='watermark'>DRAFT</div>", "")`
+
 1. \@ref(exr:read) (ref:read) <!-- ch. 4 -->
 
 1. \@ref(exr:feBvD) (ref:feBvD)
