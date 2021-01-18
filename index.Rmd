@@ -46,7 +46,7 @@ if (book_format %in% c("html", "latex")) {
 }
 
 # automatically create a bib database for R packages
-knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown', 'Hmisc'), 'bib-packages.bib')
+knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown'), 'bib-packages.bib')
 
 
 ```
@@ -144,7 +144,9 @@ if (knitr::is_latex_output()) {cat("-->")}
 <!--               END SECTION HIDING FOR PDF            -->
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
----
+# Note on the version 2 {-}
+
+`r ifelse(book_format == "latex", "\\markboth{Note on the version 2}{}", "")`
 
 ::::::{.filrouge data-latex=""}
 
@@ -153,6 +155,7 @@ The book was originally developed in TeX in 2012 and shared as a pdf and printed
 
 The code is available on GitHub at: XXX. 
 
+\  
 
 **Possibility to add license**
 
@@ -160,11 +163,14 @@ Example:
 
 **ADD LICENSE LOGO** The online version of this book is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License** (TO BE DECIDED). 
 
+\  
+
+
 **List of changes:**
 
 - photo considered as figures. placing several photos next to each other using knitr::include_graphics(c("img1", "img2")) and magick package for borders
 
-- `\\emph{}` converted to `\\textit{}` (no class emph in Rrmarkdown)
+- `\emph{}` converted to `\textit{}` (no class emph in Rrmarkdown)
 
 - Typos correction
 
@@ -176,8 +182,18 @@ Example:
 
 - bibiography after appendices
 
+\  
+
+Content suggestion for V2:
+
+- Field work example (Mangrove BG, VN, Thailand semi destructive, Lidar)
+
+- additivity with code from BG article
+
+- nlme() groups to test whether single model performs better than models per species / ecoregion.
+
 ::::::
 
----
+
 
 

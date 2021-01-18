@@ -7,7 +7,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./index.html"><b>Manual for building tree volume and biomass allometric equations </b></a></li>
       after: |
-        <li><a href="https://www.globallometree.org/" target="blank"><b>More on GlobAllomeTree</b></a></li>
+        <li><a href="http://www.globallometree.org/" target="blank"><b>More on GlobAllomeTree</b></a></li>
         <li><a href="https://github.com/rstudio/bookdown" target="blank"><i>Published with bookdown</i></a></li>
     search: yes
     edit: null

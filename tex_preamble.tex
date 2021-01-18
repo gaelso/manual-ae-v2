@@ -14,7 +14,7 @@
 \makeatother
 
 %% This is for the watermark
-\usepackage{draftwatermark}
+% \usepackage{draftwatermark} %% Not needed see after tcolorbox
 
 %% This is for landscape tables
 \usepackage{longtable}
@@ -148,6 +148,14 @@
   boxsep=5pt,
   arc=4pt}
   
+%% Draft watermark
+\definecolor{draftcolor}{rgb}{0.5,0.5,0.5}
+\AddToShipoutPictureFG{%
+\begin{tikzpicture}[overlay,remember picture]
+\path (current page.south west) -- (current page.north east)
+ node[midway, scale=10, sloped, opacity=0.5, color=draftcolor] {DRAFT};
+\end{tikzpicture}
+}
 
 %% sub figures
 \usepackage{subfig}
