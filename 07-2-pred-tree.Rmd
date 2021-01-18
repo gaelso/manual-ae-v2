@@ -92,7 +92,7 @@ Figure \@ref(fig:icD) shows the confidence intervals for the entire range of the
 ::::::
 
 
-```{r icD, out.width=one_col, fig.cap="(ref:icd)"}
+```{r icD, out.width=one_col, fig.cap="(ref:icD)"}
 
 display_fig("iclnD")
 

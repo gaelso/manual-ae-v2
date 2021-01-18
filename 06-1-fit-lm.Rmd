@@ -644,7 +644,7 @@ display_fig("fpond")
 ```
 
 
-```{r fD2Hpres, out.width=two_col, fig.scap="Plot of weighted residuals against fitted values for a weighted regression of biomass against $D^2H$ for 42 trees measured in Ghana by @henry10", fig.cap="(ref:fD2Hpres)"}
+```{r fD2Hpres, out.width=two_col, fig.scap="(ref:fD2Hpres-short)", fig.cap="(ref:fD2Hpres)"}
 
 display_fig("fD2Hpres")
 

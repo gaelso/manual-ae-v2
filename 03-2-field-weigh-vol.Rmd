@@ -5,7 +5,7 @@
 
 The second case we consider here is that where felling constraints mean that only semi-destructive measurements are taken. These combine direct measurements for certain parts of the tree, and volume and density measurements for the others. We will illustrate this by developing an allometric equation for the dry northern forests of Cameroon. The biomass of dry forests is particularly difficult to determine given the architectural complexity of the trees they contain. Human intervention is also particularly significant in dry areas because of the rarity of forest resources and the magnitude of the demand for bioenergy. This is reflected by the trimming, pruning and maintenance practices often employed for trees located in deciduous forests, agro-forest parks and hedges (photo \@ref(fig:ka)).
 
-```{r ka, fig.scap="Trimming shea trees (*Vitellaria paradoxa*) in north Cameroon", fig.cap="(ref:ka)"}
+```{r ka, fig.scap="(ref:ka-short)", fig.cap="(ref:ka)"}
 
 ka
 

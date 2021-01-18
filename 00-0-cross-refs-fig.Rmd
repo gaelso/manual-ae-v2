@@ -42,6 +42,8 @@
 
 (ref:ka) Trimming shea trees (*Vitellaria paradoxa*) in north Cameroon (photo: R. Peltier).
 
+(ref:ka-short) Trimming shea trees (*Vitellaria paradoxa*) in north Cameroon
+
 (ref:emond) Determination of total fresh biomass. (A) Separation and measurement of trimmed and untrimmed biomass, (B) numbering of the sections and branches measured on a trimmed tree.
 
 (ref:archim) Measuring sample volume by water displacement.
@@ -85,13 +87,13 @@
 
 (ref:y0X1) Plot of the y-intercepts of linear regressions between $Y$ and $X_2$ for data subsets corresponding to classes of $X_1$ values against the middle of these classes, for data simulated in accordance with the model $Y=X_1+X_2+\varepsilon$.
 
-(ref:fcondshort) Scatter plot (log-transformed data) of total dry biomass (tonnes) against $D^2H$, where $D$ is diameter at breast height (cm) and $H$ is height (m) for the 42 trees measured in Ghana by @henry10 with different symbols for the different wood density classes
+(ref:fcond-short) Scatter plot (log-transformed data) of total dry biomass (tonnes) against $D^2H$, where $D$ is diameter at breast height (cm) and $H$ is height (m) for the 42 trees measured in Ghana by @henry10 with different symbols for the different wood density classes
 
 (ref:fcond) Scatter plot (log-transformed data) of total dry biomass (tonnes) against $D^2H$, where $D$ is diameter at breast height (cm) and $H$ is height (m) for the 42 trees measured in Ghana by @henry10 with different symbols for the different wood density classes: black circles, $0.170\leq\rho<0.545$\ g\ cm^-3^; red triangles, $0.545\leq\rho<0.600$\ g\ cm^-3^; green plus signs, $0.600\leq\rho<0.650$\ g\ cm^-3^; blue crosses, $0.650\leq\rho<0780$\ g\ cm^-3^.
 
 (ref:fcond-bw) Scatter plot (log-transformed data) of total dry biomass (tonnes) against $D^2H$, where $D$ is diameter at breast height (cm) and $H$ is height (m) for the 42 trees measured in Ghana by @henry10 with different symbols for the different wood density classes: circles, $0.170\leq\rho<0.545$\ g\ cm^-3^; triangles, $0.545\leq\rho<0.600$\ g\ cm^-3^; plus signs, $0.600\leq\rho<0.650$\ g\ cm^-3^; crosses, $0.650\leq\rho<0780$\ g\ cm^-3^.
 
-(ref:flmcond-short) Y-intercept $a$ and slope $b$ of the linear regression $\ln(B)=a+b\ln(D^2H)$ conditioned on wood density class, against the median wood density of the classes
+(ref:flmcond-short) Y-intercept $a$ and slope $b$ of the linear regression $\ln(B)=a+b\ln(D^2H)$ conditioned on wood density class, against the median wood density of the classes.
 
 (ref:flmcond) Y-intercept $a$ and slope $b$ of the linear regression $\ln(B)=a+b\ln(D^2H)$ conditioned on wood density class, against the median wood density of the classes. The regressions were plotted using the data from the 42 trees measured by @henry10 au Ghana.
 
@@ -132,6 +134,8 @@
 
 (ref:fD2Hpres) Plot of weighted residuals against fitted values for a weighted regression of biomass against $D^2H$ for 42 trees measured in Ghana by @henry10: (A) the weighting is inversely proportional to $D^4$; (B) the weighting is inversely proportional to $D^2$; (C) the weighting is inversely proportional to $D^5$.
 
+(ref:fD2Hpres-short) Plot of weighted residuals against fitted values for a weighted regression of biomass against $D^2H$ for 42 trees measured in Ghana by @henry10.
+
 (ref:fresDD2) Plot of weighted residuals against fitted values for a weighted regression of biomass against $D$ and $D^2$ for 42 trees measured in Ghana by @henry10.
 
 (ref:fD2Hvar) Linear regression between $B$ and $D^2H$ with variance model
@@ -150,10 +154,15 @@
 
 (ref:fpredB) Biomass predictions by different tables fitted to data from 42 trees measured in Ghana by @henry10. The data are shown as points. (A) Tables with dbh as only entry, corresponding to red lines \@ref(exr:fDpara) (`r ifelse(with_color, "red", "solid lines")`), \@ref(exr:fDD2var) (`r ifelse(with_color, "green","dashed line")`), \@ref(exr:fnlsD) (`r ifelse(with_color, "blue", "dotted line")`) and \@ref(exr:fnlmD) (`r ifelse(with_color, "magenta", "dashes and dots")`). (B) Tables with $D^2H$ as the only effect variable, corresponding to red lines \@ref(exr:frlpD2H) (`r ifelse(with_color, "red", "solid line")`), \@ref(exr:fD2Hvar) (`r ifelse(with_color, "green", "dashed line")`), \@ref(exr:fnlsD2H) (`r ifelse(with_color, "blue", "dotted line")`) and \@ref(exr:fnlmD2H) (`r ifelse(with_color, "magenta", "dashes and dots")`). (C) Table corresponds to red line \@ref(exr:fnlsDH). (D) Table corresponds to red line \@ref(exr:fnlmDH).
 
+(ref:fpredB-short) Biomass predictions by different tables fitted to data from 42 trees measured in Ghana by @henry10
+
 (ref:fpredlnB) Biomass predictions by different tables fitted to data from 42 trees measured in Ghana by @henry10. The data are shown as points. (A) Model in red line \@ref(exr:rllnBvD). (B) Model in red line \@ref(exr:rllnBvD2H). (C) Model in red line \@ref(exr:flnDlnH). (D) Model in red line \@ref(exr:selvar).
+
+(ref:fpredlnB-short) Biomass predictions by different tables fitted to data from 42 trees measured in Ghana by @henry10
 
 (ref:fselm) Biomass predictions by the same power table fitted in three different ways to data from 42 trees measured in Ghana by @henry10. The data are shown as points. The `r ifelse(with_color, "red", "solid")` line is the linear regression on log-transformed data (red line \@ref(exr:rllnBvD)). The `r ifelse(with_color, "green line", "dashed line")` (practically superimposed by the `r ifelse(with_color, "blue line", "dotted line")`) is the fitting by weighted non-linear regression (red line \@ref(exr:fnlsD)). The `r ifelse(with_color, "blue color", "dotted line")` shows the fitting by non-linear regression with variance model (red line \@ref(exr:fnlmD)). (A) No data transformation. (B) On a log scale.
 
+(ref:fselm-short) Biomass predictions by the same power table fitted in three different ways to data from 42 trees measured in Ghana by @henry10
 
 <!-- Figure chapter 7 -->
 

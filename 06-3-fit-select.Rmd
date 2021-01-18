@@ -90,9 +90,8 @@ Y=f(X_1,\ \ldots,\ X_{p'},\ X_{p'+1},\ \ldots,\ X_p;
 where ($\theta_0$, $\theta_1$) is the vector of the coefficients associated with the complete model and $\theta_0$ is the vector of the coefficients associated with the nested model, which may be obtained by setting 
 $\theta_1=\mathbf{0}$. In the particular case of the linear model, the complete model is obtained as the sum of the nested model and additional terms:
 \begin{equation}
-\underbrace{\underbrace{Y=a_0+a_1X_1+\ldots+a_{p'}X_{p'}}_{\mbox{\scriptsize
-nested model}}+a_{p'+1}X_{p'+1}+\ldots+a_pX_p}_{\mbox{
-\scriptsize complete model}}+\varepsilon(\#eq:emblm)
+\underbrace{\underbrace{Y=a_0+a_1X_1+\ldots+a_{p'}X_{p'}}_{\scriptsize \mbox{nested model}}+
+a_{p'+1}X_{p'+1}+\ldots+a_pX_p}_{\scriptsize \mbox{complete model}}+\varepsilon(\#eq:emblm)
 \end{equation}
 where $\theta_0=(a_0,\ \ldots,\ a_{p'})$ and $\theta_1=(a_{p'+1},\ \ldots,\ a_p)$.
 
@@ -270,13 +269,11 @@ AIC values for the 10 models listed above are given in Table \@ref(tab:fAICD). T
 ::::::
 
 
-```{r fpredB, fig.ncol=2, fig.subcap = c('', '', '', ''), out.extra="", fig.show='hold', out.width="50%", out.height="50%", fig.scap="Biomass predictions by different tables fitted to data from 42 trees measured in Ghana by @henry10", fig.cap="(ref:fpredB)"}
+```{r fpredB, fig.ncol=2, fig.subcap = c('', '', '', ''), out.extra="", fig.show='hold', out.width="50%", out.height="50%", fig.scap="(ref:fpredB-short)", fig.cap="(ref:fpredB)"}
 
 knitr::include_graphics(c(paste0(fig_path, "/faicD1.png"), paste0(fig_path, "/faicD2.png"), paste0(fig_path, "/faicD3.png"), paste0(fig_path, "/faicD4.png")), auto_pdf = TRUE)
 
 ```
-
-
 
 
 ```{r fAICD}
@@ -361,7 +358,7 @@ Table \@ref(tab:fAIClnD) gives AIC values for the four models. As all four model
 ::::::
 
 
-```{r fpredlnB, fig.ncol=2, fig.subcap = c('', '', '', ''), out.extra="", fig.show='hold', out.width="50%", out.height="50%", fig.scap="Biomass predictions by different tables fitted to data from 42 trees measured in Ghana by Henry *et al.* (2010)", fig.cap="(ref:fpredlnB)"}
+```{r fpredlnB, fig.ncol=2, fig.subcap = c('', '', '', ''), out.extra="", fig.show='hold', out.width="50%", out.height="50%", fig.scap="(ref:fpredlnB-short)", fig.cap="(ref:fpredlnB)"}
 
 knitr::include_graphics(c(paste0(fig_path, "/faiclnD1.png"), paste0(fig_path, "/faiclnD2.png"), paste0(fig_path, "/faiclnD3.png"), paste0(fig_path, "/faiclnD4.png")), auto_pdf = TRUE)
 
@@ -484,7 +481,7 @@ The predictions given by these three fittings of the same model are illustrated 
 ::::::
 
 
-```{r fselm, fig.scap="Biomass predictions by the same power table fitted in three different ways to data from 42 trees measured in Ghana by Henry et al. 2010", fig.cap="(ref:fselm)"}
+```{r fselm, fig.scap="(ref:fselm-short)", fig.cap="(ref:fselm)"}
 
 display_fig("fselm")
 
