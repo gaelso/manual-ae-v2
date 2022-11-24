@@ -6,11 +6,17 @@
 ## This script sources R scripts and makes the report with bookdown::render_book()
 ## ++++++
 
+## PREREQUISITE:
+## Install 'tinytex' and 'phantomjs' R packages
+## Follow tinytex installation and potential troubleshoot from :
+## https://bookdown.org/yihui/bookdown/get-started.html
+
+## Run to setup screenshots of dynamic HTML renders: webshot::install_phantomjs() 
 
 
 ## Figures settings ------
 
-img_hires <- list(height = 2500, width = 4000, density = "300x300")
+img_hires  <- list(height = 2500, width = 4000, density = "300x300")
 img_lowres <- list(height = 600, width = 1200, density = "72x72")
 
 img_res <- "low" ## Choose "hi" for high resolution !!! hires not supported yet !!!
@@ -23,6 +29,12 @@ fig_path <- "source/figures"
 with_color <- TRUE ## FALSE for black and white, not fully supported yet
 
 with_watermark <- TRUE ## also need to activate in tex_preamble
+
+## !!! RUN ONE TIME !!! 
+## Problem with one package, see: https://github.com/wch/extrafont/issues/32#issuecomment-907556721
+# devtools::install_version("Rttf2pt1", version = "1.3.8")
+## !!!
+
 
 ## Source R scripts ------
 
@@ -42,12 +54,12 @@ source("R/prepa-tabs.R")
 
 source("R/red_line_code.R")
 
-#source("R/conv_tex_rmd.R") ## Run one time
-
+## !!! RUN FIRST TIME !!! 
+# source("R/conv_tex_rmd.R")
+## !!!
 
 
 ## Make report ------
-
 
 ## PDF -- For pdf install webshot and webshot::install_phantomjs() 
 
@@ -59,11 +71,11 @@ source("R/red_line_code.R")
 #   ) ## >> NOT WORKING WITH THEOREM AND PROOF HACK
 
 ## preview one chapter
-bookdown::preview_chapter(
-  input = c("index.Rmd", "A3-lexicon.Rmd"),
-  output_format = "bookdown::pdf_book",
-  output_dir = paste0("Manual-AE/Manual-AE-pdf-sections-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"))
-)
+# bookdown::preview_chapter(
+#   input = c("index.Rmd", "A3-lexicon.Rmd"),
+#   output_format = "bookdown::pdf_book",
+#   output_dir = paste0("Manual-AE/Manual-AE-pdf-sections-", format(Sys.time(), format = "%Y-%m-%d-%H%M%S"))
+# )
 
 ## Make the whole book
 bookdown::render_book(
